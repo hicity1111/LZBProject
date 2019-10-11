@@ -16,6 +16,8 @@ PODS:
     - AFNetworking/NSURLSession
   - IQKeyboardManager (6.5.0)
   - JMButton (0.6)
+  - Masonry (1.1.0)
+  - MJRefresh (3.2.0)
   - SDWebImage (5.2.2):
     - SDWebImage/Core (= 5.2.2)
   - SDWebImage/Core (5.2.2)
@@ -24,6 +26,8 @@ DEPENDENCIES:
   - AFNetworking
   - IQKeyboardManager
   - JMButton
+  - Masonry
+  - MJRefresh
   - SDWebImage
 
 SPEC REPOS:
@@ -31,14 +35,18 @@ SPEC REPOS:
     - AFNetworking
     - IQKeyboardManager
     - JMButton
+    - Masonry
+    - MJRefresh
     - SDWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   IQKeyboardManager: 700e5155d6a292383b54e8678aec769e14fc78fc
   JMButton: 04a4e98d096f9f504df2908fade68699b822dd5e
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   SDWebImage: 5fcdb02cc35e05fc35791ec514b191d27189f872
 
-PODFILE CHECKSUM: a93a838c9b1dce3609027f6f7f9131795372eb0f
+PODFILE CHECKSUM: d6b3e40955ba4fa8dfd7418dde5fd07f1427bc17
 
 COCOAPODS: 1.8.3

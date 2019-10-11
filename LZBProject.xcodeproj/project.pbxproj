@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B92FB5D2350820000D813B3 /* UIFont+LZBExtension.m */; };
+		0B92FB63235087A500D813B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B92FB62235087A500D813B3 /* UIKit.framework */; };
 		0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD66C234DBFAD00E4970A /* AppDelegate.m */; };
 		0BBCD670234DBFAD00E4970A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD66F234DBFAD00E4970A /* SceneDelegate.m */; };
 		0BBCD673234DBFAD00E4970A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD672234DBFAD00E4970A /* ViewController.m */; };
@@ -45,6 +47,9 @@
 		0B92FB56235028C400D813B3 /* HeaderFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderFile.h; sourceTree = "<group>"; };
 		0B92FB57235028FE00D813B3 /* LZVMainColorMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZVMainColorMacro.h; sourceTree = "<group>"; };
 		0B92FB582350291500D813B3 /* LZBMainTextFont.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBMainTextFont.h; sourceTree = "<group>"; };
+		0B92FB5C2350820000D813B3 /* UIFont+LZBExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+LZBExtension.h"; sourceTree = "<group>"; };
+		0B92FB5D2350820000D813B3 /* UIFont+LZBExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+LZBExtension.m"; sourceTree = "<group>"; };
+		0B92FB62235087A500D813B3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0BBCD668234DBFAD00E4970A /* LZBProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LZBProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BBCD66B234DBFAD00E4970A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0BBCD66C234DBFAD00E4970A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -79,6 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				170A91ACB3928B17BD894640 /* Pods_LZBProject.framework in Frameworks */,
+				0B92FB63235087A500D813B3 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +172,7 @@
 		0B820167234EC1C900D983AE /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				0B92FB5A2350812D00D813B3 /* UIFont */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -186,6 +193,15 @@
 			children = (
 			);
 			path = LZBNetworking;
+			sourceTree = "<group>";
+		};
+		0B92FB5A2350812D00D813B3 /* UIFont */ = {
+			isa = PBXGroup;
+			children = (
+				0B92FB5C2350820000D813B3 /* UIFont+LZBExtension.h */,
+				0B92FB5D2350820000D813B3 /* UIFont+LZBExtension.m */,
+			);
+			path = UIFont;
 			sourceTree = "<group>";
 		};
 		0BBCD65F234DBFAD00E4970A = {
@@ -268,6 +284,7 @@
 		E891B3A032A33E1398D77910 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B92FB62235087A500D813B3 /* UIKit.framework */,
 				EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */,
 				C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */,
 				577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */,
@@ -517,6 +534,7 @@
 				0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */,
 				0BBCD67E234DBFAE00E4970A /* main.m in Sources */,
 				0BBCD670234DBFAD00E4970A /* SceneDelegate.m in Sources */,
+				0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,7 +639,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -673,7 +691,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -687,6 +705,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47W7Z3W4WT;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LZBProject/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = LZBProject/Info.plist;
@@ -706,6 +725,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47W7Z3W4WT;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LZBProject/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = LZBProject/Info.plist;

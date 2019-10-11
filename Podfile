@@ -9,7 +9,8 @@ target 'LZBProject' do
   pod 'IQKeyboardManager'
   pod 'SDWebImage'
   pod 'JMButton'
-  
+  pod 'MJRefresh'
+  pod 'Masonry' 
   # Pods for LZBProject
 
   target 'LZBProjectTests' do

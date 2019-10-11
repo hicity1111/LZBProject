@@ -13,5 +13,7 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <SDWebImage/SDWebImage.h>
 #import <JMButton/JMButton.h>
+#import <MJRefresh/MJRefresh.h>
+#import <Masonry/Masonry.h>
 
 #endif /* HeaderFile_h */

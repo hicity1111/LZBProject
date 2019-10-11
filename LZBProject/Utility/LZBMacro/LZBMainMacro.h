@@ -10,12 +10,7 @@
 #define LZBMainMacro_h
 
 
-#define isLandscape ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft \
-|| [[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeRight)
-
 #define isIOS8_or_Later ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
-
-#define kScreen_Bounds (isIOS8_or_Later ? [UIScreen mainScreen].bounds : (isLandscape ? CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width) : [UIScreen mainScreen].bounds))
 
 
 /*** 判断当前设备类型 */
@@ -45,9 +40,9 @@
 #define NavBar_Height 44
 
 
-#define kScreenHeight (isIOS8_or_Later ? [UIScreen mainScreen].bounds.size.height : (isLandscape ? [UIScreen mainScreen].bounds.size.width : [UIScreen mainScreen].bounds.size.height))
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
-#define kScreenWidth (isIOS8_or_Later ? [UIScreen mainScreen].bounds.size.width : (isLandscape ? [UIScreen mainScreen].bounds.size.height : [UIScreen mainScreen].bounds.size.width))
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
 
 
 // 日记输出宏

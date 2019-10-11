@@ -1,0 +1,19 @@
+//
+//  PrefixHeader.pch
+//  LZBProject
+//
+//  Created by hicity on 2019/10/11.
+//  Copyright © 2019 hicity. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "LZBMainMacro.h"
+#import "HeaderFile.h"
+#import "LZVMainColorMacro.h"
+#import "LZBMainTextFont.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */

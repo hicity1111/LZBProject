@@ -1,0 +1,6 @@
+framework module JMButton {
+  umbrella header "JMButton-umbrella.h"
+
+  export *
+  module * { export * }
+}

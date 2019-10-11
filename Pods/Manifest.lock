@@ -1,0 +1,44 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - IQKeyboardManager (6.5.0)
+  - JMButton (0.6)
+  - SDWebImage (5.2.2):
+    - SDWebImage/Core (= 5.2.2)
+  - SDWebImage/Core (5.2.2)
+
+DEPENDENCIES:
+  - AFNetworking
+  - IQKeyboardManager
+  - JMButton
+  - SDWebImage
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - IQKeyboardManager
+    - JMButton
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  IQKeyboardManager: 700e5155d6a292383b54e8678aec769e14fc78fc
+  JMButton: 04a4e98d096f9f504df2908fade68699b822dd5e
+  SDWebImage: 5fcdb02cc35e05fc35791ec514b191d27189f872
+
+PODFILE CHECKSUM: a93a838c9b1dce3609027f6f7f9131795372eb0f
+
+COCOAPODS: 1.8.3

@@ -52,4 +52,7 @@
 #define XLDLog(...)
 #endif
 
+
+#define LZBWeak __weak __typeof(self) weakSelf = self
+
 #endif /* LZBMainMacro_h */

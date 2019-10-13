@@ -10,7 +10,10 @@ target 'LZBProject' do
   pod 'SDWebImage'
   pod 'JMButton'
   pod 'MJRefresh'
-  pod 'Masonry' 
+  pod 'Masonry'
+  pod 'SDAutoLayout'
+  pod 'YYCache'
+
   # Pods for LZBProject
 
   target 'LZBProjectTests' do

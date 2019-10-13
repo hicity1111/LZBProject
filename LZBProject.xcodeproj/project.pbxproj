@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B098C652351A077000934EB /* LZBNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B098C642351A077000934EB /* LZBNetManager.m */; };
+		0B098C682351B942000934EB /* LZBNetManagerCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B098C672351B942000934EB /* LZBNetManagerCache.m */; };
+		0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B098C6A2351BFE2000934EB /* UIImage+CompressImage.m */; };
+		0B09920623517A0D001E5389 /* LZBDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B09920523517A0D001E5389 /* LZBDataEntity.m */; };
 		0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B92FB5D2350820000D813B3 /* UIFont+LZBExtension.m */; };
 		0B92FB63235087A500D813B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B92FB62235087A500D813B3 /* UIKit.framework */; };
 		0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD66C234DBFAD00E4970A /* AppDelegate.m */; };
@@ -42,10 +46,19 @@
 
 /* Begin PBXFileReference section */
 		099B13D8A8E252E4F18BC6C5 /* Pods-LZBProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject.debug.xcconfig"; path = "Target Support Files/Pods-LZBProject/Pods-LZBProject.debug.xcconfig"; sourceTree = "<group>"; };
+		0B098C6223519FF3000934EB /* LZBNetManager_OC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBNetManager_OC.h; sourceTree = "<group>"; };
+		0B098C632351A077000934EB /* LZBNetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBNetManager.h; sourceTree = "<group>"; };
+		0B098C642351A077000934EB /* LZBNetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBNetManager.m; sourceTree = "<group>"; };
+		0B098C662351B942000934EB /* LZBNetManagerCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBNetManagerCache.h; sourceTree = "<group>"; };
+		0B098C672351B942000934EB /* LZBNetManagerCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBNetManagerCache.m; sourceTree = "<group>"; };
+		0B098C692351BFE2000934EB /* UIImage+CompressImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+CompressImage.h"; sourceTree = "<group>"; };
+		0B098C6A2351BFE2000934EB /* UIImage+CompressImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CompressImage.m"; sourceTree = "<group>"; };
+		0B09920423517A0D001E5389 /* LZBDataEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBDataEntity.h; sourceTree = "<group>"; };
+		0B09920523517A0D001E5389 /* LZBDataEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBDataEntity.m; sourceTree = "<group>"; };
 		0B92FB5023500F7100D813B3 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		0B92FB552350175200D813B3 /* LZBMainMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBMainMacro.h; sourceTree = "<group>"; };
 		0B92FB56235028C400D813B3 /* HeaderFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderFile.h; sourceTree = "<group>"; };
-		0B92FB57235028FE00D813B3 /* LZVMainColorMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZVMainColorMacro.h; sourceTree = "<group>"; };
+		0B92FB57235028FE00D813B3 /* LZBMainColorMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBMainColorMacro.h; sourceTree = "<group>"; };
 		0B92FB582350291500D813B3 /* LZBMainTextFont.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBMainTextFont.h; sourceTree = "<group>"; };
 		0B92FB5C2350820000D813B3 /* UIFont+LZBExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+LZBExtension.h"; sourceTree = "<group>"; };
 		0B92FB5D2350820000D813B3 /* UIFont+LZBExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+LZBExtension.m"; sourceTree = "<group>"; };
@@ -182,7 +195,7 @@
 			children = (
 				0B92FB552350175200D813B3 /* LZBMainMacro.h */,
 				0B92FB56235028C400D813B3 /* HeaderFile.h */,
-				0B92FB57235028FE00D813B3 /* LZVMainColorMacro.h */,
+				0B92FB57235028FE00D813B3 /* LZBMainColorMacro.h */,
 				0B92FB582350291500D813B3 /* LZBMainTextFont.h */,
 			);
 			path = LZBMacro;
@@ -191,6 +204,15 @@
 		0B92FB5923504D2900D813B3 /* LZBNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				0B09920423517A0D001E5389 /* LZBDataEntity.h */,
+				0B09920523517A0D001E5389 /* LZBDataEntity.m */,
+				0B098C6223519FF3000934EB /* LZBNetManager_OC.h */,
+				0B098C632351A077000934EB /* LZBNetManager.h */,
+				0B098C642351A077000934EB /* LZBNetManager.m */,
+				0B098C662351B942000934EB /* LZBNetManagerCache.h */,
+				0B098C672351B942000934EB /* LZBNetManagerCache.m */,
+				0B098C692351BFE2000934EB /* UIImage+CompressImage.h */,
+				0B098C6A2351BFE2000934EB /* UIImage+CompressImage.m */,
 			);
 			path = LZBNetworking;
 			sourceTree = "<group>";
@@ -533,8 +555,12 @@
 				0BBCD673234DBFAD00E4970A /* ViewController.m in Sources */,
 				0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */,
 				0BBCD67E234DBFAE00E4970A /* main.m in Sources */,
+				0B098C652351A077000934EB /* LZBNetManager.m in Sources */,
+				0B09920623517A0D001E5389 /* LZBDataEntity.m in Sources */,
+				0B098C682351B942000934EB /* LZBNetManagerCache.m in Sources */,
 				0BBCD670234DBFAD00E4970A /* SceneDelegate.m in Sources */,
 				0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */,
+				0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

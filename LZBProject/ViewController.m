@@ -14,16 +14,13 @@
 
 @implementation ViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
     
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(10, 100, 100, 100)];
     [button setBackgroundColor:[UIColor blueColor]];
     [self.view addSubview:button];
-    
-    
     
     XLDLog(@"vdfshjfs");
     XLDLog(@"kScreenWidth==%f  kScreenHeight==%f",kScreenWidth,kScreenHeight);

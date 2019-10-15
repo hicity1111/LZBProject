@@ -18,5 +18,6 @@
 #import "UIFont+LZBExtension.h"
 #import <SDAutoLayout/SDAutoLayout.h>
 #import <YYCache/YYCache.h>
+#import "UIColor+lzbColor.h"
 
 #endif /* HeaderFile_h */

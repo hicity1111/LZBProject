@@ -44,12 +44,19 @@
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 
+//手势宏定义
+#define KTAPGES(tapName, tapAct) UIGestureRecognizer *tapName = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(tapAct)];
 
 // 日记输出宏
 #ifdef DEBUG // 调试状态, 打开LOG功能
 #define XLDLog(...) NSLog(__VA_ARGS__)
 #else // 发布状态, 关闭LOG功能
 #define XLDLog(...)
+#endif
+
+#ifndef IMAGE_NAMED
+#define IMAGE_NAMED(__imageName__)\
+[UIImage imageNamed:__imageName__]
 #endif
 
 

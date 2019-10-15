@@ -7,9 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "LZBCalendar.h"
 
-@interface ViewController ()
+@interface ViewController ()<LZBCalendarDelegate>
 
+@property (nonatomic, strong) LZBCalendar *calendar;
 @end
 
 @implementation ViewController
@@ -22,9 +24,17 @@
     [button setBackgroundColor:[UIColor blueColor]];
     [self.view addSubview:button];
     
+    [button addTarget:self action:@selector(calendarSelector:) forControlEvents:UIControlEventTouchUpInside];
+    
     XLDLog(@"vdfshjfs");
     XLDLog(@"kScreenWidth==%f  kScreenHeight==%f",kScreenWidth,kScreenHeight);
 }
 
-
+- (void)calendarSelector:(UIButton *)button{
+    
+    self.calendar = [LZBCalendar shareInstance];
+    self.calendar.delegate = self;
+    [self.calendar initWithFrame:CGRectMake(100, 10, 350, 280) andTopPoint:CGPointMake(100, 100)];
+    
+}
 @end

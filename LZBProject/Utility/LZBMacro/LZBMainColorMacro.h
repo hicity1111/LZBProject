@@ -9,5 +9,12 @@
 #ifndef LZBMainColorMacro_h
 #define LZBMainColorMacro_h
 
+#define KMAINFFFF   [UIColor colorWithHex:@"#FFFFFF"]
+
+#define KMAIN00A2   [UIColor colorWithHex:@"#00A26D"]
+
+#define KMAIN5868   [UIColor colorWithHex:@"#586878"]
+
+#define KMAINFFA0   [UIColor colorWithHex:@"#FFA000"]
 
 #endif /* LZBMainColorMacro_h */

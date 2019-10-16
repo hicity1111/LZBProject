@@ -59,7 +59,18 @@
 [UIImage imageNamed:__imageName__]
 #endif
 
+#ifndef SYSTEM_FONT
+#define SYSTEM_FONT(__fontsize__)\
+[UIFont lzb_fontForPingFangSC_RegularFontOfSize:__fontsize__]
+#endif
+
+#ifndef BOLD_FONT
+#define BOLD_FONT(__fontsize__)\
+[UIFont lzb_fontForPingFangSC_SemiboldFontOfSize:__fontsize__]
+#endif
+
 
 #define LZBWeak __weak __typeof(self) weakSelf = self
 
 #endif /* LZBMainMacro_h */
+

@@ -7,6 +7,9 @@
 //
 
 #import "LZBCalendar.h"
+#import "TriangleView.h"
+#import "LZBCalenderScrollView.h"
+#import "NSDate+LZBCalendar.h"
 
 #define KCol           7
 #define KBtnWith       44
@@ -22,7 +25,19 @@
     CGPoint _oriPoint;
     CGPoint _movePoint;
     CGFloat _calendarFlag;
+    CGPoint _topPoint;
 }
+
+@property (nonatomic, strong) LZBCalenderScrollView *calendarScrollView;
+
+@property (nonatomic, strong) TriangleView *triangle;
+
+@property (nonatomic, strong) UIView *calendarHeaderView;
+
+@property (nonatomic, strong) UIView *weekHeaderView;
+
+@property (nonatomic, strong) UIView *bottomView;
+
 /**周*/
 @property (nonatomic, strong) NSArray *weekArray;
 /**时间*/
@@ -67,71 +82,155 @@
 
 @implementation LZBCalendar
 
-+ (instancetype)shareInstance{
+- (instancetype)initWithFrameOrigin:(CGPoint)origin width:(CGFloat)width{
     
-    static LZBCalendar *instance = nil;
+    // 根据宽度计算 calender 主体部分的高度
+    CGFloat weekLineHight = 0.85 * (width / 7.0);
     
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    CGFloat monthHeight = 6 * weekLineHight;
+    // 星期头部栏高度
+    CGFloat weekHeaderHeight = 0.6 * weekLineHight;
+    // calendar 头部栏高度
+    CGFloat calendarHeaderHeight = 0.8 * weekLineHight;
+    //底部按钮高度
+    CGFloat bottonHeight =  1.5* weekLineHight;
+    
+    // 最后得到整个 calender 控件的高度
+    _calendarHeight = calendarHeaderHeight + weekHeaderHeight + monthHeight + bottonHeight;
+    
+    if (self = [super initWithFrame:CGRectMake(origin.x, origin.y, width, _calendarHeight)]) {
         
-        instance = [[self alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    });
-    return instance;
-    
-}
-
-/**初始化方法*/
-- (id)initWithFrame:(CGRect)frame andTopPoint:(CGPoint)point{
-    
-    self = [super initWithFrame:frame];
-    if (self) {
+        _backView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _backView.backgroundColor = [UIColor blackColor];
+        _backView.alpha = 0.8;
+        [[UIApplication sharedApplication].keyWindow addSubview:_backView];
+        KTAPGES(dismissTap, dismiss);
+        [_backView addGestureRecognizer:dismissTap];
         
-        _calendarFlag = frame.size.width/KDefultWith;
-        [self getCurrentDate];//获取当前时间
-        [self getDataSource];//获取数据源
-        [self configWithFrame:frame andTopPoint:point];
-        [self getDefaultInfo];//初始化设置
-        [self reloadData];//刷新数据
+        _calendarView = [[UIView alloc] initWithFrame:CGRectMake(origin.x, origin.y, width, _calendarHeight)];
+           _calendarView.backgroundColor = KMAINFFFF;
+       UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_calendarView.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(20, 20)];
+       CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
+       maskLayer.frame = _calendarView.bounds;
+       maskLayer.path = maskPath.CGPath;
+       _calendarView.layer.mask = maskLayer;
+       [[UIApplication sharedApplication].keyWindow addSubview:_calendarView];
         
-    };
-    
+        _calendarHeaderView = [self setupCalendarHeaderViewWithFrame:CGRectMake(0.0, 0.0, width, calendarHeaderHeight)];
+        
+        _weekHeaderView = [self setupWeekHeadViewWithFrame:CGRectMake(0.0, calendarHeaderHeight, width, weekHeaderHeight)];
+        
+        _calendarScrollView = [self setupCalendarScrollViewWithFrame:CGRectMake(0.0, calendarHeaderHeight + weekHeaderHeight, width, monthHeight)];
+        
+        _bottomView = [self setupCalendarBottonViewWithFrame:CGRectMake(0.0, calendarHeaderHeight + weekHeaderHeight + monthHeight, width, bottonHeight)];
+        
+        [self.calendarView addSubview:_calendarHeaderView];
+        [self.calendarView addSubview:_weekHeaderView];
+        [self.calendarView addSubview:_calendarScrollView];
+        [self.calendarView addSubview:_bottomView];
+        
+    }
     return self;
 }
 
-/// 获取当前时间
-- (void)getCurrentDate{
-    
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute fromDate:[NSDate date]];
-    _year   = components.year;
-    _month  = components.month;
-    _day    = components.day;
-    _hour   = components.hour;
-    _minute =components.minute;
+- (void)dealloc {
+    // 移除监听
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-/// 获取数据源
-- (void)getDataSource{
+#pragma mark - headerView
+- (UIView *)setupCalendarHeaderViewWithFrame:(CGRect)frame{
     
-    _weekArray = @[@"周日",@"周一",@"周二",@"周三",@"周四",@"周五",@"周六"];
-    _timeArray = @[@[@"00",@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"09",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23"],@[@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"09",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30",@"31",@"32",@"33",@"34",@"35",@"36",@"37",@"37",@"39",@"40",@"41",@"42",@"43",@"44",@"45",@"46",@"48",@"49",@"50",@"51",@"52",@"52",@"54",@"55",@"56",@"57",@"58",@"59"]];
-    NSInteger firsYear = _year - KShowYearCount / 2;
-    NSMutableArray *yearArray = [NSMutableArray array];
-    for (int i = 0; i < KShowYearCount; i++) {
-        [yearArray addObject:[NSString stringWithFormat:@"%ld",firsYear + i]];
+    UIView *headerView = [[UIView alloc] initWithFrame:frame];
+    headerView.backgroundColor = KMAINFFFF;
+    return headerView;
+}
+
+#pragma mark - headerView
+- (UIView *)setupCalendarBottonViewWithFrame:(CGRect)frame{
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:frame];
+    headerView.backgroundColor = [UIColor redColor];
+    return headerView;
+}
+
+#pragma mark - 星期View
+- (UIView *)setupWeekHeadViewWithFrame:(CGRect)frame {
+    
+    CGFloat height = frame.size.height;
+    CGFloat width = frame.size.width / 7.0;
+    
+    UIView *view = [[UIView alloc] initWithFrame:frame];
+    view.backgroundColor = self.calendarBasicColor;
+    
+    NSArray *weekArray = @[@"周日",@"周一",@"周二",@"周三",@"周四",@"周五",@"周六"];
+    for (int i = 0; i < 7; ++i) {
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(i * width, 0.0, width, height)];
+        label.backgroundColor = [UIColor clearColor];
+        label.text = weekArray[i];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.text = weekArray[i];
+        label.textColor = KMAIN5868;
+        label.font = [UIFont lzb_fontForPingFangSC_MediumFontOfSize:11];
+        [view addSubview:label];
     }
-    _yearArray = yearArray;
-    _monthArray = @[@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"09",@"10",@"11",@"12"];
+    
+    return view;
     
 }
+- (LZBCalenderScrollView *)setupCalendarScrollViewWithFrame:(CGRect)frame {
+    LZBCalenderScrollView *scrollView = [[LZBCalenderScrollView alloc] initWithFrame:frame];
+    scrollView.calendarBasicColor = self.calendarBasicColor;
+    return scrollView;
+}
 
-/// 初始化设置
-- (void)getDefaultInfo{
-    _currentYear  = _year;
-    _currentMonth = _month;
-    _currentDay   = _day;
+- (void)setCalendarBasicColor:(UIColor *)calendarBasicColor {
+    _calendarBasicColor = calendarBasicColor;
+    self.layer.borderColor = calendarBasicColor.CGColor;
+    _calendarHeaderView.backgroundColor = calendarBasicColor;
+    _weekHeaderView.backgroundColor = calendarBasicColor;
+    _calendarScrollView.calendarBasicColor = calendarBasicColor; // 传递颜色
+}
+
+- (void)setDidSelectDayHandler:(DidSelectDayHandler)didSelectDayHandler {
+    _didSelectDayHandler = didSelectDayHandler;
+    if (_calendarScrollView != nil) {
+        _calendarScrollView.didSelectDayHandler = _didSelectDayHandler; // 传递 block
+    }
+}
+
+- (void)addNotificationObserver {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeCalendarHeaderAction:) name:@"GFCalendar.ChangeCalendarHeaderNotification" object:nil];
+}
+
+- (void)refreshToCurrentMonthAction:(UIButton *)sender {
+    
+    NSInteger year = [[NSDate date] dateYear];
+    NSInteger month = [[NSDate date] dateMonth];
+    
+    NSString *title = [NSString stringWithFormat:@"%ld年%ld月", year, month];
+    XLDLog(@"title === %@",title);
+//    [_calendarHeaderView setTitle:title forState:UIControlStateNormal];
+    
+    [_calendarScrollView refreshToCurrentMonth];
+}
+
+- (void)changeCalendarHeaderAction:(NSNotification *)sender {
+    
+    NSDictionary *dic = sender.userInfo;
+    
+    NSNumber *year = dic[@"year"];
+    NSNumber *month = dic[@"month"];
+    
+    NSString *title = [NSString stringWithFormat:@"%@年%@月", year, month];
+    XLDLog(@"title === %@",title);
+//    [_calendarHeaderButton setTitle:title forState:UIControlStateNormal];
 }
 
 
+
+/*
 /// 创建控件
 /// @param frame 大小
 /// @param point 顶部中心点
@@ -262,87 +361,7 @@
     [_confirmButton addTarget:self action:@selector(confirmButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [_calendarView addSubview:_confirmButton];
     
-}
-
-#pragma mark - 上个月点击事件
-- (void)preBtnOnClick:(UIButton *)button{
-    
-    if (_month == 1) {
-        _year --;
-        _month = 12;
-    }else{
-        _month --;
-    }
-    [self reloadData];
-}
-
-#pragma mark - 下个月点击时间
-- (void)nextBtnOnClick:(UIButton *)button{
-    if (_month == 12) {
-        _year ++;
-        _month = 1;
-    }else{
-        _month ++;
-    }
-    [self reloadData];
-}
-
-/// 全部点击事件
-- (void)totalAct{
-    
-}
-
-- (void)dateBtnOnClick:(UIButton *)button{
-
-    _day = button.tag - KBtnTag - ([self firstDayOfWeekInMonth] - 2);
-    XLDLog(@"%@",[NSString stringWithFormat:@"星期%@", _weekArray[(button.tag - KBtnTag) % 7]]);
-    XLDLog(@"day == %@",[NSString stringWithFormat:@"%ld", _day]);
-    
-    if (button.selected) return;
-    
-    for (int i = 0; i < KMaxCount; i ++) {
-        UIButton *button = [self.detailVCalendarView viewWithTag:i + KBtnTag];
-        button.selected = NO;
-    }
-    button.selected = YES;
-//    [self reloadData];
-}
-/// 刷新数据
-- (void)reloadData{
-    
-    NSInteger totalDays = [self numberOfDaysInMonth];
-    NSInteger firstDay  = [self firstDayOfWeekInMonth];
-    
-    _yearAndMonthLabel.text = [NSString stringWithFormat:@"%ld年%ld月",_year,_month];
-    for (int i = 0; i < KMaxCount ; i++) {
-        UIButton *btn = (UIButton *)[self.detailVCalendarView viewWithTag:i + KBtnTag];
-        btn.selected = NO;
-        
-        if (i < firstDay -1 || i > totalDays + firstDay -2) {
-            btn.enabled = NO;
-            [btn setTitle:@"" forState:UIControlStateNormal];
-        }else{
-            if (_year == _currentYear && _month == _currentMonth) {
-                
-                if (btn.tag - KBtnTag - (firstDay - 2) == _currentDay) {
-                    btn.selected = YES;
-                    _day = _currentDay;
-                    XLDLog(@"%@",[NSString stringWithFormat:@"星期%@", _weekArray[(btn.tag - KBtnTag) % 7]]);
-                    XLDLog(@"%@天",[NSString stringWithFormat:@"%ld", _day]);
-                }
-                
-            }else{
-                if (i == firstDay -1) {
-                    btn.selected = YES;
-                    _day = btn.tag - KBtnTag - (firstDay - 2);
-                    XLDLog(@"%@",[NSString stringWithFormat:@"星期%@", _weekArray[(btn.tag - KBtnTag) % 7]]);
-                    XLDLog(@"%@天",[NSString stringWithFormat:@"%ld", _day]);
-                }
-            }
-            btn.enabled = YES;
-            [btn setTitle:[NSString stringWithFormat:@"%ld", i - (firstDay - 1) + 1] forState:UIControlStateNormal];
-        }
-    }
+    [self dra];
     
 }
 
@@ -368,50 +387,28 @@
     [UIView animateWithDuration:0.3 animations:^{
         [_backView removeFromSuperview];
         [_calendarView removeFromSuperview];
+        [self.triangle removeFromSuperview];
     }];
 }
 
-#pragma mark - 获取目标月份天数
-- (NSInteger)numberOfDaysInMonth{
-    //获取选中日期月份的天数
-    return [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:[self getSelectDate]].length;
-}
 
 
-#pragma mark - 获取目标月份第一天星期几
-
-/// 获取目标月份第一天星期几
-- (NSInteger)firstDayOfWeekInMonth{
+- (void)dra{
     
-//获取选中日期月份第一天星期几，因为默认日历顺序为“日一二三四五六”，所以这里返回的1对应星期日，2对应星期一，依次类推
-    return [[NSCalendar currentCalendar] ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitWeekOfYear forDate:[self getSelectDate]];
-}
+    self.triangle = ({
 
-/// 根据选中日期。获取相应的date
-- (NSDate *)getSelectDate{
-    
-    //初始化NsDateComponents, 设置为选中日期
-    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-    dateComponents.year = _year;
-    dateComponents.month = _month;
-    
-    return [[[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian] dateFromComponents:dateComponents];
+        TriangleView *triangle = [[TriangleView alloc] initWithColor:[UIColor redColor] style:triangleViewIsoscelesTop];
+
+        triangle;
+    });
+
+    [[UIApplication sharedApplication].keyWindow addSubview:self.triangle];
+
+    //mas_make
+    _triangle.frame =  CGRectMake(_topPoint.x + 8, _topPoint.y, 16, 8);
     
 }
-
-- (UIImage *)imageWithColor:(UIColor *)color
-{
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
-}
+ */
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

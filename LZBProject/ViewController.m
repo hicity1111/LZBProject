@@ -23,7 +23,6 @@
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(10, 100, 100, 100)];
     [button setBackgroundColor:[UIColor blueColor]];
     [self.view addSubview:button];
-    
     [button addTarget:self action:@selector(calendarSelector:) forControlEvents:UIControlEventTouchUpInside];
     
     XLDLog(@"vdfshjfs");
@@ -32,9 +31,23 @@
 
 - (void)calendarSelector:(UIButton *)button{
     
-    self.calendar = [LZBCalendar shareInstance];
+    self.calendar = [[LZBCalendar alloc] initWithFrameOrigin:CGPointMake(50, 50) width:280];
+//    self.calendar.calendarBasicColor = KMAINFFA0;
+//    self.calendar = [LZBCalendar shareInstance];
+    self.calendar.type = LZBCalendarDirectionTop;
     self.calendar.delegate = self;
-    [self.calendar initWithFrame:CGRectMake(100, 10, 350, 280) andTopPoint:CGPointMake(100, 100)];
     
+    self.calendar.didSelectDayHandler = ^(NSInteger year, NSInteger month, NSInteger day) {
+        
+//        PushedViewController *pvc = [[PushedViewController alloc] init];
+        NSString *title = [NSString stringWithFormat:@"%ld年%ld月%ld日", year, month, day];
+//        [self.navigationController pushViewController:pvc animated:YES];
+        
+    };
+    
+}
+
+- (void)calender:(LZBCalendar *)calendar didClickSureButtonWithDate:(NSString *)date{
+    XLDLog(@"%@",date);
 }
 @end

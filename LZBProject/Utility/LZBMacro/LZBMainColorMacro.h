@@ -17,4 +17,6 @@
 
 #define KMAINFFA0   [UIColor colorWithHex:@"#FFA000"]
 
+#define KMAINAFAF   [UIColor colorWithHex:@"#AFAFAF"]
+
 #endif /* LZBMainColorMacro_h */

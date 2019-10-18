@@ -32,17 +32,24 @@
 - (void)calendarSelector:(UIButton *)button{
     
     self.calendar = [[LZBCalendar alloc] initWithFrameOrigin:CGPointMake(50, 50) width:280];
-//    self.calendar.calendarBasicColor = KMAINFFA0;
-//    self.calendar = [LZBCalendar shareInstance];
     self.calendar.type = LZBCalendarDirectionTop;
     self.calendar.delegate = self;
-    
+    self.calendar.currentMonthTitleColor =[UIColor colorWithHex:@"#2c2c2c"];
+    self.calendar.lastMonthTitleColor =[UIColor colorWithHex:@"#8a8a8a"];
+    self.calendar.nextMonthTitleColor =[UIColor colorWithHex:@"#8a8a8a"];
+    self.calendar.isHaveAnimation = NO;
+    self.calendar.isCanScroll = YES;
+    self.calendar.isShowLastAndNextBtn = YES;
+    self.calendar.isShowLastAndNextDate = YES;
+    self.calendar.todayTitleColor =[UIColor redColor];
+    self.calendar.selectBackColor =[UIColor greenColor];
+    [self.calendar dealData];
     self.calendar.didSelectDayHandler = ^(NSInteger year, NSInteger month, NSInteger day) {
         
-//        PushedViewController *pvc = [[PushedViewController alloc] init];
-        NSString *title = [NSString stringWithFormat:@"%ld年%ld月%ld日", year, month, day];
-//        [self.navigationController pushViewController:pvc animated:YES];
-        
+    };
+    self.calendar.selectBlock = ^(NSInteger year, NSInteger month, NSInteger day) {
+
+        XLDLog(@"返回日期");
     };
     
 }

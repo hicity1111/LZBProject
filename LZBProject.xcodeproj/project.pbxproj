@@ -13,11 +13,9 @@
 		0B09920623517A0D001E5389 /* LZBDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B09920523517A0D001E5389 /* LZBDataEntity.m */; };
 		0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */; };
 		0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17674123584758008979C5 /* LZBCalendarMonth.m */; };
-		0B17674523584C21008979C5 /* LZBCalendarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17674423584C21008979C5 /* LZBCalendarCollectionViewCell.m */; };
 		0B4945D52357258500F19EE2 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4945D32357258500F19EE2 /* TriangleView.m */; };
 		0B5E6D4823545DC7008D9A76 /* LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E6D4723545DC7008D9A76 /* LZBCalendar.m */; };
 		0B5E6D4C2354728A008D9A76 /* UIColor+lzbColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E6D4B2354728A008D9A76 /* UIColor+lzbColor.m */; };
-		0B90574E235811F30068DA37 /* LZBCalenderScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B90574D235811F30068DA37 /* LZBCalenderScrollView.m */; };
 		0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B92FB5D2350820000D813B3 /* UIFont+LZBExtension.m */; };
 		0B92FB63235087A500D813B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B92FB62235087A500D813B3 /* UIKit.framework */; };
 		0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD66C234DBFAD00E4970A /* AppDelegate.m */; };
@@ -29,6 +27,11 @@
 		0BBCD67E234DBFAE00E4970A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD67D234DBFAE00E4970A /* main.m */; };
 		0BBCD688234DBFAE00E4970A /* LZBProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD687234DBFAE00E4970A /* LZBProjectTests.m */; };
 		0BBCD693234DBFAE00E4970A /* LZBProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD692234DBFAE00E4970A /* LZBProjectUITests.m */; };
+		0BBE476A235959A600D30C4B /* LZBCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBE4769235959A600D30C4B /* LZBCalendarHeaderView.m */; };
+		0BBE476D235959C400D30C4B /* LZBCalendarWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBE476C235959C400D30C4B /* LZBCalendarWeekView.m */; };
+		0BBE4770235990A100D30C4B /* LZBCalendarDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBE476F235990A100D30C4B /* LZBCalendarDayModel.m */; };
+		0BBE47742359989500D30C4B /* LXCalenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBE47712359989500D30C4B /* LXCalenderCell.m */; };
+		0BBE47752359989500D30C4B /* LXCalenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BBE47732359989500D30C4B /* LXCalenderCell.xib */; };
 		170A91ACB3928B17BD894640 /* Pods_LZBProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */; };
 		34045572ED131BFDD841F7D6 /* Pods_LZBProject_LZBProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */; };
 		85F372E2BD4721F567D05450 /* Pods_LZBProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */; };
@@ -66,16 +69,12 @@
 		0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LZBCalendar.m"; sourceTree = "<group>"; };
 		0B17674023584758008979C5 /* LZBCalendarMonth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalendarMonth.h; sourceTree = "<group>"; };
 		0B17674123584758008979C5 /* LZBCalendarMonth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBCalendarMonth.m; sourceTree = "<group>"; };
-		0B17674323584C21008979C5 /* LZBCalendarCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalendarCollectionViewCell.h; sourceTree = "<group>"; };
-		0B17674423584C21008979C5 /* LZBCalendarCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBCalendarCollectionViewCell.m; sourceTree = "<group>"; };
 		0B4945D32357258500F19EE2 /* TriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriangleView.m; sourceTree = "<group>"; };
 		0B4945D42357258500F19EE2 /* TriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleView.h; sourceTree = "<group>"; };
 		0B5E6D4623545DC7008D9A76 /* LZBCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalendar.h; sourceTree = "<group>"; };
 		0B5E6D4723545DC7008D9A76 /* LZBCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBCalendar.m; sourceTree = "<group>"; };
 		0B5E6D4A2354728A008D9A76 /* UIColor+lzbColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+lzbColor.h"; sourceTree = "<group>"; };
 		0B5E6D4B2354728A008D9A76 /* UIColor+lzbColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+lzbColor.m"; sourceTree = "<group>"; };
-		0B90574C235811F30068DA37 /* LZBCalenderScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalenderScrollView.h; sourceTree = "<group>"; };
-		0B90574D235811F30068DA37 /* LZBCalenderScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBCalenderScrollView.m; sourceTree = "<group>"; };
 		0B92FB5023500F7100D813B3 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		0B92FB552350175200D813B3 /* LZBMainMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBMainMacro.h; sourceTree = "<group>"; };
 		0B92FB56235028C400D813B3 /* HeaderFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderFile.h; sourceTree = "<group>"; };
@@ -102,6 +101,15 @@
 		0BBCD68E234DBFAE00E4970A /* LZBProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LZBProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BBCD692234DBFAE00E4970A /* LZBProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBProjectUITests.m; sourceTree = "<group>"; };
 		0BBCD694234DBFAE00E4970A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BBE4768235959A600D30C4B /* LZBCalendarHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalendarHeaderView.h; sourceTree = "<group>"; };
+		0BBE4769235959A600D30C4B /* LZBCalendarHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBCalendarHeaderView.m; sourceTree = "<group>"; };
+		0BBE476B235959C400D30C4B /* LZBCalendarWeekView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalendarWeekView.h; sourceTree = "<group>"; };
+		0BBE476C235959C400D30C4B /* LZBCalendarWeekView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBCalendarWeekView.m; sourceTree = "<group>"; };
+		0BBE476E235990A100D30C4B /* LZBCalendarDayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalendarDayModel.h; sourceTree = "<group>"; };
+		0BBE476F235990A100D30C4B /* LZBCalendarDayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBCalendarDayModel.m; sourceTree = "<group>"; };
+		0BBE47712359989500D30C4B /* LXCalenderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXCalenderCell.m; sourceTree = "<group>"; };
+		0BBE47722359989500D30C4B /* LXCalenderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXCalenderCell.h; sourceTree = "<group>"; };
+		0BBE47732359989500D30C4B /* LXCalenderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LXCalenderCell.xib; sourceTree = "<group>"; };
 		23FB01E150EBC5D9CF6D00A2 /* Pods-LZBProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject.release.xcconfig"; path = "Target Support Files/Pods-LZBProject/Pods-LZBProject.release.xcconfig"; sourceTree = "<group>"; };
 		577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770848CE74481CA6FF8ECE16 /* Pods-LZBProject-LZBProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-LZBProject-LZBProjectUITests/Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,14 +156,19 @@
 				0B4945D32357258500F19EE2 /* TriangleView.m */,
 				0B5E6D4623545DC7008D9A76 /* LZBCalendar.h */,
 				0B5E6D4723545DC7008D9A76 /* LZBCalendar.m */,
-				0B90574C235811F30068DA37 /* LZBCalenderScrollView.h */,
-				0B90574D235811F30068DA37 /* LZBCalenderScrollView.m */,
 				0B17673D2358471D008979C5 /* NSDate+LZBCalendar.h */,
 				0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */,
 				0B17674023584758008979C5 /* LZBCalendarMonth.h */,
 				0B17674123584758008979C5 /* LZBCalendarMonth.m */,
-				0B17674323584C21008979C5 /* LZBCalendarCollectionViewCell.h */,
-				0B17674423584C21008979C5 /* LZBCalendarCollectionViewCell.m */,
+				0BBE4768235959A600D30C4B /* LZBCalendarHeaderView.h */,
+				0BBE4769235959A600D30C4B /* LZBCalendarHeaderView.m */,
+				0BBE476B235959C400D30C4B /* LZBCalendarWeekView.h */,
+				0BBE476C235959C400D30C4B /* LZBCalendarWeekView.m */,
+				0BBE476E235990A100D30C4B /* LZBCalendarDayModel.h */,
+				0BBE476F235990A100D30C4B /* LZBCalendarDayModel.m */,
+				0BBE47722359989500D30C4B /* LXCalenderCell.h */,
+				0BBE47712359989500D30C4B /* LXCalenderCell.m */,
+				0BBE47732359989500D30C4B /* LXCalenderCell.xib */,
 			);
 			path = LZBCalendar;
 			sourceTree = "<group>";
@@ -474,6 +487,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BBCD67B234DBFAE00E4970A /* LaunchScreen.storyboard in Resources */,
+				0BBE47752359989500D30C4B /* LXCalenderCell.xib in Resources */,
 				0BBCD678234DBFAE00E4970A /* Assets.xcassets in Resources */,
 				0BBCD676234DBFAD00E4970A /* Main.storyboard in Resources */,
 			);
@@ -604,21 +618,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B5E6D4823545DC7008D9A76 /* LZBCalendar.m in Sources */,
+				0BBE4770235990A100D30C4B /* LZBCalendarDayModel.m in Sources */,
 				0BBCD673234DBFAD00E4970A /* ViewController.m in Sources */,
 				0B4945D52357258500F19EE2 /* TriangleView.m in Sources */,
-				0B17674523584C21008979C5 /* LZBCalendarCollectionViewCell.m in Sources */,
 				0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */,
 				0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */,
 				0B5E6D4C2354728A008D9A76 /* UIColor+lzbColor.m in Sources */,
+				0BBE476D235959C400D30C4B /* LZBCalendarWeekView.m in Sources */,
 				0BBCD67E234DBFAE00E4970A /* main.m in Sources */,
+				0BBE476A235959A600D30C4B /* LZBCalendarHeaderView.m in Sources */,
 				0B098C652351A077000934EB /* LZBNetManager.m in Sources */,
 				0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */,
 				0B09920623517A0D001E5389 /* LZBDataEntity.m in Sources */,
 				0B098C682351B942000934EB /* LZBNetManagerCache.m in Sources */,
+				0BBE47742359989500D30C4B /* LXCalenderCell.m in Sources */,
 				0BBCD670234DBFAD00E4970A /* SceneDelegate.m in Sources */,
 				0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */,
 				0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */,
-				0B90574E235811F30068DA37 /* LZBCalenderScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

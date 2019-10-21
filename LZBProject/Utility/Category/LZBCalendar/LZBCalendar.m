@@ -203,9 +203,7 @@
         
         model.firstWeekday = firstWeekday;
         model.totalDays = totalDays;
-        
         model.month = monthModel.month;
-        
         model.year = monthModel.year;
         
         //上个月的日期
@@ -227,7 +225,6 @@
                     model.isToday = YES;
                 }
             }
-            
         }
          //下月的日期
         if (i >= (firstWeekday + monthModel.totalDays)) {
@@ -236,7 +233,6 @@
             model.isNextMonth = YES;
             
         }
-        
         [self.monthdataA addObject:model];
         
     }
@@ -284,13 +280,9 @@
         cell =[[LXCalenderCell alloc]init];
         
     }
-    
     cell.model = self.monthdataA[indexPath.row];
 
-//    self.selectModel = self.monthdataA[indexPath.row];
-    
     cell.backgroundColor =[UIColor whiteColor];
-    
     
     return cell;
 }
@@ -313,7 +305,6 @@
 //    if (self.selectBlock) {
 //        self.selectBlock(model.year, model.month, model.day);
 //    }
-    
     [collectionView reloadData];
     
 }
@@ -357,10 +348,12 @@
 }
 
 - (void)confirmButtonClick{
+    
     LZBCalendarDayModel *model = self.selectModel;
     if (self.selectBlock) {
         self.selectBlock(model.year, model.month, model.day);
     }
+    [self dismiss];
     
 }
 #pragma mark - 星期View

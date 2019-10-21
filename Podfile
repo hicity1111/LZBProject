@@ -13,6 +13,7 @@ target 'LZBProject' do
   pod 'Masonry'
   pod 'SDAutoLayout'
   pod 'YYCache'
+  pod 'FDFullscreenPopGesture'
 
   # Pods for LZBProject
 

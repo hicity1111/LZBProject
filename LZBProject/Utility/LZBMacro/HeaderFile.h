@@ -19,5 +19,8 @@
 #import <SDAutoLayout/SDAutoLayout.h>
 #import <YYCache/YYCache.h>
 #import "UIColor+lzbColor.h"
+#import <FDFullscreenPopGesture-umbrella.h>
+#import "UINavigationBar+handle.h"
+#import "LZBBaseViewController.h"
 
 #endif /* HeaderFile_h */

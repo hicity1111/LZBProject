@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-LZBProject/Pods-LZBProject-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
+${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework
 ${BUILT_PRODUCTS_DIR}/JMButton/JMButton.framework
 ${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework

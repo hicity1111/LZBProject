@@ -16,6 +16,15 @@
 		0B4945D52357258500F19EE2 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4945D32357258500F19EE2 /* TriangleView.m */; };
 		0B5E6D4823545DC7008D9A76 /* LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E6D4723545DC7008D9A76 /* LZBCalendar.m */; };
 		0B5E6D4C2354728A008D9A76 /* UIColor+lzbColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E6D4B2354728A008D9A76 /* UIColor+lzbColor.m */; };
+		0B6192E6235D570B00BE3BBA /* LZBBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6192E5235D570B00BE3BBA /* LZBBaseNavigationController.m */; };
+		0B6192E9235D573600BE3BBA /* LZBBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6192E8235D573600BE3BBA /* LZBBaseTabBarController.m */; };
+		0B6192ED235D58E600BE3BBA /* UINavigationBar+handle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6192EB235D58E500BE3BBA /* UINavigationBar+handle.m */; };
+		0B6192F7235D5E2300BE3BBA /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6192F6235D5E2300BE3BBA /* Mine.storyboard */; };
+		0B6192F9235D5E3400BE3BBA /* CTB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6192F8235D5E3400BE3BBA /* CTB.storyboard */; };
+		0B6192FB235D5E4300BE3BBA /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6192FA235D5E4300BE3BBA /* Home.storyboard */; };
+		0B619301235D7BB200BE3BBA /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B619300235D7BB100BE3BBA /* MineViewController.m */; };
+		0B619304235D7BC900BE3BBA /* CTBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B619303235D7BC900BE3BBA /* CTBViewController.m */; };
+		0B619307235D7BDC00BE3BBA /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B619306235D7BDC00BE3BBA /* HomeViewController.m */; };
 		0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B92FB5D2350820000D813B3 /* UIFont+LZBExtension.m */; };
 		0B92FB63235087A500D813B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B92FB62235087A500D813B3 /* UIKit.framework */; };
 		0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD66C234DBFAD00E4970A /* AppDelegate.m */; };
@@ -32,6 +41,7 @@
 		0BBE4770235990A100D30C4B /* LZBCalendarDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBE476F235990A100D30C4B /* LZBCalendarDayModel.m */; };
 		0BBE47742359989500D30C4B /* LXCalenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBE47712359989500D30C4B /* LXCalenderCell.m */; };
 		0BBE47752359989500D30C4B /* LXCalenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BBE47732359989500D30C4B /* LXCalenderCell.xib */; };
+		0BBE47782359B0FD00D30C4B /* LZBBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBE47772359B0FD00D30C4B /* LZBBaseViewController.m */; };
 		170A91ACB3928B17BD894640 /* Pods_LZBProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */; };
 		34045572ED131BFDD841F7D6 /* Pods_LZBProject_LZBProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */; };
 		85F372E2BD4721F567D05450 /* Pods_LZBProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */; };
@@ -75,6 +85,21 @@
 		0B5E6D4723545DC7008D9A76 /* LZBCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBCalendar.m; sourceTree = "<group>"; };
 		0B5E6D4A2354728A008D9A76 /* UIColor+lzbColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+lzbColor.h"; sourceTree = "<group>"; };
 		0B5E6D4B2354728A008D9A76 /* UIColor+lzbColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+lzbColor.m"; sourceTree = "<group>"; };
+		0B6192E4235D570B00BE3BBA /* LZBBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBBaseNavigationController.h; sourceTree = "<group>"; };
+		0B6192E5235D570B00BE3BBA /* LZBBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBBaseNavigationController.m; sourceTree = "<group>"; };
+		0B6192E7235D573600BE3BBA /* LZBBaseTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBBaseTabBarController.h; sourceTree = "<group>"; };
+		0B6192E8235D573600BE3BBA /* LZBBaseTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBBaseTabBarController.m; sourceTree = "<group>"; };
+		0B6192EB235D58E500BE3BBA /* UINavigationBar+handle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+handle.m"; sourceTree = "<group>"; };
+		0B6192EC235D58E500BE3BBA /* UINavigationBar+handle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+handle.h"; sourceTree = "<group>"; };
+		0B6192F6235D5E2300BE3BBA /* Mine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
+		0B6192F8235D5E3400BE3BBA /* CTB.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CTB.storyboard; sourceTree = "<group>"; };
+		0B6192FA235D5E4300BE3BBA /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		0B6192FF235D7BB100BE3BBA /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		0B619300235D7BB100BE3BBA /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		0B619302235D7BC900BE3BBA /* CTBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTBViewController.h; sourceTree = "<group>"; };
+		0B619303235D7BC900BE3BBA /* CTBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTBViewController.m; sourceTree = "<group>"; };
+		0B619305235D7BDC00BE3BBA /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		0B619306235D7BDC00BE3BBA /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		0B92FB5023500F7100D813B3 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		0B92FB552350175200D813B3 /* LZBMainMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBMainMacro.h; sourceTree = "<group>"; };
 		0B92FB56235028C400D813B3 /* HeaderFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderFile.h; sourceTree = "<group>"; };
@@ -110,6 +135,8 @@
 		0BBE47712359989500D30C4B /* LXCalenderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXCalenderCell.m; sourceTree = "<group>"; };
 		0BBE47722359989500D30C4B /* LXCalenderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXCalenderCell.h; sourceTree = "<group>"; };
 		0BBE47732359989500D30C4B /* LXCalenderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LXCalenderCell.xib; sourceTree = "<group>"; };
+		0BBE47762359B0FD00D30C4B /* LZBBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBBaseViewController.h; sourceTree = "<group>"; };
+		0BBE47772359B0FD00D30C4B /* LZBBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBBaseViewController.m; sourceTree = "<group>"; };
 		23FB01E150EBC5D9CF6D00A2 /* Pods-LZBProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject.release.xcconfig"; path = "Target Support Files/Pods-LZBProject/Pods-LZBProject.release.xcconfig"; sourceTree = "<group>"; };
 		577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770848CE74481CA6FF8ECE16 /* Pods-LZBProject-LZBProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-LZBProject-LZBProjectUITests/Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +209,106 @@
 			path = LZBColor;
 			sourceTree = "<group>";
 		};
+		0B6192E3235D457100BE3BBA /* LZBBase */ = {
+			isa = PBXGroup;
+			children = (
+				0BBE47762359B0FD00D30C4B /* LZBBaseViewController.h */,
+				0BBE47772359B0FD00D30C4B /* LZBBaseViewController.m */,
+				0B6192E4235D570B00BE3BBA /* LZBBaseNavigationController.h */,
+				0B6192E5235D570B00BE3BBA /* LZBBaseNavigationController.m */,
+				0B6192E7235D573600BE3BBA /* LZBBaseTabBarController.h */,
+				0B6192E8235D573600BE3BBA /* LZBBaseTabBarController.m */,
+			);
+			path = LZBBase;
+			sourceTree = "<group>";
+		};
+		0B6192EA235D58D300BE3BBA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0B6192EC235D58E500BE3BBA /* UINavigationBar+handle.h */,
+				0B6192EB235D58E500BE3BBA /* UINavigationBar+handle.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0B6192EE235D5DA600BE3BBA /* HomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				0B6192FE235D7B6D00BE3BBA /* C */,
+				0B6192F3235D5DE200BE3BBA /* StoryBoard */,
+			);
+			path = HomeVC;
+			sourceTree = "<group>";
+		};
+		0B6192EF235D5DAF00BE3BBA /* CTBVC */ = {
+			isa = PBXGroup;
+			children = (
+				0B6192FD235D7B6700BE3BBA /* C */,
+				0B6192F2235D5DDD00BE3BBA /* StoryBoard */,
+			);
+			path = CTBVC;
+			sourceTree = "<group>";
+		};
+		0B6192F0235D5DBB00BE3BBA /* MineVC */ = {
+			isa = PBXGroup;
+			children = (
+				0B6192FC235D7B5500BE3BBA /* C */,
+				0B6192F1235D5DD800BE3BBA /* StoryBoard */,
+			);
+			path = MineVC;
+			sourceTree = "<group>";
+		};
+		0B6192F1235D5DD800BE3BBA /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				0B6192F6235D5E2300BE3BBA /* Mine.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		0B6192F2235D5DDD00BE3BBA /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				0B6192F8235D5E3400BE3BBA /* CTB.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		0B6192F3235D5DE200BE3BBA /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				0B6192FA235D5E4300BE3BBA /* Home.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		0B6192FC235D7B5500BE3BBA /* C */ = {
+			isa = PBXGroup;
+			children = (
+				0B6192FF235D7BB100BE3BBA /* MineViewController.h */,
+				0B619300235D7BB100BE3BBA /* MineViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		0B6192FD235D7B6700BE3BBA /* C */ = {
+			isa = PBXGroup;
+			children = (
+				0B619302235D7BC900BE3BBA /* CTBViewController.h */,
+				0B619303235D7BC900BE3BBA /* CTBViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		0B6192FE235D7B6D00BE3BBA /* C */ = {
+			isa = PBXGroup;
+			children = (
+				0B619305235D7BDC00BE3BBA /* HomeViewController.h */,
+				0B619306235D7BDC00BE3BBA /* HomeViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
 		0B82015F234DCEAE00D983AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +322,10 @@
 		0B820160234DCEE100D983AE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0B6192F0235D5DBB00BE3BBA /* MineVC */,
+				0B6192EF235D5DAF00BE3BBA /* CTBVC */,
+				0B6192EE235D5DA600BE3BBA /* HomeVC */,
+				0B6192E3235D457100BE3BBA /* LZBBase */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -224,6 +355,7 @@
 		0B820164234DCF1900D983AE /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				0B6192EA235D58D300BE3BBA /* Core */,
 				0B92FB512350165600D813B3 /* LZBMacro */,
 				0B820167234EC1C900D983AE /* Category */,
 			);
@@ -486,8 +618,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B6192FB235D5E4300BE3BBA /* Home.storyboard in Resources */,
+				0B6192F9235D5E3400BE3BBA /* CTB.storyboard in Resources */,
 				0BBCD67B234DBFAE00E4970A /* LaunchScreen.storyboard in Resources */,
 				0BBE47752359989500D30C4B /* LXCalenderCell.xib in Resources */,
+				0B6192F7235D5E2300BE3BBA /* Mine.storyboard in Resources */,
 				0BBCD678234DBFAE00E4970A /* Assets.xcassets in Resources */,
 				0BBCD676234DBFAD00E4970A /* Main.storyboard in Resources */,
 			);
@@ -620,21 +755,28 @@
 				0B5E6D4823545DC7008D9A76 /* LZBCalendar.m in Sources */,
 				0BBE4770235990A100D30C4B /* LZBCalendarDayModel.m in Sources */,
 				0BBCD673234DBFAD00E4970A /* ViewController.m in Sources */,
+				0B619307235D7BDC00BE3BBA /* HomeViewController.m in Sources */,
 				0B4945D52357258500F19EE2 /* TriangleView.m in Sources */,
 				0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */,
 				0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */,
+				0BBE47782359B0FD00D30C4B /* LZBBaseViewController.m in Sources */,
 				0B5E6D4C2354728A008D9A76 /* UIColor+lzbColor.m in Sources */,
 				0BBE476D235959C400D30C4B /* LZBCalendarWeekView.m in Sources */,
+				0B619301235D7BB200BE3BBA /* MineViewController.m in Sources */,
 				0BBCD67E234DBFAE00E4970A /* main.m in Sources */,
 				0BBE476A235959A600D30C4B /* LZBCalendarHeaderView.m in Sources */,
+				0B6192E6235D570B00BE3BBA /* LZBBaseNavigationController.m in Sources */,
 				0B098C652351A077000934EB /* LZBNetManager.m in Sources */,
+				0B619304235D7BC900BE3BBA /* CTBViewController.m in Sources */,
 				0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */,
 				0B09920623517A0D001E5389 /* LZBDataEntity.m in Sources */,
 				0B098C682351B942000934EB /* LZBNetManagerCache.m in Sources */,
 				0BBE47742359989500D30C4B /* LXCalenderCell.m in Sources */,
 				0BBCD670234DBFAD00E4970A /* SceneDelegate.m in Sources */,
+				0B6192E9235D573600BE3BBA /* LZBBaseTabBarController.m in Sources */,
 				0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */,
 				0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */,
+				0B6192ED235D58E600BE3BBA /* UINavigationBar+handle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,13 +951,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LZBProject/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = LZBProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bjabn.LZBProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -829,13 +972,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LZBProject/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = LZBProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bjabn.LZBProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

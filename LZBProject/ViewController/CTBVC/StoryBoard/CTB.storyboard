@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3ZP-T3-IZo">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Base Navigation Controller-->
+        <scene sceneID="xca-KE-NPC">
+            <objects>
+                <navigationController id="3ZP-T3-IZo" customClass="LZBBaseNavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VvN-ne-rxs">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="UFn-vE-obl" kind="relationship" relationship="rootViewController" id="2bV-hm-h85"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dLN-es-yS6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-517" y="392"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Icz-6C-dm1">
+            <objects>
+                <viewController id="UFn-vE-obl" customClass="CTBViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s5X-oW-Ice">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="pQI-bc-98p"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dtv-lv-WRI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w3K-xb-IsP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="384" y="392"/>
+        </scene>
+    </scenes>
+</document>

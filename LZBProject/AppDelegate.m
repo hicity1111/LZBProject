@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "LZBBaseTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -17,15 +18,22 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     
-    ViewController *rootVC = [[ViewController alloc] init];
-    //默认从包里边来找,所以是nil
-    self.window.backgroundColor = [UIColor redColor];
+    
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.shouldToolbarUsesTextFieldTintColor = NO;
+    manager.toolbarTintColor = [UIColor redColor];
+    //是否显示工具条
+    manager.enableAutoToolbar = YES;
+    [manager setToolbarManageBehaviour:IQAutoToolbarByPosition];
+    
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    LZBBaseTabBarController *view = [storyboard instantiateViewControllerWithIdentifier:@"LZBBaseTabBarController"];
+    self.window.rootViewController = view;
     [self.window makeKeyAndVisible];
-    
-    self.window.rootViewController = rootVC;
-
     
     return YES;
 }

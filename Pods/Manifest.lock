@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - FDFullscreenPopGesture (1.1)
   - IQKeyboardManager (6.5.0)
   - JMButton (0.6)
   - Masonry (1.1.0)
@@ -26,6 +27,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - FDFullscreenPopGesture
   - IQKeyboardManager
   - JMButton
   - Masonry
@@ -37,6 +39,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - FDFullscreenPopGesture
     - IQKeyboardManager
     - JMButton
     - Masonry
@@ -47,6 +50,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   IQKeyboardManager: 700e5155d6a292383b54e8678aec769e14fc78fc
   JMButton: 04a4e98d096f9f504df2908fade68699b822dd5e
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -55,6 +59,6 @@ SPEC CHECKSUMS:
   SDWebImage: 5fcdb02cc35e05fc35791ec514b191d27189f872
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 6fe0297cd251d523b19e12a7c6ebfc1708467752
+PODFILE CHECKSUM: 752b92015d077e250f4d678ba6a1590288a443ad
 
 COCOAPODS: 1.8.3

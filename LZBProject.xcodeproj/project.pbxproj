@@ -309,6 +309,29 @@
 			path = C;
 			sourceTree = "<group>";
 		};
+		0B61930B235D9C6C00BE3BBA /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				0B61930D235D9C9400BE3BBA /* C */,
+				0B61930C235D9C7900BE3BBA /* StoryBoard */,
+			);
+			path = LoginVC;
+			sourceTree = "<group>";
+		};
+		0B61930C235D9C7900BE3BBA /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		0B61930D235D9C9400BE3BBA /* C */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
 		0B82015F234DCEAE00D983AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,15 +342,16 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0B820160234DCEE100D983AE /* ViewController */ = {
+		0B820160234DCEE100D983AE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0B61930B235D9C6C00BE3BBA /* LoginVC */,
 				0B6192F0235D5DBB00BE3BBA /* MineVC */,
 				0B6192EF235D5DAF00BE3BBA /* CTBVC */,
 				0B6192EE235D5DA600BE3BBA /* HomeVC */,
 				0B6192E3235D457100BE3BBA /* LZBBase */,
 			);
-			path = ViewController;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		0B820161234DCEF100D983AE /* Manager */ = {
@@ -453,7 +477,7 @@
 				0B820163234DCF0700D983AE /* Request */,
 				0B820162234DCEFE00D983AE /* Models */,
 				0B820161234DCEF100D983AE /* Manager */,
-				0B820160234DCEE100D983AE /* ViewController */,
+				0B820160234DCEE100D983AE /* ViewControllers */,
 				0BBCD66B234DBFAD00E4970A /* AppDelegate.h */,
 				0BBCD66C234DBFAD00E4970A /* AppDelegate.m */,
 				0BBCD66E234DBFAD00E4970A /* SceneDelegate.h */,
@@ -947,7 +971,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47W7Z3W4WT;
+				DEVELOPMENT_TEAM = Z2N4GZ9GVH;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LZBProject/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = LZBProject/Info.plist;
@@ -956,7 +980,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bjabn.LZBProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abnert.lzbStudent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -968,7 +992,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 47W7Z3W4WT;
+				DEVELOPMENT_TEAM = Z2N4GZ9GVH;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LZBProject/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = LZBProject/Info.plist;
@@ -977,7 +1001,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bjabn.LZBProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abnert.lzbStudent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

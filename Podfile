@@ -14,6 +14,7 @@ target 'LZBProject' do
   pod 'SDAutoLayout'
   pod 'YYCache'
   pod 'FDFullscreenPopGesture'
+  pod 'YYText'
 
   # Pods for LZBProject
 

@@ -24,6 +24,7 @@ PODS:
     - SDWebImage/Core (= 5.2.2)
   - SDWebImage/Core (5.2.2)
   - YYCache (1.0.4)
+  - YYText (1.0.7)
 
 DEPENDENCIES:
   - AFNetworking
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - SDAutoLayout
   - SDWebImage
   - YYCache
+  - YYText
 
 SPEC REPOS:
   trunk:
@@ -47,6 +49,7 @@ SPEC REPOS:
     - SDAutoLayout
     - SDWebImage
     - YYCache
+    - YYText
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -58,7 +61,8 @@ SPEC CHECKSUMS:
   SDAutoLayout: 8bf6b3bbc8b01f775d4defbb4fda2ace805461be
   SDWebImage: 5fcdb02cc35e05fc35791ec514b191d27189f872
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 752b92015d077e250f4d678ba6a1590288a443ad
+PODFILE CHECKSUM: f9691abc56f0b5dbba4839bf6c52010fcb73469a
 
 COCOAPODS: 1.8.3

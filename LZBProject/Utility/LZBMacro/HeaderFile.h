@@ -22,5 +22,6 @@
 #import <FDFullscreenPopGesture-umbrella.h>
 #import "UINavigationBar+handle.h"
 #import "LZBBaseViewController.h"
+#import <YYText/YYText.h>
 
 #endif /* HeaderFile_h */

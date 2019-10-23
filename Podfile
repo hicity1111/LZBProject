@@ -15,6 +15,7 @@ target 'LZBProject' do
   pod 'YYCache'
   pod 'FDFullscreenPopGesture'
   pod 'YYText'
+  pod 'MBProgressHUD'
 
   # Pods for LZBProject
 

@@ -23,5 +23,10 @@
 #import "UINavigationBar+handle.h"
 #import "LZBBaseViewController.h"
 #import <YYText/YYText.h>
+#import "UIViewController+HUD.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import "MBProgressHUD+LZBvcHelper.h"
+#import "NSString+LZBValid.h"
+#import "Utils.h"
 
 #endif /* HeaderFile_h */

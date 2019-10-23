@@ -11,6 +11,10 @@
 		0B098C682351B942000934EB /* LZBNetManagerCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B098C672351B942000934EB /* LZBNetManagerCache.m */; };
 		0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B098C6A2351BFE2000934EB /* UIImage+CompressImage.m */; };
 		0B09920623517A0D001E5389 /* LZBDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B09920523517A0D001E5389 /* LZBDataEntity.m */; };
+		0B0F6BAE23601E3A00537128 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BAC23601E3A00537128 /* UIViewController+HUD.m */; };
+		0B0F6BB423601F5D00537128 /* MBProgressHUD+LZBvcHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BB323601F5D00537128 /* MBProgressHUD+LZBvcHelper.m */; };
+		0B0F6BB823601FF200537128 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BB723601FF200537128 /* Utils.m */; };
+		0B0F6BBD236020F300537128 /* NSString+LZBValid.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BBC236020F300537128 /* NSString+LZBValid.m */; };
 		0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */; };
 		0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17674123584758008979C5 /* LZBCalendarMonth.m */; };
 		0B4945D52357258500F19EE2 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4945D32357258500F19EE2 /* TriangleView.m */; };
@@ -75,6 +79,14 @@
 		0B098C6A2351BFE2000934EB /* UIImage+CompressImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CompressImage.m"; sourceTree = "<group>"; };
 		0B09920423517A0D001E5389 /* LZBDataEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBDataEntity.h; sourceTree = "<group>"; };
 		0B09920523517A0D001E5389 /* LZBDataEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBDataEntity.m; sourceTree = "<group>"; };
+		0B0F6BAC23601E3A00537128 /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
+		0B0F6BAD23601E3A00537128 /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
+		0B0F6BB223601F5D00537128 /* MBProgressHUD+LZBvcHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+LZBvcHelper.h"; sourceTree = "<group>"; };
+		0B0F6BB323601F5D00537128 /* MBProgressHUD+LZBvcHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+LZBvcHelper.m"; sourceTree = "<group>"; };
+		0B0F6BB623601FF200537128 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		0B0F6BB723601FF200537128 /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		0B0F6BBB236020F300537128 /* NSString+LZBValid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LZBValid.h"; sourceTree = "<group>"; };
+		0B0F6BBC236020F300537128 /* NSString+LZBValid.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LZBValid.m"; sourceTree = "<group>"; };
 		0B17673D2358471D008979C5 /* NSDate+LZBCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+LZBCalendar.h"; sourceTree = "<group>"; };
 		0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LZBCalendar.m"; sourceTree = "<group>"; };
 		0B17674023584758008979C5 /* LZBCalendarMonth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalendarMonth.h; sourceTree = "<group>"; };
@@ -176,6 +188,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B0F6BB523601FD500537128 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F6BB623601FF200537128 /* Utils.h */,
+				0B0F6BB723601FF200537128 /* Utils.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0B0F6BBA236020C900537128 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F6BBB236020F300537128 /* NSString+LZBValid.h */,
+				0B0F6BBC236020F300537128 /* NSString+LZBValid.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
 		0B5E6D4523545D76008D9A76 /* LZBCalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,8 +255,12 @@
 		0B6192EA235D58D300BE3BBA /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F6BAD23601E3A00537128 /* UIViewController+HUD.h */,
+				0B0F6BAC23601E3A00537128 /* UIViewController+HUD.m */,
 				0B6192EC235D58E500BE3BBA /* UINavigationBar+handle.h */,
 				0B6192EB235D58E500BE3BBA /* UINavigationBar+handle.m */,
+				0B0F6BB223601F5D00537128 /* MBProgressHUD+LZBvcHelper.h */,
+				0B0F6BB323601F5D00537128 /* MBProgressHUD+LZBvcHelper.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -379,6 +413,7 @@
 		0B820164234DCF1900D983AE /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F6BB523601FD500537128 /* Utils */,
 				0B6192EA235D58D300BE3BBA /* Core */,
 				0B92FB512350165600D813B3 /* LZBMacro */,
 				0B820167234EC1C900D983AE /* Category */,
@@ -403,6 +438,7 @@
 		0B820167234EC1C900D983AE /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F6BBA236020C900537128 /* NSString */,
 				0B5E6D4923547264008D9A76 /* LZBColor */,
 				0B5E6D4523545D76008D9A76 /* LZBCalendar */,
 				0B92FB5A2350812D00D813B3 /* UIFont */,
@@ -795,12 +831,16 @@
 				0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */,
 				0B09920623517A0D001E5389 /* LZBDataEntity.m in Sources */,
 				0B098C682351B942000934EB /* LZBNetManagerCache.m in Sources */,
+				0B0F6BB823601FF200537128 /* Utils.m in Sources */,
+				0B0F6BB423601F5D00537128 /* MBProgressHUD+LZBvcHelper.m in Sources */,
 				0BBE47742359989500D30C4B /* LXCalenderCell.m in Sources */,
 				0BBCD670234DBFAD00E4970A /* SceneDelegate.m in Sources */,
 				0B6192E9235D573600BE3BBA /* LZBBaseTabBarController.m in Sources */,
+				0B0F6BAE23601E3A00537128 /* UIViewController+HUD.m in Sources */,
 				0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */,
 				0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */,
 				0B6192ED235D58E600BE3BBA /* UINavigationBar+handle.m in Sources */,
+				0B0F6BBD236020F300537128 /* NSString+LZBValid.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

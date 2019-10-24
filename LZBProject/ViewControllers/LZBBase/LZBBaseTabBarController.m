@@ -35,6 +35,7 @@
     [self confgiSubControllers];
     
     [self configTabbar];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -49,16 +50,22 @@
 }
 
 - (void)configTabbar{
+    
+    
+//    self.tabBarItem.imageInsets = UIEdgeInsetsMake(0, 0, -6,0);
+//    //设置文字位置
+//     [[UITabBarItem appearance] setTitlePositionAdjustment:UIOffsetMake(0, -2.5)];
+//    self.tabBarItem.imageInsets = UIEdgeInsetsMake(-6, 0, 6, 0);
+    
     UITabBar *tabBar = self.tabBar;
     
     UITabBarItem *item0 = [tabBar.items objectAtIndex:0];
     UITabBarItem *item1 = [tabBar.items objectAtIndex:1];
     UITabBarItem *item2 = [tabBar.items objectAtIndex:2];
-    
+
     item0.selectedImage = [[self.selectedImageArray objectAtIndex:0] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item0.title = KStoryBoardHomeVCTitle;
     item0.image = [[self.normalImageArray objectAtIndex:0] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-
     
     item1.title = KStoryBoardCTBVCTitle;
     item1.selectedImage = [[self.selectedImageArray objectAtIndex:1] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -84,16 +91,48 @@
 
 - (NSMutableArray *)normalImageArray{
     if (!_normalImageArray) {
-        _normalImageArray = [[NSMutableArray alloc] initWithObjects:IMAGE_NAMED(@"tanchuang_xuangzeriqi_xianghou_normal"),IMAGE_NAMED(@"tanchuang_xuangzeriqi_xianghou_normal"),IMAGE_NAMED(@"tanchuang_xuangzeriqi_xianghou_normal"), nil];
+        _normalImageArray = [[NSMutableArray alloc] initWithObjects:IMAGE_NAMED(@"tanchuang_xuangzeriqi_xiangqian_normal"),IMAGE_NAMED(@"bg_homepage"),IMAGE_NAMED(@"bg_homepage"), nil];
     }
     return _normalImageArray;
 }
 
 - (NSMutableArray *)selectedImageArray{
     if (!_selectedImageArray) {
-        _selectedImageArray = [[NSMutableArray alloc] initWithObjects:IMAGE_NAMED(@"tanchuang_xuangzeriqi_xiangqian_normal"),IMAGE_NAMED(@"tanchuang_xuangzeriqi_xiangqian_normal"),IMAGE_NAMED(@"tanchuang_xuangzeriqi_xiangqian_normal"), nil];
+        _selectedImageArray = [[NSMutableArray alloc] initWithObjects:IMAGE_NAMED(@"bg_homepage"),IMAGE_NAMED(@"tanchuang_xuangzeriqi_xiangqian_normal"),IMAGE_NAMED(@"tanchuang_xuangzeriqi_xiangqian_normal"), nil];
     }
     return _selectedImageArray;
+}
+
+- (void)insertSubView:(UIView *)view atIndex:(NSInteger)index{
+    
+    UIView*tabbarBgView =[[UIView alloc]initWithFrame:CGRectMake(0,0,self.tabBar.frame.size.width,self.tabBar.frame.size.height)];
+    tabbarBgView.backgroundColor=[UIColor redColor];
+    [self.tabBar insertSubview:tabbarBgView atIndex:0];
+    
+    CGSize indicatorImageSize=CGSizeMake(self.tabBar.bounds.size.width/5-10,self.tabBar.bounds.size.height);
+    
+    self.tabBar.selectionIndicatorImage=[self drawTabBarItemBackgroundUmageWithSize:indicatorImageSize];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:KMAINFFFF,NSForegroundColorAttributeName,[UIFont lzb_fontForPingFangSC_RegularFontOfSize:12],NSFontAttributeName, nil] forState:UIControlStateNormal];
+    
+    self.tabBar.selectionIndicatorImage=[self drawTabBarItemBackgroundUmageWithSize:indicatorImageSize];
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor redColor],NSForegroundColorAttributeName,[UIFont lzb_fontForPingFangSC_RegularFontOfSize:12],NSFontAttributeName, nil] forState:UIControlStateSelected];
+    
+}
+
+-(UIImage*)drawTabBarItemBackgroundUmageWithSize:(CGSize)size{
+    UIGraphicsBeginImageContext(size);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSetRGBFillColor(ctx, 1, 1, 1, 1);
+    CGContextFillRect(ctx, CGRectMake(5, 0, size.width, size.height));
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    CGContextAddEllipseInRect(ctx, rect);
+    CGContextClip(ctx);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    [image drawInRect:rect];
+    
+    UIGraphicsEndImageContext();
+    return  image;
 }
 /*
 #pragma mark - Navigation

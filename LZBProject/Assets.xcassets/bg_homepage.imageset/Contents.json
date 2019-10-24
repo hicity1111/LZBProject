@@ -2,17 +2,15 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "tanchuang_xuangzeriqi_rilibg_normal.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "tanchuang_xuangzeriqi_rilibg_normal@2x.png",
+      "filename" : "bg_homepage.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "tanchuang_xuangzeriqi_rilibg_normal@3x.png",
       "scale" : "3x"
     }
   ],

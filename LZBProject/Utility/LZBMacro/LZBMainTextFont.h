@@ -9,5 +9,6 @@
 #ifndef LZBMainTextFont_h
 #define LZBMainTextFont_h
 
+#define KMAIN14FONT  [UIFont lzb_fontForPingFangSC_RegularFontOfSize:14];
 
 #endif /* LZBMainTextFont_h */

@@ -77,7 +77,7 @@
         _backView.backgroundColor = [UIColor blackColor];
         _backView.alpha = 0.8;
         [[UIApplication sharedApplication].keyWindow addSubview:_backView];
-        KTAPGES(dismissTap, dismiss);
+        LZBTAPGES(dismissTap, dismiss);
         [_backView addGestureRecognizer:dismissTap];
         
         _calendarView = [[UIView alloc] initWithFrame:CGRectMake(origin.x, origin.y, width, _calendarHeight)];

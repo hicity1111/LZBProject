@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 //ios 版本
 #define LZB_IOSVersion ([[[UIDevice currentDevice] systemVersion] floatValue])
 
-//设置系统的字体大小（YES：粗体 NO：常规
+//设置系统的字体大小（YES：粗体 NO：常规）
 
 #define LZBFont(__size__,__bold__)((__bold__)?([UIFont boldSystemFontOfSize:__size__]):([UIFont systemFontOfSize:__size__]))
 

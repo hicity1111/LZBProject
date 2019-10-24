@@ -19,4 +19,26 @@
 
 #define KMAINAFAF   [UIColor colorWithHex:@"#AFAFAF"]
 
+/// 绿色Button
+#define kMAIN00B5   [UIColor colorWithHex:@"#00B57B"]
+
+#define kMAIN0099   [UIColor colorWithHex:@"#00995E"]
+
+#define kMAIN9999   [UIColor colorWithHex:@"#999999"]
+
+#define kMAIN31AC   [UIColor colorWithHex:@"#31AC7D"]
+
+#define kMAIN00A1   [UIColor colorWithHex:@"#00A19F"]
+
+#define kMAIN1EA2   [UIColor colorWithHex:@"#1EA26A"]
+
+#define kMAIN4D93   [UIColor colorWithHex:@"#4D93FD"]
+
+
+
+
+
+/// 用户须知 蒙层
+#define kUserNoticeTrans    [UIColor colorWithHex:@"#000000" alpha:0.3]
+
 #endif /* LZBMainColorMacro_h */

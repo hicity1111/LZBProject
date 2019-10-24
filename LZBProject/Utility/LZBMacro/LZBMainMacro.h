@@ -10,7 +10,8 @@
 #define LZBMainMacro_h
 
 
-#define isIOS8_or_Later ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+#define kSysVersion [UIDevice currentDevice].systemVersion.floatValue
+#define isIOS8_or_Later (kSysVersion >= 8.0)
 
 
 /*** 判断当前设备类型 */
@@ -34,39 +35,42 @@
 #define kTabBarHeight ((iPhoneX || iPhoneXSMax || iPhoneXR) ? 83.0f : 49.0f)
 
 //状态栏的高度
-#define StateBar_Height ((iPhoneX || iPhoneXSMax || iPhoneXR) ? 44.0f : 20.0f)
+#define kStatusBar_Height ((iPhoneX || iPhoneXSMax || iPhoneXR) ? 44.0f : 20.0f)
 
 //NavigationBar的高度
-#define NavBar_Height 44
+#define kNavBar_Height 44
 
+#define kScreenBounds [UIScreen mainScreen].bounds
 
-#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define kScreenWidth  kScreenBounds.size.width
+#define kScreenHeight kScreenBounds.size.height
 
-#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kWidthScale  (kScreenWidth / 375.f)
+#define kHeightScale (kScreenHeight / 667.f)
 
 //手势宏定义
-#define KTAPGES(tapName, tapAct) UIGestureRecognizer *tapName = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(tapAct)];
+#define LZBTAPGES(tapName, tapAct) UIGestureRecognizer *tapName = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(tapAct)];
 
 // 日记输出宏
 #ifdef DEBUG // 调试状态, 打开LOG功能
-#define XLDLog(...) NSLog(__VA_ARGS__)
+    #define XLDLog(...) NSLog(__VA_ARGS__)
 #else // 发布状态, 关闭LOG功能
-#define XLDLog(...)
+    #define XLDLog(...)
 #endif
 
 #ifndef IMAGE_NAMED
-#define IMAGE_NAMED(__imageName__)\
-[UIImage imageNamed:__imageName__]
+    #define IMAGE_NAMED(__imageName__)\
+    [UIImage imageNamed:__imageName__]
 #endif
 
 #ifndef SYSTEM_FONT
-#define SYSTEM_FONT(__fontsize__)\
-[UIFont lzb_fontForPingFangSC_RegularFontOfSize:__fontsize__]
+    #define SYSTEM_FONT(__fontsize__)\
+    [UIFont lzb_fontForPingFangSC_RegularFontOfSize:__fontsize__]
 #endif
 
 #ifndef BOLD_FONT
-#define BOLD_FONT(__fontsize__)\
-[UIFont lzb_fontForPingFangSC_SemiboldFontOfSize:__fontsize__]
+    #define BOLD_FONT(__fontsize__)\
+    [UIFont lzb_fontForPingFangSC_SemiboldFontOfSize:__fontsize__]
 #endif
 
 

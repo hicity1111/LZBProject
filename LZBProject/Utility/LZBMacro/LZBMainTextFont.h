@@ -11,6 +11,8 @@
 
 #define KMAINFONT14  LZBFont(14, NO)
 
+#define KMAINFONT10  LZBFont(10, NO)
+
 #define KMAINFONTBOLD14  LZBFont(14, YES)
 
 #endif /* LZBMainTextFont_h */

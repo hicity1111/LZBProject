@@ -34,6 +34,7 @@
 
 #define kMAIN4D93   [UIColor colorWithHex:@"#4D93FD"]
 
+#define kMAINFCOD   [UIColor colorWithHex:@"#FC0D1B"]
 
 
 

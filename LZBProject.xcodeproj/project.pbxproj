@@ -15,6 +15,8 @@
 		0B0F6BB423601F5D00537128 /* MBProgressHUD+LZBvcHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BB323601F5D00537128 /* MBProgressHUD+LZBvcHelper.m */; };
 		0B0F6BB823601FF200537128 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BB723601FF200537128 /* Utils.m */; };
 		0B0F6BBD236020F300537128 /* NSString+LZBValid.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BBC236020F300537128 /* NSString+LZBValid.m */; };
+		0B0F6BD72361A90400537128 /* LZB_TabBarBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BD52361A90400537128 /* LZB_TabBarBadge.m */; };
+		0B0F6BDA2361B43B00537128 /* LZB_TabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BD92361B43B00537128 /* LZB_TabBarItem.m */; };
 		0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */; };
 		0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17674123584758008979C5 /* LZBCalendarMonth.m */; };
 		0B4945D52357258500F19EE2 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4945D32357258500F19EE2 /* TriangleView.m */; };
@@ -90,6 +92,10 @@
 		0B0F6BB723601FF200537128 /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		0B0F6BBB236020F300537128 /* NSString+LZBValid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LZBValid.h"; sourceTree = "<group>"; };
 		0B0F6BBC236020F300537128 /* NSString+LZBValid.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LZBValid.m"; sourceTree = "<group>"; };
+		0B0F6BD52361A90400537128 /* LZB_TabBarBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZB_TabBarBadge.m; sourceTree = "<group>"; };
+		0B0F6BD62361A90400537128 /* LZB_TabBarBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZB_TabBarBadge.h; sourceTree = "<group>"; };
+		0B0F6BD82361B43B00537128 /* LZB_TabBarItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZB_TabBarItem.h; sourceTree = "<group>"; };
+		0B0F6BD92361B43B00537128 /* LZB_TabBarItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZB_TabBarItem.m; sourceTree = "<group>"; };
 		0B17673D2358471D008979C5 /* NSDate+LZBCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+LZBCalendar.h"; sourceTree = "<group>"; };
 		0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LZBCalendar.m"; sourceTree = "<group>"; };
 		0B17674023584758008979C5 /* LZBCalendarMonth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalendarMonth.h; sourceTree = "<group>"; };
@@ -214,6 +220,17 @@
 			path = NSString;
 			sourceTree = "<group>";
 		};
+		0B0F6BD42361A90400537128 /* LZBTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F6BD62361A90400537128 /* LZB_TabBarBadge.h */,
+				0B0F6BD52361A90400537128 /* LZB_TabBarBadge.m */,
+				0B0F6BD82361B43B00537128 /* LZB_TabBarItem.h */,
+				0B0F6BD92361B43B00537128 /* LZB_TabBarItem.m */,
+			);
+			path = LZBTabBar;
+			sourceTree = "<group>";
+		};
 		0B5E6D4523545D76008D9A76 /* LZBCalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +267,7 @@
 		0B6192E3235D457100BE3BBA /* LZBBase */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F6BD42361A90400537128 /* LZBTabBar */,
 				0BBE47762359B0FD00D30C4B /* LZBBaseViewController.h */,
 				0BBE47772359B0FD00D30C4B /* LZBBaseViewController.m */,
 				0B6192E4235D570B00BE3BBA /* LZBBaseNavigationController.h */,
@@ -860,9 +878,11 @@
 				8B4D1C5623618CD2008B2CCA /* LoginViewController.m in Sources */,
 				0B098C652351A077000934EB /* LZBNetManager.m in Sources */,
 				0B619304235D7BC900BE3BBA /* CTBViewController.m in Sources */,
+				0B0F6BD72361A90400537128 /* LZB_TabBarBadge.m in Sources */,
 				0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */,
 				0B09920623517A0D001E5389 /* LZBDataEntity.m in Sources */,
 				0B098C682351B942000934EB /* LZBNetManagerCache.m in Sources */,
+				0B0F6BDA2361B43B00537128 /* LZB_TabBarItem.m in Sources */,
 				0B0F6BB823601FF200537128 /* Utils.m in Sources */,
 				0B0F6BB423601F5D00537128 /* MBProgressHUD+LZBvcHelper.m in Sources */,
 				0BBE47742359989500D30C4B /* LXCalenderCell.m in Sources */,

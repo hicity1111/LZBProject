@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "LZBBaseTabBarController.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +20,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
     IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
     manager.enable = YES;
     manager.shouldResignOnTouchOutside = YES;
@@ -29,13 +29,35 @@
     manager.enableAutoToolbar = YES;
     [manager setToolbarManageBehaviour:IQAutoToolbarByPosition];
     
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = UIColor.whiteColor;
+    [self.window makeKeyAndVisible];
     
+    [self entryDoor];
+    
+    return YES;
+}
+
+#pragma mark -
+- (void)entryDoor {
+    BOOL isLogin = NO;
+    
+    if (isLogin) {
+        [self entryMainVC];
+    } else {
+        [self entryLoginVC];
+    }
+}
+
+- (void)entryMainVC {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     LZBBaseTabBarController *view = [storyboard instantiateViewControllerWithIdentifier:@"LZBBaseTabBarController"];
     self.window.rootViewController = view;
-    [self.window makeKeyAndVisible];
-    
-    return YES;
+}
+
+- (void)entryLoginVC {
+    LoginViewController *loginVC = [[LoginViewController alloc] init];
+    self.window.rootViewController = loginVC;
 }
 
 

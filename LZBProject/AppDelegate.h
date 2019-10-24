@@ -12,5 +12,7 @@
 
 @property (nonatomic, strong) UIWindow *window;
 
+- (void)entryMainVC;
+
 @end
 

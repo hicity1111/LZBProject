@@ -15,6 +15,7 @@
 		0B0F6BB423601F5D00537128 /* MBProgressHUD+LZBvcHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BB323601F5D00537128 /* MBProgressHUD+LZBvcHelper.m */; };
 		0B0F6BB823601FF200537128 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BB723601FF200537128 /* Utils.m */; };
 		0B0F6BBD236020F300537128 /* NSString+LZBValid.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BBC236020F300537128 /* NSString+LZBValid.m */; };
+		0B0F6BC1236178A100537128 /* LZB_TabBarBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BC0236178A100537128 /* LZB_TabBarBadge.m */; };
 		0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */; };
 		0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17674123584758008979C5 /* LZBCalendarMonth.m */; };
 		0B4945D52357258500F19EE2 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4945D32357258500F19EE2 /* TriangleView.m */; };
@@ -87,6 +88,8 @@
 		0B0F6BB723601FF200537128 /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		0B0F6BBB236020F300537128 /* NSString+LZBValid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LZBValid.h"; sourceTree = "<group>"; };
 		0B0F6BBC236020F300537128 /* NSString+LZBValid.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LZBValid.m"; sourceTree = "<group>"; };
+		0B0F6BBF236178A100537128 /* LZB_TabBarBadge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZB_TabBarBadge.h; sourceTree = "<group>"; };
+		0B0F6BC0236178A100537128 /* LZB_TabBarBadge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZB_TabBarBadge.m; sourceTree = "<group>"; };
 		0B17673D2358471D008979C5 /* NSDate+LZBCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+LZBCalendar.h"; sourceTree = "<group>"; };
 		0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LZBCalendar.m"; sourceTree = "<group>"; };
 		0B17674023584758008979C5 /* LZBCalendarMonth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalendarMonth.h; sourceTree = "<group>"; };
@@ -206,6 +209,15 @@
 			path = NSString;
 			sourceTree = "<group>";
 		};
+		0B0F6BBE2361786F00537128 /* LZBTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F6BBF236178A100537128 /* LZB_TabBarBadge.h */,
+				0B0F6BC0236178A100537128 /* LZB_TabBarBadge.m */,
+			);
+			path = LZBTabBar;
+			sourceTree = "<group>";
+		};
 		0B5E6D4523545D76008D9A76 /* LZBCalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +254,7 @@
 		0B6192E3235D457100BE3BBA /* LZBBase */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F6BBE2361786F00537128 /* LZBTabBar */,
 				0BBE47762359B0FD00D30C4B /* LZBBaseViewController.h */,
 				0BBE47772359B0FD00D30C4B /* LZBBaseViewController.m */,
 				0B6192E4235D570B00BE3BBA /* LZBBaseNavigationController.h */,
@@ -818,6 +831,7 @@
 				0B619307235D7BDC00BE3BBA /* HomeViewController.m in Sources */,
 				0B4945D52357258500F19EE2 /* TriangleView.m in Sources */,
 				0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */,
+				0B0F6BC1236178A100537128 /* LZB_TabBarBadge.m in Sources */,
 				0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */,
 				0BBE47782359B0FD00D30C4B /* LZBBaseViewController.m in Sources */,
 				0B5E6D4C2354728A008D9A76 /* UIColor+lzbColor.m in Sources */,

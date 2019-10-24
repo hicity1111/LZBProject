@@ -574,8 +574,8 @@
 		8B4D1C5323618CD2008B2CCA /* V */ = {
 			isa = PBXGroup;
 			children = (
-				8B4D1C5423618CD2008B2CCA /* UserNoticeView.m */,
 				8B4D1C5523618CD2008B2CCA /* UserNoticeView.h */,
+				8B4D1C5423618CD2008B2CCA /* UserNoticeView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";

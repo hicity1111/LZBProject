@@ -26,6 +26,12 @@
 
 #define kMAIN9999   [UIColor colorWithHex:@"#999999"]
 
+#define kMAIN3333   [UIColor colorWithHex:@"#333333"]
+
+#define kMAIN9696   [UIColor colorWithHex:@"#969696"]
+
+
+
 #define kMAIN31AC   [UIColor colorWithHex:@"#31AC7D"]
 
 #define kMAIN00A1   [UIColor colorWithHex:@"#00A19F"]

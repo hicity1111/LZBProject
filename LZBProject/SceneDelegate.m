@@ -40,7 +40,7 @@
 
 #pragma mark - 界面入口
 - (void)entryDoor {
-    BOOL isLogin = YES;
+    BOOL isLogin = NO;
     
     if (isLogin) {
         [self entryMainVC];

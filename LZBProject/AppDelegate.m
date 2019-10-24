@@ -20,6 +20,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    if (kSysVersion < 13.0) {
+        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        self.window.backgroundColor = UIColor.whiteColor;
+        [self.window makeKeyAndVisible];
+        
+        [self addKeyboardManager];
+        [self entryDoor];
+    }
+    
+    return YES;
+}
+
+#pragma mark - KeyboardManager
+- (void)addKeyboardManager {
     IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
     manager.enable = YES;
     manager.shouldResignOnTouchOutside = YES;
@@ -28,14 +42,6 @@
     //是否显示工具条
     manager.enableAutoToolbar = YES;
     [manager setToolbarManageBehaviour:IQAutoToolbarByPosition];
-    
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.backgroundColor = UIColor.whiteColor;
-    [self.window makeKeyAndVisible];
-    
-    [self entryDoor];
-    
-    return YES;
 }
 
 #pragma mark - 界面入口

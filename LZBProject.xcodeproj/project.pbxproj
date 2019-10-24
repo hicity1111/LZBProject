@@ -565,8 +565,8 @@
 		8B4D1C4F23618CD2008B2CCA /* C */ = {
 			isa = PBXGroup;
 			children = (
-				8B4D1C5023618CD2008B2CCA /* LoginViewController.m */,
 				8B4D1C5223618CD2008B2CCA /* LoginViewController.h */,
+				8B4D1C5023618CD2008B2CCA /* LoginViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";

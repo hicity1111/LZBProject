@@ -31,13 +31,14 @@
                     <view key="view" contentMode="scaleToFill" id="gdf-r2-Z6I">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8Xx-VL-w7z"/>
                     </view>
                     <navigationItem key="navigationItem" id="hBn-nW-TdG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hL-pq-EIL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-657" y="1"/>
+            <point key="canvasLocation" x="-470" y="0.0"/>
         </scene>
     </scenes>
 </document>

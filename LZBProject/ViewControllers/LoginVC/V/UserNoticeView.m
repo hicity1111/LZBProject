@@ -16,6 +16,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        self.frame = [UIScreen mainScreen].bounds;
         self.backgroundColor = kUserNoticeTrans;
         [self addSubviews];
     }
@@ -23,7 +24,13 @@
 }
 
 - (void)addSubviews {
+    CGFloat centerW = 315.f;
+    CGFloat centerH = 390.f;
+    UIView *centerV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, centerW, centerH)];
+    centerV.center = self.center;
+    centerV.backgroundColor = WHITECOLOR;
     
+    [self addSubview:centerV];
 }
 
 - (void)show {

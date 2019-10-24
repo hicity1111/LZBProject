@@ -37,7 +37,11 @@
 
 
 
-
+#define WHITECOLOR  UIColor.whiteColor
+#define BLACKCOLOR  UIColor.blackColor
+#define REDCOLOR    UIColor.redColor
+#define GREENCOLOR  UIColor.greenColor
+#define BLUECOLOR   UIColor.blueColor
 /// 用户须知 蒙层
 #define kUserNoticeTrans    [UIColor colorWithHex:@"#000000" alpha:0.3]
 

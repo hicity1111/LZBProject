@@ -49,6 +49,9 @@
 		170A91ACB3928B17BD894640 /* Pods_LZBProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */; };
 		34045572ED131BFDD841F7D6 /* Pods_LZBProject_LZBProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */; };
 		85F372E2BD4721F567D05450 /* Pods_LZBProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */; };
+		8B4D1C5623618CD2008B2CCA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1C5023618CD2008B2CCA /* LoginViewController.m */; };
+		8B4D1C5823618CD2008B2CCA /* UserNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1C5423618CD2008B2CCA /* UserNoticeView.m */; };
+		8BCD1226236192F600BCCB08 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCD1225236192F600BCCB08 /* Login.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +155,11 @@
 		23FB01E150EBC5D9CF6D00A2 /* Pods-LZBProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject.release.xcconfig"; path = "Target Support Files/Pods-LZBProject/Pods-LZBProject.release.xcconfig"; sourceTree = "<group>"; };
 		577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770848CE74481CA6FF8ECE16 /* Pods-LZBProject-LZBProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-LZBProject-LZBProjectUITests/Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B4D1C5023618CD2008B2CCA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		8B4D1C5223618CD2008B2CCA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		8B4D1C5423618CD2008B2CCA /* UserNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNoticeView.m; sourceTree = "<group>"; };
+		8B4D1C5523618CD2008B2CCA /* UserNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNoticeView.h; sourceTree = "<group>"; };
+		8BCD1225236192F600BCCB08 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9AE17617E18522B97D9845A4 /* Pods-LZBProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProjectTests.release.xcconfig"; path = "Target Support Files/Pods-LZBProjectTests/Pods-LZBProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		A33E99BEAFCC1F68B0B814EB /* Pods-LZBProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-LZBProjectTests/Pods-LZBProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProject_LZBProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -343,29 +351,6 @@
 			path = C;
 			sourceTree = "<group>";
 		};
-		0B61930B235D9C6C00BE3BBA /* LoginVC */ = {
-			isa = PBXGroup;
-			children = (
-				0B61930D235D9C9400BE3BBA /* C */,
-				0B61930C235D9C7900BE3BBA /* StoryBoard */,
-			);
-			path = LoginVC;
-			sourceTree = "<group>";
-		};
-		0B61930C235D9C7900BE3BBA /* StoryBoard */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = StoryBoard;
-			sourceTree = "<group>";
-		};
-		0B61930D235D9C9400BE3BBA /* C */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = C;
-			sourceTree = "<group>";
-		};
 		0B82015F234DCEAE00D983AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,7 +364,7 @@
 		0B820160234DCEE100D983AE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				0B61930B235D9C6C00BE3BBA /* LoginVC */,
+				8B4D1C4D23618CD2008B2CCA /* LoginVC */,
 				0B6192F0235D5DBB00BE3BBA /* MineVC */,
 				0B6192EF235D5DAF00BE3BBA /* CTBVC */,
 				0B6192EE235D5DA600BE3BBA /* HomeVC */,
@@ -559,6 +544,50 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		8B4D1C4D23618CD2008B2CCA /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				8BCD12272361999300BCCB08 /* StoryBoard */,
+				8B4D1C4E23618CD2008B2CCA /* M */,
+				8B4D1C4F23618CD2008B2CCA /* C */,
+				8B4D1C5323618CD2008B2CCA /* V */,
+			);
+			path = LoginVC;
+			sourceTree = "<group>";
+		};
+		8B4D1C4E23618CD2008B2CCA /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		8B4D1C4F23618CD2008B2CCA /* C */ = {
+			isa = PBXGroup;
+			children = (
+				8B4D1C5023618CD2008B2CCA /* LoginViewController.m */,
+				8B4D1C5223618CD2008B2CCA /* LoginViewController.h */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		8B4D1C5323618CD2008B2CCA /* V */ = {
+			isa = PBXGroup;
+			children = (
+				8B4D1C5423618CD2008B2CCA /* UserNoticeView.m */,
+				8B4D1C5523618CD2008B2CCA /* UserNoticeView.h */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		8BCD12272361999300BCCB08 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				8BCD1225236192F600BCCB08 /* Login.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
 		E891B3A032A33E1398D77910 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,6 +707,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BCD1226236192F600BCCB08 /* Login.storyboard in Resources */,
 				0B6192FB235D5E4300BE3BBA /* Home.storyboard in Resources */,
 				0B6192F9235D5E3400BE3BBA /* CTB.storyboard in Resources */,
 				0BBCD67B234DBFAE00E4970A /* LaunchScreen.storyboard in Resources */,
@@ -818,6 +848,7 @@
 				0B619307235D7BDC00BE3BBA /* HomeViewController.m in Sources */,
 				0B4945D52357258500F19EE2 /* TriangleView.m in Sources */,
 				0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */,
+				8B4D1C5823618CD2008B2CCA /* UserNoticeView.m in Sources */,
 				0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */,
 				0BBE47782359B0FD00D30C4B /* LZBBaseViewController.m in Sources */,
 				0B5E6D4C2354728A008D9A76 /* UIColor+lzbColor.m in Sources */,
@@ -826,6 +857,7 @@
 				0BBCD67E234DBFAE00E4970A /* main.m in Sources */,
 				0BBE476A235959A600D30C4B /* LZBCalendarHeaderView.m in Sources */,
 				0B6192E6235D570B00BE3BBA /* LZBBaseNavigationController.m in Sources */,
+				8B4D1C5623618CD2008B2CCA /* LoginViewController.m in Sources */,
 				0B098C652351A077000934EB /* LZBNetManager.m in Sources */,
 				0B619304235D7BC900BE3BBA /* CTBViewController.m in Sources */,
 				0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */,

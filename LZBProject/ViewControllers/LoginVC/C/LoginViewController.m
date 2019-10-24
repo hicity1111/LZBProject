@@ -22,7 +22,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = UIColor.greenColor;
+//    self.view.backgroundColor = REDCOLOR;
+    [self adjustShowUserNoticeView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

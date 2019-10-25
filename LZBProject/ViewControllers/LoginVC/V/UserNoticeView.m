@@ -9,11 +9,13 @@
 #import "UserNoticeView.h"
 #import "AppDelegate.h"
 
-#define kAnimationDuration 0.25
+#define AGREEUSERNOTICE     @"agreeUserNotice"
+#define kAnimationDuration  0.25
 
 @interface UserNoticeView ()
 
 @property (nonatomic, strong) UIButton *selectBtn;
+@property (nonatomic, strong) UIButton *knowBtn;
 
 @end
 
@@ -25,6 +27,7 @@
         self.frame = [UIScreen mainScreen].bounds;
         self.backgroundColor = kUserNoticeTrans;
         [self addSubviews];
+        [self adjustIsAgreeUserNotice];
     }
     return self;
 }
@@ -58,6 +61,7 @@
     [selectBtn setImage:[UIImage imageNamed:@"user_notice_check"] forState:UIControlStateSelected];
     selectBtn.adjustsImageWhenHighlighted = NO;
     [selectBtn addTarget:self action:@selector(selectButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    selectBtn.selected = NO;
     self.selectBtn = selectBtn;
     
     UILabel *descLb = [[UILabel alloc] init];
@@ -69,11 +73,12 @@
     [descLb sizeToFit];
     
     UIButton *knowBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    knowBtn.backgroundColor = kMAIN00B5;
+    knowBtn.backgroundColor = UIColor.lightGrayColor;
     [knowBtn setTitle:@"知道了" forState:UIControlStateNormal];
     [knowBtn setTitleColor:WHITECOLOR forState:UIControlStateNormal];
     knowBtn.titleLabel.font = LZBRegularFont(16.f);
     [knowBtn addTarget:self action:@selector(knowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.knowBtn = knowBtn;
 
     [centerV addSubview:btmLine];
     [centerV addSubview:titleLb];
@@ -114,26 +119,43 @@
         make.centerX.equalTo(centerV.mas_centerX);
     }];
     
-    [btmLine layoutIfNeeded];
+    [self layoutIfNeeded];
     btmLine.clipsToBounds = YES;
     btmLine.layer.cornerRadius = btmLine.height / 2.f;
-    [knowBtn layoutIfNeeded];
     knowBtn.layer.cornerRadius = knowBtn.height / 2.f;
 }
 
 #pragma mark - Action
 - (void)selectButtonClick:(UIButton *)btn {
     btn.selected = !btn.selected;
+    [[NSUserDefaults standardUserDefaults] setBool:btn.selected forKey:AGREEUSERNOTICE];
+    if (btn.selected) {
+        self.knowBtn.backgroundColor = kMAIN00B5;
+    } else {
+        self.knowBtn.backgroundColor = UIColor.lightGrayColor;
+    }
 }
 
 - (void)knowButtonClick:(UIButton *)btn {
     if (self.selectBtn.selected) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:AGREEUSERNOTICE];
         [self hide];
     }
 }
 
 
 #pragma mark - Method
+
+- (void)adjustIsAgreeUserNotice {
+    BOOL isAgree = [[NSUserDefaults standardUserDefaults] boolForKey:AGREEUSERNOTICE];
+    self.selectBtn.selected = isAgree;
+    if (isAgree) {
+        self.knowBtn.backgroundColor = kMAIN00B5;
+    } else {
+        self.knowBtn.backgroundColor = UIColor.lightGrayColor;
+    }
+}
+
 - (void)show {
     self.alpha = 0.f;
     [[UIApplication sharedApplication].keyWindow addSubview:self];

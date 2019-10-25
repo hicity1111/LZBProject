@@ -42,6 +42,11 @@
 
 #define kMAINFCOD   [UIColor colorWithHex:@"#FC0D1B"]
 
+#define kMAINFF7E   [UIColor colorWithHex:@"#FF7E00"]
+
+#define kMAINCBE6   [UIColor colorWithHex:@"#CBE6DA"]
+
+#define kMAINA6A6   [UIColor colorWithHex:@"#A6A6A6"]
 
 
 #define WHITECOLOR  UIColor.whiteColor

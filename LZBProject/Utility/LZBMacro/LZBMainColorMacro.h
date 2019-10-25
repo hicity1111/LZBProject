@@ -30,7 +30,7 @@
 
 #define kMAIN9696   [UIColor colorWithHex:@"#969696"]
 
-
+#define kMAIN9966   [UIColor colorWithHex:@"#009966"]
 
 #define kMAIN31AC   [UIColor colorWithHex:@"#31AC7D"]
 

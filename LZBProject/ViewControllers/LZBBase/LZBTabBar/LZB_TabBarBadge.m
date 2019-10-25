@@ -36,7 +36,7 @@
 
 - (void)setFrame:(CGRect)frame{
     [super setFrame:frame];
-    self.layer.cornerRadius = self.frame.size.width/2;
+    self.layer.cornerRadius = self.frame.size.height/2;
 }
 
 /*

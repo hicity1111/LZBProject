@@ -2,13 +2,13 @@
 //  MineViewController.h
 //  LZBProject
 //
-//  Created by hicity on 2019/10/21.
+//  Created by hicity on 2019/10/25.
 //  Copyright © 2019 hicity. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-NS_ASSUME_NONNULL_BEGIN
+#import "LZBBaseViewController.h"
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface MineViewController : LZBBaseViewController
 

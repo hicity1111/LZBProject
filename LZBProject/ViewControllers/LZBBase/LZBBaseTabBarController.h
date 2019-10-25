@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LZB_TabBar.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LZBBaseTabBarController : UITabBarController
+
+@property (nonatomic, strong) LZB_TabBar *lzbTabBar;
 
 @end
 

@@ -17,6 +17,9 @@
 		0B0F6BBD236020F300537128 /* NSString+LZBValid.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BBC236020F300537128 /* NSString+LZBValid.m */; };
 		0B0F6BD72361A90400537128 /* LZB_TabBarBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BD52361A90400537128 /* LZB_TabBarBadge.m */; };
 		0B0F6BDA2361B43B00537128 /* LZB_TabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BD92361B43B00537128 /* LZB_TabBarItem.m */; };
+		0B0F6BDD236294EE00537128 /* LZB_TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BDC236294EE00537128 /* LZB_TabBar.m */; };
+		0B0F6BE12362C3F500537128 /* WHGradientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BDF2362C3F500537128 /* WHGradientHelper.m */; };
+		0B0F6BE42362D00600537128 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BE32362D00600537128 /* MineViewController.m */; };
 		0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */; };
 		0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17674123584758008979C5 /* LZBCalendarMonth.m */; };
 		0B4945D52357258500F19EE2 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4945D32357258500F19EE2 /* TriangleView.m */; };
@@ -28,7 +31,6 @@
 		0B6192F7235D5E2300BE3BBA /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6192F6235D5E2300BE3BBA /* Mine.storyboard */; };
 		0B6192F9235D5E3400BE3BBA /* CTB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6192F8235D5E3400BE3BBA /* CTB.storyboard */; };
 		0B6192FB235D5E4300BE3BBA /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6192FA235D5E4300BE3BBA /* Home.storyboard */; };
-		0B619301235D7BB200BE3BBA /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B619300235D7BB100BE3BBA /* MineViewController.m */; };
 		0B619304235D7BC900BE3BBA /* CTBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B619303235D7BC900BE3BBA /* CTBViewController.m */; };
 		0B619307235D7BDC00BE3BBA /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B619306235D7BDC00BE3BBA /* HomeViewController.m */; };
 		0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B92FB5D2350820000D813B3 /* UIFont+LZBExtension.m */; };
@@ -96,6 +98,12 @@
 		0B0F6BD62361A90400537128 /* LZB_TabBarBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZB_TabBarBadge.h; sourceTree = "<group>"; };
 		0B0F6BD82361B43B00537128 /* LZB_TabBarItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZB_TabBarItem.h; sourceTree = "<group>"; };
 		0B0F6BD92361B43B00537128 /* LZB_TabBarItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZB_TabBarItem.m; sourceTree = "<group>"; };
+		0B0F6BDB236294EE00537128 /* LZB_TabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZB_TabBar.h; sourceTree = "<group>"; };
+		0B0F6BDC236294EE00537128 /* LZB_TabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZB_TabBar.m; sourceTree = "<group>"; };
+		0B0F6BDF2362C3F500537128 /* WHGradientHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHGradientHelper.m; sourceTree = "<group>"; };
+		0B0F6BE02362C3F500537128 /* WHGradientHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHGradientHelper.h; sourceTree = "<group>"; };
+		0B0F6BE22362D00600537128 /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		0B0F6BE32362D00600537128 /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		0B17673D2358471D008979C5 /* NSDate+LZBCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+LZBCalendar.h"; sourceTree = "<group>"; };
 		0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LZBCalendar.m"; sourceTree = "<group>"; };
 		0B17674023584758008979C5 /* LZBCalendarMonth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalendarMonth.h; sourceTree = "<group>"; };
@@ -115,8 +123,6 @@
 		0B6192F6235D5E2300BE3BBA /* Mine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
 		0B6192F8235D5E3400BE3BBA /* CTB.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CTB.storyboard; sourceTree = "<group>"; };
 		0B6192FA235D5E4300BE3BBA /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
-		0B6192FF235D7BB100BE3BBA /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
-		0B619300235D7BB100BE3BBA /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		0B619302235D7BC900BE3BBA /* CTBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTBViewController.h; sourceTree = "<group>"; };
 		0B619303235D7BC900BE3BBA /* CTBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTBViewController.m; sourceTree = "<group>"; };
 		0B619305235D7BDC00BE3BBA /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -227,8 +233,19 @@
 				0B0F6BD52361A90400537128 /* LZB_TabBarBadge.m */,
 				0B0F6BD82361B43B00537128 /* LZB_TabBarItem.h */,
 				0B0F6BD92361B43B00537128 /* LZB_TabBarItem.m */,
+				0B0F6BDB236294EE00537128 /* LZB_TabBar.h */,
+				0B0F6BDC236294EE00537128 /* LZB_TabBar.m */,
 			);
 			path = LZBTabBar;
+			sourceTree = "<group>";
+		};
+		0B0F6BDE2362C3CD00537128 /* GradientHelper(View渐变) */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F6BE02362C3F500537128 /* WHGradientHelper.h */,
+				0B0F6BDF2362C3F500537128 /* WHGradientHelper.m */,
+			);
+			path = "GradientHelper(View渐变)";
 			sourceTree = "<group>";
 		};
 		0B5E6D4523545D76008D9A76 /* LZBCalendar */ = {
@@ -345,8 +362,8 @@
 		0B6192FC235D7B5500BE3BBA /* C */ = {
 			isa = PBXGroup;
 			children = (
-				0B6192FF235D7BB100BE3BBA /* MineViewController.h */,
-				0B619300235D7BB100BE3BBA /* MineViewController.m */,
+				0B0F6BE22362D00600537128 /* MineViewController.h */,
+				0B0F6BE32362D00600537128 /* MineViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -441,6 +458,7 @@
 		0B820167234EC1C900D983AE /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F6BDE2362C3CD00537128 /* GradientHelper(View渐变) */,
 				0B0F6BBA236020C900537128 /* NSString */,
 				0B5E6D4923547264008D9A76 /* LZBColor */,
 				0B5E6D4523545D76008D9A76 /* LZBCalendar */,
@@ -871,9 +889,9 @@
 				0BBE47782359B0FD00D30C4B /* LZBBaseViewController.m in Sources */,
 				0B5E6D4C2354728A008D9A76 /* UIColor+lzbColor.m in Sources */,
 				0BBE476D235959C400D30C4B /* LZBCalendarWeekView.m in Sources */,
-				0B619301235D7BB200BE3BBA /* MineViewController.m in Sources */,
 				0BBCD67E234DBFAE00E4970A /* main.m in Sources */,
 				0BBE476A235959A600D30C4B /* LZBCalendarHeaderView.m in Sources */,
+				0B0F6BDD236294EE00537128 /* LZB_TabBar.m in Sources */,
 				0B6192E6235D570B00BE3BBA /* LZBBaseNavigationController.m in Sources */,
 				8B4D1C5623618CD2008B2CCA /* LoginViewController.m in Sources */,
 				0B098C652351A077000934EB /* LZBNetManager.m in Sources */,
@@ -882,6 +900,7 @@
 				0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */,
 				0B09920623517A0D001E5389 /* LZBDataEntity.m in Sources */,
 				0B098C682351B942000934EB /* LZBNetManagerCache.m in Sources */,
+				0B0F6BE42362D00600537128 /* MineViewController.m in Sources */,
 				0B0F6BDA2361B43B00537128 /* LZB_TabBarItem.m in Sources */,
 				0B0F6BB823601FF200537128 /* Utils.m in Sources */,
 				0B0F6BB423601F5D00537128 /* MBProgressHUD+LZBvcHelper.m in Sources */,
@@ -889,6 +908,7 @@
 				0BBCD670234DBFAD00E4970A /* SceneDelegate.m in Sources */,
 				0B6192E9235D573600BE3BBA /* LZBBaseTabBarController.m in Sources */,
 				0B0F6BAE23601E3A00537128 /* UIViewController+HUD.m in Sources */,
+				0B0F6BE12362C3F500537128 /* WHGradientHelper.m in Sources */,
 				0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */,
 				0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */,
 				0B6192ED235D58E600BE3BBA /* UINavigationBar+handle.m in Sources */,

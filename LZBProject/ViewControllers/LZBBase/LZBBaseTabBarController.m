@@ -8,6 +8,7 @@
 
 #import "LZBBaseTabBarController.h"
 #import "LZBBaseNavigationController.h"
+#import "WHGradientHelper.h"
 
 #define KStoryBoardHomeVC    @"Home"
 #define KStoryBoardCTBVC     @"CTB"
@@ -17,13 +18,19 @@
 #define KStoryBoardCTBVCTitle     @"错题本"
 #define KSroryBoardMineVCTitle    @"我的"
 
-@interface LZBBaseTabBarController ()<UINavigationControllerDelegate>
+@interface LZBBaseTabBarController ()<UINavigationControllerDelegate,LZB_TabBarDelegate>
 
 @property (nonatomic, strong) NSMutableArray *normalImageArray;
 
 @property (nonatomic, strong) NSMutableArray *selectedImageArray;
 
+@property (nonatomic, strong) NSMutableArray *tabBarConfsArray;
+
 @property (nonatomic, strong) NSArray        *controllerIdentiferArray;
+
+@property (nonatomic, strong) NSArray        *itemZizeArray;
+
+@property (nonatomic, strong) NSArray        *tabbarTitleArr;
 
 @end
 
@@ -31,6 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
     [self confgiSubControllers];
     
@@ -40,11 +48,36 @@
 }
 
 - (void)confgiSubControllers{
+    
     NSMutableArray *arr = [[NSMutableArray alloc] init];
+    
+    self.tabBarConfsArray = @[].mutableCopy;
+    
+    LZBWeak;
     [self.controllerIdentiferArray enumerateObjectsUsingBlock:^(NSString *identifier, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        
         LZBBaseNavigationController *navi = [self navigationControllerWithIdentifier:identifier];
         navi.delegate = self;
         [arr addObject:navi];
+        
+        LZB_TabBarConfigModel *model = [LZB_TabBarConfigModel new];
+        
+        model.itemTitle       = weakSelf.tabbarTitleArr[idx];
+        model.normalImageName = weakSelf.normalImageArray[idx];
+        model.selectImageName = weakSelf.selectedImageArray[idx];
+        model.itemBadgeStyle = LZB_TabBarItemBadgeStyleTopRight;
+        model.interactionEffectStyle = LZB_TabBarInteractionEffectStyleShake;
+        model.badge = [NSString stringWithFormat:@"%d",arc4random()%100];
+        model.selectColor = kMAIN9966;
+        model.normalColor = KMAINFFFF;
+        model.pictureWordsMargin = 0;
+        model.normalBackgroundColor = [UIColor clearColor];
+//        model.selectBackgroundColor = [UIColor colorWithPatternImage:IMAGE_NAMED(@"tabbar_iconbg_homepage")];
+        model.backgroundImageView.image = IMAGE_NAMED(@"tabbar_iconbg_homepage");
+        
+        [self.tabBarConfsArray addObject:model];
+        
     }];
     self.viewControllers = arr;
 }
@@ -52,30 +85,47 @@
 - (void)configTabbar{
     
     
-//    self.tabBarItem.imageInsets = UIEdgeInsetsMake(0, 0, -6,0);
-//    //设置文字位置
-//     [[UITabBarItem appearance] setTitlePositionAdjustment:UIOffsetMake(0, -2.5)];
-//    self.tabBarItem.imageInsets = UIEdgeInsetsMake(-6, 0, 6, 0);
+    self.lzbTabBar = [[LZB_TabBar alloc] init];
     
-    UITabBar *tabBar = self.tabBar;
+    self.lzbTabBar.backgroundImageView.image = [WHGradientHelper getLinearGradientImage:[UIColor colorWithHex:@"#018C6D"]
+              and:[UIColor colorWithHex:@"#00A26D"]
+    directionType:WHLinearGradientDirectionLevel];
     
-    UITabBarItem *item0 = [tabBar.items objectAtIndex:0];
-    UITabBarItem *item1 = [tabBar.items objectAtIndex:1];
-    UITabBarItem *item2 = [tabBar.items objectAtIndex:2];
-
-    item0.selectedImage = [[self.selectedImageArray objectAtIndex:0] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    item0.title = KStoryBoardHomeVCTitle;
-    item0.image = [[self.normalImageArray objectAtIndex:0] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    item1.title = KStoryBoardCTBVCTitle;
-    item1.selectedImage = [[self.selectedImageArray objectAtIndex:1] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    item1.image = [[self.normalImageArray objectAtIndex:1] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    item2.title = KSroryBoardMineVCTitle;
-    item2.image = [[self.normalImageArray objectAtIndex:2] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    item2.selectedImage = [[self.selectedImageArray objectAtIndex:2] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.lzbTabBar.tabBarConfig = self.tabBarConfsArray;
+    // 7.设置委托
+    self.lzbTabBar.delegate = self;
+    // 8.添加覆盖到上边
+    [self.tabBar addSubview:self.lzbTabBar];
+    [self addLayoutTabBar]; // 10.添加适配
 
 }
+
+// 9.实现代理，如下：
+- (void)LZB_TabBar:(LZB_TabBar *)tabbar selectIndex:(NSInteger)index{
+    // 通知 切换视图控制器
+    [self setSelectedIndex:index];
+    // 自定义的AE_TabBar回调点击事件给TabBarVC，TabBarVC用父类的TabBarController函数完成切换
+}
+- (void)setSelectedIndex:(NSUInteger)selectedIndex{
+    [super setSelectedIndex:selectedIndex];
+    if(self.lzbTabBar){
+        self.lzbTabBar.selectIndex = selectedIndex;
+    }
+}
+
+
+// 10.添加适配
+- (void)addLayoutTabBar{
+    // 使用重载viewDidLayoutSubviews实时计算坐标 （下边的 -viewDidLayoutSubviews 函数）
+    // 能兼容转屏时的自动布局
+}
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    self.lzbTabBar.frame = self.tabBar.bounds;
+    [self.lzbTabBar viewDidLayoutItems];
+}
+
 
 - (LZBBaseNavigationController *)navigationControllerWithIdentifier:(NSString *)identifier{
     LZBBaseNavigationController *nav = [[UIStoryboard storyboardWithName:identifier bundle:nil] instantiateInitialViewController];
@@ -89,51 +139,34 @@
     return _controllerIdentiferArray;
 }
 
+- (NSArray *)itemZizeArray{
+    if (!_itemZizeArray) {
+        _itemZizeArray = @[[NSValue valueWithCGSize:CGSizeMake(40, 40)],[NSValue valueWithCGSize:CGSizeMake(40, 40)],[NSValue valueWithCGSize:CGSizeMake(50, 40)],  [NSValue valueWithCGSize:CGSizeMake(60, 40)]];
+    }
+    return _itemZizeArray;
+}
+
+- (NSArray *)tabbarTitleArr{
+    if (!_tabbarTitleArr) {
+        _tabbarTitleArr = @[KStoryBoardHomeVCTitle,KStoryBoardCTBVCTitle,KSroryBoardMineVCTitle];
+    }
+    return _tabbarTitleArr;
+}
+
 - (NSMutableArray *)normalImageArray{
     if (!_normalImageArray) {
-        _normalImageArray = [[NSMutableArray alloc] initWithObjects:IMAGE_NAMED(@"tanchuang_xuangzeriqi_xiangqian_normal"),IMAGE_NAMED(@"bg_homepage"),IMAGE_NAMED(@"bg_homepage"), nil];
+        _normalImageArray = [[NSMutableArray alloc] initWithObjects:@"tab1_normal",@"tab2",@"ic_tab3_user", nil];
     }
     return _normalImageArray;
 }
 
 - (NSMutableArray *)selectedImageArray{
     if (!_selectedImageArray) {
-        _selectedImageArray = [[NSMutableArray alloc] initWithObjects:IMAGE_NAMED(@"bg_homepage"),IMAGE_NAMED(@"tanchuang_xuangzeriqi_xiangqian_normal"),IMAGE_NAMED(@"tanchuang_xuangzeriqi_xiangqian_normal"), nil];
+        _selectedImageArray = [[NSMutableArray alloc] initWithObjects:@"tab1_s",@"tab2_s",@"ic_tab3_user_s", nil];
     }
     return _selectedImageArray;
 }
 
-- (void)insertSubView:(UIView *)view atIndex:(NSInteger)index{
-    
-    UIView*tabbarBgView =[[UIView alloc]initWithFrame:CGRectMake(0,0,self.tabBar.frame.size.width,self.tabBar.frame.size.height)];
-    tabbarBgView.backgroundColor=[UIColor redColor];
-    [self.tabBar insertSubview:tabbarBgView atIndex:0];
-    
-    CGSize indicatorImageSize=CGSizeMake(self.tabBar.bounds.size.width/5-10,self.tabBar.bounds.size.height);
-    
-    self.tabBar.selectionIndicatorImage=[self drawTabBarItemBackgroundUmageWithSize:indicatorImageSize];
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:KMAINFFFF,NSForegroundColorAttributeName,[UIFont lzb_fontForPingFangSC_RegularFontOfSize:12],NSFontAttributeName, nil] forState:UIControlStateNormal];
-    
-    self.tabBar.selectionIndicatorImage=[self drawTabBarItemBackgroundUmageWithSize:indicatorImageSize];
-    
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor redColor],NSForegroundColorAttributeName,[UIFont lzb_fontForPingFangSC_RegularFontOfSize:12],NSFontAttributeName, nil] forState:UIControlStateSelected];
-    
-}
-
--(UIImage*)drawTabBarItemBackgroundUmageWithSize:(CGSize)size{
-    UIGraphicsBeginImageContext(size);
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextSetRGBFillColor(ctx, 1, 1, 1, 1);
-    CGContextFillRect(ctx, CGRectMake(5, 0, size.width, size.height));
-    CGRect rect = CGRectMake(0, 0, size.width, size.height);
-    CGContextAddEllipseInRect(ctx, rect);
-    CGContextClip(ctx);
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    [image drawInRect:rect];
-    
-    UIGraphicsEndImageContext();
-    return  image;
-}
 /*
 #pragma mark - Navigation
 

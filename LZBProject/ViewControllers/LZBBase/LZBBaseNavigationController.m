@@ -23,6 +23,10 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationBar.tintColor = KMAINFFFF;
+    [self.navigationBar navBarBackGroundColor:kMAIN31AC image:nil isOpaque:YES];
+    
 //    [self.navigationBar navBarBottomLineHidden:YES];
 
     // Do any additional setup after loading the view.

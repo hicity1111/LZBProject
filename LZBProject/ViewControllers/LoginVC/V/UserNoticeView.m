@@ -9,7 +9,6 @@
 #import "UserNoticeView.h"
 #import "AppDelegate.h"
 
-#define AGREEUSERNOTICE     @"agreeUserNotice"
 #define kAnimationDuration  0.25
 
 @interface UserNoticeView ()
@@ -63,14 +62,12 @@
     [selectBtn addTarget:self action:@selector(selectButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     selectBtn.selected = NO;
     self.selectBtn = selectBtn;
-    
-    UILabel *descLb = [[UILabel alloc] init];
     NSAttributedString *attStr1 = [[NSAttributedString alloc] initWithString:@"已阅读并同意" attributes:@{NSFontAttributeName: LZBRegularFont(14), NSForegroundColorAttributeName: kMAIN9696}];
     NSAttributedString *attStr2 = [[NSAttributedString alloc] initWithString:@"《用户服务协议》" attributes:@{NSFontAttributeName: LZBRegularFont(14), NSForegroundColorAttributeName: KMAIN5868}];
     NSMutableAttributedString *mAttStr = [[NSMutableAttributedString alloc] initWithAttributedString:attStr1];
     [mAttStr appendAttributedString:attStr2];
-    descLb.attributedText = mAttStr;
-    [descLb sizeToFit];
+    [selectBtn setAttributedTitle:mAttStr forState:UIControlStateNormal];
+    [selectBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
     
     UIButton *knowBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     knowBtn.backgroundColor = UIColor.lightGrayColor;
@@ -84,7 +81,6 @@
     [centerV addSubview:titleLb];
     [centerV addSubview:tv];
     [centerV addSubview:selectBtn];
-    [centerV addSubview:descLb];
     [centerV addSubview:knowBtn];
     
     [titleLb mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -104,18 +100,15 @@
         make.height.mas_equalTo(200.f);
     }];
     [selectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(20.f);
-        make.top.equalTo(tv.mas_bottom).offset(26.f);
-        make.left.equalTo(centerV).offset(29.f);
-    }];
-    [descLb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(selectBtn.mas_right).offset(7.5);
-        make.centerY.equalTo(selectBtn.mas_centerY);
+        make.width.mas_equalTo(240.f);
+        make.height.mas_equalTo(36.f);
+        make.top.equalTo(tv.mas_bottom).offset(20.f);
+        make.left.equalTo(centerV).offset(20.f);
     }];
     [knowBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(120.f);
         make.height.mas_equalTo(36.f);
-        make.top.equalTo(descLb.mas_bottom).offset(26.f);
+        make.top.equalTo(selectBtn.mas_bottom).offset(20.f);
         make.centerX.equalTo(centerV.mas_centerX);
     }];
     
@@ -128,7 +121,7 @@
 #pragma mark - Action
 - (void)selectButtonClick:(UIButton *)btn {
     btn.selected = !btn.selected;
-    [[NSUserDefaults standardUserDefaults] setBool:btn.selected forKey:AGREEUSERNOTICE];
+    SETUSER_BOOL(AGREEUSERNOTICE, btn.selected);
     if (btn.selected) {
         self.knowBtn.backgroundColor = kMAIN00B5;
     } else {
@@ -138,7 +131,7 @@
 
 - (void)knowButtonClick:(UIButton *)btn {
     if (self.selectBtn.selected) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:AGREEUSERNOTICE];
+        SETUSER_BOOL(AGREEUSERNOTICE, YES);
         [self hide];
     }
 }
@@ -147,7 +140,7 @@
 #pragma mark - Method
 
 - (void)adjustIsAgreeUserNotice {
-    BOOL isAgree = [[NSUserDefaults standardUserDefaults] boolForKey:AGREEUSERNOTICE];
+    BOOL isAgree = GETUSER_BOOL(AGREEUSERNOTICE);
     self.selectBtn.selected = isAgree;
     if (isAgree) {
         self.knowBtn.backgroundColor = kMAIN00B5;

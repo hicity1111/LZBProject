@@ -61,7 +61,8 @@
 
 #pragma mark - Private Methods
 - (void)adjustShowUserNoticeView {
-    BOOL isUserAgreeNotice = [[NSUserDefaults standardUserDefaults] boolForKey:@"agreeUserNotice"];
+    BOOL isUserAgreeNotice = GETUSER_BOOL(AGREEUSERNOTICE);
+    
     if (!isUserAgreeNotice) {
         [self showUserNoticeView];
     }

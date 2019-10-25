@@ -20,14 +20,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    if (kSysVersion < 13.0) {
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        self.window.backgroundColor = UIColor.whiteColor;
-        [self.window makeKeyAndVisible];
-        
-        [self addKeyboardManager];
-        [self entryDoor];
-    }
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = UIColor.whiteColor;
+    [self.window makeKeyAndVisible];
+    
+    [self addKeyboardManager];
+    [self entryDoor];
     
     return YES;
 }
@@ -67,8 +65,9 @@
 }
 
 
-#pragma mark - UISceneSession lifecycle
-- (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options  API_AVAILABLE(ios(13.0)) {
+/**
+ #pragma mark - UISceneSession lifecycle
+- (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
     // Called when a new scene session is being created.
     // Use this method to select a configuration to create the new scene with.
     if (@available(iOS 13.0, *)) {
@@ -78,11 +77,13 @@
 }
 
 
-- (void)application:(UIApplication *)application didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions  API_AVAILABLE(ios(13.0)) {
+- (void)application:(UIApplication *)application didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions {
     // Called when the user discards a scene session.
     // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    NSLog(@"aaaa");
 }
+ */
 
 
 #pragma mark - Notifications
@@ -128,6 +129,34 @@
 //    //  > 调用完成的处理代码时，应用的界面缩略图会更新
 //    completionHandler(UIBackgroundFetchResultNewData);
 //}
+
+
+#pragma mark - window Lifecycle
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    
+}
+
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+    
+}
+
 
 
 @end

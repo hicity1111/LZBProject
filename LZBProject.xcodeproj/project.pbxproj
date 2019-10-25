@@ -37,7 +37,6 @@
 		0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B92FB5D2350820000D813B3 /* UIFont+LZBExtension.m */; };
 		0B92FB63235087A500D813B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B92FB62235087A500D813B3 /* UIKit.framework */; };
 		0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD66C234DBFAD00E4970A /* AppDelegate.m */; };
-		0BBCD670234DBFAD00E4970A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD66F234DBFAD00E4970A /* SceneDelegate.m */; };
 		0BBCD673234DBFAD00E4970A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD672234DBFAD00E4970A /* ViewController.m */; };
 		0BBCD676234DBFAD00E4970A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BBCD674234DBFAD00E4970A /* Main.storyboard */; };
 		0BBCD678234DBFAE00E4970A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BBCD677234DBFAE00E4970A /* Assets.xcassets */; };
@@ -146,8 +145,6 @@
 		0BBCD668234DBFAD00E4970A /* LZBProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LZBProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BBCD66B234DBFAD00E4970A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0BBCD66C234DBFAD00E4970A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0BBCD66E234DBFAD00E4970A /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		0BBCD66F234DBFAD00E4970A /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		0BBCD671234DBFAD00E4970A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		0BBCD672234DBFAD00E4970A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0BBCD675234DBFAD00E4970A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -555,8 +552,6 @@
 				0B820160234DCEE100D983AE /* ViewControllers */,
 				0BBCD66B234DBFAD00E4970A /* AppDelegate.h */,
 				0BBCD66C234DBFAD00E4970A /* AppDelegate.m */,
-				0BBCD66E234DBFAD00E4970A /* SceneDelegate.h */,
-				0BBCD66F234DBFAD00E4970A /* SceneDelegate.m */,
 				0BBCD671234DBFAD00E4970A /* ViewController.h */,
 				0BBCD672234DBFAD00E4970A /* ViewController.m */,
 				0BBCD674234DBFAD00E4970A /* Main.storyboard */,
@@ -955,7 +950,6 @@
 				0B0F6BB823601FF200537128 /* Utils.m in Sources */,
 				0B0F6BB423601F5D00537128 /* MBProgressHUD+LZBvcHelper.m in Sources */,
 				0BBE47742359989500D30C4B /* LXCalenderCell.m in Sources */,
-				0BBCD670234DBFAD00E4970A /* SceneDelegate.m in Sources */,
 				0B6192E9235D573600BE3BBA /* LZBBaseTabBarController.m in Sources */,
 				0B0F6BAE23601E3A00537128 /* UIViewController+HUD.m in Sources */,
 				0B0F6BE12362C3F500537128 /* WHGradientHelper.m in Sources */,

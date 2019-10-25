@@ -17,7 +17,7 @@
 #import <Masonry/Masonry.h>
 #import <SDAutoLayout/SDAutoLayout.h>
 #import <YYCache/YYCache.h>
-#import <FDFullscreenPopGesture-umbrella.h>
+#import <UINavigationController+FDFullscreenPopGesture.h>
 #import <YYText/YYText.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 

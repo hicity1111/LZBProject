@@ -23,7 +23,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.fd_fullscreenPopGestureRecognizer.enabled = YES;
     self.navigationBar.tintColor = KMAINFFFF;
     [self.navigationBar navBarBackGroundColor:kMAIN31AC image:nil isOpaque:YES];
     

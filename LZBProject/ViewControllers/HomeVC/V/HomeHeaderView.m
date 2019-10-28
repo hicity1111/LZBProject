@@ -65,7 +65,7 @@
     _messageButton.badgeTextFont = LZBFont(9.5, NO);
     _messageButton.badgeBackgroundColor = kMAINFCOD;
     _messageButton.badgeOffset = CGPointMake(0, -10);
-    [_messageButton showNumberBadgeValue:@"8"];
+    [_messageButton addTarget:self action:@selector(messageAct) forControlEvents:UIControlEventTouchUpInside];
 
     [self addSubview:_messageButton];
     
@@ -79,6 +79,17 @@
 - (void)showNumberBadgeValue:(NSString *)badgeValue {
     
     [_messageButton showNumberBadgeValue:badgeValue];
+}
+
+- (void)removeBadgValue{
+    [_messageButton removeBadgeValue];
+}
+
+- (void)messageAct{
+
+    if ([self.delegate respondsToSelector:@selector(messageAct)]) {
+        [self.delegate messageAct];
+    }
 }
 
 @end

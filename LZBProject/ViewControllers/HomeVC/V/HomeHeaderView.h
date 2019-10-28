@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol HomeHeaderDelegate <NSObject>
+
+- (void)messageAct;
+@end
 
 @interface HomeHeaderView : UIView
+
+@property (nonatomic, weak) id<HomeHeaderDelegate> delegate;
 
 /// 标题文字
 @property (nonatomic, strong) NSString *titleString;
@@ -24,10 +30,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// login
 @property (nonatomic, strong) UIImageView *imageView;
 
+
+
 /// 标题
 @property (nonatomic, strong) UILabel *titleLabel;
 
 - (void)showNumberBadgeValue:(NSString *)badgeValue;
+
+- (void)removeBadgValue;
+
 
 @end
 

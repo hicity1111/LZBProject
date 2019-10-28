@@ -11,7 +11,7 @@
 #import "JXCategoryTitleVerticalZoomView.h"
 #import "HomeHeaderView.h"
 
-@interface HomeViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate,UIGestureRecognizerDelegate>
+@interface HomeViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate,UIGestureRecognizerDelegate,HomeHeaderDelegate>
 
 @property (nonatomic, strong) JXCategoryTitleVerticalZoomView *categoryView;
 
@@ -42,22 +42,20 @@
     [super viewDidLoad];
     
     _homeHeaderView = [[HomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kTopBarHeight)];
+    _homeHeaderView.titleString = @"Hi，张芳同学，今天又见面了！";
+    [_homeHeaderView showNumberBadgeValue:@"44"];
+    _homeHeaderView.delegate = self;
     [self.view addSubview:_homeHeaderView];
-    
-//    [_homeHeaderView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(self.view).offset(0);
-//        make.top.mas_equalTo(self.view);
-//        make.right.mas_equalTo(self.view);
-//        make.height.mas_equalTo(kTopBarHeight);
-//        
-//    }];
-    
-    
-}
 
+}
+- (void)messageAct{
+    XLDLog(@"点击了消息");
+}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 //    HomeDetailViewController *home = [HomeDetailViewController new];
 //    [self.navigationController pushViewController:home animated:YES];
+    
+    [_homeHeaderView removeBadgValue];
 }
 @end

@@ -20,6 +20,7 @@
 #import <UINavigationController+FDFullscreenPopGesture.h>
 #import <YYText/YYText.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <JXCategoryView/JXCategoryView.h>
 
 #import "LZBBaseViewController.h"
 #import "UINavigationBar+handle.h"

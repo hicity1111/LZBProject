@@ -8,7 +8,19 @@
 
 #import "HomeViewController.h"
 #import "HomeDetailViewController.h"
-@interface HomeViewController ()
+#import "JXCategoryTitleVerticalZoomView.h"
+
+@interface HomeViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate,UIGestureRecognizerDelegate>
+
+@property (nonatomic, strong) JXCategoryTitleVerticalZoomView *categoryView;
+
+@property (nonatomic, strong) JXCategoryListContainerView *listContainerView;
+
+@property (nonatomic, assign) CGFloat minCategoryViewHeight;
+
+@property (nonatomic, assign) CGFloat maxCategoryViewHeight;
+
+@property (nonatomic, strong) id interactivePopGestureRecognizerDelegate;
 
 @end
 
@@ -34,14 +46,16 @@
         make.left.mas_equalTo(self.view).offset(0);
         make.top.mas_equalTo(self.view);
         make.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(50);
+        make.height.mas_equalTo(kTopBarHeight);
         
     }];
+    
+    
 }
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    HomeDetailViewController *home = [HomeDetailViewController new];
-    [self.navigationController pushViewController:home animated:YES];
+//    HomeDetailViewController *home = [HomeDetailViewController new];
+//    [self.navigationController pushViewController:home animated:YES];
 }
 @end

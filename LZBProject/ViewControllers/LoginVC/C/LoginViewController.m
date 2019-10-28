@@ -10,6 +10,7 @@
 #import "UserNoticeView.h"
 #import "LYZTextField.h"
 #import "LZBNetworkURL.h"
+#import "NSString+LZBValid.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 {
@@ -55,6 +56,15 @@
     
     [self addSubviews];
     [self adjustShowUserNoticeView];
+    
+    NSString *userName = GETUSER_STRING(USER_NAME);
+    if (userName && userName.length > 0) {
+        self.userTF.text = userName;
+    }
+    NSString *pwd = GETUSER_STRING(USER_PASSWORD);
+    if (pwd && pwd.length > 0) {
+        self.pwdTF.text = pwd;
+    }
 }
 
 - (void)viewWillLayoutSubviews {
@@ -65,12 +75,13 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [self.userTF becomeFirstResponder];
 }
 
 
 #pragma mark - Private Methods
 - (void)adjustShowUserNoticeView {
-    BOOL isUserAgreeNotice = GETUSER_BOOL(AGREEUSERNOTICE);
+    BOOL isUserAgreeNotice = GETUSER_BOOL(AGREE_USER_NOTICE);
     
     if (!isUserAgreeNotice) {
         [self showUserNoticeView];
@@ -94,7 +105,7 @@
     userTF.placeholder = @"请输入账号";
     userTF.textColor = kMAIN3333;
     userTF.font = LZBRegularFont(16);
-    userTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    userTF.keyboardType = UIKeyboardTypeNamePhonePad;
     userTF.autocorrectionType = UITextAutocorrectionTypeNo;
     userTF.clearButtonMode = UITextFieldViewModeWhileEditing;
     // 开始编辑前清空输入框
@@ -282,6 +293,43 @@
     self.pwdTF.cusRightView = showPwdBtn;
 }
 
+- (void)loginAction {
+    LZBWeak;
+    NSString *name = self.userTF.text;
+    NSString *pwd = self.pwdTF.text;
+    LZBDataEntity *entity = [[LZBDataEntity alloc] init];
+        entity.urlString = LoginUrl_full;
+        entity.parameters = @{@"userName": name, @"password": pwd, @"appChannelId": @"studentApp"};
+//        entity.parameters = @{@"userName": @"206", @"password": @"1234567a", @"appChannelId": @"studentApp"};
+        [LZBNetManager lzb_request_postWithEntity:entity successBlock:^(id _Nonnull reponse) {
+            XLDLog(@"------------------ successBlock");
+            XLDLog(@"%@", reponse);
+            NSDictionary *resDic = (NSDictionary *)reponse;
+            NSInteger flag = [resDic[@"flag"] integerValue];
+            // 成功
+            if (flag == 1) {
+                NSDictionary *infoDic = resDic[@"infos"];
+                
+                if (weakSelf.savePwdBtn.selected) {
+                    SETUSER_OBJ(USER_NAME, name);
+                    SETUSER_OBJ(USER_PASSWORD, pwd);
+                }
+                SETUSER_OBJ(ACCESS_TOKEN, infoDic[@"token"]);
+                SETUSER_BOOL(IS_USER_LOGIN, YES);
+                [SDUserDefaults synchronize];
+                
+                [weakSelf showSuccess:@"登录成功"];
+            } else {
+                [weakSelf showError:resDic[@"message"]];
+            }
+            
+        } failureBlock:^(NSError * _Nonnull error) {
+            XLDLog(@"------------------ failureBlock");
+            XLDLog(@"%@", error);
+        } progressBlock:^(int64_t bytesProgress, int64_t totalBytesProgress) {
+            
+        }];
+}
 
 #pragma mark - Event Response
 
@@ -299,19 +347,20 @@
 }
 
 - (void)loginButtonClick:(UIButton *)btn {
-    LZBDataEntity *entity = [[LZBDataEntity alloc] init];
-    entity.urlString = LoginUrl_full;
-//    entity.parameters = @{@"userName": self.userTF.text, @"password": self.pwdTF.text, @"appChannelId": @"studentApp"};
-    entity.parameters = @{@"userName": @"206", @"password": @"1234567a", @"appChannelId": @"studentApp"};
-    [LZBNetManager lzb_request_postWithEntity:entity successBlock:^(id _Nonnull reponse) {
-        XLDLog(@"------------------ successBlock");
-        XLDLog(@"%@", reponse);
-    } failureBlock:^(NSError * _Nonnull error) {
-        XLDLog(@"------------------ failureBlock");
-        XLDLog(@"%@", error);
-    } progressBlock:^(int64_t bytesProgress, int64_t totalBytesProgress) {
-        
-    }];
+    NSString *user = self.userTF.text;
+    BOOL isValidPhone = [NSString mh_isValidMobile:user];
+    if (!isValidPhone) {
+        [self showError:@"请输入正确的手机号"];
+        return;
+    }
+    
+    NSString *pwd = self.pwdTF.text;
+    if (pwd.length == 0) {
+        [self showError:@"请输入密码"];
+        return;
+    }
+    
+    [self loginAction];
 }
 
 - (void)seeUserNoticeButtonClick:(UIButton *)btn {
@@ -321,7 +370,16 @@
 #pragma mark - UITextfield Delegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (textField == self.userTF) {
+        if (textField.text.length > 10) {
+            textField.text = [textField.text substringToIndex:10];
+        }
+    }
+    else if (textField == self.pwdTF) {
+        
+    }
     return YES;
 }
+
 
 @end

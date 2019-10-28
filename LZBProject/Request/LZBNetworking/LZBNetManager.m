@@ -43,11 +43,11 @@ static NSMutableArray *tasks;
     [self setupLZBNetManager];
 }
 
-+ (void)setupLZBNetManager{
++ (void)setupLZBNetManager {
     
     LZBNetManagerShare.sessionManager     = [AFHTTPSessionManager manager];
     
-    LZBNetManagerShare.requestSerializer  = LZBHttpRequestSerializerJSON;
+    LZBNetManagerShare.requestSerializer  = LZBHttpRequestSerializerHTTP;
     LZBNetManagerShare.responseSerializer = LZBHttpResponseSerializerJSON;
     
     LZBNetManagerShare.timeoutInterval    = 30;
@@ -367,9 +367,9 @@ static NSMutableArray *tasks;
  @return LZBUrlSessionTask
  */
 + (LZBUrlSessionTask *)lzb_request_postWithEntity:(LZBDataEntity *)entity
-                                   successBlock:(LZBResponseSuccessBlock)successBlock
-                                   failureBlock:(LZBResponseFailBlock)failureBlock
-                                  progressBlock:(LZBDownloadProgressBlock)progressBlock
+                                     successBlock:(LZBResponseSuccessBlock)successBlock
+                                     failureBlock:(LZBResponseFailBlock)failureBlock
+                                    progressBlock:(LZBDownloadProgressBlock)progressBlock
 {
     if (!entity || ![entity isKindOfClass:[LZBDataEntity class]]) {
         return nil;

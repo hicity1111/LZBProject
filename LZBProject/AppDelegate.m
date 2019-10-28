@@ -44,7 +44,10 @@
 
 #pragma mark - 界面入口
 - (void)entryDoor {
-    BOOL isLogin = YES;
+//    SETUSER_BOOL(IS_USER_LOGIN, NO);
+//    [SDUserDefaults synchronize];
+    
+    BOOL isLogin = GETUSER_BOOL(IS_USER_LOGIN);
     
     if (isLogin) {
         [self entryMainVC];

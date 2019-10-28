@@ -26,23 +26,31 @@
 #define GETUSER_URL(key)                [SDUserDefaults URLForKey:key]
 
 
-#define SETUSER_VALUE(key, value)     [SDUserDefaults setValue:value forKey:key]
-#define SETUSER_OBJ(key, value)       [SDUserDefaults setObject:value forKey:key]
-#define SETUSER_BOOL(key, value)      [SDUserDefaults setBool:value forKey:key]
-#define SETUSER_INT(key, value)       [SDUserDefaults setInteger:value forKey:key]
-#define SETUSER_DOUBLE(key, value)    [SDUserDefaults setDouble:value forKey:key]
-#define SETUSER_URL(key, value)       [SDUserDefaults setURL:value forKey:key]
+#define SETUSER_VALUE(key, value)       [SDUserDefaults setValue:value forKey:key]
+#define SETUSER_OBJ(key, value)         [SDUserDefaults setObject:value forKey:key]
+#define SETUSER_BOOL(key, value)        [SDUserDefaults setBool:value forKey:key]
+#define SETUSER_INT(key, value)         [SDUserDefaults setInteger:value forKey:key]
+#define SETUSER_DOUBLE(key, value)      [SDUserDefaults setDouble:value forKey:key]
+#define SETUSER_URL(key, value)         [SDUserDefaults setURL:value forKey:key]
 
-
+#define REMOVEUSER_OBJ(key)             [SDUserDefaults removeObjectForKey:key]
 
 
 
 #pragma mark - 字符串
 
+#define IS_USER_LOGIN       @"isUserLogin"
+
 /// 网络请求 token
-#define KACCESS_TOKEN       @"usertoken"
+#define ACCESS_TOKEN        @"usertoken"
 
 /// 是否同意 用户须知 key
-#define AGREEUSERNOTICE     @"agreeUserNotice"
+#define AGREE_USER_NOTICE   @"agreeUserNotice"
+
+/// 用户登录名
+#define USER_NAME           @"userName"
+
+/// 用户登录密码
+#define USER_PASSWORD       @"userPassword"
 
 #endif /* LZBUtilsMacro_h */

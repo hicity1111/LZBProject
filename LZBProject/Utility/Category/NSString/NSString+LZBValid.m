@@ -16,8 +16,8 @@
 /// 有效的手机号码
 + (BOOL)mh_isValidMobile:(NSString *)str
 {
-    NSString *phoneRegex = @"^1[34578]\\d{9}$";
-    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+    NSString *phoneRegex = @"^1[3456789]\\d{9}$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
     return [phoneTest evaluateWithObject:str];
 }
 

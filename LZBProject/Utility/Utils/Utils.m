@@ -23,15 +23,15 @@
 
 + (void)saveUserToken:(NSString *)token {
     if (token) {
-        SETUSER_OBJ(KACCESS_TOKEN, token);
+        SETUSER_OBJ(ACCESS_TOKEN, token);
         [SDUserDefaults synchronize];
     }
 
 }
 
 + (NSString *)loadUserToken {
-    if (GETUSER_OBJ(KACCESS_TOKEN)) {
-        return GETUSER_OBJ(KACCESS_TOKEN);
+    if (GETUSER_OBJ(ACCESS_TOKEN)) {
+        return GETUSER_OBJ(ACCESS_TOKEN);
     }
     return nil;
 }

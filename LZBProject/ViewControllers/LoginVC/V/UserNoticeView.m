@@ -121,7 +121,7 @@
 #pragma mark - Action
 - (void)selectButtonClick:(UIButton *)btn {
     btn.selected = !btn.selected;
-    SETUSER_BOOL(AGREEUSERNOTICE, btn.selected);
+    SETUSER_BOOL(AGREE_USER_NOTICE, btn.selected);
     if (btn.selected) {
         self.knowBtn.backgroundColor = kMAIN00B5;
     } else {
@@ -131,8 +131,10 @@
 
 - (void)knowButtonClick:(UIButton *)btn {
     if (self.selectBtn.selected) {
-        SETUSER_BOOL(AGREEUSERNOTICE, YES);
+        SETUSER_BOOL(AGREE_USER_NOTICE, YES);
         [self hide];
+    } else {
+        [MBProgressHUD showMessage:@"请勾选“同意用户服务协议”" inView:self];
     }
 }
 
@@ -140,7 +142,7 @@
 #pragma mark - Method
 
 - (void)adjustIsAgreeUserNotice {
-    BOOL isAgree = GETUSER_BOOL(AGREEUSERNOTICE);
+    BOOL isAgree = GETUSER_BOOL(AGREE_USER_NOTICE);
     self.selectBtn.selected = isAgree;
     if (isAgree) {
         self.knowBtn.backgroundColor = kMAIN00B5;

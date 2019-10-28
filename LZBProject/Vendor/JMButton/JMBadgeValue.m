@@ -41,6 +41,9 @@
         self.badgeL.textAlignment = NSTextAlignmentCenter;
         self.badgeL.layer.cornerRadius = 8.f;
         self.badgeL.layer.masksToBounds = YES;
+        self.badgeL.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.badgeL.layer.borderWidth = 1;
+
         [self addSubview:self.badgeL];
     }
     return self;

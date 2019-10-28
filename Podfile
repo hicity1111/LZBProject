@@ -8,7 +8,6 @@ target 'LZBProject' do
   pod 'AFNetworking'
   pod 'IQKeyboardManager'
   pod 'SDWebImage'
-  pod 'JMButton'
   pod 'MJRefresh'
   pod 'Masonry'
   pod 'SDAutoLayout'

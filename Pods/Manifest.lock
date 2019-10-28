@@ -16,7 +16,6 @@ PODS:
     - AFNetworking/NSURLSession
   - FDFullscreenPopGesture (1.1)
   - IQKeyboardManager (6.5.0)
-  - JMButton (0.6)
   - JXCategoryView (1.5.2)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
@@ -32,7 +31,6 @@ DEPENDENCIES:
   - AFNetworking
   - FDFullscreenPopGesture
   - IQKeyboardManager
-  - JMButton
   - JXCategoryView
   - Masonry
   - MBProgressHUD
@@ -47,7 +45,6 @@ SPEC REPOS:
     - AFNetworking
     - FDFullscreenPopGesture
     - IQKeyboardManager
-    - JMButton
     - JXCategoryView
     - Masonry
     - MBProgressHUD
@@ -61,7 +58,6 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   IQKeyboardManager: 700e5155d6a292383b54e8678aec769e14fc78fc
-  JMButton: 04a4e98d096f9f504df2908fade68699b822dd5e
   JXCategoryView: b284d35a7a8772eada05dd78642233e1eb763ea8
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
@@ -71,6 +67,6 @@ SPEC CHECKSUMS:
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 99567a21106f27909db3c90337aa7be56a4b9443
+PODFILE CHECKSUM: 264fdf296618b96cc0491261338b7ebe710ae848
 
 COCOAPODS: 1.8.3

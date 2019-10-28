@@ -9,18 +9,21 @@
 #import "HomeViewController.h"
 #import "HomeDetailViewController.h"
 #import "JXCategoryTitleVerticalZoomView.h"
+#import "HomeHeaderView.h"
 
 @interface HomeViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) JXCategoryTitleVerticalZoomView *categoryView;
 
-@property (nonatomic, strong) JXCategoryListContainerView *listContainerView;
+@property (nonatomic, strong) JXCategoryListContainerView     *listContainerView;
 
 @property (nonatomic, assign) CGFloat minCategoryViewHeight;
 
 @property (nonatomic, assign) CGFloat maxCategoryViewHeight;
 
 @property (nonatomic, strong) id interactivePopGestureRecognizerDelegate;
+
+@property (nonatomic, strong) HomeHeaderView *homeHeaderView;
 
 @end
 
@@ -38,17 +41,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIView *view = [[UIView alloc] init];
-    view.backgroundColor = kMAIN31AC;
-    [self.view addSubview:view];
+    _homeHeaderView = [[HomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kTopBarHeight)];
+    [self.view addSubview:_homeHeaderView];
     
-    [view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.view).offset(0);
-        make.top.mas_equalTo(self.view);
-        make.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(kTopBarHeight);
-        
-    }];
+//    [_homeHeaderView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(self.view).offset(0);
+//        make.top.mas_equalTo(self.view);
+//        make.right.mas_equalTo(self.view);
+//        make.height.mas_equalTo(kTopBarHeight);
+//        
+//    }];
     
     
 }

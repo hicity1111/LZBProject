@@ -113,6 +113,7 @@ static LZB_TabBarItem *lastItem;
 // 文字重叠，隐藏系统的tabbaritem
 - (void)hiddenUITabBarButton{
     if ([self.superview isKindOfClass:[UITabBar class]]) {
+        
         UITabBar *tabbar = (UITabBar *)self.superview;
         dispatch_queue_t queue  = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), queue, ^{

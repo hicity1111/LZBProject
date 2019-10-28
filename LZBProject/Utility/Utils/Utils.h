@@ -17,11 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  保存当前用户Token
  */
-+(void)saveUserToken:(NSString*)token;
++(void)saveUserToken:(NSString *)token;
 /**
  *  加载前用户Token
  */
-+(NSString*)loadUserToken;
++ (NSString *)loadUserToken;
 @end
 
 NS_ASSUME_NONNULL_END

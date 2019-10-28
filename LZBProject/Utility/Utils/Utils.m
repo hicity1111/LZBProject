@@ -11,7 +11,7 @@
 
 @implementation Utils
 
-+ (instancetype)sharedInstance{
++ (instancetype)sharedInstance {
     static Utils *instance;
     static dispatch_once_t oneToken;
     dispatch_once(&oneToken,^{
@@ -21,21 +21,19 @@
 }
 
 
-+ (void)saveUserToken:(NSString *)token{
++ (void)saveUserToken:(NSString *)token {
     if (token) {
-        [[NSUserDefaults standardUserDefaults] setObject:token forKey:KACCESS_TOKEN];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        SETUSER_OBJ(KACCESS_TOKEN, token);
+        [SDUserDefaults synchronize];
     }
 
 }
 
-+(NSString*)loadUserToken
-{
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:KACCESS_TOKEN]) {
-        return [[NSUserDefaults standardUserDefaults] objectForKey:KACCESS_TOKEN];
-    }else{
-        return nil;
++ (NSString *)loadUserToken {
+    if (GETUSER_OBJ(KACCESS_TOKEN)) {
+        return GETUSER_OBJ(KACCESS_TOKEN);
     }
+    return nil;
 }
 
 

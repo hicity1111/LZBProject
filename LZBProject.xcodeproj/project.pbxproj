@@ -181,6 +181,7 @@
 		8B6B6A0A2362D8C2008B7585 /* login_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_bg@2x.png"; sourceTree = "<group>"; };
 		8B6B6A0F2362D905008B7585 /* LYZTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYZTextField.m; sourceTree = "<group>"; };
 		8B6B6A102362D905008B7585 /* LYZTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYZTextField.h; sourceTree = "<group>"; };
+		8B6B6A382362FE9B008B7585 /* LZBNetworkURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBNetworkURL.h; sourceTree = "<group>"; };
 		8BCD1225236192F600BCCB08 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9AE17617E18522B97D9845A4 /* Pods-LZBProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProjectTests.release.xcconfig"; path = "Target Support Files/Pods-LZBProjectTests/Pods-LZBProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		A33E99BEAFCC1F68B0B814EB /* Pods-LZBProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-LZBProjectTests/Pods-LZBProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -445,6 +446,7 @@
 		0B820164234DCF1900D983AE /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				8B6B6A372362FE62008B7585 /* LZBNetwork */,
 				0B0F6BB523601FD500537128 /* Utils */,
 				0B6192EA235D58D300BE3BBA /* Core */,
 				0B92FB512350165600D813B3 /* LZBMacro */,
@@ -471,6 +473,7 @@
 		0B820167234EC1C900D983AE /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				8B8CFE0A23667D8100AC4DAC /* UIImage */,
 				8B6B6A0E2362D905008B7585 /* TextField */,
 				0B0F6BDE2362C3CD00537128 /* GradientHelper(View渐变) */,
 				0B0F6BBA236020C900537128 /* NSString */,
@@ -503,8 +506,6 @@
 				0B098C642351A077000934EB /* LZBNetManager.m */,
 				0B098C662351B942000934EB /* LZBNetManagerCache.h */,
 				0B098C672351B942000934EB /* LZBNetManagerCache.m */,
-				0B098C692351BFE2000934EB /* UIImage+CompressImage.h */,
-				0B098C6A2351BFE2000934EB /* UIImage+CompressImage.m */,
 			);
 			path = LZBNetworking;
 			sourceTree = "<group>";
@@ -654,6 +655,23 @@
 				8B6B6A102362D905008B7585 /* LYZTextField.h */,
 			);
 			path = TextField;
+			sourceTree = "<group>";
+		};
+		8B6B6A372362FE62008B7585 /* LZBNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				8B6B6A382362FE9B008B7585 /* LZBNetworkURL.h */,
+			);
+			path = LZBNetwork;
+			sourceTree = "<group>";
+		};
+		8B8CFE0A23667D8100AC4DAC /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				0B098C692351BFE2000934EB /* UIImage+CompressImage.h */,
+				0B098C6A2351BFE2000934EB /* UIImage+CompressImage.m */,
+			);
+			path = UIImage;
 			sourceTree = "<group>";
 		};
 		8BCD12272361999300BCCB08 /* StoryBoard */ = {

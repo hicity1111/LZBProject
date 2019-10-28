@@ -9,19 +9,30 @@
 #import "LoginViewController.h"
 #import "UserNoticeView.h"
 #import "LYZTextField.h"
+#import "LZBNetworkURL.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
+{
+    NSString *_username;
+    NSString *_password;
+}
 
+/// 用户名 输入框
 @property (nonatomic, strong) LYZTextField *userTF;
 
+/// 密码 输入框
 @property (nonatomic, strong) LYZTextField *pwdTF;
 
+/// 显示/隐藏 密码
 @property (nonatomic, strong) UIButton *showPwdBtn;
 
+/// 记住密码
 @property (nonatomic, strong) UIButton *savePwdBtn;
 
+/// 忘记密码
 @property (nonatomic, strong) UIButton *forgetPwdBtn;
 
+/// 登录
 @property (nonatomic, strong) UIButton *loginBtn;
 
 @property (nonatomic, strong) UIButton *seeUserNotice;
@@ -49,12 +60,10 @@
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
     
 }
 
@@ -91,6 +100,7 @@
     // 开始编辑前清空输入框
 //    userTF.clearsOnBeginEditing = YES;
     userTF.tintColor = kMAIN3333;
+    userTF.delegate = self;
     self.userTF = userTF;
     
     LYZTextField *pwdTF = [[LYZTextField alloc] init];
@@ -102,6 +112,7 @@
     pwdTF.autocorrectionType = UITextAutocorrectionTypeNo;
     pwdTF.secureTextEntry = YES;
     pwdTF.tintColor = kMAIN3333;
+    pwdTF.delegate = self;
     self.pwdTF = pwdTF;
     
     /// 记住密码
@@ -288,23 +299,29 @@
 }
 
 - (void)loginButtonClick:(UIButton *)btn {
-    
+    LZBDataEntity *entity = [[LZBDataEntity alloc] init];
+    entity.urlString = LoginUrl_full;
+//    entity.parameters = @{@"userName": self.userTF.text, @"password": self.pwdTF.text, @"appChannelId": @"studentApp"};
+    entity.parameters = @{@"userName": @"206", @"password": @"1234567a", @"appChannelId": @"studentApp"};
+    [LZBNetManager lzb_request_postWithEntity:entity successBlock:^(id _Nonnull reponse) {
+        XLDLog(@"------------------ successBlock");
+        XLDLog(@"%@", reponse);
+    } failureBlock:^(NSError * _Nonnull error) {
+        XLDLog(@"------------------ failureBlock");
+        XLDLog(@"%@", error);
+    } progressBlock:^(int64_t bytesProgress, int64_t totalBytesProgress) {
+        
+    }];
 }
 
 - (void)seeUserNoticeButtonClick:(UIButton *)btn {
     [self showUserNoticeView];
 }
 
-#pragma mark - Getters and Setters
+#pragma mark - UITextfield Delegate
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    return YES;
 }
-*/
 
 @end

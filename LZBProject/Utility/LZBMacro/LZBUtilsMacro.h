@@ -14,16 +14,16 @@
 
 #define SDUserDefaults [NSUserDefaults standardUserDefaults]
 
-#define GETUSER_VALUE(key)              [SDUserDefaults valueForKey:key];
-#define GETUSER_OBJ(key)                [SDUserDefaults objectForKey:key];
-#define GETUSER_BOOL(key)               [SDUserDefaults boolForKey:key];
-#define GETUSER_INT(key)                [SDUserDefaults integerForKey:key];
-#define GETUSER_DOUBLE(key)             [SDUserDefaults doubleForKey:key];
-#define GETUSER_STRING(key)             [SDUserDefaults stringForKey:key];
-#define GETUSER_ARRAY(key)              [SDUserDefaults arrayForKey:key];
-#define GETUSER_DICT(key)               [SDUserDefaults dictionaryForKey:key];
-#define GETUSER_DATA(key)               [SDUserDefaults dataForKey:key];
-#define GETUSER_URL(key)                [SDUserDefaults URLForKey:key];
+#define GETUSER_VALUE(key)              [SDUserDefaults valueForKey:key]
+#define GETUSER_OBJ(key)                [SDUserDefaults objectForKey:key]
+#define GETUSER_BOOL(key)               [SDUserDefaults boolForKey:key]
+#define GETUSER_INT(key)                [SDUserDefaults integerForKey:key]
+#define GETUSER_DOUBLE(key)             [SDUserDefaults doubleForKey:key]
+#define GETUSER_STRING(key)             [SDUserDefaults stringForKey:key]
+#define GETUSER_ARRAY(key)              [SDUserDefaults arrayForKey:key]
+#define GETUSER_DICT(key)               [SDUserDefaults dictionaryForKey:key]
+#define GETUSER_DATA(key)               [SDUserDefaults dataForKey:key]
+#define GETUSER_URL(key)                [SDUserDefaults URLForKey:key]
 
 
 #define SETUSER_VALUE(key, value)     [SDUserDefaults setValue:value forKey:key]

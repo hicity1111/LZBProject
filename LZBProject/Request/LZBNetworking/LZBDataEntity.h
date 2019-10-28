@@ -37,12 +37,13 @@ NS_ASSUME_NONNULL_BEGIN
 /**上传图片数组*/
 @property (nonatomic, copy) NSArray *imageArray;
 /**图片名称*/
-@property (nonatomic, copy) NSString *fileNames;
+@property (nonatomic, copy) NSArray <NSString *> *fileNames;
 /**图片类型 png、jpg、git*/
 @property (nonatomic, copy) NSString *imageType;
 /**图片压缩比例（0~1.0）*/
 @property (nonatomic, assign) CGFloat imageScale;
 
 @end
+
 NS_ASSUME_NONNULL_END
 

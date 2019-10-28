@@ -108,56 +108,56 @@ typedef NSURLSessionTask LZBUrlSessionTask;
 /// @param successBlock 请求成功回调
 /// @param failureBlock 请求失败回调
 /// @param progressBlock 进度回调
-+ (LZBUrlSessionTask *)lzb_request_GetWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
++ (LZBUrlSessionTask *)lzb_request_getWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
 
 /// 网络请求的实力方法Get
 /// @param entity 请求信息载体
 /// @param successBlock 请求成功回调
 /// @param failureBlock 请求失败回调
 /// @param progressBlock 进度回调
-+ (LZBUrlSessionTask *)lzb_request_PostWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
++ (LZBUrlSessionTask *)lzb_request_postWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
 
 /// 网络请求的实力方法PUT
 /// @param entity 请求信息载体
 /// @param successBlock 请求成功回调
 /// @param failureBlock 请求失败回调
 /// @param progressBlock 进度回调
-+ (LZBUrlSessionTask *)lzb_request_PUTWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
++ (LZBUrlSessionTask *)lzb_request_putWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
 
 /// 网络请求的实力方法delete
 /// @param entity 请求信息载体
 /// @param successBlock 请求成功回调
 /// @param failureBlock 请求失败回调
 /// @param progressBlock 进度回调
-+ (LZBUrlSessionTask *)lzb_request_DELETEWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
++ (LZBUrlSessionTask *)lzb_request_deleteWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
 
 /// 上传多图
 /// @param entity 请求信息载体
 /// @param successBlock 请求成功回调
 /// @param failureBlock 请求失败回调
 /// @param progressBlock 进度回调
-+ (LZBUrlSessionTask *)lzb_request_uploadImageWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
++ (LZBUrlSessionTask *)lzb_uploadImageWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
 
 /// 视频上传
 /// @param entity 请求信息载体
 /// @param successBlock 请求成功回调
 /// @param failureBlock 请求失败回调
 /// @param progressBlock 进度回调
-+ (LZBUrlSessionTask *)lzb_request_uploadVideoWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
++ (void)lzb_uploadVideoWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
 
 /// 文件下载
 /// @param entity 请求信息载体
 /// @param successBlock 请求成功回调
 /// @param failureBlock 请求失败回调
 /// @param progressBlock 进度回调
-+ (LZBUrlSessionTask *)lzb_request_downLoadFileWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
++ (LZBUrlSessionTask *)lzb_downLoadFileWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
 
 /// 文件上传
 /// @param entity 请求信息载体
 /// @param successBlock 请求成功回调
 /// @param failureBlock 请求失败回调
 /// @param progressBlock 进度回调
-+ (LZBUrlSessionTask *)lzb_request_uploadFileWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
++ (LZBUrlSessionTask *)lzb_uploadFileWithEntity:(LZBDataEntity *)entity successBlock:(LZBResponseSuccessBlock)successBlock failureBlock:(LZBResponseFailBlock)failureBlock progressBlock:(LZBDownloadProgressBlock)progressBlock;
 
 #pragma mark - 网络状态监听
 /**！开启实时网络状态监听，通过Block回调实时获取（次方法可以多次调用）*/
@@ -176,13 +176,14 @@ typedef NSURLSessionTask LZBUrlSessionTask;
 #pragma mark - 取消Http请求
 
 /**！取消所有的Http请求*/
-+ (void)lzb_cancelALLRequest;
++ (void)lzb_cancelAllRequest;
 
 /**！取消指定 URL 的 Http 请求*/
 + (void)lzb_cancelRequestWithURL:(NSString *)URL;
 
 /**！清空缓存：此方法可能会阻止调用线程，直到文件删除完成。*/
 - (void)lzb_clearAllHttpCache;
+
 @end
 
 NS_ASSUME_NONNULL_END

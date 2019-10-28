@@ -141,13 +141,13 @@ static NSMutableArray *tasks;
  *  @param failureBlock 请求失败的回调
  *  @param progressBlock 进度
  */
-+ (LZBUrlSessionTask *)LZB_requestWithType:(LZBHttpRequestType)type
-                             isNeedCache:(BOOL)isNeedCache
-                               urlString:(NSString *)urlString
-                              parameters:(id)parameters
-                            successBlock:(LZBResponseSuccessBlock)successBlock
-                            failureBlock:(LZBResponseFailBlock)failureBlock
-                           progressBlock:(LZBDownloadProgressBlock)progressBlock
++ (LZBUrlSessionTask *)lzb_requestWithType:(LZBHttpRequestType)type
+                               isNeedCache:(BOOL)isNeedCache
+                                 urlString:(NSString *)urlString
+                                parameters:(id)parameters
+                              successBlock:(LZBResponseSuccessBlock)successBlock
+                              failureBlock:(LZBResponseFailBlock)failureBlock
+                             progressBlock:(LZBDownloadProgressBlock)progressBlock
 {
     if (urlString == nil)
     {
@@ -345,16 +345,16 @@ static NSMutableArray *tasks;
  @param progressBlock 进度回调
  @return LZBUrlSessionTask
  */
-+ (LZBUrlSessionTask *)LZB_request_GETWithEntity:(LZBDataEntity *)entity
-                                  successBlock:(LZBResponseSuccessBlock)successBlock
-                                  failureBlock:(LZBResponseFailBlock)failureBlock
-                                 progressBlock:(LZBDownloadProgressBlock)progressBlock
++ (LZBUrlSessionTask *)lzb_request_getWithEntity:(LZBDataEntity *)entity
+                                    successBlock:(LZBResponseSuccessBlock)successBlock
+                                    failureBlock:(LZBResponseFailBlock)failureBlock
+                                   progressBlock:(LZBDownloadProgressBlock)progressBlock
 {
     if (!entity || ![entity isKindOfClass:[LZBDataEntity class]]) {
         return nil;
     }
-    return [self LZB_requestWithType:LZBHttpRequestTypeGet isNeedCache:entity.isNeedCache urlString:entity.urlString
-                         parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
+    return [self lzb_requestWithType:LZBHttpRequestTypeGet isNeedCache:entity.isNeedCache urlString:entity.urlString
+                          parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
 }
 
 /**
@@ -366,7 +366,7 @@ static NSMutableArray *tasks;
  @param progressBlock 进度
  @return LZBUrlSessionTask
  */
-+ (LZBUrlSessionTask *)LZB_request_POSTWithEntity:(LZBDataEntity *)entity
++ (LZBUrlSessionTask *)lzb_request_postWithEntity:(LZBDataEntity *)entity
                                    successBlock:(LZBResponseSuccessBlock)successBlock
                                    failureBlock:(LZBResponseFailBlock)failureBlock
                                   progressBlock:(LZBDownloadProgressBlock)progressBlock
@@ -374,7 +374,7 @@ static NSMutableArray *tasks;
     if (!entity || ![entity isKindOfClass:[LZBDataEntity class]]) {
         return nil;
     }
-    return [self LZB_requestWithType:LZBHttpRequestTypePost isNeedCache:entity.isNeedCache urlString:entity.urlString parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
+    return [self lzb_requestWithType:LZBHttpRequestTypePost isNeedCache:entity.isNeedCache urlString:entity.urlString parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
 }
 
 /**
@@ -386,7 +386,7 @@ static NSMutableArray *tasks;
  @param progressBlock 进度
  @return LZBUrlSessionTask
  */
-+ (LZBUrlSessionTask *)LZB_request_PUTWithEntity:(LZBDataEntity *)entity
++ (LZBUrlSessionTask *)lzb_request_putWithEntity:(LZBDataEntity *)entity
                                   successBlock:(LZBResponseSuccessBlock)successBlock
                                   failureBlock:(LZBResponseFailBlock)failureBlock
                                  progressBlock:(LZBDownloadProgressBlock)progressBlock
@@ -394,7 +394,7 @@ static NSMutableArray *tasks;
     if (!entity || ![entity isKindOfClass:[LZBDataEntity class]]) {
         return nil;
     }
-    return [self LZB_requestWithType:LZBHttpRequestTypePut isNeedCache:NO urlString:entity.urlString parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
+    return [self lzb_requestWithType:LZBHttpRequestTypePut isNeedCache:NO urlString:entity.urlString parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
 }
 
 /**
@@ -406,7 +406,7 @@ static NSMutableArray *tasks;
  @param progressBlock 进度
  @return LZBUrlSessionTask
  */
-+ (LZBUrlSessionTask *)LZB_request_DELETEWithEntity:(LZBDataEntity *)entity
++ (LZBUrlSessionTask *)lzb_request_deleteWithEntity:(LZBDataEntity *)entity
                                      successBlock:(LZBResponseSuccessBlock)successBlock
                                      failureBlock:(LZBResponseFailBlock)failureBlock
                                     progressBlock:(LZBDownloadProgressBlock)progressBlock
@@ -414,7 +414,7 @@ static NSMutableArray *tasks;
     if (!entity || ![entity isKindOfClass:[LZBDataEntity class]]) {
         return nil;
     }
-    return [self LZB_requestWithType:LZBHttpRequestTypeDelete isNeedCache:NO urlString:entity.urlString parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
+    return [self lzb_requestWithType:LZBHttpRequestTypeDelete isNeedCache:NO urlString:entity.urlString parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
 }
 
 /**
@@ -426,10 +426,10 @@ static NSMutableArray *tasks;
  @param progressBlock 上传进度
  @return LZBUrlSessionTask
  */
-+ (LZBUrlSessionTask *)LZB_uploadImageWithEntity:(LZBDataEntity *)entity
-                                  successBlock:(LZBResponseSuccessBlock)successBlock
-                                   failurBlock:(LZBResponseFailBlock)failureBlock
-                                 progressBlock:(LZBUploadProgressBlock)progressBlock
++ (LZBUrlSessionTask *)lzb_uploadImageWithEntity:(LZBDataEntity *)entity
+                                    successBlock:(LZBResponseSuccessBlock)successBlock
+                                    failureBlock:(LZBResponseFailBlock)failureBlock
+                                   progressBlock:(LZBUploadProgressBlock)progressBlock
 {
     if (!entity || entity.urlString == nil || ![entity isKindOfClass:[LZBImageDataEntity class]]) {
         return nil;
@@ -450,7 +450,7 @@ static NSMutableArray *tasks;
     LZBUrlSessionTask *sessionTask = nil;
     sessionTask = [LZBNetManagerShare.sessionManager POST:URLString parameters:imageEntity.parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         /*! 出于性能考虑,将上传图片进行压缩 */
-        [imageEntity.imageArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [imageEntity.imageArray enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
             /*! image的压缩方法 */
             UIImage *resizedImage;
@@ -463,12 +463,12 @@ static NSMutableArray *tasks;
                     {
                         NSLog(@" width:%f height:%f",result.size.width,result.size.height);
                     }
-                    [self LZB_uploadImageWithFormData:formData resizedImage:result imageType:imageEntity.imageType imageScale:imageEntity.imageScale fileNames:imageEntity.fileNames index:idx];
+                    [self lzb_uploadImageWithFormData:formData resizedImage:result imageType:imageEntity.imageType imageScale:imageEntity.imageScale fileNames:imageEntity.fileNames index:idx];
                 }];
             } else {
                 /*! 此处是使用其他第三方相册，可以自由定制压缩方法 */
                 resizedImage = obj;
-                [self LZB_uploadImageWithFormData:formData resizedImage:resizedImage imageType:imageEntity.imageType imageScale:imageEntity.imageScale fileNames:imageEntity.fileNames index:idx];
+                [self lzb_uploadImageWithFormData:formData resizedImage:resizedImage imageType:imageEntity.imageType imageScale:imageEntity.imageScale fileNames:imageEntity.fileNames index:idx];
             }
         }];
         
@@ -516,10 +516,10 @@ static NSMutableArray *tasks;
  @param failureBlock 失败的回调
  @param progressBlock 上传的进度
  */
-+ (void)LZB_uploadVideoWithEntity:(LZBDataEntity *)entity
-                    successBlock:(LZBResponseSuccessBlock)successBlock
-                    failureBlock:(LZBResponseFailBlock)failureBlock
-                   progressBlock:(LZBUploadProgressBlock)progressBlock
++ (void)lzb_uploadVideoWithEntity:(LZBDataEntity *)entity
+                                    successBlock:(LZBResponseSuccessBlock)successBlock
+                                    failureBlock:(LZBResponseFailBlock)failureBlock
+                                   progressBlock:(LZBUploadProgressBlock)progressBlock
 {
     if (!entity || entity.urlString == nil || ![entity isKindOfClass:[LZBFileDataEntity class]]) {
         return;
@@ -605,10 +605,10 @@ static NSMutableArray *tasks;
  @return LZBUrlSessionTask
  */
 
-+ (LZBUrlSessionTask *)LZB_downLoadFileWithEntity:(LZBDataEntity *)entity
-                                   successBlock:(LZBResponseSuccessBlock)successBlock
-                                   failureBlock:(LZBResponseFailBlock)failureBlock
-                                  progressBlock:(LZBDownloadProgressBlock)progressBlock
++ (LZBUrlSessionTask *)lzb_downLoadFileWithEntity:(LZBDataEntity *)entity
+                                     successBlock:(LZBResponseSuccessBlock)successBlock
+                                     failureBlock:(LZBResponseFailBlock)failureBlock
+                                    progressBlock:(LZBDownloadProgressBlock)progressBlock
 {
     if (!entity || entity.urlString == nil || ![entity isKindOfClass:[LZBFileDataEntity class]]) {
         return nil;
@@ -699,10 +699,10 @@ static NSMutableArray *tasks;
  @return LZBUrlSessionTask
  */
 
-+ (LZBUrlSessionTask *)LZB_uploadFileWithWithEntity:(LZBDataEntity *)entity
-                                     successBlock:(LZBResponseSuccessBlock)successBlock
-                                     failureBlock:(LZBResponseFailBlock)failureBlock
-                                    progressBlock:(LZBUploadProgressBlock)progressBlock
++ (LZBUrlSessionTask *)lzb_uploadFileWithEntity:(LZBDataEntity *)entity
+                                   successBlock:(LZBResponseSuccessBlock)successBlock
+                                   failureBlock:(LZBResponseFailBlock)failureBlock
+                                  progressBlock:(LZBUploadProgressBlock)progressBlock
 {
     if (!entity || entity.urlString == nil || ![entity isKindOfClass:[LZBFileDataEntity class]]) {
         return nil;
@@ -804,8 +804,7 @@ static NSMutableArray *tasks;
 /*!
  *  取消所有 Http 请求
  */
-+ (void)LZB_cancelAllRequest
-{
++ (void)lzb_cancelAllRequest {
     // 锁操作
     @synchronized(self)
     {
@@ -819,7 +818,7 @@ static NSMutableArray *tasks;
 /*!
  *  取消指定 URL 的 Http 请求
  */
-+ (void)LZB_cancelRequestWithURL:(NSString *)URL
++ (void)lzb_cancelRequestWithURL:(NSString *)URL
 {
     if (!URL)
     {
@@ -956,14 +955,14 @@ static NSMutableArray *tasks;
         NSString *keyString = keyArray[i];
         NSString *valueString = httpHeaderFieldDictionary[keyString];
         
-        [LZBNetManager LZB_setValue:valueString forHTTPHeaderKey:keyString];
+        [LZBNetManager lzb_setValue:valueString forHTTPHeaderKey:keyString];
     }
 }
 
 /**
  *  自定义请求头
  */
-+ (void)LZB_setValue:(NSString *)value forHTTPHeaderKey:(NSString *)HTTPHeaderKey
++ (void)lzb_setValue:(NSString *)value forHTTPHeaderKey:(NSString *)HTTPHeaderKey
 {
     [LZBNetManagerShare.sessionManager.requestSerializer setValue:value forHTTPHeaderField:HTTPHeaderKey];
 }
@@ -972,12 +971,12 @@ static NSMutableArray *tasks;
 /**
  删除所有请求头
  */
-+ (void)LZB_clearAuthorizationHeader
++ (void)lzb_clearAuthorizationHeader
 {
     [LZBNetManagerShare.sessionManager.requestSerializer clearAuthorizationHeader];
 }
 
-+ (void)LZB_uploadImageWithFormData:(id<AFMultipartFormData>  _Nonnull )formData
++ (void)lzb_uploadImageWithFormData:(id<AFMultipartFormData>  _Nonnull )formData
                       resizedImage:(UIImage *)resizedImage
                          imageType:(NSString *)imageType
                         imageScale:(CGFloat)imageScale
@@ -1014,7 +1013,7 @@ static NSMutableArray *tasks;
 /**
  清空缓存：此方法可能会阻止调用线程，直到文件删除完成。
  */
-- (void)LZB_clearAllHttpCache
+- (void)lzb_clearAllHttpCache
 {
     [LZBNetManagerCache lzb_clearAllHttpCache];
 }

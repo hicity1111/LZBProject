@@ -68,7 +68,7 @@
         model.selectImageName = weakSelf.selectedImageArray[idx];
         model.itemBadgeStyle = LZB_TabBarItemBadgeStyleTopRight;
         model.interactionEffectStyle = LZB_TabBarInteractionEffectStyleShake;
-        model.badge = [NSString stringWithFormat:@"%d",arc4random()%100];
+//        model.badge = [NSString stringWithFormat:@"%d",arc4random()%100];
         model.selectColor = kMAIN9966;
         model.normalColor = KMAINFFFF;
         model.pictureWordsMargin = 0;
@@ -104,6 +104,7 @@
 - (void)LZB_TabBar:(LZB_TabBar *)tabbar selectIndex:(NSInteger)index{
     // 通知 切换视图控制器
     [self setSelectedIndex:index];
+    [tabbar setBadge:[NSString stringWithFormat:@"%d",arc4random()%100] index:1];
     // 自定义的AE_TabBar回调点击事件给TabBarVC，TabBarVC用父类的TabBarController函数完成切换
 }
 - (void)setSelectedIndex:(NSUInteger)selectedIndex{

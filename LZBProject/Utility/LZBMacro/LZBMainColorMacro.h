@@ -52,6 +52,8 @@
 
 #define KMAIN7777   [UIColor colorWithHex:@"#777777"]
 
+#define KMAIN80B4   [UIColor colorWithHex:@"#80B491"]
+
 
 #define WHITECOLOR  UIColor.whiteColor
 #define BLACKCOLOR  UIColor.blackColor

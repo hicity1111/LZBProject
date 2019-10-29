@@ -43,6 +43,7 @@
 		0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */; };
 		0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17674123584758008979C5 /* LZBCalendarMonth.m */; };
 		0B4945D52357258500F19EE2 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4945D32357258500F19EE2 /* TriangleView.m */; };
+		0B5E064123680BE4008F906D /* LZBBaseViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E064023680BE4008F906D /* LZBBaseViewController+NavigationBar.m */; };
 		0B5E6D4823545DC7008D9A76 /* LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E6D4723545DC7008D9A76 /* LZBCalendar.m */; };
 		0B5E6D4C2354728A008D9A76 /* UIColor+lzbColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E6D4B2354728A008D9A76 /* UIColor+lzbColor.m */; };
 		0B6192E6235D570B00BE3BBA /* LZBBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6192E5235D570B00BE3BBA /* LZBBaseNavigationController.m */; };
@@ -183,6 +184,8 @@
 		0B17674123584758008979C5 /* LZBCalendarMonth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBCalendarMonth.m; sourceTree = "<group>"; };
 		0B4945D32357258500F19EE2 /* TriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriangleView.m; sourceTree = "<group>"; };
 		0B4945D42357258500F19EE2 /* TriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleView.h; sourceTree = "<group>"; };
+		0B5E063F23680BE4008F906D /* LZBBaseViewController+NavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LZBBaseViewController+NavigationBar.h"; sourceTree = "<group>"; };
+		0B5E064023680BE4008F906D /* LZBBaseViewController+NavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LZBBaseViewController+NavigationBar.m"; sourceTree = "<group>"; };
 		0B5E6D4623545DC7008D9A76 /* LZBCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalendar.h; sourceTree = "<group>"; };
 		0B5E6D4723545DC7008D9A76 /* LZBCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBCalendar.m; sourceTree = "<group>"; };
 		0B5E6D4A2354728A008D9A76 /* UIColor+lzbColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+lzbColor.h"; sourceTree = "<group>"; };
@@ -490,6 +493,8 @@
 				0B0F6BD42361A90400537128 /* LZBTabBar */,
 				0BBE47762359B0FD00D30C4B /* LZBBaseViewController.h */,
 				0BBE47772359B0FD00D30C4B /* LZBBaseViewController.m */,
+				0B5E063F23680BE4008F906D /* LZBBaseViewController+NavigationBar.h */,
+				0B5E064023680BE4008F906D /* LZBBaseViewController+NavigationBar.m */,
 				0B6192E4235D570B00BE3BBA /* LZBBaseNavigationController.h */,
 				0B6192E5235D570B00BE3BBA /* LZBBaseNavigationController.m */,
 				0B6192E7235D573600BE3BBA /* LZBBaseTabBarController.h */,
@@ -1220,6 +1225,7 @@
 				0B0F6BAE23601E3A00537128 /* UIViewController+HUD.m in Sources */,
 				0B0F6BE12362C3F500537128 /* WHGradientHelper.m in Sources */,
 				0B0F6C1B2366C10900537128 /* JMNumberButtonConfig.m in Sources */,
+				0B5E064123680BE4008F906D /* LZBBaseViewController+NavigationBar.m in Sources */,
 				0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */,
 				0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */,
 				0B6192ED235D58E600BE3BBA /* UINavigationBar+handle.m in Sources */,

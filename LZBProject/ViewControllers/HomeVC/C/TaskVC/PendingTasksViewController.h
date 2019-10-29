@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PendingTasksViewController : LZBBaseViewController
+@interface PendingTasksViewController : UITableViewController
 
 @property (nonatomic, strong) LZBBaseNavigationController *naviController;
 

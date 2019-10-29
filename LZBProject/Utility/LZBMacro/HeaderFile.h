@@ -31,5 +31,6 @@
 #import "UIFont+LZBExtension.h"
 #import "UIViewController+HUD.h"
 #import "LZBNetManager_OC.h"
+#import "LZBBaseViewController+NavigationBar.h"
 
 #endif /* HeaderFile_h */

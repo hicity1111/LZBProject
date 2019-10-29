@@ -14,6 +14,8 @@
 #import "HistoricalTaskViewController.h"
 #import "MutualLearningViewController.h"
 
+#define CategoryTitles  @[@"待处理任务",@"互评学习", @"历史任务"]
+
 @interface HomeViewController ()<JXCategoryViewDelegate,JXCategoryListContainerViewDelegate,UIGestureRecognizerDelegate,HomeHeaderDelegate>
 
 @property (nonatomic, strong) JXCategoryTitleVerticalZoomView *categoryView;
@@ -49,7 +51,7 @@
 #pragma mark - 任务view
 - (void)configCategoryView{
     
-    self.minCategoryViewHeight = 30;
+    self.minCategoryViewHeight = 0;
     self.maxCategoryViewHeight = 55;
     
     self.listContainerView = [[JXCategoryListContainerView alloc] initWithType:JXCategoryListContainerType_ScrollView delegate:self];
@@ -60,28 +62,27 @@
     self.categoryView.frame = CGRectMake(0, self.homeHeaderView.bottom, kScreenWidth, self.maxCategoryViewHeight);
     self.categoryView.listContainer = self.listContainerView;
     self.categoryView.averageCellSpacingEnabled = NO;
-    self.categoryView.titles = @[@"待处理任务", @"历史任务"];
+    self.categoryView.titles = @[@"待处理任务",@"互评学习", @"历史任务"];
     self.categoryView.delegate = self;
     self.categoryView.titleLabelAnchorPointStyle = JXCategoryTitleLabelAnchorPointStyleBottom;
     self.categoryView.titleLabelVerticalOffset = -5;
-//    self.categoryView.titleColor =
+    self.categoryView.titleColor = kMAIN9999;
+    self.categoryView.titleSelectedColor = kMAIN3333;
+    self.categoryView.titleFont = KMAINFONT14;
+    self.categoryView.titleSelectedFont = KMAINFONT14;
     self.categoryView.titleColorGradientEnabled = YES;
+    self.categoryView.separatorLineShowEnabled = YES;
+    self.categoryView.separatorLineColor = KMAIN80B4;
+    self.categoryView.separatorLineSize  = CGSizeMake(2, 14);
     self.categoryView.contentEdgeInsetLeft = 15;    //设置内容左边距
     //推荐配置方案
-    self.categoryView.maxVerticalCellSpacing = 20;
-    self.categoryView.minVerticalCellSpacing = 10;
-    self.categoryView.maxVerticalFontScale = 2;
-    self.categoryView.minVerticalFontScale = 1.3;
-    //你可以试试下面的配置方案
-    /*
-    self.categoryView.maxVerticalCellSpacing = 20;
-    self.categoryView.minVerticalCellSpacing = 20;
-    self.categoryView.maxVerticalFontScale = 2;
-    self.categoryView.minVerticalFontScale = 1;
-     */
+    self.categoryView.maxVerticalCellSpacing = 10;
+    self.categoryView.minVerticalCellSpacing = 5;
+    self.categoryView.maxVerticalFontScale = 1.6;
+    self.categoryView.minVerticalFontScale = 1.0;
+
     [self.view addSubview:self.categoryView];
 
-    
 }
 #pragma mark - 布局导航标题栏
 - (void)configHeaderView{
@@ -104,6 +105,7 @@
         //用户交互引起的滚动才处理
         return;
     }
+
     //用于垂直方向滚动时，视图的frame调整
     if ((self.categoryView.bounds.size.height < self.maxCategoryViewHeight) && scrollView.contentOffset.y < 0) {
         //当前属于缩小状态且往下滑动
@@ -113,9 +115,11 @@
         categoryViewFrame.size.height = MIN(self.maxCategoryViewHeight, categoryViewFrame.size.height);
         self.categoryView.frame = categoryViewFrame;
 
-        self.listContainerView.frame = CGRectMake(0, CGRectGetMaxY(self.categoryView.frame), self.view.bounds.size.width, self.view.bounds.size.height - CGRectGetMaxY(self.categoryView.frame));
+        self.listContainerView.frame = CGRectMake(0, CGRectGetMaxY(self.categoryView.frame) + kTopBarHeight, self.view.bounds.size.width, self.view.bounds.size.height - CGRectGetMaxY(self.categoryView.frame) -kTabBarHeight);
 
-        if (self.categoryView.bounds.size.height == self.maxCategoryViewHeight) {
+        if (self.categoryView.bounds.size.height > self.minCategoryViewHeight) {
+            
+            [self.navigationController setNavigationBarHidden:YES animated:NO];
             //从小缩放到最大，将其他列表的contentOffset重置
             for (id<JXCategoryListContentViewDelegate>list in self.listContainerView.validListDict.allValues) {
                 UIScrollView *listScrollView = [self listScrollView:list];
@@ -124,7 +128,6 @@
                 }
             }
         }
-
         scrollView.contentOffset = CGPointZero;
     }else if (((self.categoryView.bounds.size.height < self.maxCategoryViewHeight) && scrollView.contentOffset.y >= 0 && self.categoryView.bounds.size.height > self.minCategoryViewHeight) ||
               (self.categoryView.bounds.size.height >= self.maxCategoryViewHeight && scrollView.contentOffset.y >= 0)) {
@@ -135,10 +138,17 @@
         categoryViewFrame.size.height = MAX(self.minCategoryViewHeight, categoryViewFrame.size.height);
         self.categoryView.frame = categoryViewFrame;
 
-        self.listContainerView.frame = CGRectMake(0, CGRectGetMaxY(self.categoryView.frame), self.view.bounds.size.width, self.view.bounds.size.height - CGRectGetMaxY(self.categoryView.frame));
-
+        self.listContainerView.frame = CGRectMake(0, CGRectGetMaxY(self.categoryView.frame), self.view.bounds.size.width, self.view.bounds.size.height - CGRectGetMaxY(self.categoryView.frame) - kTabBarHeight);
+        
+        if (self.categoryView.bounds.size.height == self.minCategoryViewHeight) {
+            [self addNavigationBarTitleView:CategoryTitles[self.categoryView.selectedIndex]];
+            XLDLog(@"到底了");
+            [self.navigationController setNavigationBarHidden:NO animated:NO];
+        }
         scrollView.contentOffset = CGPointZero;
     }
+
+    
 
     //必须调用
     CGFloat percent = (self.categoryView.bounds.size.height - self.minCategoryViewHeight)/(self.maxCategoryViewHeight - self.minCategoryViewHeight);
@@ -148,7 +158,7 @@
 - (UIScrollView *)listScrollView:(id<JXCategoryListContentViewDelegate>)list {
     
     PendingTasksViewController *listVC = (PendingTasksViewController *)list;
-    return listVC.view;
+    return listVC.tableView;
 }
 
 #pragma mark - JXCategoryListContainerViewDelegate
@@ -165,7 +175,7 @@
     
     
     LZBWeak;
-    pendingTaskVC.didScrollCallback = ^(UIView *scrollView) {
+    pendingTaskVC.didScrollCallback = ^(UIScrollView *scrollView) {
         [weakSelf listScrollViewDidScroll:scrollView];
     };
     return pendingTaskVC;

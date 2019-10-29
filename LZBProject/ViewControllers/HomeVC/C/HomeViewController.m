@@ -165,15 +165,16 @@
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     
-//    if (index == 0) {
-        PendingTasksViewController *pendingTaskVC = [[PendingTasksViewController alloc] init];
-//    }else if (index == 1){
-//        MutualLearningViewController *mutualLearningVC = [[PendingTasksViewController alloc] init];
-//    }else{
-//        HistoricalTaskViewController *historicalVC = [[HistoricalTaskViewController alloc] init];
-//    }
-    
-    
+//    self.listContainerView.scrollView.panGestureRecognizer.enabled = NO;
+
+    PendingTasksViewController *pendingTaskVC = [[PendingTasksViewController alloc] init];
+    if (index == 0) {
+        pendingTaskVC.titles = @[@"全部", @"语文", @"数学"];
+    }else if(index == 1) {
+        pendingTaskVC.titles = @[@"全部", @"数学"];
+    }else if (index == 2) {
+        pendingTaskVC.titles = @[@"全部", @"语文", @"生物",@"物理"];
+    }
     LZBWeak;
     pendingTaskVC.didScrollCallback = ^(UIScrollView *scrollView) {
         [weakSelf listScrollViewDidScroll:scrollView];

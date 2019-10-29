@@ -42,6 +42,7 @@
 		0B0F6C2C2366F94300537128 /* HistoricalTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C2B2366F94300537128 /* HistoricalTaskViewController.m */; };
 		0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */; };
 		0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17674123584758008979C5 /* LZBCalendarMonth.m */; };
+		0B3D00102368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D000F2368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m */; };
 		0B4945D52357258500F19EE2 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4945D32357258500F19EE2 /* TriangleView.m */; };
 		0B5E064123680BE4008F906D /* LZBBaseViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E064023680BE4008F906D /* LZBBaseViewController+NavigationBar.m */; };
 		0B5E6D4823545DC7008D9A76 /* LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E6D4723545DC7008D9A76 /* LZBCalendar.m */; };
@@ -182,6 +183,8 @@
 		0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LZBCalendar.m"; sourceTree = "<group>"; };
 		0B17674023584758008979C5 /* LZBCalendarMonth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalendarMonth.h; sourceTree = "<group>"; };
 		0B17674123584758008979C5 /* LZBCalendarMonth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBCalendarMonth.m; sourceTree = "<group>"; };
+		0B3D000E2368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorSpringBackgroundView.h; sourceTree = "<group>"; };
+		0B3D000F2368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorSpringBackgroundView.m; sourceTree = "<group>"; };
 		0B4945D32357258500F19EE2 /* TriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriangleView.m; sourceTree = "<group>"; };
 		0B4945D42357258500F19EE2 /* TriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleView.h; sourceTree = "<group>"; };
 		0B5E063F23680BE4008F906D /* LZBBaseViewController+NavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LZBBaseViewController+NavigationBar.h"; sourceTree = "<group>"; };
@@ -350,6 +353,8 @@
 				8B21DEFB23681118000F0DAB /* HomeWorkAlreadyStartCell.h */,
 				8B21DEFC23681118000F0DAB /* HomeWorkAlreadyStartCell.m */,
 				8B21DEFD23681118000F0DAB /* HomeWorkAlreadyStartCell.xib */,
+				0B3D000E2368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.h */,
+				0B3D000F2368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1177,6 +1182,7 @@
 				0BBE4770235990A100D30C4B /* LZBCalendarDayModel.m in Sources */,
 				0BBCD673234DBFAD00E4970A /* ViewController.m in Sources */,
 				0B0F6C172366C10900537128 /* JMBaseButton.m in Sources */,
+				0B3D00102368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m in Sources */,
 				0B619307235D7BDC00BE3BBA /* HomeViewController.m in Sources */,
 				0B4945D52357258500F19EE2 /* TriangleView.m in Sources */,
 				0B0F6C262366F8E700537128 /* PendingTasksViewController.m in Sources */,

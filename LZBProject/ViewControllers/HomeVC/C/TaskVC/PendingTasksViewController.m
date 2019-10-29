@@ -7,18 +7,30 @@
 //
 
 #import "PendingTasksViewController.h"
+#import "JXCategoryIndicatorSpringBackgroundView.h"
 
-@interface PendingTasksViewController ()<UITableViewDelegate, UITableViewDataSource,JXCategoryListContentViewDelegate>
+@interface PendingTasksViewController ()<UITableViewDelegate, UITableViewDataSource,JXCategoryListContentViewDelegate,JXCategoryViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *dataSource;
 
 @property (nonatomic, assign) BOOL isDataLoaded;
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIView *topView;
 
 @end
 
 @implementation PendingTasksViewController
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    //离开页面的时候，需要恢复屏幕边缘手势，不能影响其他页面
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+}
 
 - (void)dealloc
 {
@@ -30,12 +42,12 @@
     return self.view;
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     self.dataSource = [NSMutableArray array];
-    
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
@@ -45,19 +57,18 @@
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
     
-
-    // Do any additional setup after loading the view.
+    
 }
 
+#pragma mark - 第一次才加载，后续触发的不处理
 - (void)loadDataForFirst {
-//第一次才加载，后续触发的不处理
     if (!self.isDataLoaded) {
         [self headerRefresh];
         self.isDataLoaded = YES;
     }
     
 }
-
+#pragma mark - 刷新数据
 - (void)headerRefresh{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.calendar = [NSCalendar currentCalendar];
@@ -74,7 +85,13 @@
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return self.topView;
+}
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return [self preferredCategoryViewHeight];
+}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     !self.didScrollCallback ?: self.didScrollCallback(scrollView);
 }
@@ -91,24 +108,42 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    DetailViewController *vc = [[DetailViewController alloc] init];
-//    if (self.navigationController != nil) {
-//        [self.navigationController pushViewController:vc animated:true];
-//    }else {
-//        //仅仅是自定义列表容器示例才生效
-//        [self.naviController pushViewController:vc animated:true];
-//    }
 }
 
-    
-/*
-#pragma mark - Navigation
+- (JXCategoryTitleView *)categoryView{
+    if (!_categoryView) {
+        self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 80, [self preferredCategoryViewHeight])];
+        self.categoryView.delegate = self;
+        self.categoryView.titles = self.titles;
+        self.categoryView.titleColorGradientEnabled = YES;
+        self.categoryView.averageCellSpacingEnabled = NO;
+        self.categoryView.titleColor = kMAIN9999;
+        self.categoryView.titleFont = KMAINFONT16;
+        self.categoryView.titleSelectedColor  = KMAINFFFF;
+        JXCategoryIndicatorSpringBackgroundView *lineView = [[JXCategoryIndicatorSpringBackgroundView alloc] init];
+        ((JXCategoryIndicatorView *)self.categoryView).indicators = @[lineView];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    }
+    return _categoryView;
 }
-*/
+
+- (UIView *)topView{
+    if (!_topView) {
+        _topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [self preferredCategoryViewHeight])];
+        _topView.backgroundColor = KMAINFFFF;
+        [_topView addSubview:self.categoryView];
+    }
+    return _topView;
+}
+
+
+- (CGFloat)preferredCategoryViewHeight {
+    return 40;
+}
+
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index{
+    XLDLog(@"点中 ---- %d",index);
+}
+
 
 @end

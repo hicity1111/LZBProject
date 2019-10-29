@@ -8,7 +8,7 @@
 
 #import "MutualLearningViewController.h"
 
-@interface MutualLearningViewController ()
+@interface MutualLearningViewController ()<UIScrollViewDelegate>
 
 @end
 
@@ -19,6 +19,20 @@
     // Do any additional setup after loading the view.
 }
 
+
+- (void)dealloc
+{
+    self.didScrollCallback = nil;
+}
+
+
+- (UIView *)listView {
+    return self.view;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    !self.didScrollCallback ?: self.didScrollCallback(scrollView);
+}
 /*
 #pragma mark - Navigation
 

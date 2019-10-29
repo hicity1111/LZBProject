@@ -72,6 +72,9 @@
 		170A91ACB3928B17BD894640 /* Pods_LZBProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */; };
 		34045572ED131BFDD841F7D6 /* Pods_LZBProject_LZBProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */; };
 		85F372E2BD4721F567D05450 /* Pods_LZBProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */; };
+		8B21DEF02366F632000F0DAB /* CTBSubjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DEEE2366F632000F0DAB /* CTBSubjectCell.m */; };
+		8B21DEF12366F632000F0DAB /* CTBSubjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B21DEEF2366F632000F0DAB /* CTBSubjectCell.xib */; };
+		8B21DEF52367D9C5000F0DAB /* LZB_CTB_CellHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DEF42367D9C5000F0DAB /* LZB_CTB_CellHelper.m */; };
 		8B4D1C5623618CD2008B2CCA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1C5023618CD2008B2CCA /* LoginViewController.m */; };
 		8B4D1C5823618CD2008B2CCA /* UserNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1C5423618CD2008B2CCA /* UserNoticeView.m */; };
 		8B6B6A0B2362D8C2008B7585 /* login_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B6A082362D8C2008B7585 /* login_bg@3x.png */; };
@@ -231,6 +234,11 @@
 		23FB01E150EBC5D9CF6D00A2 /* Pods-LZBProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject.release.xcconfig"; path = "Target Support Files/Pods-LZBProject/Pods-LZBProject.release.xcconfig"; sourceTree = "<group>"; };
 		577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770848CE74481CA6FF8ECE16 /* Pods-LZBProject-LZBProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-LZBProject-LZBProjectUITests/Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B21DEED2366F632000F0DAB /* CTBSubjectCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTBSubjectCell.h; sourceTree = "<group>"; };
+		8B21DEEE2366F632000F0DAB /* CTBSubjectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTBSubjectCell.m; sourceTree = "<group>"; };
+		8B21DEEF2366F632000F0DAB /* CTBSubjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CTBSubjectCell.xib; sourceTree = "<group>"; };
+		8B21DEF32367D9C5000F0DAB /* LZB_CTB_CellHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZB_CTB_CellHelper.h; sourceTree = "<group>"; };
+		8B21DEF42367D9C5000F0DAB /* LZB_CTB_CellHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZB_CTB_CellHelper.m; sourceTree = "<group>"; };
 		8B4D1C5023618CD2008B2CCA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8B4D1C5223618CD2008B2CCA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		8B4D1C5423618CD2008B2CCA /* UserNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNoticeView.m; sourceTree = "<group>"; };
@@ -500,6 +508,9 @@
 		0B6192EF235D5DAF00BE3BBA /* CTBVC */ = {
 			isa = PBXGroup;
 			children = (
+				8B21DEF22367D992000F0DAB /* VM */,
+				8B21DEEC2366F574000F0DAB /* M */,
+				8B21DEEB2366F56B000F0DAB /* V */,
 				0B6192FD235D7B6700BE3BBA /* C */,
 				0B6192F2235D5DDD00BE3BBA /* StoryBoard */,
 			);
@@ -765,6 +776,32 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		8B21DEEB2366F56B000F0DAB /* V */ = {
+			isa = PBXGroup;
+			children = (
+				8B21DEED2366F632000F0DAB /* CTBSubjectCell.h */,
+				8B21DEEE2366F632000F0DAB /* CTBSubjectCell.m */,
+				8B21DEEF2366F632000F0DAB /* CTBSubjectCell.xib */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		8B21DEEC2366F574000F0DAB /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		8B21DEF22367D992000F0DAB /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				8B21DEF32367D9C5000F0DAB /* LZB_CTB_CellHelper.h */,
+				8B21DEF42367D9C5000F0DAB /* LZB_CTB_CellHelper.m */,
+			);
+			path = VM;
+			sourceTree = "<group>";
+		};
 		8B4D1C4D23618CD2008B2CCA /* LoginVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -976,6 +1013,7 @@
 				0B6192FB235D5E4300BE3BBA /* Home.storyboard in Resources */,
 				8B6B6A0D2362D8C2008B7585 /* login_bg@2x.png in Resources */,
 				8B6B6A0B2362D8C2008B7585 /* login_bg@3x.png in Resources */,
+				8B21DEF12366F632000F0DAB /* CTBSubjectCell.xib in Resources */,
 				0B6192F9235D5E3400BE3BBA /* CTB.storyboard in Resources */,
 				0BBCD67B234DBFAE00E4970A /* LaunchScreen.storyboard in Resources */,
 				0BBE47752359989500D30C4B /* LXCalenderCell.xib in Resources */,
@@ -1131,6 +1169,7 @@
 				0B0F6C1C2366C10900537128 /* JMNumberButton.m in Sources */,
 				0B5E6D4C2354728A008D9A76 /* UIColor+lzbColor.m in Sources */,
 				0BBE476D235959C400D30C4B /* LZBCalendarWeekView.m in Sources */,
+				8B21DEF02366F632000F0DAB /* CTBSubjectCell.m in Sources */,
 				0BBCD67E234DBFAE00E4970A /* main.m in Sources */,
 				0BBE476A235959A600D30C4B /* LZBCalendarHeaderView.m in Sources */,
 				8B6B6A112362D905008B7585 /* LYZTextField.m in Sources */,
@@ -1164,6 +1203,7 @@
 				0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */,
 				0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */,
 				0B6192ED235D58E600BE3BBA /* UINavigationBar+handle.m in Sources */,
+				8B21DEF52367D9C5000F0DAB /* LZB_CTB_CellHelper.m in Sources */,
 				0B0F6BBD236020F300537128 /* NSString+LZBValid.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

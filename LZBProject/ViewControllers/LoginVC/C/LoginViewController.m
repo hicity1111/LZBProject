@@ -10,7 +10,8 @@
 #import "UserNoticeView.h"
 #import "LYZTextField.h"
 #import "LZBNetworkURL.h"
-#import "NSString+LZBValid.h"
+
+#import "AppDelegate.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 {
@@ -75,7 +76,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self.userTF becomeFirstResponder];
 }
 
 
@@ -85,6 +85,8 @@
     
     if (!isUserAgreeNotice) {
         [self showUserNoticeView];
+    } else {
+        [self.userTF becomeFirstResponder];
     }
 }
 
@@ -319,6 +321,9 @@
                 [SDUserDefaults synchronize];
                 
                 [weakSelf showSuccess:@"登录成功"];
+                [weakSelf.view endEditing:YES];
+                AppDelegate *appd = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [appd entryDoor];
             } else {
                 [weakSelf showError:resDic[@"message"]];
             }
@@ -348,11 +353,14 @@
 
 - (void)loginButtonClick:(UIButton *)btn {
     NSString *user = self.userTF.text;
-    BOOL isValidPhone = [NSString mh_isValidMobile:user];
-    if (!isValidPhone) {
-        [self showError:@"请输入正确的手机号"];
-        return;
+    if (user.length < 3) {
+        [self showError:@"请输入正确的用户名"];
     }
+//    BOOL isValidPhone = [NSString mh_isValidMobile:user];
+//    if (!isValidPhone) {
+//        [self showError:@"请输入正确的手机号"];
+//        return;
+//    }
     
     NSString *pwd = self.pwdTF.text;
     if (pwd.length == 0) {

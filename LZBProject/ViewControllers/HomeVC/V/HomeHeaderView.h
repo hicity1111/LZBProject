@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol HomeHeaderDelegate <NSObject>
 
 - (void)messageAct;
+
 @end
 
 @interface HomeHeaderView : UIView

@@ -48,6 +48,10 @@
 
 #define kMAINA6A6   [UIColor colorWithHex:@"#A6A6A6"]
 
+#define kMAINF1F5   [UIColor colorWithHex:@"#F1F5F5"]
+
+#define KMAIN7777   [UIColor colorWithHex:@"#777777"]
+
 
 #define WHITECOLOR  UIColor.whiteColor
 #define BLACKCOLOR  UIColor.blackColor

@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UIWindow *window;
 
-- (void)entryMainVC;
+- (void)entryDoor;
 
 @end
 

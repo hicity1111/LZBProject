@@ -21,6 +21,7 @@
     }
     [super pushViewController:viewController animated:animated];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.fd_fullscreenPopGestureRecognizer.enabled = YES;

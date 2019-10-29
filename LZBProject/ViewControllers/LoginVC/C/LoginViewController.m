@@ -86,7 +86,7 @@
     if (!isUserAgreeNotice) {
         [self showUserNoticeView];
     } else {
-        [self.userTF becomeFirstResponder];
+//        [self.userTF becomeFirstResponder];
     }
 }
 
@@ -170,7 +170,7 @@
     UIButton *seeUserNotice = [UIButton buttonWithType:UIButtonTypeCustom];
     seeUserNotice.backgroundColor = UIColor.clearColor;
     [seeUserNotice addTarget:self action:@selector(seeUserNoticeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.savePwdBtn = seeUserNotice;
+    self.seeUserNotice = seeUserNotice;
     [seeUserNotice setAttributedTitle:unMAttStr forState:UIControlStateNormal];
     
     // 公司信息

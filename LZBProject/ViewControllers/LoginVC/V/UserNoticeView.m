@@ -122,6 +122,7 @@
 - (void)selectButtonClick:(UIButton *)btn {
     btn.selected = !btn.selected;
     SETUSER_BOOL(AGREE_USER_NOTICE, btn.selected);
+    [SDUserDefaults synchronize];
     if (btn.selected) {
         self.knowBtn.backgroundColor = kMAIN00B5;
     } else {
@@ -132,6 +133,7 @@
 - (void)knowButtonClick:(UIButton *)btn {
     if (self.selectBtn.selected) {
         SETUSER_BOOL(AGREE_USER_NOTICE, YES);
+        [SDUserDefaults synchronize];
         [self hide];
     } else {
         [MBProgressHUD showMessage:@"请勾选“同意用户服务协议”" inView:self];

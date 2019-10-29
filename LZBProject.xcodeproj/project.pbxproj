@@ -75,6 +75,10 @@
 		8B21DEF02366F632000F0DAB /* CTBSubjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DEEE2366F632000F0DAB /* CTBSubjectCell.m */; };
 		8B21DEF12366F632000F0DAB /* CTBSubjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B21DEEF2366F632000F0DAB /* CTBSubjectCell.xib */; };
 		8B21DEF52367D9C5000F0DAB /* LZB_CTB_CellHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DEF42367D9C5000F0DAB /* LZB_CTB_CellHelper.m */; };
+		8B21DEF92367ECEB000F0DAB /* HomeWorkNotStartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DEF72367ECEB000F0DAB /* HomeWorkNotStartCell.m */; };
+		8B21DEFA2367ECEB000F0DAB /* HomeWorkNotStartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B21DEF82367ECEB000F0DAB /* HomeWorkNotStartCell.xib */; };
+		8B21DEFE23681118000F0DAB /* HomeWorkAlreadyStartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DEFC23681118000F0DAB /* HomeWorkAlreadyStartCell.m */; };
+		8B21DEFF23681118000F0DAB /* HomeWorkAlreadyStartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B21DEFD23681118000F0DAB /* HomeWorkAlreadyStartCell.xib */; };
 		8B4D1C5623618CD2008B2CCA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1C5023618CD2008B2CCA /* LoginViewController.m */; };
 		8B4D1C5823618CD2008B2CCA /* UserNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1C5423618CD2008B2CCA /* UserNoticeView.m */; };
 		8B6B6A0B2362D8C2008B7585 /* login_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B6A082362D8C2008B7585 /* login_bg@3x.png */; };
@@ -239,6 +243,12 @@
 		8B21DEEF2366F632000F0DAB /* CTBSubjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CTBSubjectCell.xib; sourceTree = "<group>"; };
 		8B21DEF32367D9C5000F0DAB /* LZB_CTB_CellHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZB_CTB_CellHelper.h; sourceTree = "<group>"; };
 		8B21DEF42367D9C5000F0DAB /* LZB_CTB_CellHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZB_CTB_CellHelper.m; sourceTree = "<group>"; };
+		8B21DEF62367ECEB000F0DAB /* HomeWorkNotStartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeWorkNotStartCell.h; sourceTree = "<group>"; };
+		8B21DEF72367ECEB000F0DAB /* HomeWorkNotStartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeWorkNotStartCell.m; sourceTree = "<group>"; };
+		8B21DEF82367ECEB000F0DAB /* HomeWorkNotStartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeWorkNotStartCell.xib; sourceTree = "<group>"; };
+		8B21DEFB23681118000F0DAB /* HomeWorkAlreadyStartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeWorkAlreadyStartCell.h; sourceTree = "<group>"; };
+		8B21DEFC23681118000F0DAB /* HomeWorkAlreadyStartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeWorkAlreadyStartCell.m; sourceTree = "<group>"; };
+		8B21DEFD23681118000F0DAB /* HomeWorkAlreadyStartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeWorkAlreadyStartCell.xib; sourceTree = "<group>"; };
 		8B4D1C5023618CD2008B2CCA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8B4D1C5223618CD2008B2CCA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		8B4D1C5423618CD2008B2CCA /* UserNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNoticeView.m; sourceTree = "<group>"; };
@@ -331,6 +341,12 @@
 			children = (
 				0B0F6BEA236682DF00537128 /* HomeHeaderView.h */,
 				0B0F6BEB236682DF00537128 /* HomeHeaderView.m */,
+				8B21DEF62367ECEB000F0DAB /* HomeWorkNotStartCell.h */,
+				8B21DEF72367ECEB000F0DAB /* HomeWorkNotStartCell.m */,
+				8B21DEF82367ECEB000F0DAB /* HomeWorkNotStartCell.xib */,
+				8B21DEFB23681118000F0DAB /* HomeWorkAlreadyStartCell.h */,
+				8B21DEFC23681118000F0DAB /* HomeWorkAlreadyStartCell.m */,
+				8B21DEFD23681118000F0DAB /* HomeWorkAlreadyStartCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1018,6 +1034,8 @@
 				0BBCD67B234DBFAE00E4970A /* LaunchScreen.storyboard in Resources */,
 				0BBE47752359989500D30C4B /* LXCalenderCell.xib in Resources */,
 				8B6B6A0C2362D8C2008B7585 /* login_bg.png in Resources */,
+				8B21DEFF23681118000F0DAB /* HomeWorkAlreadyStartCell.xib in Resources */,
+				8B21DEFA2367ECEB000F0DAB /* HomeWorkNotStartCell.xib in Resources */,
 				0B6192F7235D5E2300BE3BBA /* Mine.storyboard in Resources */,
 				0BBCD678234DBFAE00E4970A /* Assets.xcassets in Resources */,
 				0BBCD676234DBFAD00E4970A /* Main.storyboard in Resources */,
@@ -1178,6 +1196,7 @@
 				8B4D1C5623618CD2008B2CCA /* LoginViewController.m in Sources */,
 				0B0F6C202366C10900537128 /* JMBaseButton+CountDown.m in Sources */,
 				0B098C652351A077000934EB /* LZBNetManager.m in Sources */,
+				8B21DEF92367ECEB000F0DAB /* HomeWorkNotStartCell.m in Sources */,
 				0B619304235D7BC900BE3BBA /* CTBViewController.m in Sources */,
 				0B0F6BD72361A90400537128 /* LZB_TabBarBadge.m in Sources */,
 				0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */,
@@ -1190,6 +1209,7 @@
 				0B0F6C1E2366C10900537128 /* JMRuntime.m in Sources */,
 				0B0F6BE72362D79000537128 /* HomeDetailViewController.m in Sources */,
 				0B0F6BB823601FF200537128 /* Utils.m in Sources */,
+				8B21DEFE23681118000F0DAB /* HomeWorkAlreadyStartCell.m in Sources */,
 				0B0F6BB423601F5D00537128 /* MBProgressHUD+LZBvcHelper.m in Sources */,
 				0B0F6C1F2366C10900537128 /* UIView+JM.m in Sources */,
 				0B0F6C222366C10900537128 /* JMBadgeValue.m in Sources */,

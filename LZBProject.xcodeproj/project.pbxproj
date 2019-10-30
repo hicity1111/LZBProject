@@ -37,12 +37,15 @@
 		0B0F6C202366C10900537128 /* JMBaseButton+CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C0E2366C10800537128 /* JMBaseButton+CountDown.m */; };
 		0B0F6C212366C10900537128 /* UIColor+JM.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C122366C10800537128 /* UIColor+JM.m */; };
 		0B0F6C222366C10900537128 /* JMBadgeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C132366C10800537128 /* JMBadgeValue.m */; };
-		0B0F6C262366F8E700537128 /* PendingTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C252366F8E700537128 /* PendingTasksViewController.m */; };
 		0B0F6C292366F92700537128 /* MutualLearningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C282366F92700537128 /* MutualLearningViewController.m */; };
-		0B0F6C2C2366F94300537128 /* HistoricalTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C2B2366F94300537128 /* HistoricalTaskViewController.m */; };
 		0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */; };
 		0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17674123584758008979C5 /* LZBCalendarMonth.m */; };
 		0B3D00102368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D000F2368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m */; };
+		0B3D0022236934FE00BD4AA1 /* JXPagerListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0013236934FD00BD4AA1 /* JXPagerListContainerView.m */; };
+		0B3D0023236934FE00BD4AA1 /* JXPagerMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0014236934FD00BD4AA1 /* JXPagerMainTableView.m */; };
+		0B3D0024236934FE00BD4AA1 /* JXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0015236934FD00BD4AA1 /* JXPagerView.m */; };
+		0B3D0025236934FE00BD4AA1 /* JXPagerListRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D001A236934FD00BD4AA1 /* JXPagerListRefreshView.m */; };
+		0B3D0028236934FE00BD4AA1 /* TestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0020236934FD00BD4AA1 /* TestListBaseView.m */; };
 		0B4945D52357258500F19EE2 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4945D32357258500F19EE2 /* TriangleView.m */; };
 		0B5E064123680BE4008F906D /* LZBBaseViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E064023680BE4008F906D /* LZBBaseViewController+NavigationBar.m */; };
 		0B5E6D4823545DC7008D9A76 /* LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E6D4723545DC7008D9A76 /* LZBCalendar.m */; };
@@ -173,18 +176,24 @@
 		0B0F6C112366C10800537128 /* JMRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMRuntime.h; sourceTree = "<group>"; };
 		0B0F6C122366C10800537128 /* UIColor+JM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JM.m"; sourceTree = "<group>"; };
 		0B0F6C132366C10800537128 /* JMBadgeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMBadgeValue.m; sourceTree = "<group>"; };
-		0B0F6C242366F8E700537128 /* PendingTasksViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PendingTasksViewController.h; sourceTree = "<group>"; };
-		0B0F6C252366F8E700537128 /* PendingTasksViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PendingTasksViewController.m; sourceTree = "<group>"; };
 		0B0F6C272366F92700537128 /* MutualLearningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MutualLearningViewController.h; sourceTree = "<group>"; };
 		0B0F6C282366F92700537128 /* MutualLearningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MutualLearningViewController.m; sourceTree = "<group>"; };
-		0B0F6C2A2366F94300537128 /* HistoricalTaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoricalTaskViewController.h; sourceTree = "<group>"; };
-		0B0F6C2B2366F94300537128 /* HistoricalTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoricalTaskViewController.m; sourceTree = "<group>"; };
 		0B17673D2358471D008979C5 /* NSDate+LZBCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+LZBCalendar.h"; sourceTree = "<group>"; };
 		0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LZBCalendar.m"; sourceTree = "<group>"; };
 		0B17674023584758008979C5 /* LZBCalendarMonth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalendarMonth.h; sourceTree = "<group>"; };
 		0B17674123584758008979C5 /* LZBCalendarMonth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBCalendarMonth.m; sourceTree = "<group>"; };
 		0B3D000E2368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorSpringBackgroundView.h; sourceTree = "<group>"; };
 		0B3D000F2368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorSpringBackgroundView.m; sourceTree = "<group>"; };
+		0B3D0013236934FD00BD4AA1 /* JXPagerListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerListContainerView.m; sourceTree = "<group>"; };
+		0B3D0014236934FD00BD4AA1 /* JXPagerMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerMainTableView.m; sourceTree = "<group>"; };
+		0B3D0015236934FD00BD4AA1 /* JXPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerView.m; sourceTree = "<group>"; };
+		0B3D0016236934FD00BD4AA1 /* JXPagerListRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerListRefreshView.h; sourceTree = "<group>"; };
+		0B3D0017236934FD00BD4AA1 /* JXPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerView.h; sourceTree = "<group>"; };
+		0B3D0018236934FD00BD4AA1 /* JXPagerListContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerListContainerView.h; sourceTree = "<group>"; };
+		0B3D0019236934FD00BD4AA1 /* JXPagerMainTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerMainTableView.h; sourceTree = "<group>"; };
+		0B3D001A236934FD00BD4AA1 /* JXPagerListRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerListRefreshView.m; sourceTree = "<group>"; };
+		0B3D001C236934FD00BD4AA1 /* TestListBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestListBaseView.h; sourceTree = "<group>"; };
+		0B3D0020236934FD00BD4AA1 /* TestListBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestListBaseView.m; sourceTree = "<group>"; };
 		0B4945D32357258500F19EE2 /* TriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriangleView.m; sourceTree = "<group>"; };
 		0B4945D42357258500F19EE2 /* TriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleView.h; sourceTree = "<group>"; };
 		0B5E063F23680BE4008F906D /* LZBBaseViewController+NavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LZBBaseViewController+NavigationBar.h"; sourceTree = "<group>"; };
@@ -345,6 +354,7 @@
 		0B0F6BE92362F5C200537128 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				0B3D0011236934FD00BD4AA1 /* PagingView */,
 				0B0F6BEA236682DF00537128 /* HomeHeaderView.h */,
 				0B0F6BEB236682DF00537128 /* HomeHeaderView.m */,
 				8B21DEF62367ECEB000F0DAB /* HomeWorkNotStartCell.h */,
@@ -449,14 +459,43 @@
 		0B0F6C232366F84C00537128 /* TaskVC */ = {
 			isa = PBXGroup;
 			children = (
-				0B0F6C242366F8E700537128 /* PendingTasksViewController.h */,
-				0B0F6C252366F8E700537128 /* PendingTasksViewController.m */,
 				0B0F6C272366F92700537128 /* MutualLearningViewController.h */,
 				0B0F6C282366F92700537128 /* MutualLearningViewController.m */,
-				0B0F6C2A2366F94300537128 /* HistoricalTaskViewController.h */,
-				0B0F6C2B2366F94300537128 /* HistoricalTaskViewController.m */,
 			);
 			path = TaskVC;
+			sourceTree = "<group>";
+		};
+		0B3D0011236934FD00BD4AA1 /* PagingView */ = {
+			isa = PBXGroup;
+			children = (
+				0B3D0012236934FD00BD4AA1 /* JXPagerView */,
+				0B3D001B236934FD00BD4AA1 /* Example */,
+			);
+			path = PagingView;
+			sourceTree = "<group>";
+		};
+		0B3D0012236934FD00BD4AA1 /* JXPagerView */ = {
+			isa = PBXGroup;
+			children = (
+				0B3D0018236934FD00BD4AA1 /* JXPagerListContainerView.h */,
+				0B3D0013236934FD00BD4AA1 /* JXPagerListContainerView.m */,
+				0B3D0017236934FD00BD4AA1 /* JXPagerView.h */,
+				0B3D0015236934FD00BD4AA1 /* JXPagerView.m */,
+				0B3D0019236934FD00BD4AA1 /* JXPagerMainTableView.h */,
+				0B3D0014236934FD00BD4AA1 /* JXPagerMainTableView.m */,
+				0B3D0016236934FD00BD4AA1 /* JXPagerListRefreshView.h */,
+				0B3D001A236934FD00BD4AA1 /* JXPagerListRefreshView.m */,
+			);
+			path = JXPagerView;
+			sourceTree = "<group>";
+		};
+		0B3D001B236934FD00BD4AA1 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				0B3D001C236934FD00BD4AA1 /* TestListBaseView.h */,
+				0B3D0020236934FD00BD4AA1 /* TestListBaseView.m */,
+			);
+			path = Example;
 			sourceTree = "<group>";
 		};
 		0B5E6D4523545D76008D9A76 /* LZBCalendar */ = {
@@ -1177,7 +1216,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B0F6C212366C10900537128 /* UIColor+JM.m in Sources */,
-				0B0F6C2C2366F94300537128 /* HistoricalTaskViewController.m in Sources */,
 				0B5E6D4823545DC7008D9A76 /* LZBCalendar.m in Sources */,
 				0BBE4770235990A100D30C4B /* LZBCalendarDayModel.m in Sources */,
 				0BBCD673234DBFAD00E4970A /* ViewController.m in Sources */,
@@ -1185,7 +1223,6 @@
 				0B3D00102368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m in Sources */,
 				0B619307235D7BDC00BE3BBA /* HomeViewController.m in Sources */,
 				0B4945D52357258500F19EE2 /* TriangleView.m in Sources */,
-				0B0F6C262366F8E700537128 /* PendingTasksViewController.m in Sources */,
 				0B0F6C192366C10900537128 /* JMWaveButton.m in Sources */,
 				0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */,
 				0B0F6C182366C10900537128 /* JMBaseButtonConfig.m in Sources */,
@@ -1194,13 +1231,16 @@
 				0B0F6C152366C10900537128 /* JMBootstrapButtonConfig.m in Sources */,
 				0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */,
 				0BBE47782359B0FD00D30C4B /* LZBBaseViewController.m in Sources */,
+				0B3D0028236934FE00BD4AA1 /* TestListBaseView.m in Sources */,
 				0B0F6C292366F92700537128 /* MutualLearningViewController.m in Sources */,
 				0B0F6C1C2366C10900537128 /* JMNumberButton.m in Sources */,
+				0B3D0024236934FE00BD4AA1 /* JXPagerView.m in Sources */,
 				0B5E6D4C2354728A008D9A76 /* UIColor+lzbColor.m in Sources */,
 				0BBE476D235959C400D30C4B /* LZBCalendarWeekView.m in Sources */,
 				8B21DEF02366F632000F0DAB /* CTBSubjectCell.m in Sources */,
 				0BBCD67E234DBFAE00E4970A /* main.m in Sources */,
 				0BBE476A235959A600D30C4B /* LZBCalendarHeaderView.m in Sources */,
+				0B3D0025236934FE00BD4AA1 /* JXPagerListRefreshView.m in Sources */,
 				8B6B6A112362D905008B7585 /* LYZTextField.m in Sources */,
 				0B0F6BDD236294EE00537128 /* LZB_TabBar.m in Sources */,
 				0B6192E6235D570B00BE3BBA /* LZBBaseNavigationController.m in Sources */,
@@ -1216,6 +1256,7 @@
 				0B0F6C1A2366C10900537128 /* JMWaveButtonConfig.m in Sources */,
 				0B098C682351B942000934EB /* LZBNetManagerCache.m in Sources */,
 				0B0F6BE42362D00600537128 /* MineViewController.m in Sources */,
+				0B3D0022236934FE00BD4AA1 /* JXPagerListContainerView.m in Sources */,
 				0B0F6BDA2361B43B00537128 /* LZB_TabBarItem.m in Sources */,
 				0B0F6C1E2366C10900537128 /* JMRuntime.m in Sources */,
 				0B0F6BE72362D79000537128 /* HomeDetailViewController.m in Sources */,
@@ -1237,6 +1278,7 @@
 				0B6192ED235D58E600BE3BBA /* UINavigationBar+handle.m in Sources */,
 				8B21DEF52367D9C5000F0DAB /* LZB_CTB_CellHelper.m in Sources */,
 				0B0F6BBD236020F300537128 /* NSString+LZBValid.m in Sources */,
+				0B3D0023236934FE00BD4AA1 /* JXPagerMainTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

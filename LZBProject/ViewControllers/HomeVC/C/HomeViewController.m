@@ -10,8 +10,6 @@
 #import "HomeDetailViewController.h"
 #import "JXCategoryTitleVerticalZoomView.h"
 #import "HomeHeaderView.h"
-#import "PendingTasksViewController.h"
-#import "HistoricalTaskViewController.h"
 #import "MutualLearningViewController.h"
 
 #define CategoryTitles  @[@"待处理任务",@"互评学习", @"历史任务"]
@@ -64,6 +62,7 @@
     self.categoryView.averageCellSpacingEnabled = NO;
     self.categoryView.titles = @[@"待处理任务",@"互评学习", @"历史任务"];
     self.categoryView.delegate = self;
+    self.categoryView.backgroundColor = [UIColor colorWithPatternImage:IMAGE_NAMED(@"home_top_bg")];
     self.categoryView.titleLabelAnchorPointStyle = JXCategoryTitleLabelAnchorPointStyleBottom;
     self.categoryView.titleLabelVerticalOffset = -5;
     self.categoryView.titleColor = kMAIN9999;
@@ -148,8 +147,6 @@
         scrollView.contentOffset = CGPointZero;
     }
 
-    
-
     //必须调用
     CGFloat percent = (self.categoryView.bounds.size.height - self.minCategoryViewHeight)/(self.maxCategoryViewHeight - self.minCategoryViewHeight);
     [self.categoryView listDidScrollWithVerticalHeightPercent:percent];
@@ -157,17 +154,17 @@
 
 - (UIScrollView *)listScrollView:(id<JXCategoryListContentViewDelegate>)list {
     
-    PendingTasksViewController *listVC = (PendingTasksViewController *)list;
-    return listVC.tableView;
+    MutualLearningViewController *listVC = (MutualLearningViewController *)list;
+    return listVC.pagingView.mainTableView;
 }
 
 #pragma mark - JXCategoryListContainerViewDelegate
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     
-//    self.listContainerView.scrollView.panGestureRecognizer.enabled = NO;
+    self.listContainerView.scrollView.panGestureRecognizer.enabled = NO;
 
-    PendingTasksViewController *pendingTaskVC = [[PendingTasksViewController alloc] init];
+    MutualLearningViewController *pendingTaskVC = [[MutualLearningViewController alloc] init];
     if (index == 0) {
         pendingTaskVC.titles = @[@"全部", @"语文", @"数学"];
     }else if(index == 1) {

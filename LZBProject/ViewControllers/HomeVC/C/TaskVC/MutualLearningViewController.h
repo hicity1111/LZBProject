@@ -7,6 +7,7 @@
 //
 
 #import "LZBBaseViewController.h"
+#import "JXPagerView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,6 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) void(^didScrollCallback)(UIScrollView *scrollView);
 
+@property (nonatomic, strong) JXPagerView *pagingView;
+
+
+@property (nonatomic, strong) NSArray *titles;
 
 - (void)loadDataForFirst;
 @end

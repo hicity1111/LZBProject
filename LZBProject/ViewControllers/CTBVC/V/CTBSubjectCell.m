@@ -18,9 +18,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
     
-    self.backgroundColor = kMAINF1F5;
     self.subject_nameLb.textColor = KMAIN5868;
     self.subject_descLb.textColor = KMAIN7777;
     

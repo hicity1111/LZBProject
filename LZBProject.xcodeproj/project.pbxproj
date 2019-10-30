@@ -77,6 +77,12 @@
 		170A91ACB3928B17BD894640 /* Pods_LZBProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */; };
 		34045572ED131BFDD841F7D6 /* Pods_LZBProject_LZBProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */; };
 		85F372E2BD4721F567D05450 /* Pods_LZBProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */; };
+		8B175394236987BC00509317 /* MineLogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B17538B236987BB00509317 /* MineLogoutCell.xib */; };
+		8B175395236987BC00509317 /* MineLogoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B17538D236987BB00509317 /* MineLogoutCell.m */; };
+		8B175396236987BC00509317 /* PCenterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B17538F236987BB00509317 /* PCenterHeaderView.m */; };
+		8B175397236987BC00509317 /* PCenterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B175390236987BB00509317 /* PCenterHeaderView.xib */; };
+		8B175398236987BC00509317 /* MineCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B175391236987BB00509317 /* MineCommonCell.xib */; };
+		8B175399236987BC00509317 /* MineCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B175393236987BB00509317 /* MineCommonCell.m */; };
 		8B21DEF02366F632000F0DAB /* CTBSubjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DEEE2366F632000F0DAB /* CTBSubjectCell.m */; };
 		8B21DEF12366F632000F0DAB /* CTBSubjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B21DEEF2366F632000F0DAB /* CTBSubjectCell.xib */; };
 		8B21DEF52367D9C5000F0DAB /* LZB_CTB_CellHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DEF42367D9C5000F0DAB /* LZB_CTB_CellHelper.m */; };
@@ -84,12 +90,15 @@
 		8B21DEFA2367ECEB000F0DAB /* HomeWorkNotStartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B21DEF82367ECEB000F0DAB /* HomeWorkNotStartCell.xib */; };
 		8B21DEFE23681118000F0DAB /* HomeWorkAlreadyStartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DEFC23681118000F0DAB /* HomeWorkAlreadyStartCell.m */; };
 		8B21DEFF23681118000F0DAB /* HomeWorkAlreadyStartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B21DEFD23681118000F0DAB /* HomeWorkAlreadyStartCell.xib */; };
+		8B21DF0A2369316B000F0DAB /* UIView+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DF092369316B000F0DAB /* UIView+CornerRadius.m */; };
 		8B4D1C5623618CD2008B2CCA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1C5023618CD2008B2CCA /* LoginViewController.m */; };
 		8B4D1C5823618CD2008B2CCA /* UserNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1C5423618CD2008B2CCA /* UserNoticeView.m */; };
 		8B6B6A0B2362D8C2008B7585 /* login_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B6A082362D8C2008B7585 /* login_bg@3x.png */; };
 		8B6B6A0C2362D8C2008B7585 /* login_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B6A092362D8C2008B7585 /* login_bg.png */; };
 		8B6B6A0D2362D8C2008B7585 /* login_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B6A0A2362D8C2008B7585 /* login_bg@2x.png */; };
 		8B6B6A112362D905008B7585 /* LYZTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B6A0F2362D905008B7585 /* LYZTextField.m */; };
+		8B9CB3122369699D0092F7DE /* LYZCleanCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB3112369699D0092F7DE /* LYZCleanCache.m */; };
+		8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB31623697C8A0092F7DE /* LYZSandBoxPath.m */; };
 		8BCD1226236192F600BCCB08 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCD1225236192F600BCCB08 /* Login.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -253,6 +262,15 @@
 		23FB01E150EBC5D9CF6D00A2 /* Pods-LZBProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject.release.xcconfig"; path = "Target Support Files/Pods-LZBProject/Pods-LZBProject.release.xcconfig"; sourceTree = "<group>"; };
 		577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770848CE74481CA6FF8ECE16 /* Pods-LZBProject-LZBProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-LZBProject-LZBProjectUITests/Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B17538B236987BB00509317 /* MineLogoutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineLogoutCell.xib; sourceTree = "<group>"; };
+		8B17538C236987BB00509317 /* MineLogoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineLogoutCell.h; sourceTree = "<group>"; };
+		8B17538D236987BB00509317 /* MineLogoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineLogoutCell.m; sourceTree = "<group>"; };
+		8B17538E236987BB00509317 /* MineCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineCommonCell.h; sourceTree = "<group>"; };
+		8B17538F236987BB00509317 /* PCenterHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCenterHeaderView.m; sourceTree = "<group>"; };
+		8B175390236987BB00509317 /* PCenterHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PCenterHeaderView.xib; sourceTree = "<group>"; };
+		8B175391236987BB00509317 /* MineCommonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineCommonCell.xib; sourceTree = "<group>"; };
+		8B175392236987BB00509317 /* PCenterHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCenterHeaderView.h; sourceTree = "<group>"; };
+		8B175393236987BB00509317 /* MineCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineCommonCell.m; sourceTree = "<group>"; };
 		8B21DEED2366F632000F0DAB /* CTBSubjectCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTBSubjectCell.h; sourceTree = "<group>"; };
 		8B21DEEE2366F632000F0DAB /* CTBSubjectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTBSubjectCell.m; sourceTree = "<group>"; };
 		8B21DEEF2366F632000F0DAB /* CTBSubjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CTBSubjectCell.xib; sourceTree = "<group>"; };
@@ -264,6 +282,8 @@
 		8B21DEFB23681118000F0DAB /* HomeWorkAlreadyStartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeWorkAlreadyStartCell.h; sourceTree = "<group>"; };
 		8B21DEFC23681118000F0DAB /* HomeWorkAlreadyStartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeWorkAlreadyStartCell.m; sourceTree = "<group>"; };
 		8B21DEFD23681118000F0DAB /* HomeWorkAlreadyStartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeWorkAlreadyStartCell.xib; sourceTree = "<group>"; };
+		8B21DF082369316B000F0DAB /* UIView+CornerRadius.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+CornerRadius.h"; sourceTree = "<group>"; };
+		8B21DF092369316B000F0DAB /* UIView+CornerRadius.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+CornerRadius.m"; sourceTree = "<group>"; };
 		8B4D1C5023618CD2008B2CCA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8B4D1C5223618CD2008B2CCA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		8B4D1C5423618CD2008B2CCA /* UserNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNoticeView.m; sourceTree = "<group>"; };
@@ -274,6 +294,10 @@
 		8B6B6A0F2362D905008B7585 /* LYZTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYZTextField.m; sourceTree = "<group>"; };
 		8B6B6A102362D905008B7585 /* LYZTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYZTextField.h; sourceTree = "<group>"; };
 		8B6B6A382362FE9B008B7585 /* LZBNetworkURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBNetworkURL.h; sourceTree = "<group>"; };
+		8B9CB3102369699D0092F7DE /* LYZCleanCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYZCleanCache.h; sourceTree = "<group>"; };
+		8B9CB3112369699D0092F7DE /* LYZCleanCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYZCleanCache.m; sourceTree = "<group>"; };
+		8B9CB31623697C8A0092F7DE /* LYZSandBoxPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYZSandBoxPath.m; sourceTree = "<group>"; };
+		8B9CB31723697C8A0092F7DE /* LYZSandBoxPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYZSandBoxPath.h; sourceTree = "<group>"; };
 		8BCD1225236192F600BCCB08 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9AE17617E18522B97D9845A4 /* Pods-LZBProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProjectTests.release.xcconfig"; path = "Target Support Files/Pods-LZBProjectTests/Pods-LZBProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		A33E99BEAFCC1F68B0B814EB /* Pods-LZBProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-LZBProjectTests/Pods-LZBProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -314,6 +338,10 @@
 		0B0F6BB523601FD500537128 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8B9CB31723697C8A0092F7DE /* LYZSandBoxPath.h */,
+				8B9CB31623697C8A0092F7DE /* LYZSandBoxPath.m */,
+				8B9CB3102369699D0092F7DE /* LYZCleanCache.h */,
+				8B9CB3112369699D0092F7DE /* LYZCleanCache.m */,
 				0B0F6BB623601FF200537128 /* Utils.h */,
 				0B0F6BB723601FF200537128 /* Utils.m */,
 			);
@@ -585,6 +613,7 @@
 		0B6192F0235D5DBB00BE3BBA /* MineVC */ = {
 			isa = PBXGroup;
 			children = (
+				8B21DF00236835B2000F0DAB /* V */,
 				0B6192FC235D7B5500BE3BBA /* C */,
 				0B6192F1235D5DD800BE3BBA /* StoryBoard */,
 			);
@@ -720,6 +749,7 @@
 		0B820167234EC1C900D983AE /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				8B21DF06236930D7000F0DAB /* UIView */,
 				8B8CFE0A23667D8100AC4DAC /* UIImage */,
 				8B6B6A0E2362D905008B7585 /* TextField */,
 				0B0F6BDE2362C3CD00537128 /* GradientHelper(View渐变) */,
@@ -865,6 +895,31 @@
 				8B21DEF42367D9C5000F0DAB /* LZB_CTB_CellHelper.m */,
 			);
 			path = VM;
+			sourceTree = "<group>";
+		};
+		8B21DF00236835B2000F0DAB /* V */ = {
+			isa = PBXGroup;
+			children = (
+				8B17538E236987BB00509317 /* MineCommonCell.h */,
+				8B175393236987BB00509317 /* MineCommonCell.m */,
+				8B175391236987BB00509317 /* MineCommonCell.xib */,
+				8B17538C236987BB00509317 /* MineLogoutCell.h */,
+				8B17538D236987BB00509317 /* MineLogoutCell.m */,
+				8B17538B236987BB00509317 /* MineLogoutCell.xib */,
+				8B175392236987BB00509317 /* PCenterHeaderView.h */,
+				8B17538F236987BB00509317 /* PCenterHeaderView.m */,
+				8B175390236987BB00509317 /* PCenterHeaderView.xib */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		8B21DF06236930D7000F0DAB /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				8B21DF082369316B000F0DAB /* UIView+CornerRadius.h */,
+				8B21DF092369316B000F0DAB /* UIView+CornerRadius.m */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 		8B4D1C4D23618CD2008B2CCA /* LoginVC */ = {
@@ -1076,6 +1131,8 @@
 			files = (
 				8BCD1226236192F600BCCB08 /* Login.storyboard in Resources */,
 				0B6192FB235D5E4300BE3BBA /* Home.storyboard in Resources */,
+				8B175398236987BC00509317 /* MineCommonCell.xib in Resources */,
+				8B175394236987BC00509317 /* MineLogoutCell.xib in Resources */,
 				8B6B6A0D2362D8C2008B7585 /* login_bg@2x.png in Resources */,
 				8B6B6A0B2362D8C2008B7585 /* login_bg@3x.png in Resources */,
 				8B21DEF12366F632000F0DAB /* CTBSubjectCell.xib in Resources */,
@@ -1084,6 +1141,7 @@
 				0BBE47752359989500D30C4B /* LXCalenderCell.xib in Resources */,
 				8B6B6A0C2362D8C2008B7585 /* login_bg.png in Resources */,
 				8B21DEFF23681118000F0DAB /* HomeWorkAlreadyStartCell.xib in Resources */,
+				8B175397236987BC00509317 /* PCenterHeaderView.xib in Resources */,
 				8B21DEFA2367ECEB000F0DAB /* HomeWorkNotStartCell.xib in Resources */,
 				0B6192F7235D5E2300BE3BBA /* Mine.storyboard in Resources */,
 				0BBCD678234DBFAE00E4970A /* Assets.xcassets in Resources */,
@@ -1223,6 +1281,7 @@
 				0B3D00102368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m in Sources */,
 				0B619307235D7BDC00BE3BBA /* HomeViewController.m in Sources */,
 				0B4945D52357258500F19EE2 /* TriangleView.m in Sources */,
+				8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */,
 				0B0F6C192366C10900537128 /* JMWaveButton.m in Sources */,
 				0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */,
 				0B0F6C182366C10900537128 /* JMBaseButtonConfig.m in Sources */,
@@ -1236,6 +1295,7 @@
 				0B0F6C1C2366C10900537128 /* JMNumberButton.m in Sources */,
 				0B3D0024236934FE00BD4AA1 /* JXPagerView.m in Sources */,
 				0B5E6D4C2354728A008D9A76 /* UIColor+lzbColor.m in Sources */,
+				8B175395236987BC00509317 /* MineLogoutCell.m in Sources */,
 				0BBE476D235959C400D30C4B /* LZBCalendarWeekView.m in Sources */,
 				8B21DEF02366F632000F0DAB /* CTBSubjectCell.m in Sources */,
 				0BBCD67E234DBFAE00E4970A /* main.m in Sources */,
@@ -1253,8 +1313,10 @@
 				0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */,
 				0B09920623517A0D001E5389 /* LZBDataEntity.m in Sources */,
 				0B0F6BEC236682DF00537128 /* HomeHeaderView.m in Sources */,
+				8B175396236987BC00509317 /* PCenterHeaderView.m in Sources */,
 				0B0F6C1A2366C10900537128 /* JMWaveButtonConfig.m in Sources */,
 				0B098C682351B942000934EB /* LZBNetManagerCache.m in Sources */,
+				8B175399236987BC00509317 /* MineCommonCell.m in Sources */,
 				0B0F6BE42362D00600537128 /* MineViewController.m in Sources */,
 				0B3D0022236934FE00BD4AA1 /* JXPagerListContainerView.m in Sources */,
 				0B0F6BDA2361B43B00537128 /* LZB_TabBarItem.m in Sources */,
@@ -1272,10 +1334,12 @@
 				0B0F6BAE23601E3A00537128 /* UIViewController+HUD.m in Sources */,
 				0B0F6BE12362C3F500537128 /* WHGradientHelper.m in Sources */,
 				0B0F6C1B2366C10900537128 /* JMNumberButtonConfig.m in Sources */,
+				8B21DF0A2369316B000F0DAB /* UIView+CornerRadius.m in Sources */,
 				0B5E064123680BE4008F906D /* LZBBaseViewController+NavigationBar.m in Sources */,
 				0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */,
 				0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */,
 				0B6192ED235D58E600BE3BBA /* UINavigationBar+handle.m in Sources */,
+				8B9CB3122369699D0092F7DE /* LYZCleanCache.m in Sources */,
 				8B21DEF52367D9C5000F0DAB /* LZB_CTB_CellHelper.m in Sources */,
 				0B0F6BBD236020F300537128 /* NSString+LZBValid.m in Sources */,
 				0B3D0023236934FE00BD4AA1 /* JXPagerMainTableView.m in Sources */,

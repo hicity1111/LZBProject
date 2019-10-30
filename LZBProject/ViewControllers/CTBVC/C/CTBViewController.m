@@ -28,10 +28,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-//    [self.navigationController.navigationBar navBarBottomLineHidden:YES];
-    // Do any additional setup after loading the view.
     
-//    self.view.backgroundColor = kMAINF1F5;
     [self.view addSubview:self.tableView];
 }
 
@@ -93,7 +90,7 @@
     if (!_tableView) {
         CGRect frame = CGRectMake(0, kTopBarHeight, kScreenWidth, kScreenHeight - kTopBarHeight - kTabBarHeight);
         _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
-        _tableView.backgroundColor = kMAINF1F5;
+        _tableView.backgroundColor = VC_BACKGROUNDCOLOR;
         _tableView.autoresizesSubviews = YES;
         
         _tableView.delegate = self;

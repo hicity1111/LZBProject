@@ -63,4 +63,7 @@
 /// 用户须知 蒙层
 #define kUserNoticeTrans    [UIColor colorWithHex:@"#000000" alpha:0.3]
 
+/// 控制器背景
+#define VC_BACKGROUNDCOLOR  [UIColor colorWithPatternImage:[UIImage imageNamed:@"vc_bg"]]
+
 #endif /* LZBMainColorMacro_h */

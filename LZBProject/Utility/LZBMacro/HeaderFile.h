@@ -34,5 +34,7 @@
 #import "LZBBaseViewController+NavigationBar.h"
 #import "UIView+CornerRadius.h"
 #import "NotificationViewController.h"
+#import "LZBEmptyView.h"
+#import "UIView+Empty.h"
 
 #endif /* HeaderFile_h */

@@ -46,6 +46,9 @@
 		0B3D0024236934FE00BD4AA1 /* JXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0015236934FD00BD4AA1 /* JXPagerView.m */; };
 		0B3D0025236934FE00BD4AA1 /* JXPagerListRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D001A236934FD00BD4AA1 /* JXPagerListRefreshView.m */; };
 		0B3D0028236934FE00BD4AA1 /* TestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0020236934FD00BD4AA1 /* TestListBaseView.m */; };
+		0B3D002C236ABE8900BD4AA1 /* LZBEmptyBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D002B236ABE8900BD4AA1 /* LZBEmptyBaseView.m */; };
+		0B3D002F236AD8E000BD4AA1 /* UIView+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D002E236AD8E000BD4AA1 /* UIView+Empty.m */; };
+		0B3D0035236ADAE300BD4AA1 /* LZBEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0034236ADAE300BD4AA1 /* LZBEmptyView.m */; };
 		0B4945D52357258500F19EE2 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4945D32357258500F19EE2 /* TriangleView.m */; };
 		0B5E064123680BE4008F906D /* LZBBaseViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E064023680BE4008F906D /* LZBBaseViewController+NavigationBar.m */; };
 		0B5E6D4823545DC7008D9A76 /* LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E6D4723545DC7008D9A76 /* LZBCalendar.m */; };
@@ -211,6 +214,12 @@
 		0B3D001A236934FD00BD4AA1 /* JXPagerListRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerListRefreshView.m; sourceTree = "<group>"; };
 		0B3D001C236934FD00BD4AA1 /* TestListBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestListBaseView.h; sourceTree = "<group>"; };
 		0B3D0020236934FD00BD4AA1 /* TestListBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestListBaseView.m; sourceTree = "<group>"; };
+		0B3D002A236ABE8900BD4AA1 /* LZBEmptyBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBEmptyBaseView.h; sourceTree = "<group>"; };
+		0B3D002B236ABE8900BD4AA1 /* LZBEmptyBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBEmptyBaseView.m; sourceTree = "<group>"; };
+		0B3D002D236AD8E000BD4AA1 /* UIView+Empty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Empty.h"; sourceTree = "<group>"; };
+		0B3D002E236AD8E000BD4AA1 /* UIView+Empty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Empty.m"; sourceTree = "<group>"; };
+		0B3D0033236ADAE300BD4AA1 /* LZBEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBEmptyView.h; sourceTree = "<group>"; };
+		0B3D0034236ADAE300BD4AA1 /* LZBEmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBEmptyView.m; sourceTree = "<group>"; };
 		0B4945D32357258500F19EE2 /* TriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriangleView.m; sourceTree = "<group>"; };
 		0B4945D42357258500F19EE2 /* TriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleView.h; sourceTree = "<group>"; };
 		0B5E063F23680BE4008F906D /* LZBBaseViewController+NavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LZBBaseViewController+NavigationBar.h"; sourceTree = "<group>"; };
@@ -547,6 +556,19 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
+		0B3D0029236ABE4B00BD4AA1 /* LZBEmpty */ = {
+			isa = PBXGroup;
+			children = (
+				0B3D002A236ABE8900BD4AA1 /* LZBEmptyBaseView.h */,
+				0B3D002B236ABE8900BD4AA1 /* LZBEmptyBaseView.m */,
+				0B3D002D236AD8E000BD4AA1 /* UIView+Empty.h */,
+				0B3D002E236AD8E000BD4AA1 /* UIView+Empty.m */,
+				0B3D0033236ADAE300BD4AA1 /* LZBEmptyView.h */,
+				0B3D0034236ADAE300BD4AA1 /* LZBEmptyView.m */,
+			);
+			path = LZBEmpty;
+			sourceTree = "<group>";
+		};
 		0B5E6D4523545D76008D9A76 /* LZBCalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -743,6 +765,7 @@
 		0B820164234DCF1900D983AE /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				0B3D0029236ABE4B00BD4AA1 /* LZBEmpty */,
 				8B6B6A372362FE62008B7585 /* LZBNetwork */,
 				0B0F6BB523601FD500537128 /* Utils */,
 				0B6192EA235D58D300BE3BBA /* Core */,
@@ -1364,6 +1387,7 @@
 				0B3D0028236934FE00BD4AA1 /* TestListBaseView.m in Sources */,
 				0B0F6C292366F92700537128 /* MutualLearningViewController.m in Sources */,
 				0B0F6C1C2366C10900537128 /* JMNumberButton.m in Sources */,
+				0B3D002C236ABE8900BD4AA1 /* LZBEmptyBaseView.m in Sources */,
 				0B3D0024236934FE00BD4AA1 /* JXPagerView.m in Sources */,
 				0B5E6D4C2354728A008D9A76 /* UIColor+lzbColor.m in Sources */,
 				8B175395236987BC00509317 /* MineLogoutCell.m in Sources */,
@@ -1384,6 +1408,7 @@
 				0B0F6BD72361A90400537128 /* LZB_TabBarBadge.m in Sources */,
 				0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */,
 				0B09920623517A0D001E5389 /* LZBDataEntity.m in Sources */,
+				0B3D0035236ADAE300BD4AA1 /* LZBEmptyView.m in Sources */,
 				0B0F6BEC236682DF00537128 /* HomeHeaderView.m in Sources */,
 				8B175396236987BC00509317 /* PCenterHeaderView.m in Sources */,
 				0B0F6C1A2366C10900537128 /* JMWaveButtonConfig.m in Sources */,
@@ -1411,6 +1436,7 @@
 				8B21DF0A2369316B000F0DAB /* UIView+CornerRadius.m in Sources */,
 				0B5E064123680BE4008F906D /* LZBBaseViewController+NavigationBar.m in Sources */,
 				0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */,
+				0B3D002F236AD8E000BD4AA1 /* UIView+Empty.m in Sources */,
 				0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */,
 				0B6192ED235D58E600BE3BBA /* UINavigationBar+handle.m in Sources */,
 				8B9CB3122369699D0092F7DE /* LYZCleanCache.m in Sources */,

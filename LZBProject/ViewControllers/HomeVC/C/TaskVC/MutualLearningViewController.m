@@ -11,6 +11,8 @@
 #import "JXCategoryIndicatorSpringBackgroundView.h"
 #import "TestListBaseView.h"
 
+#define  homeApplecation [UIApplication sharedApplication].keyWindow
+
 static const CGFloat JXheightForHeaderInSection = 30;
 
 @interface MutualLearningViewController ()<UIScrollViewDelegate, JXPagerViewDelegate, JXCategoryViewDelegate>
@@ -140,6 +142,10 @@ static const CGFloat JXheightForHeaderInSection = 30;
 
 - (void)screenButtonAct:(JMButton *)screenButton{
     XLDLog(@"点击了筛选");
+    CGRect rect = [screenButton convertRect:screenButton.frame toView:[UIApplication sharedApplication].keyWindow];
+    
+    XLDLog(@"结果");
+    
 }
 /*
 #pragma mark - Navigation

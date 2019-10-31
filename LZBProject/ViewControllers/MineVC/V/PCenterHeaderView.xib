@@ -14,13 +14,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user_top_backgrouond" translatesAutoresizingMaskIntoConstraints="NO" id="eiB-Pw-46L">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_top_backgrouond" translatesAutoresizingMaskIntoConstraints="NO" id="eiB-Pw-46L">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="272"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="272" id="Kkf-sD-hKj"/>
+                    </constraints>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R9f-ny-WWo">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_touxiang_girl" translatesAutoresizingMaskIntoConstraints="NO" id="R9f-ny-WWo">
                     <rect key="frame" x="20" y="45" width="75" height="75"/>
-                    <color key="backgroundColor" red="1" green="0.43529411759999997" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="width" constant="75" id="1GF-7s-F8G"/>
@@ -185,10 +186,13 @@
                 <constraint firstItem="jRV-7c-fnM" firstAttribute="leading" secondItem="R9f-ny-WWo" secondAttribute="trailing" constant="15" id="Wgv-hy-4g0"/>
                 <constraint firstItem="R9f-ny-WWo" firstAttribute="top" secondItem="EfQ-fb-WaE" secondAttribute="top" constant="45" id="Xkf-4q-j1y"/>
                 <constraint firstItem="MSW-lj-v7g" firstAttribute="leading" secondItem="QZG-h7-Qi5" secondAttribute="trailing" constant="8.5" id="aHP-SB-zW2"/>
+                <constraint firstItem="eiB-Pw-46L" firstAttribute="leading" secondItem="Cv0-Eb-5KE" secondAttribute="leading" id="cdw-Uh-RLx"/>
                 <constraint firstItem="8UO-9I-euI" firstAttribute="top" secondItem="QZG-h7-Qi5" secondAttribute="bottom" constant="12" id="fOG-VW-AEt"/>
+                <constraint firstItem="eiB-Pw-46L" firstAttribute="trailing" secondItem="Cv0-Eb-5KE" secondAttribute="trailing" id="h2S-wK-diZ"/>
                 <constraint firstItem="Cv0-Eb-5KE" firstAttribute="trailing" secondItem="Z7i-vI-osf" secondAttribute="trailing" constant="5.5" id="hOV-DQ-tcX"/>
                 <constraint firstItem="JxW-nO-1KH" firstAttribute="leading" secondItem="8UO-9I-euI" secondAttribute="leading" id="ic7-fv-Ixt"/>
                 <constraint firstItem="ATF-o9-IJK" firstAttribute="leading" secondItem="Cv0-Eb-5KE" secondAttribute="leading" constant="15" id="pfY-hA-ET0"/>
+                <constraint firstItem="eiB-Pw-46L" firstAttribute="top" secondItem="EfQ-fb-WaE" secondAttribute="top" id="qb1-Cc-tfc"/>
                 <constraint firstItem="JxW-nO-1KH" firstAttribute="top" secondItem="8UO-9I-euI" secondAttribute="bottom" constant="12" id="vot-X3-Gi5"/>
                 <constraint firstItem="ATF-o9-IJK" firstAttribute="bottom" secondItem="Cv0-Eb-5KE" secondAttribute="bottom" id="xoi-Ez-aZ4"/>
             </constraints>
@@ -220,5 +224,6 @@
         <image name="user_modifyPassword" width="60" height="60"/>
         <image name="user_resources" width="59" height="59"/>
         <image name="user_top_backgrouond" width="375" height="272"/>
+        <image name="user_touxiang_girl" width="72" height="72"/>
     </resources>
 </document>

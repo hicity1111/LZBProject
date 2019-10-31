@@ -66,4 +66,10 @@
 /// 控制器背景
 #define VC_BACKGROUNDCOLOR  [UIColor colorWithPatternImage:[UIImage imageNamed:@"vc_bg"]]
 
+/// TableviewCell 高亮颜色
+#define TABLECELL_HIGHLIGHTED_COLOR UIColor.lightGrayColor
+
+
+
+
 #endif /* LZBMainColorMacro_h */

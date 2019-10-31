@@ -12,7 +12,9 @@
 
 #pragma mark - 方法类
 
-#define SDUserDefaults [NSUserDefaults standardUserDefaults]
+#define SDUserDefaults                  [NSUserDefaults standardUserDefaults]
+
+#define SDUserDefaultsSync              [SDUserDefaults synchronize]
 
 #define GETUSER_VALUE(key)              [SDUserDefaults valueForKey:key]
 #define GETUSER_OBJ(key)                [SDUserDefaults objectForKey:key]
@@ -46,6 +48,9 @@
 
 /// 是否同意 用户须知 key
 #define AGREE_USER_NOTICE   @"agreeUserNotice"
+
+/// 是否选中 记住密码
+#define IS_SELECT_SAVEPWD   @"isUserSelectSavePassword"
 
 /// 用户登录名
 #define USER_NAME           @"userName"

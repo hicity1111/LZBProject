@@ -10,8 +10,6 @@
 #import "HomeDetailViewController.h"
 #import "JXCategoryTitleVerticalZoomView.h"
 #import "HomeHeaderView.h"
-#import "PendingTasksViewController.h"
-#import "HistoricalTaskViewController.h"
 #import "MutualLearningViewController.h"
 
 #define CategoryTitles  @[@"待处理任务",@"互评学习", @"历史任务"]
@@ -36,12 +34,12 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,15 +53,18 @@
     self.maxCategoryViewHeight = 55;
     
     self.listContainerView = [[JXCategoryListContainerView alloc] initWithType:JXCategoryListContainerType_ScrollView delegate:self];
-    self.listContainerView.frame = CGRectMake(0, kTopBarHeight + self.maxCategoryViewHeight, kScreenWidth, self.view.bounds.size.height - kTopBarHeight - kTabBarHeight - self.maxCategoryViewHeight);
     [self.view addSubview:self.listContainerView];
 
+    self.listContainerView.frame = CGRectMake(0, kTopBarHeight + self.maxCategoryViewHeight, kScreenWidth, self.view.bounds.size.height - kTopBarHeight - kTabBarHeight - self.maxCategoryViewHeight);
     self.categoryView = [[JXCategoryTitleVerticalZoomView alloc] init];
+    [self.view addSubview:self.categoryView];
+
     self.categoryView.frame = CGRectMake(0, self.homeHeaderView.bottom, kScreenWidth, self.maxCategoryViewHeight);
     self.categoryView.listContainer = self.listContainerView;
     self.categoryView.averageCellSpacingEnabled = NO;
     self.categoryView.titles = @[@"待处理任务",@"互评学习", @"历史任务"];
     self.categoryView.delegate = self;
+    self.categoryView.backgroundColor = [UIColor colorWithPatternImage:IMAGE_NAMED(@"home_top_bg")];
     self.categoryView.titleLabelAnchorPointStyle = JXCategoryTitleLabelAnchorPointStyleBottom;
     self.categoryView.titleLabelVerticalOffset = -5;
     self.categoryView.titleColor = kMAIN9999;
@@ -79,9 +80,8 @@
     self.categoryView.maxVerticalCellSpacing = 10;
     self.categoryView.minVerticalCellSpacing = 5;
     self.categoryView.maxVerticalFontScale = 1.6;
-    self.categoryView.minVerticalFontScale = 1.0;
+    self.categoryView.minVerticalFontScale = 1.05;
 
-    [self.view addSubview:self.categoryView];
 
 }
 #pragma mark - 布局导航标题栏
@@ -97,6 +97,10 @@
 
     XLDLog(@"点击了消息");
     [_homeHeaderView removeBadgValue];
+    
+    HomeDetailViewController *homeDetai = [HomeDetailViewController new];
+    [homeDetai setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:homeDetai animated:YES];
 
    
 }
@@ -105,7 +109,6 @@
         //用户交互引起的滚动才处理
         return;
     }
-
     //用于垂直方向滚动时，视图的frame调整
     if ((self.categoryView.bounds.size.height < self.maxCategoryViewHeight) && scrollView.contentOffset.y < 0) {
         //当前属于缩小状态且往下滑动
@@ -114,6 +117,7 @@
         categoryViewFrame.size.height -= scrollView.contentOffset.y;
         categoryViewFrame.size.height = MIN(self.maxCategoryViewHeight, categoryViewFrame.size.height);
         self.categoryView.frame = categoryViewFrame;
+
 
         self.listContainerView.frame = CGRectMake(0, CGRectGetMaxY(self.categoryView.frame) + kTopBarHeight, self.view.bounds.size.width, self.view.bounds.size.height - CGRectGetMaxY(self.categoryView.frame) -kTabBarHeight);
 
@@ -148,26 +152,25 @@
         scrollView.contentOffset = CGPointZero;
     }
 
-    
-
     //必须调用
     CGFloat percent = (self.categoryView.bounds.size.height - self.minCategoryViewHeight)/(self.maxCategoryViewHeight - self.minCategoryViewHeight);
+
     [self.categoryView listDidScrollWithVerticalHeightPercent:percent];
 }
 
 - (UIScrollView *)listScrollView:(id<JXCategoryListContentViewDelegate>)list {
     
-    PendingTasksViewController *listVC = (PendingTasksViewController *)list;
-    return listVC.tableView;
+    MutualLearningViewController *listVC = (MutualLearningViewController *)list;
+    return listVC.pagingView.mainTableView;
 }
 
 #pragma mark - JXCategoryListContainerViewDelegate
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     
-//    self.listContainerView.scrollView.panGestureRecognizer.enabled = NO;
+    self.listContainerView.scrollView.panGestureRecognizer.enabled = NO;
 
-    PendingTasksViewController *pendingTaskVC = [[PendingTasksViewController alloc] init];
+    MutualLearningViewController *pendingTaskVC = [[MutualLearningViewController alloc] init];
     if (index == 0) {
         pendingTaskVC.titles = @[@"全部", @"语文", @"数学"];
     }else if(index == 1) {
@@ -185,6 +188,5 @@
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
     return self.categoryView.titles.count;
 }
-
 
 @end

@@ -32,5 +32,6 @@
 #import "UIViewController+HUD.h"
 #import "LZBNetManager_OC.h"
 #import "LZBBaseViewController+NavigationBar.h"
+#import "UIView+CornerRadius.h"
 
 #endif /* HeaderFile_h */

@@ -58,6 +58,9 @@
     [self addSubviews];
     [self adjustShowUserNoticeView];
     
+    BOOL isSavePwd = GETUSER_BOOL(IS_SELECT_SAVEPWD);
+    self.savePwdBtn.selected = isSavePwd;
+    
     NSString *userName = GETUSER_STRING(USER_NAME);
     if (userName && userName.length > 0) {
         self.userTF.text = userName;
@@ -312,13 +315,15 @@
             if (flag == 1) {
                 NSDictionary *infoDic = resDic[@"infos"];
                 
+                SETUSER_OBJ(USER_NAME, name);
                 if (weakSelf.savePwdBtn.selected) {
-                    SETUSER_OBJ(USER_NAME, name);
                     SETUSER_OBJ(USER_PASSWORD, pwd);
+                } else {
+                    REMOVEUSER_OBJ(USER_PASSWORD);
                 }
                 SETUSER_OBJ(ACCESS_TOKEN, infoDic[@"token"]);
                 SETUSER_BOOL(IS_USER_LOGIN, YES);
-                [SDUserDefaults synchronize];
+                SDUserDefaultsSync;
                 
                 [weakSelf showSuccess:@"登录成功"];
                 [weakSelf.view endEditing:YES];
@@ -345,6 +350,9 @@
 
 - (void)savePasswordButtonClick:(UIButton *)btn {
     btn.selected = !btn.selected;
+    
+    SETUSER_BOOL(IS_SELECT_SAVEPWD, btn.selected);
+    [SDUserDefaults synchronize];
 }
 
 - (void)forgetPasswordButtonClick:(UIButton *)btn {

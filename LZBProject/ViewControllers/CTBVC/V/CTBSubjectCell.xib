@@ -59,6 +59,7 @@
                     <constraint firstItem="qlC-kF-733" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="yJ9-mk-mZq"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="containerView" destination="qlC-kF-733" id="oId-R4-uti"/>
@@ -67,7 +68,7 @@
                 <outlet property="subject_nameLb" destination="YmF-XI-hfO" id="J0g-xT-gB0"/>
                 <outlet property="topConstraint" destination="n0u-tK-DV1" id="8ec-Yo-zwo"/>
             </connections>
-            <point key="canvasLocation" x="-14" y="124"/>
+            <point key="canvasLocation" x="-50" y="62"/>
         </tableViewCell>
     </objects>
 </document>

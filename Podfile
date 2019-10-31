@@ -16,6 +16,7 @@ target 'LZBProject' do
   pod 'YYText'
   pod 'MBProgressHUD'
   pod 'JXCategoryView'
+  pod 'MJExtension'
 
   # Pods for LZBProject
 

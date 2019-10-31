@@ -43,8 +43,7 @@
 
 @implementation PCenterHeaderView
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         [self customSetup];

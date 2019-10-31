@@ -30,7 +30,7 @@
     [super setHighlighted:highlighted animated:animated];
     
     if (highlighted) {
-        self.backgroundColor = UIColor.lightGrayColor;
+        self.backgroundColor = TABLECELL_HIGHLIGHTED_COLOR;
     } else {
         self.backgroundColor = WHITECOLOR;
     }

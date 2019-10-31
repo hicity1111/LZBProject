@@ -36,19 +36,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    [super viewWillAppear:animated];
     self.view.backgroundColor = VC_BACKGROUNDCOLOR;
-    
     [self addCustomView];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
     [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 
@@ -61,6 +60,32 @@
     NSArray *nibView = [[NSBundle mainBundle] loadNibNamed:@"PCenterHeaderView" owner:nil options:nil];
     PCenterHeaderView *pchView = [nibView firstObject];
     pchView.frame = CGRectMake(0, 0, kScreenWidth, tableView_HeaderView_Height);
+    
+    /// 看消息
+    [pchView setClickSeeNoticeButton:^(UIButton * _Nonnull btn) {
+        NotificationViewController *msgVC = [[NotificationViewController alloc] init];
+        [self.navigationController pushViewController:msgVC animated:YES];
+    }];
+    /// 换头像
+    [pchView setSelectHeadImageGes:^(UITapGestureRecognizer * _Nonnull ges) {
+        NSLog(@"换头像");
+    }];
+    /// 二维码
+    [pchView setClickQRCodeButton:^(UIButton * _Nonnull btn) {
+        NSLog(@"点击二维码");
+    }];
+    /// 查看我的资源
+    [pchView setClickSeeMyResourceButton:^(UIButton * _Nonnull btn) {
+        NSLog(@"查看我的资源");
+    }];
+    /// 更改密码
+    [pchView setClickChangePasswordButton:^(UIButton * _Nonnull btn) {
+        NSLog(@"更改密码");
+    }];
+    /// 反馈建议
+    [pchView setClickFeedbackButton:^(UIButton * _Nonnull btn) {
+        NSLog(@"反馈建议");
+    }];
     
     self.tableView.tableHeaderView = pchView;
 }

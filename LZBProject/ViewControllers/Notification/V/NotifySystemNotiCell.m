@@ -20,15 +20,24 @@
 
 /// 三个标签
 @property (nonatomic, strong) NSArray <UILabel *> *tagArr;
-
+/// 未读小红点
+@property (nonatomic, strong) UILabel *dot;
+/// 时间
 @property (nonatomic, strong) UILabel *timeLb;
-
+/// 标题
 @property (nonatomic, strong) UILabel *titleLb;
-
+/// 内容
 @property (nonatomic, strong) UILabel *descLb;
 
 /// 6个图片
 @property (nonatomic, strong) NSArray <UIImageView *> *imgArr;
+
+/// 分割线
+@property (nonatomic, strong) UILabel *sepLine;
+/// 来源
+@property (nonatomic, strong) UILabel *fromLb;
+/// 按钮
+@property (nonatomic, strong) JMButton *actionBtn;
 
 @property (nonatomic, assign) CGFloat imgMaxY;
 
@@ -80,79 +89,6 @@
     }
     
     [self addBottomBar];
-}
-
-
-- (void)addTagLabels {
-    LZBWeak;
-    NSInteger tagCount = self.model.tags.count;
-    __block CGFloat tag_x, tag_y, tag_w = 0;
-    [self.model.tags enumerateObjectsUsingBlock:^(NSString *text, NSUInteger idx, BOOL * _Nonnull stop) {
-        UILabel *lb = [[UILabel alloc] init];
-        lb.backgroundColor = KMAINB2E3;
-        lb.textAlignment = NSTextAlignmentCenter;
-        lb.text = text;
-        lb.textColor = kMAIN00A1;
-        lb.font = LZBMediumFont(14.f);
-        tag_w = [self getWidthWithString:text] + 16.f;
-        lb.frame = CGRectMake(tag_x, tag_y, tag_w, kTagLbHeight);
-        
-        if (idx == 0) {
-            [lb setRoundedCorners:LYZRectCornerTopLeft withRadius:8];
-        }
-        // 最后一个
-        else if (idx == tagCount - 1) {
-            [lb setRoundedCorners:LYZRectCornerBottomRight withRadius:8];
-        }
-        
-        [weakSelf.containerView addSubview:lb];
-        tag_x += tag_w;
-    }];
-}
-
-- (void)addTimeLb {
-    
-}
-
-- (void)addTitleAndDesc {
-    UILabel *titleLb = [[UILabel alloc] init];
-    titleLb.text = self.model.title;
-    titleLb.textColor = KMAIN5868;
-    titleLb.font = LZBMediumFont(18.f);
-    titleLb.numberOfLines = 0;
-    titleLb.frame = CGRectMake(kLeftMargin, kTagLbHeight + kVH_tag_title, kTitle_width, self.model.titleHeight);
-    
-    self.titleLb = titleLb;
-    [self.containerView addSubview:titleLb];
-    
-    UILabel *descLb = [[UILabel alloc] init];
-    descLb.text = self.model.desc;
-    descLb.textColor = KMAIN7777;
-    descLb.font = LZBRegularFont(16.f);
-    descLb.numberOfLines = 0;
-    CGFloat descY = CGRectGetMaxY(titleLb.frame) + kVH_title_desc;
-    descLb.frame = CGRectMake(kLeftMargin, descY, kTitle_width, self.model.descHeight);
-    
-    self.descLb = descLb;
-    [self.containerView addSubview:descLb];
-}
-
-- (void)addImages {
-    LZBWeak;
-    
-    [self.model.imgArr enumerateObjectsUsingBlock:^(UIImage *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSInteger rowIndex = idx / 3;
-        NSInteger colIndex = idx % 3;
-        CGFloat imgX = rowIndex * (kImage_width + kHW_image_spacing);
-        CGFloat imgY = colIndex * (kImage_height + kImage_spacing);
-        
-        CGRect rect = CGRectMake(imgX, imgY, kImage_width, kImage_height);
-        UIImageView *imgV = [[UIImageView alloc] initWithFrame:rect];
-        imgV.image = obj;
-        [weakSelf.containerView addSubview:imgV];
-        
-        weakSelf.imgMaxY = CGRectGetMaxY(imgV.frame);
-    }];
 }
 
 - (void)addBottomBar {
@@ -211,7 +147,7 @@
     UILabel *lb = [[UILabel alloc] initWithFrame:CGRectZero];
     lb.text = text;
     lb.font = LZBRegularFont(14.f);
-    CGSize size = [lb sizeThatFits:CGSizeMake(kTitle_width, 20.f)];
+    CGSize size = [lb sizeThatFits:CGSizeMake(kTitle_width, 17.f)];
     
     return size.width;
 }
@@ -231,12 +167,38 @@
 
 - (UIView *)containerView {
     if (!_containerView) {
-        _containerView = [[UIView alloc] initWithFrame:CGRectMake(kAroundMargin, kAroundMargin, kScreenWidth - 2 * kAroundMargin, self.height - kAroundMargin)];
-        NSLog(@"(((((((((((((   %@, %@", self, self.contentView);
+        _containerView = [[UIView alloc] init];
         _containerView.backgroundColor = UIColor.blueColor;
         [_containerView setCornerRadius:8.f];
     }
     return _containerView;
+}
+
+- (NSArray<UILabel *> *)tagArr {
+    if (!_tagArr) {
+        NSMutableArray *mua = [NSMutableArray array];
+        for (int i = 0; i < 3; i++) {
+            UILabel *lb = [[UILabel alloc] init];
+            lb.textAlignment = NSTextAlignmentCenter;
+            lb.font = LZBMediumFont(14.f);
+            lb.backgroundColor = KMAINB2E3;
+            lb.textColor = kMAIN00A1;
+            
+            [mua addObject:lb];
+        }
+        _tagArr = [NSArray arrayWithArray:mua];
+    }
+    return _tagArr;
+}
+
+- (UILabel *)dot {
+    if (_dot) {
+        _dot = [[UILabel alloc] init];
+        _dot.backgroundColor = REDCOLOR;
+        _dot.size = CGSizeMake(7.f, 7.f);
+        [_dot setCornerRadiusAuto];
+    }
+    return _dot;
 }
 
 - (UILabel *)timeLb {
@@ -252,13 +214,36 @@
 - (UILabel *)titleLb {
     if (!_titleLb) {
         _titleLb = [[UILabel alloc] init];
-        _titleLb.text = self.model.title;
         _titleLb.textColor = KMAIN5868;
         _titleLb.font = LZBMediumFont(18.f);
         _titleLb.numberOfLines = 0;
     }
     return _titleLb;
 }
+
+- (UILabel *)descLb {
+    if (_descLb) {
+        _descLb = [[UILabel alloc] init];
+        _descLb.textColor = kMAIN7777;
+        _descLb.font = LZBRegularFont(16.f);
+        _descLb.numberOfLines = 0;
+    }
+    return _descLb;
+}
+
+- (NSArray<UIImageView *> *)imgArr {
+    if (!_imgArr) {
+        NSMutableArray *mua = [NSMutableArray array];
+        for (int i = 0; i < 6; i++) {
+            UIImageView *imgV = [[UIImageView alloc] init];
+            [mua addObject:imgV];
+        }
+        _imgArr = [NSArray arrayWithArray:mua];
+    }
+    return _imgArr;
+}
+
+
 
 
 @end

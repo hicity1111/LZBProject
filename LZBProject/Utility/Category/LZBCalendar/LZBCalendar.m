@@ -132,8 +132,8 @@
 - (void)dismiss{
     [UIView animateWithDuration:0.5 animations:^{
        
-        [_backView removeFromSuperview];
-        [_calendarView removeFromSuperview];
+        [self->_backView removeFromSuperview];
+        [self->_calendarView removeFromSuperview];
     }];
 }
 -(void)dealData{

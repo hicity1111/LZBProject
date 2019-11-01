@@ -240,13 +240,13 @@
     [savePwd mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(100.f);
         make.height.mas_equalTo(30.f);
-        make.left.equalTo(self.view).offset(30.f);
+        make.left.equalTo(self.pwdTF);
         make.top.equalTo(pwdTF.mas_bottom).offset(10.f);
     }];
     [forgetPwd mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(100.f);
         make.height.mas_equalTo(30.f);
-        make.right.equalTo(self.view).offset(-30.f);
+        make.right.equalTo(self.pwdTF);
         make.centerY.equalTo(savePwd);
     }];
     [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {

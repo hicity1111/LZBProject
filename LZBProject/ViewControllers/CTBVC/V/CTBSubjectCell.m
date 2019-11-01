@@ -20,7 +20,7 @@
     [super awakeFromNib];
     
     self.subject_nameLb.textColor = KMAIN5868;
-    self.subject_descLb.textColor = KMAIN7777;
+    self.subject_descLb.textColor = kMAIN7777;
     
     self.containerView.layer.cornerRadius = 8.f;
 }

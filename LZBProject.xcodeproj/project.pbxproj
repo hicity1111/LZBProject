@@ -38,6 +38,10 @@
 		0B0F6C212366C10900537128 /* UIColor+JM.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C122366C10800537128 /* UIColor+JM.m */; };
 		0B0F6C222366C10900537128 /* JMBadgeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C132366C10800537128 /* JMBadgeValue.m */; };
 		0B0F6C292366F92700537128 /* MutualLearningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C282366F92700537128 /* MutualLearningViewController.m */; };
+		0B112173236BFEE500944C24 /* LZBAPIResponseBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B112172236BFEE500944C24 /* LZBAPIResponseBaseModel.m */; };
+		0B112176236C071200944C24 /* LZBServiceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B112175236C071200944C24 /* LZBServiceBase.m */; };
+		0B112179236C207900944C24 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B112178236C207900944C24 /* UserModel.m */; };
+		0B11217C236C20EF00944C24 /* LoginDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B11217B236C20EF00944C24 /* LoginDataService.m */; };
 		0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */; };
 		0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B17674123584758008979C5 /* LZBCalendarMonth.m */; };
 		0B3D00102368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D000F2368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m */; };
@@ -193,6 +197,14 @@
 		0B0F6C132366C10800537128 /* JMBadgeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMBadgeValue.m; sourceTree = "<group>"; };
 		0B0F6C272366F92700537128 /* MutualLearningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MutualLearningViewController.h; sourceTree = "<group>"; };
 		0B0F6C282366F92700537128 /* MutualLearningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MutualLearningViewController.m; sourceTree = "<group>"; };
+		0B112171236BFEE500944C24 /* LZBAPIResponseBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBAPIResponseBaseModel.h; sourceTree = "<group>"; };
+		0B112172236BFEE500944C24 /* LZBAPIResponseBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBAPIResponseBaseModel.m; sourceTree = "<group>"; };
+		0B112174236C071200944C24 /* LZBServiceBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBServiceBase.h; sourceTree = "<group>"; };
+		0B112175236C071200944C24 /* LZBServiceBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBServiceBase.m; sourceTree = "<group>"; };
+		0B112177236C207900944C24 /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		0B112178236C207900944C24 /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		0B11217A236C20EF00944C24 /* LoginDataService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoginDataService.h; path = LZBProject/Models/LoginDataService.h; sourceTree = SOURCE_ROOT; };
+		0B11217B236C20EF00944C24 /* LoginDataService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LoginDataService.m; path = LZBProject/Models/LoginDataService.m; sourceTree = SOURCE_ROOT; };
 		0B17673D2358471D008979C5 /* NSDate+LZBCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+LZBCalendar.h"; sourceTree = "<group>"; };
 		0B17673E2358471D008979C5 /* NSDate+LZBCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LZBCalendar.m"; sourceTree = "<group>"; };
 		0B17674023584758008979C5 /* LZBCalendarMonth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBCalendarMonth.h; sourceTree = "<group>"; };
@@ -738,6 +750,10 @@
 		0B820162234DCEFE00D983AE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0B112171236BFEE500944C24 /* LZBAPIResponseBaseModel.h */,
+				0B112172236BFEE500944C24 /* LZBAPIResponseBaseModel.m */,
+				0B112177236C207900944C24 /* UserModel.h */,
+				0B112178236C207900944C24 /* UserModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -816,6 +832,8 @@
 				0B098C642351A077000934EB /* LZBNetManager.m */,
 				0B098C662351B942000934EB /* LZBNetManagerCache.h */,
 				0B098C672351B942000934EB /* LZBNetManagerCache.m */,
+				0B112174236C071200944C24 /* LZBServiceBase.h */,
+				0B112175236C071200944C24 /* LZBServiceBase.m */,
 			);
 			path = LZBNetworking;
 			sourceTree = "<group>";
@@ -1006,6 +1024,8 @@
 		8B4D1C4E23618CD2008B2CCA /* M */ = {
 			isa = PBXGroup;
 			children = (
+				0B11217A236C20EF00944C24 /* LoginDataService.h */,
+				0B11217B236C20EF00944C24 /* LoginDataService.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1354,6 +1374,7 @@
 				8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */,
 				0B0F6C192366C10900537128 /* JMWaveButton.m in Sources */,
 				0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */,
+				0B112179236C207900944C24 /* UserModel.m in Sources */,
 				0B0F6C182366C10900537128 /* JMBaseButtonConfig.m in Sources */,
 				8B1753B2236A766100509317 /* NotifyCellModel.m in Sources */,
 				8B4D1C5823618CD2008B2CCA /* UserNoticeView.m in Sources */,
@@ -1375,6 +1396,8 @@
 				0BBE476A235959A600D30C4B /* LZBCalendarHeaderView.m in Sources */,
 				0B3D0025236934FE00BD4AA1 /* JXPagerListRefreshView.m in Sources */,
 				8B6B6A112362D905008B7585 /* LYZTextField.m in Sources */,
+				0B11217C236C20EF00944C24 /* LoginDataService.m in Sources */,
+				0B112173236BFEE500944C24 /* LZBAPIResponseBaseModel.m in Sources */,
 				0B0F6BDD236294EE00537128 /* LZB_TabBar.m in Sources */,
 				0B6192E6235D570B00BE3BBA /* LZBBaseNavigationController.m in Sources */,
 				8B4D1C5623618CD2008B2CCA /* LoginViewController.m in Sources */,
@@ -1415,6 +1438,7 @@
 				0B3D002F236AD8E000BD4AA1 /* UIView+Empty.m in Sources */,
 				0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */,
 				0B6192ED235D58E600BE3BBA /* UINavigationBar+handle.m in Sources */,
+				0B112176236C071200944C24 /* LZBServiceBase.m in Sources */,
 				8B9CB3122369699D0092F7DE /* LYZCleanCache.m in Sources */,
 				8B21DEF52367D9C5000F0DAB /* LZB_CTB_CellHelper.m in Sources */,
 				0B0F6BBD236020F300537128 /* NSString+LZBValid.m in Sources */,
@@ -1600,7 +1624,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.abnert.lzbStudent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1621,7 +1645,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.abnert.lzbStudent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

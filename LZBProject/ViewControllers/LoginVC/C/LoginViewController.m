@@ -205,9 +205,13 @@
     [self.view addSubview:phoneLb];
     
     
+    CGFloat topMargin = 88.f;
+    if (kScreenHeight > 667.f) {
+        topMargin = (kScreenHeight - 480.f) / 2.f;
+    }
     // 设置约束
     [logoV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).offset(88.f);
+        make.top.equalTo(self.view).offset(topMargin);
         make.centerX.equalTo(self.view);
     }];
     [phoneLb mas_makeConstraints:^(MASConstraintMaker *make) {

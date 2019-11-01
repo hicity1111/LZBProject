@@ -64,7 +64,11 @@
     /// 看消息
     [pchView setClickSeeNoticeButton:^(UIButton * _Nonnull btn) {
         NotificationViewController *msgVC = [[NotificationViewController alloc] init];
+        // 进入后隐藏tabbar
+        msgVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:msgVC animated:YES];
+        // 退出时显示tabbar
+//        self.hidesBottomBarWhenPushed = NO;
     }];
     /// 换头像
     [pchView setSelectHeadImageGes:^(UITapGestureRecognizer * _Nonnull ges) {
@@ -248,24 +252,27 @@
     if (!_tableView) {
         CGRect frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kTabBarHeight);
         _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
-        _tableView.backgroundColor = VC_BACKGROUNDCOLOR;
-        _tableView.autoresizesSubviews = NO;
-        
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        
         if (@available(iOS 11.0, *)) {
             /// 阻止 ScrollView 自动判断 对（safeArea）的 ContentInset
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
         
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        UIImageView *bgV = [[UIImageView alloc] initWithFrame:_tableView.bounds];
+        bgV.contentMode = UIViewContentModeScaleAspectFill;
+        bgV.image = [UIImage imageNamed:@"vc_bg"];
+        _tableView.backgroundView = bgV;
+                
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.bounces = NO;
         
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.showsHorizontalScrollIndicator = NO;
         
         [_tableView registerNib:[UINib nibWithNibName:commonCellID bundle:nil] forCellReuseIdentifier:commonCellID];
         [_tableView registerNib:[UINib nibWithNibName:logoutCellID bundle:nil] forCellReuseIdentifier:logoutCellID];
+        
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
 }

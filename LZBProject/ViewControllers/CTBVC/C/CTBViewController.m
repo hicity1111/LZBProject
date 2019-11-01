@@ -9,7 +9,7 @@
 #import "CTBViewController.h"
 #import "HomeHeaderView.h"
 #import "CTBSubjectCell.h"
-
+#import "LZBEmptyView.h"
 #import "LZB_CTB_CellHelper.h"
 
 #define cellID @"CTBSubjectCell"
@@ -21,16 +21,11 @@
 
 @property (nonatomic, strong) HomeHeaderView *homeHeaderView;
 
+@property (nonatomic, strong) NSMutableArray *dataSource;
+
 @end
 
 @implementation CTBViewController
-
-- (void)viewDidLoad {
-    
-    [super viewDidLoad];
-    
-    [self.view addSubview:self.tableView];
-}
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:NO];
@@ -42,6 +37,19 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     [super viewWillDisappear:animated];
+}
+
+
+- (void)viewDidLoad {
+    
+    [super viewDidLoad];
+    
+    self.dataSource = [NSMutableArray arrayWithCapacity:0];
+    
+    [self.view addSubview:self.tableView];
+    
+    LZBEmptyView *emptyView = [LZBEmptyView emptyViewWithImage:IMAGE_NAMED(@"pic_default_wrong") titleStr:@"还没有错题哦~" detailStr:nil];
+    self.tableView.lzbemptyView = emptyView;
 }
 
 
@@ -81,7 +89,7 @@
 
 #pragma mark - UITableView Datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dataSource.count;
 }
 
 
@@ -92,10 +100,8 @@
         _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
         _tableView.backgroundColor = VC_BACKGROUNDCOLOR;
         _tableView.autoresizesSubviews = YES;
-        
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         _tableView.showsVerticalScrollIndicator = NO;
@@ -103,6 +109,10 @@
         
         [_tableView registerNib:[UINib nibWithNibName:cellID bundle:nil] forCellReuseIdentifier:cellID];
         _tableView.rowHeight = 130.f;
+        
+        if (@available(iOS 11.0, *)) {
+            self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
     return _tableView;
 }

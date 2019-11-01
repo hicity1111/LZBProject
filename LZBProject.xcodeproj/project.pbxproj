@@ -87,12 +87,7 @@
 		8B175398236987BC00509317 /* MineCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B175391236987BB00509317 /* MineCommonCell.xib */; };
 		8B175399236987BC00509317 /* MineCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B175393236987BB00509317 /* MineCommonCell.m */; };
 		8B17539F23698A9000509317 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B17539E23698A9000509317 /* NotificationViewController.m */; };
-		8B1753A32369943000509317 /* NotifyClassInformCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1753A12369943000509317 /* NotifyClassInformCell.m */; };
-		8B1753A42369943000509317 /* NotifyClassInformCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B1753A22369943000509317 /* NotifyClassInformCell.xib */; };
-		8B1753A8236994D500509317 /* NotifyVoiceMailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1753A6236994D500509317 /* NotifyVoiceMailCell.m */; };
-		8B1753A9236994D500509317 /* NotifyVoiceMailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B1753A7236994D500509317 /* NotifyVoiceMailCell.xib */; };
 		8B1753AD236994EF00509317 /* NotifySystemNotiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1753AB236994EF00509317 /* NotifySystemNotiCell.m */; };
-		8B1753AE236994EF00509317 /* NotifySystemNotiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B1753AC236994EF00509317 /* NotifySystemNotiCell.xib */; };
 		8B1753B2236A766100509317 /* NotifyCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1753B1236A766100509317 /* NotifyCellModel.m */; };
 		8B21DEF02366F632000F0DAB /* CTBSubjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DEEE2366F632000F0DAB /* CTBSubjectCell.m */; };
 		8B21DEF12366F632000F0DAB /* CTBSubjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B21DEEF2366F632000F0DAB /* CTBSubjectCell.xib */; };
@@ -290,15 +285,8 @@
 		8B175393236987BB00509317 /* MineCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineCommonCell.m; sourceTree = "<group>"; };
 		8B17539D23698A9000509317 /* NotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		8B17539E23698A9000509317 /* NotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
-		8B1753A02369943000509317 /* NotifyClassInformCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifyClassInformCell.h; sourceTree = "<group>"; };
-		8B1753A12369943000509317 /* NotifyClassInformCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotifyClassInformCell.m; sourceTree = "<group>"; };
-		8B1753A22369943000509317 /* NotifyClassInformCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotifyClassInformCell.xib; sourceTree = "<group>"; };
-		8B1753A5236994D500509317 /* NotifyVoiceMailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifyVoiceMailCell.h; sourceTree = "<group>"; };
-		8B1753A6236994D500509317 /* NotifyVoiceMailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotifyVoiceMailCell.m; sourceTree = "<group>"; };
-		8B1753A7236994D500509317 /* NotifyVoiceMailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotifyVoiceMailCell.xib; sourceTree = "<group>"; };
 		8B1753AA236994EF00509317 /* NotifySystemNotiCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifySystemNotiCell.h; sourceTree = "<group>"; };
 		8B1753AB236994EF00509317 /* NotifySystemNotiCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotifySystemNotiCell.m; sourceTree = "<group>"; };
-		8B1753AC236994EF00509317 /* NotifySystemNotiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotifySystemNotiCell.xib; sourceTree = "<group>"; };
 		8B1753B0236A766100509317 /* NotifyCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifyCellModel.h; sourceTree = "<group>"; };
 		8B1753B1236A766100509317 /* NotifyCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotifyCellModel.m; sourceTree = "<group>"; };
 		8B21DEED2366F632000F0DAB /* CTBSubjectCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTBSubjectCell.h; sourceTree = "<group>"; };
@@ -938,15 +926,8 @@
 		8B17539C23698A5B00509317 /* V */ = {
 			isa = PBXGroup;
 			children = (
-				8B1753A02369943000509317 /* NotifyClassInformCell.h */,
-				8B1753A12369943000509317 /* NotifyClassInformCell.m */,
-				8B1753A22369943000509317 /* NotifyClassInformCell.xib */,
-				8B1753A5236994D500509317 /* NotifyVoiceMailCell.h */,
-				8B1753A6236994D500509317 /* NotifyVoiceMailCell.m */,
-				8B1753A7236994D500509317 /* NotifyVoiceMailCell.xib */,
 				8B1753AA236994EF00509317 /* NotifySystemNotiCell.h */,
 				8B1753AB236994EF00509317 /* NotifySystemNotiCell.m */,
-				8B1753AC236994EF00509317 /* NotifySystemNotiCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1232,11 +1213,8 @@
 				8B21DEFF23681118000F0DAB /* HomeWorkAlreadyStartCell.xib in Resources */,
 				8B175397236987BC00509317 /* PCenterHeaderView.xib in Resources */,
 				8B21DEFA2367ECEB000F0DAB /* HomeWorkNotStartCell.xib in Resources */,
-				8B1753A9236994D500509317 /* NotifyVoiceMailCell.xib in Resources */,
 				0B6192F7235D5E2300BE3BBA /* Mine.storyboard in Resources */,
 				0BBCD678234DBFAE00E4970A /* Assets.xcassets in Resources */,
-				8B1753AE236994EF00509317 /* NotifySystemNotiCell.xib in Resources */,
-				8B1753A42369943000509317 /* NotifyClassInformCell.xib in Resources */,
 				0BBCD676234DBFAD00E4970A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1403,7 +1381,6 @@
 				0B0F6C202366C10900537128 /* JMBaseButton+CountDown.m in Sources */,
 				0B098C652351A077000934EB /* LZBNetManager.m in Sources */,
 				8B21DEF92367ECEB000F0DAB /* HomeWorkNotStartCell.m in Sources */,
-				8B1753A8236994D500509317 /* NotifyVoiceMailCell.m in Sources */,
 				0B619304235D7BC900BE3BBA /* CTBViewController.m in Sources */,
 				0B0F6BD72361A90400537128 /* LZB_TabBarBadge.m in Sources */,
 				0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */,
@@ -1414,7 +1391,6 @@
 				0B0F6C1A2366C10900537128 /* JMWaveButtonConfig.m in Sources */,
 				0B098C682351B942000934EB /* LZBNetManagerCache.m in Sources */,
 				8B175399236987BC00509317 /* MineCommonCell.m in Sources */,
-				8B1753A32369943000509317 /* NotifyClassInformCell.m in Sources */,
 				0B0F6BE42362D00600537128 /* MineViewController.m in Sources */,
 				0B3D0022236934FE00BD4AA1 /* JXPagerListContainerView.m in Sources */,
 				0B0F6BDA2361B43B00537128 /* LZB_TabBarItem.m in Sources */,

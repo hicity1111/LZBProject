@@ -7,18 +7,17 @@
 //
 
 #import "NotificationViewController.h"
-#import "NotifyClassInformCell.h"
 #import "NotifySystemNotiCell.h"
-#import "NotifyVoiceMailCell.h"
+#import "NotifyCellModel.h"
 
-#define classCellID     @"NotifyClassInformCell"
 #define systemCellID    @"NotifySystemNotiCell"
-#define voiceCellID     @"NotifyVoiceMailCell"
 
 
 @interface NotificationViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) NSArray *dataSource;
 
 @end
 
@@ -31,12 +30,22 @@
     
     self.view.backgroundColor = WHITECOLOR;
     [self.view addSubview:self.tableView];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    NSMutableArray *muArr = [NSMutableArray array];
+    NotifyCellModel *model = [[NotifyCellModel alloc] transToModelWithDict:@{}];
+    [muArr addObject:model];
+//    [muArr addObject:model];
+//    [muArr addObject:model];
+//    [muArr addObject:model];
+//    [muArr addObject:model];
     
+    self.dataSource = muArr;
+    [self.tableView reloadData];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -55,13 +64,17 @@
 #pragma mark - UITableView Delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewAutomaticDimension;
+    NotifyCellModel *model = self.dataSource[indexPath.row];
+    NSLog(@"******************** %.f", model.cellHeight);
+    return 255;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    NotifyClassInformCell *cell = [tableView dequeueReusableCellWithIdentifier:classCellID];
+    NotifyCellModel *model = self.dataSource[indexPath.row];
     NotifySystemNotiCell *cell = [tableView dequeueReusableCellWithIdentifier:systemCellID];
+    cell.model = model;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -78,7 +91,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return self.dataSource.count;
 }
 
 #pragma mark - Lazy Load
@@ -90,7 +103,10 @@
             /// 阻止 ScrollView 自动判断 对（safeArea）的 ContentInset
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
-        _tableView.backgroundColor = VC_BACKGROUNDCOLOR;
+        UIImageView *bgV = [[UIImageView alloc] initWithFrame:_tableView.bounds];
+        bgV.contentMode = UIViewContentModeScaleAspectFill;
+        bgV.image = [UIImage imageNamed:@"vc_bg"];
+        _tableView.backgroundView = bgV;
         
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -98,15 +114,9 @@
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.showsHorizontalScrollIndicator = NO;
         
-//        [_tableView registerNib:[UINib nibWithNibName:classCellID bundle:nil] forCellReuseIdentifier:classCellID];
-//        [_tableView registerNib:[UINib nibWithNibName:voiceCellID bundle:nil] forCellReuseIdentifier:voiceCellID];
-//        [_tableView registerNib:[UINib nibWithNibName:systemCellID bundle:nil] forCellReuseIdentifier:systemCellID];
-        [_tableView registerClass:[NotifyClassInformCell class] forCellReuseIdentifier:classCellID];
-        [_tableView registerClass:[NotifyVoiceMailCell class] forCellReuseIdentifier:voiceCellID];
         [_tableView registerClass:[NotifySystemNotiCell class] forCellReuseIdentifier:systemCellID];
         
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.estimatedRowHeight = 251.f;
     }
     return _tableView;
 }
@@ -123,14 +133,5 @@
 
 #pragma mark - Getters and Setters
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

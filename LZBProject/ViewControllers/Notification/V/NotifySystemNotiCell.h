@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NotifyCellModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NotifySystemNotiCell : UITableViewCell
+
+@property (nonatomic, strong) NotifyCellModel *model;
 
 @end
 

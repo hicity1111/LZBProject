@@ -98,21 +98,27 @@
     if (!_tableView) {
         CGRect frame = CGRectMake(0, kTopBarHeight, kScreenWidth, kScreenHeight - kTopBarHeight - kTabBarHeight);
         _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
-        _tableView.backgroundColor = VC_BACKGROUNDCOLOR;
+
         _tableView.autoresizesSubviews = YES;
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
+        if (@available(iOS 11.0, *)) {
+            /// 阻止 ScrollView 自动判断 对（safeArea）的 ContentInset
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+        
+        UIImageView *bgV = [[UIImageView alloc] initWithFrame:_tableView.bounds];
+        bgV.contentMode = UIViewContentModeScaleAspectFill;
+        bgV.image = [UIImage imageNamed:@"vc_bg"];
+        _tableView.backgroundView = bgV;
         
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.showsHorizontalScrollIndicator = NO;
         
         [_tableView registerNib:[UINib nibWithNibName:cellID bundle:nil] forCellReuseIdentifier:cellID];
         _tableView.rowHeight = 130.f;
-        
-        if (@available(iOS 11.0, *)) {
-            self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        }
     }
     return _tableView;
 }

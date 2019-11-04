@@ -25,4 +25,10 @@
 
 
 
+
+//消息中心
+//学生消息列表
+#define NotifyListAPI  @"/api/notice/student/getList"
+#define NotifyListAPI_full  BASEURL(NotifyListAPI)
+
 #endif /* LZBNetworkURL_h */

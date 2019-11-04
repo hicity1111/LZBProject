@@ -110,6 +110,9 @@
 		8B9CB3122369699D0092F7DE /* LYZCleanCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB3112369699D0092F7DE /* LYZCleanCache.m */; };
 		8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB31623697C8A0092F7DE /* LYZSandBoxPath.m */; };
 		8BCD1226236192F600BCCB08 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCD1225236192F600BCCB08 /* Login.storyboard */; };
+		8BD1BA15236BCF890088A136 /* UIImage+QRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1BA14236BCF890088A136 /* UIImage+QRCode.m */; };
+		8BD1BA18236BDCC20088A136 /* QRCodeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1BA17236BDCC20088A136 /* QRCodeAlertView.m */; };
+		8BD1BA1E236C3E200088A136 /* LYZCurrentVCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1BA1D236C3E200088A136 /* LYZCurrentVCHelper.m */; };
 		BA5BFE81236BC46200D231F0 /* UITableView+MTExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE80236BC46200D231F0 /* UITableView+MTExtension.m */; };
 		BA5BFE84236BC4DA00D231F0 /* NotificationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE83236BC4DA00D231F0 /* NotificationListCell.m */; };
 		BA5BFE87236BCC8D00D231F0 /* NotificaitonIconItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE86236BCC8D00D231F0 /* NotificaitonIconItem.m */; };
@@ -117,9 +120,7 @@
 		BA5BFE8D236BEC1B00D231F0 /* NotificationToolItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE8C236BEC1B00D231F0 /* NotificationToolItem.m */; };
 		BA5BFE90236C057500D231F0 /* NotifyAllSelectToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE8F236C057500D231F0 /* NotifyAllSelectToolView.m */; };
 		BA5BFE93236C17A800D231F0 /* NotifyListEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE92236C17A800D231F0 /* NotifyListEntry.m */; };
-		8BD1BA15236BCF890088A136 /* UIImage+QRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1BA14236BCF890088A136 /* UIImage+QRCode.m */; };
-		8BD1BA18236BDCC20088A136 /* QRCodeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1BA17236BDCC20088A136 /* QRCodeAlertView.m */; };
-		8BD1BA1E236C3E200088A136 /* LYZCurrentVCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1BA1D236C3E200088A136 /* LYZCurrentVCHelper.m */; };
+		BA6CD79A236FD4650008113F /* NotifyDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD799236FD4650008113F /* NotifyDataService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,6 +362,8 @@
 		BA5BFE8F236C057500D231F0 /* NotifyAllSelectToolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotifyAllSelectToolView.m; sourceTree = "<group>"; };
 		BA5BFE91236C17A800D231F0 /* NotifyListEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifyListEntry.h; sourceTree = "<group>"; };
 		BA5BFE92236C17A800D231F0 /* NotifyListEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotifyListEntry.m; sourceTree = "<group>"; };
+		BA6CD798236FD4650008113F /* NotifyDataService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifyDataService.h; sourceTree = "<group>"; };
+		BA6CD799236FD4650008113F /* NotifyDataService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotifyDataService.m; sourceTree = "<group>"; };
 		C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProject_LZBProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF14C585C96A1396A7EB144 /* Pods-LZBProject-LZBProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject-LZBProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-LZBProject-LZBProjectUITests/Pods-LZBProject-LZBProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1000,6 +1003,8 @@
 				8B1753B1236A766100509317 /* NotifyCellModel.m */,
 				BA5BFE91236C17A800D231F0 /* NotifyListEntry.h */,
 				BA5BFE92236C17A800D231F0 /* NotifyListEntry.m */,
+				BA6CD798236FD4650008113F /* NotifyDataService.h */,
+				BA6CD799236FD4650008113F /* NotifyDataService.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1503,6 +1508,7 @@
 				8B21DF0A2369316B000F0DAB /* UIView+CornerRadius.m in Sources */,
 				0B5E064123680BE4008F906D /* LZBBaseViewController+NavigationBar.m in Sources */,
 				0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */,
+				BA6CD79A236FD4650008113F /* NotifyDataService.m in Sources */,
 				0B3D002F236AD8E000BD4AA1 /* UIView+Empty.m in Sources */,
 				0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */,
 				0B6192ED235D58E600BE3BBA /* UINavigationBar+handle.m in Sources */,

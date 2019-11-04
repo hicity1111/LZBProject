@@ -29,9 +29,11 @@
     
     deviceParam[@"token"] = [Utils loadUserToken];
     //版本号
-//    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-//    NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-//    deviceParam[@"ver"] = appVersion;
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    deviceParam[@"appVersion"] = appVersion;
+    
+    deviceParam[@"appChannelId"] = @"studentApp";
     
     return deviceParam;
 }
@@ -70,10 +72,8 @@
 - (LZBAPIResponseBaseModel *)lzbManagerModel:(id)hepler response:(id)response{
     
     NSDictionary *resultDic = (NSDictionary *)response;
-    
-    Class responseClass = NSClassFromString(self.responseClassName);
-    
-    LZBAPIResponseBaseModel *model = [responseClass mj_objectWithKeyValues:resultDic];
+        
+    LZBAPIResponseBaseModel *model = [LZBAPIResponseBaseModel mj_objectWithKeyValues:resultDic];
     
     return model;
 }

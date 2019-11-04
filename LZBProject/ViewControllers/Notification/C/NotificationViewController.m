@@ -11,6 +11,7 @@
 #import "NotificationListCell.h"            ///列表类
 #import "NotifyAllSelectToolView.h"         ///全选工具栏
 #import "NotifyListEntry.h"                 ///数据模型
+#import "NotifyDataService.h"
 
 
 @interface NotificationViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -35,6 +36,8 @@
     self.view.backgroundColor = WHITECOLOR;
     ///加载组件
     [self mt_loadUI];
+    ///获取用户信息
+    [self obtainMessageListData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,6 +91,17 @@
 - (void)doneDeleteEvent {
     NSLog(@"确定删除事件 ......");
     
+}
+
+
+///MARK:- Remote API
+///获取列表数据
+- (void)obtainMessageListData {
+    [[NotifyDataService shareData] obtainMessageList:@"" studentInfoId:@"1634" success:^(LZBAPIResponseBaseModel * _Nonnull baseM) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 

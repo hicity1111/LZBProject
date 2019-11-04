@@ -31,9 +31,10 @@
     self.responseClassName = NSStringFromClass([UserModel class]);
     //传入必要的参数
 //    entity.parameters = [self necessaryParamsDictionary:@{@"userName": username, @"password": password, @"appChannelId": @"studentApp"}];
-    [self.netManager lzb_request_postWithEntity:entity successBlock:^(UserModel *model) {
+    [self.netManager lzb_request_postWithEntity:entity successBlock:^(LZBAPIResponseBaseModel *model) {
         if (success) {
-            success(model.infos);
+            UserModel *UserM = [UserModel mj_objectWithKeyValues:model.infos];
+            success(UserM);
         }
     } failureBlock:^(NSError * _Nonnull error) {
         if (failure) {

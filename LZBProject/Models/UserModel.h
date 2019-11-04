@@ -14,8 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UserModel : LZBAPIResponseBaseModel
 
-@property (nonatomic, strong) UserModel *infos;
-
 /// 班级名称
 @property (nonatomic, copy) NSString *className;
 

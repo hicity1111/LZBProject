@@ -37,5 +37,6 @@
 #import "NotificationViewController.h"
 #import "LZBEmptyView.h"
 #import "UIView+Empty.h"
+#import "LZBAPIResponseBaseModel.h"
 
 #endif /* HeaderFile_h */

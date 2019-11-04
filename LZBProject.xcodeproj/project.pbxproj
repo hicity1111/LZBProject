@@ -81,6 +81,7 @@
 		0BBE47742359989500D30C4B /* LXCalenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBE47712359989500D30C4B /* LXCalenderCell.m */; };
 		0BBE47752359989500D30C4B /* LXCalenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BBE47732359989500D30C4B /* LXCalenderCell.xib */; };
 		0BBE47782359B0FD00D30C4B /* LZBBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBE47772359B0FD00D30C4B /* LZBBaseViewController.m */; };
+		0BF05336236FD4910091EFB2 /* HomeDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF05335236FD4910091EFB2 /* HomeDataService.m */; };
 		170A91ACB3928B17BD894640 /* Pods_LZBProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */; };
 		34045572ED131BFDD841F7D6 /* Pods_LZBProject_LZBProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */; };
 		85F372E2BD4721F567D05450 /* Pods_LZBProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */; };
@@ -294,6 +295,8 @@
 		0BBE47732359989500D30C4B /* LXCalenderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LXCalenderCell.xib; sourceTree = "<group>"; };
 		0BBE47762359B0FD00D30C4B /* LZBBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBBaseViewController.h; sourceTree = "<group>"; };
 		0BBE47772359B0FD00D30C4B /* LZBBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBBaseViewController.m; sourceTree = "<group>"; };
+		0BF05334236FD4910091EFB2 /* HomeDataService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDataService.h; sourceTree = "<group>"; };
+		0BF05335236FD4910091EFB2 /* HomeDataService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDataService.m; sourceTree = "<group>"; };
 		23FB01E150EBC5D9CF6D00A2 /* Pods-LZBProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject.release.xcconfig"; path = "Target Support Files/Pods-LZBProject/Pods-LZBProject.release.xcconfig"; sourceTree = "<group>"; };
 		577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770848CE74481CA6FF8ECE16 /* Pods-LZBProject-LZBProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-LZBProject-LZBProjectUITests/Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -671,6 +674,7 @@
 		0B6192EE235D5DA600BE3BBA /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				0BF05330236FD2D80091EFB2 /* M */,
 				0B0F6BE92362F5C200537128 /* V */,
 				0B6192FE235D7B6D00BE3BBA /* C */,
 				0B6192F3235D5DE200BE3BBA /* StoryBoard */,
@@ -946,6 +950,15 @@
 				0BBCD694234DBFAE00E4970A /* Info.plist */,
 			);
 			path = LZBProjectUITests;
+			sourceTree = "<group>";
+		};
+		0BF05330236FD2D80091EFB2 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				0BF05334236FD4910091EFB2 /* HomeDataService.h */,
+				0BF05335236FD4910091EFB2 /* HomeDataService.m */,
+			);
+			path = M;
 			sourceTree = "<group>";
 		};
 		6A4B0F9B754FC431EF4EEC13 /* Pods */ = {
@@ -1482,6 +1495,7 @@
 				0B0F6C202366C10900537128 /* JMBaseButton+CountDown.m in Sources */,
 				0B098C652351A077000934EB /* LZBNetManager.m in Sources */,
 				8B21DEF92367ECEB000F0DAB /* HomeWorkNotStartCell.m in Sources */,
+				0BF05336236FD4910091EFB2 /* HomeDataService.m in Sources */,
 				0B619304235D7BC900BE3BBA /* CTBViewController.m in Sources */,
 				0B0F6BD72361A90400537128 /* LZB_TabBarBadge.m in Sources */,
 				0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */,

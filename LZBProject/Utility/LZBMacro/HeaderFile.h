@@ -37,5 +37,7 @@
 #import "NotificationViewController.h"
 #import "LZBEmptyView.h"
 #import "UIView+Empty.h"
+#import "LZBNetworkURL.h"
+#import "LZBNetManager.h"
 
 #endif /* HeaderFile_h */

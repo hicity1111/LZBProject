@@ -13,9 +13,6 @@
 #import "MineCommonCell.h"
 #import "MineLogoutCell.h"
 
-#import "LYZCleanCache.h"
-#import "LYZSandBoxPath.h"
-
 #define tableView_HeaderView_Height 300.f
 #define tableView_CommonCell_Height 45.f
 #define tableView_Logout_Height     60.f
@@ -23,9 +20,11 @@
 #define commonCellID @"MineCommonCell"
 #define logoutCellID @"MineLogoutCell"
 
+
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+
 
 @end
 
@@ -38,6 +37,7 @@
     
     self.view.backgroundColor = VC_BACKGROUNDCOLOR;
     [self addCustomView];
+        
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,93 +60,16 @@
     NSArray *nibView = [[NSBundle mainBundle] loadNibNamed:@"PCenterHeaderView" owner:nil options:nil];
     PCenterHeaderView *pchView = [nibView firstObject];
     pchView.frame = CGRectMake(0, 0, kScreenWidth, tableView_HeaderView_Height);
-    
-    /// 看消息
-    [pchView setClickSeeNoticeButton:^(UIButton * _Nonnull btn) {
-        NotificationViewController *msgVC = [[NotificationViewController alloc] init];
-        // 进入后隐藏tabbar
-        msgVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:msgVC animated:YES];
-        // 退出时显示tabbar
-//        self.hidesBottomBarWhenPushed = NO;
-    }];
-    /// 换头像
-    [pchView setSelectHeadImageGes:^(UITapGestureRecognizer * _Nonnull ges) {
-        NSLog(@"换头像");
-    }];
-    /// 二维码
-    [pchView setClickQRCodeButton:^(UIButton * _Nonnull btn) {
-        NSLog(@"点击二维码");
-    }];
-    /// 查看我的资源
-    [pchView setClickSeeMyResourceButton:^(UIButton * _Nonnull btn) {
-        NSLog(@"查看我的资源");
-    }];
-    /// 更改密码
-    [pchView setClickChangePasswordButton:^(UIButton * _Nonnull btn) {
-        NSLog(@"更改密码");
-    }];
-    /// 反馈建议
-    [pchView setClickFeedbackButton:^(UIButton * _Nonnull btn) {
-        NSLog(@"反馈建议");
-    }];
+    pchView.vc = self;
     
     self.tableView.tableHeaderView = pchView;
 }
 
-/// 绑定手机号
-- (void)bindPhoneNumber {
-    
-}
-
-/// 清除缓存
-- (void)cleanCache {
-    
-    LYZCleanCache *manager = [LYZCleanCache sharedCleanManager];
-    NSString *cacheFolder = [LYZSandBoxPath path4Tmp];
-    CGFloat folderSize = [manager folderSizeAtPath:cacheFolder];
-//    [manager cleanFoldersWithPath:cacheFolder];
-    
-    NSString *message = [NSString stringWithFormat:@"共清理了 %.2f M", folderSize];
-    [manager tokenAnimationWithView:self.view message:message];
-}
-
-/// 用户协议
-- (void)seeUserProtocol {
-    
-}
-
-/// 版本号
-- (void)requestVersionUpdate {
-    
-}
-
-/// 打客服
-- (void)callCustomerService {
-    NSString *number = @"18233156440";
-    NSMutableString *str = [[NSMutableString alloc] initWithFormat:@"tel:%@", number];
-    NSURL *url = [NSURL URLWithString:str];
-    UIApplication *application = [UIApplication sharedApplication];
-    [application openURL:url options:@{} completionHandler:^(BOOL success) {
-        //OpenSuccess=选择 呼叫 为 1  选择 取消 为0
-        NSLog(@"OpenSuccess=%d", success);
-
-    }];
-}
-
 /// 退出登录
 - (void)logoutAction {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确定退出？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alert = [self alertWithTitle:@"确定退出？" sureButtonText:@"确定" cancelButtonText:@"取消" sureActionBlock:^(UIAlertAction *action) {
         [self sureLogout];
-    }];
-    [alert addAction:sureAction];
-    
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        
-    }];
-    [alert addAction:cancelAction];
+    } cancelActionBlock:nil];
     
     [self presentViewController:alert animated:YES completion:nil];
 }
@@ -205,34 +128,14 @@
     return 9.f;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.row) {
-        case 0: {   /// 绑定手机号
-            [self bindPhoneNumber];
-            break;
-        }
-        case 1: {   /// 清除缓存
-            [self cleanCache];
-            break;
-        }
-        case 2: {   /// 用户协议
-            [self seeUserProtocol];
-            break;
-        }
-        case 3: {   /// 版本号
-            [self requestVersionUpdate];
-            break;
-        }
-        case 4: {   /// 客服电话
-            [self callCustomerService];
-            break;
-        }
-        case 5: {   /// 退出登录
-            [self logoutAction];
-            break;
-        }
-        default:
-            break;
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    /// 退出登录
+    if (indexPath.row == 5) {
+        [self logoutAction];
+    } else {
+        MineCommonCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell selectedCellWithIndex:indexPath];
     }
 }
 
@@ -275,6 +178,22 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
+}
+
+- (UIAlertController *)alertWithTitle:(NSString *)title
+                       sureButtonText:(NSString *)sureText
+                     cancelButtonText:(NSString *)cancelText
+                      sureActionBlock:(void (^)(UIAlertAction *action))sureBlock
+                    cancelActionBlock:(void (^)(UIAlertAction *action))cancelBlock {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *sureAction = [UIAlertAction actionWithTitle:sureText style:UIAlertActionStyleDefault handler:sureBlock];
+    [alert addAction:sureAction];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelText style:UIAlertActionStyleDestructive handler:cancelBlock];
+    [alert addAction:cancelAction];
+    
+    return alert;
 }
 
 @end

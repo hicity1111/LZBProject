@@ -20,6 +20,7 @@
 #endif
 
 #define LoginUrl_sim    @"/api/system/student/login"
+
 #define LoginUrl_full   BASEURL(LoginUrl_sim)
 
 

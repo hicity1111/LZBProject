@@ -7,6 +7,7 @@
 //
 
 #import "PCenterHeaderView.h"
+#import "QRCodeAlertView.h"
 
 @interface PCenterHeaderView ()
 
@@ -38,6 +39,11 @@
 /// 消息按钮距离顶部距离
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *noticeBtnTopConstraint;
 
+
+
+
+
+@property (nonatomic, strong) QRCodeAlertView *codeManager;
 
 @end
 
@@ -75,45 +81,65 @@
 
 - (IBAction)seeNoticeAction:(UIButton *)sender {
     NSLog(@"通知消息");
-    if (self.clickSeeNoticeButton) {
-        self.clickSeeNoticeButton(sender);
-    }
+//    if (self.clickSeeNoticeButton) {
+//        self.clickSeeNoticeButton(sender);
+//    }
+    
+    NotificationViewController *msgVC = [[NotificationViewController alloc] init];
+    // 进入后隐藏tabbar
+    msgVC.hidesBottomBarWhenPushed = YES;
+    [self.vc.navigationController pushViewController:msgVC animated:YES];
 }
 
 - (void)selectHeadImage:(UITapGestureRecognizer *)tap {
     NSLog(@"更换头像");
-    if (self.selectHeadImageGes) {
-        self.selectHeadImageGes(tap);
-    }
+//    if (self.selectHeadImageGes) {
+//        self.selectHeadImageGes(tap);
+//    }
 }
 
 - (IBAction)seeMyQRCodeAction:(UIButton *)sender {
     NSLog(@"二维码");
-    if (self.clickQRCodeButton) {
-        self.clickQRCodeButton(sender);
-    }
+//    if (self.clickQRCodeButton) {
+//        self.clickQRCodeButton(sender);
+//    }
+    
+    QRCodeConfig *config = [[QRCodeConfig alloc] init];
+    config.avatarImg = [UIImage imageNamed:@"user_touxiang_girl"];
+    config.studentName = @"博尔济吉特·布木布泰";
+    config.isGirl = YES;
+    config.schoolName = @"北京市人民大学附属中学 拷贝";
+    config.className = @"2019级9102班";
+    // https://sit-wechat.abnertech.com/lochi/&studentId=1651&gradeClassId=154&studentName=同学2
+    MJWeakSelf
+    self.codeManager = [[QRCodeAlertView alloc] init];
+    self.codeManager.config = config;
+    [self.codeManager showAlert];
+    [self.codeManager setDidHide:^{
+        weakSelf.codeManager = nil;
+    }];
 }
 
 
 - (IBAction)seeMyResourceAction:(UIButton *)sender {
     NSLog(@"我的资源");
-    if (self.clickSeeMyResourceButton) {
-        self.clickSeeMyResourceButton(sender);
-    }
+//    if (self.clickSeeMyResourceButton) {
+//        self.clickSeeMyResourceButton(sender);
+//    }
 }
 
 - (IBAction)changePasswordAction:(UIButton *)sender {
     NSLog(@"更改密码");
-    if (self.clickChangePasswordButton) {
-        self.clickChangePasswordButton(sender);
-    }
+//    if (self.clickChangePasswordButton) {
+//        self.clickChangePasswordButton(sender);
+//    }
 }
 
 - (IBAction)feedbackAction:(UIButton *)sender {
     NSLog(@"反馈");
-    if (self.clickFeedbackButton) {
-        self.clickFeedbackButton(sender);
-    }
+//    if (self.clickFeedbackButton) {
+//        self.clickFeedbackButton(sender);
+//    }
 }
 
 

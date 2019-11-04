@@ -10,6 +10,8 @@
 #import "UserNoticeView.h"
 #import "LYZTextField.h"
 #import "LZBNetworkURL.h"
+#import "LoginDataService.h"
+
 
 #import "AppDelegate.h"
 
@@ -19,6 +21,7 @@
     NSString *_password;
 }
 
+@property (nonatomic, strong) LoginDataService *dataService;
 /// 用户名 输入框
 @property (nonatomic, strong) LYZTextField *userTF;
 
@@ -237,13 +240,13 @@
     [savePwd mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(100.f);
         make.height.mas_equalTo(30.f);
-        make.left.equalTo(self.view).offset(30.f);
+        make.left.equalTo(self.pwdTF);
         make.top.equalTo(pwdTF.mas_bottom).offset(10.f);
     }];
     [forgetPwd mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(100.f);
         make.height.mas_equalTo(30.f);
-        make.right.equalTo(self.view).offset(-30.f);
+        make.right.equalTo(self.pwdTF);
         make.centerY.equalTo(savePwd);
     }];
     [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -300,49 +303,58 @@
     showPwdBtn.adjustsImageWhenHighlighted = NO;
     [showPwdBtn addTarget:self action:@selector(showPasswordButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     self.pwdTF.cusRightView = showPwdBtn;
+    
 }
 
 - (void)loginAction {
     LZBWeak;
     NSString *name = self.userTF.text;
     NSString *pwd = self.pwdTF.text;
-    LZBDataEntity *entity = [[LZBDataEntity alloc] init];
-        entity.urlString = LoginUrl_full;
-        entity.parameters = @{@"userName": name, @"password": pwd, @"appChannelId": @"studentApp"};
-//        entity.parameters = @{@"userName": @"206", @"password": @"1234567a", @"appChannelId": @"studentApp"};
-        [LZBNetManager lzb_request_postWithEntity:entity successBlock:^(id _Nonnull reponse) {
-            XLDLog(@"------------------ successBlock");
-            XLDLog(@"%@", reponse);
-            NSDictionary *resDic = (NSDictionary *)reponse;
-            NSInteger flag = [resDic[@"flag"] integerValue];
-            // 成功
-            if (flag == 1) {
-                NSDictionary *infoDic = resDic[@"infos"];
-                
-                SETUSER_OBJ(USER_NAME, name);
-                if (weakSelf.savePwdBtn.selected) {
-                    SETUSER_OBJ(USER_PASSWORD, pwd);
-                } else {
-                    REMOVEUSER_OBJ(USER_PASSWORD);
-                }
-                SETUSER_OBJ(ACCESS_TOKEN, infoDic[@"token"]);
-                SETUSER_BOOL(IS_USER_LOGIN, YES);
-                SDUserDefaultsSync;
-                
-                [weakSelf showSuccess:@"登录成功"];
-                [weakSelf.view endEditing:YES];
-                AppDelegate *appd = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                [appd entryDoor];
-            } else {
-                [weakSelf showError:resDic[@"message"]];
-            }
-            
-        } failureBlock:^(NSError * _Nonnull error) {
-            XLDLog(@"------------------ failureBlock");
-            XLDLog(@"%@", error);
-        } progressBlock:^(int64_t bytesProgress, int64_t totalBytesProgress) {
-            
-        }];
+    
+    [self.dataService loginWithUsername:name password:pwd success:^(UserModel * _Nonnull user) {
+        XLDLog(@"请求成功");
+    } failure:^(NSError * _Nonnull error) {
+        XLDLog(@"请求失败");
+    }];
+    
+    
+//    LZBDataEntity *entity = [[LZBDataEntity alloc] init];
+//        entity.urlString = LoginUrl_full;
+//        entity.parameters = @{@"userName": name, @"password": pwd, @"appChannelId": @"studentApp"};
+////        entity.parameters = @{@"userName": @"206", @"password": @"1234567a", @"appChannelId": @"studentApp"};
+//        [LZBNetManager lzb_request_postWithEntity:entity successBlock:^(id _Nonnull reponse) {
+//            XLDLog(@"------------------ successBlock");
+//            XLDLog(@"%@", reponse);
+//            NSDictionary *resDic = (NSDictionary *)reponse;
+//            NSInteger flag = [resDic[@"flag"] integerValue];
+//            // 成功
+//            if (flag == 1) {
+//                NSDictionary *infoDic = resDic[@"infos"];
+//
+//                SETUSER_OBJ(USER_NAME, name);
+//                if (weakSelf.savePwdBtn.selected) {
+//                    SETUSER_OBJ(USER_PASSWORD, pwd);
+//                } else {
+//                    REMOVEUSER_OBJ(USER_PASSWORD);
+//                }
+//                SETUSER_OBJ(ACCESS_TOKEN, infoDic[@"token"]);
+//                SETUSER_BOOL(IS_USER_LOGIN, YES);
+//                SDUserDefaultsSync;
+//
+//                [weakSelf showSuccess:@"登录成功"];
+//                [weakSelf.view endEditing:YES];
+//                AppDelegate *appd = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//                [appd entryDoor];
+//            } else {
+//                [weakSelf showError:resDic[@"message"]];
+//            }
+//
+//        } failureBlock:^(NSError * _Nonnull error) {
+//            XLDLog(@"------------------ failureBlock");
+//            XLDLog(@"%@", error);
+//        } progressBlock:^(int64_t bytesProgress, int64_t totalBytesProgress) {
+//
+//        }];
 }
 
 #pragma mark - Event Response
@@ -399,6 +411,11 @@
         
     }
     return YES;
+}
+
+- (LoginDataService *)dataService{
+    _dataService = [LoginDataService shareData];
+    return _dataService;
 }
 
 

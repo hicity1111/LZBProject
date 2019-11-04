@@ -34,23 +34,28 @@ static NSMutableArray *tasks;
     static id sharedLZBNetManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedLZBNetManager = [[super allocWithZone:NULL] init];
+        sharedLZBNetManager = [[LZBNetManager alloc] init];
     });
     return sharedLZBNetManager;
 }
 
-+ (void)initialize{
+- (void)initialize{
     [self setupLZBNetManager];
 }
 
-+ (void)setupLZBNetManager {
+- (AFHTTPSessionManager *)sessionManager{
+    if (!_sessionManager) {
+        self.sessionManager     = [AFHTTPSessionManager manager];
+        [self setupLZBNetManager];
+    }
+    return _sessionManager;
+}
+- (void)setupLZBNetManager {
     
-    LZBNetManagerShare.sessionManager     = [AFHTTPSessionManager manager];
+    self.requestSerializer  = LZBHttpRequestSerializerHTTP;
+    self.responseSerializer = LZBHttpResponseSerializerJSON;
     
-    LZBNetManagerShare.requestSerializer  = LZBHttpRequestSerializerHTTP;
-    LZBNetManagerShare.responseSerializer = LZBHttpResponseSerializerJSON;
-    
-    LZBNetManagerShare.timeoutInterval    = 30;
+    self.timeoutInterval    = 30;
     
     /*! 打开状态栏的等待菊花 */
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
@@ -64,7 +69,7 @@ static NSMutableArray *tasks;
     //    AFJSONResponseSerializer *response = [AFJSONResponseSerializer serializer];
     //    /*! 这里是去掉了键值对里空对象的键值 */
     ////    response.removesKeysWithNullValues = YES;
-    //    LZBNetManagerShare.sessionManager.responseSerializer = response;
+    //    self.sessionManager.responseSerializer = response;
     
     /* 设置请求服务器数类型式为 json */
     /*!
@@ -73,14 +78,14 @@ static NSMutableArray *tasks;
      http：[AFHTTPRequestSerializer serializer]
      */
     //    AFJSONRequestSerializer *request = [AFJSONRequestSerializer serializer];
-    //    LZBNetManagerShare.sessionManager.requestSerializer = request;
+    //    self.sessionManager.requestSerializer = request;
     /*! 设置apikey ------类似于自己应用中的tokken---此处仅仅作为测试使用*/
     //        [manager.requestSerializer setValue:apikey forHTTPHeaderField:@"apikey"];
     
     /*! 复杂的参数类型 需要使用json传值-设置请求内容的类型*/
     //        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     /*! 设置响应数据的基本类型 */
-    LZBNetManagerShare.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/css", @"text/xml", @"text/plain", @"application/javascript", @"application/x-www-form-urlencoded", @"image/*", nil];
+    self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/css", @"text/xml", @"text/plain", @"application/javascript", @"application/x-www-form-urlencoded", @"image/*", nil];
 
     // 配置自建证书的Https请求
     [self lzb_setupSecurityPolicy];
@@ -90,7 +95,7 @@ static NSMutableArray *tasks;
 配置自建证书的Https请求，只需要将CA证书文件放入根目录就行
 */
 
-+ (void)lzb_setupSecurityPolicy{
+- (void)lzb_setupSecurityPolicy{
     //    NSData *cerData = [NSData dataWithContentsOfFile:cerPath];
     NSSet <NSData *> *cerSet = [AFSecurityPolicy certificatesInBundle:[NSBundle mainBundle]];
     
@@ -102,7 +107,7 @@ static NSMutableArray *tasks;
         AFSecurityPolicy *securityPolicy = [AFSecurityPolicy defaultPolicy];
         securityPolicy.allowInvalidCertificates = YES;
         securityPolicy.validatesDomainName = NO;
-        LZBNetManagerShare.sessionManager.securityPolicy = securityPolicy;
+        self.sessionManager.securityPolicy = securityPolicy;
     }
     else
     {
@@ -118,14 +123,14 @@ static NSMutableArray *tasks;
         // 是否需要验证域名，默认为YES
         //    securityPolicy.pinnedCertificates = [[NSSet alloc] initWithObjects:cerData, nil];
         
-        LZBNetManagerShare.sessionManager.securityPolicy = securityPolicy;
+        self.sessionManager.securityPolicy = securityPolicy;
         
         
         /*! 如果服务端使用的是正规CA签发的证书, 那么以下几行就可去掉: */
         //            NSSet <NSData *> *cerSet = [AFSecurityPolicy certificatesInBundle:[NSBundle mainBundle]];
         //            AFSecurityPolicy *policy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate withPinnedCertificates:cerSet];
         //            policy.allowInvalidCertificates = YES;
-        //            LZBNetManagerShare.sessionManager.securityPolicy = policy;
+        //            self.sessionManager.securityPolicy = policy;
     }
 }
 
@@ -141,7 +146,7 @@ static NSMutableArray *tasks;
  *  @param failureBlock 请求失败的回调
  *  @param progressBlock 进度
  */
-+ (LZBUrlSessionTask *)lzb_requestWithType:(LZBHttpRequestType)type
+- (LZBUrlSessionTask *)lzb_requestWithType:(LZBHttpRequestType)type
                                isNeedCache:(BOOL)isNeedCache
                                  urlString:(NSString *)urlString
                                 parameters:(id)parameters
@@ -178,18 +183,18 @@ static NSMutableArray *tasks;
             break;
     }
     
-    AFHTTPSessionManager *scc = LZBNetManagerShare.sessionManager;
+    AFHTTPSessionManager *scc = self.sessionManager;
     AFHTTPResponseSerializer *scc2 = scc.responseSerializer;
     AFHTTPRequestSerializer *scc3 = scc.requestSerializer;
-    NSTimeInterval timeoutInterval = LZBNetManagerShare.timeoutInterval;
+    NSTimeInterval timeoutInterval = self.timeoutInterval;
     
     NSString *isCache = isNeedCache ? @"开启":@"关闭";
     CGFloat allCacheSize = [LZBNetManagerCache lzb_getAllHttpCacheSize];
     
-    if (LZBNetManagerShare.isOpenLog)
+    if (self.isOpenLog)
     {
         NSLog(@"\n******************** 请求参数 ***************************");
-        NSLog(@"\n请求头: %@\n超时时间设置：%.1f 秒【默认：30秒】\nAFHTTPResponseSerializer：%@【默认：AFJSONResponseSerializer】\nAFHTTPRequestSerializer：%@【默认：AFJSONRequestSerializer】\n请求方式: %@\n请求URL: %@\n请求param: %@\n是否启用缓存：%@【默认：开启】\n目前总缓存大小：%.6fM\n", LZBNetManagerShare.sessionManager.requestSerializer.HTTPRequestHeaders, timeoutInterval, scc2, scc3, requestType, URLString, parameters, isCache, allCacheSize);
+        NSLog(@"\n请求头: %@\n超时时间设置：%.1f 秒【默认：30秒】\nAFHTTPResponseSerializer：%@【默认：AFJSONResponseSerializer】\nAFHTTPRequestSerializer：%@【默认：AFJSONRequestSerializer】\n请求方式: %@\n请求URL: %@\n请求param: %@\n是否启用缓存：%@【默认：开启】\n目前总缓存大小：%.6fM\n", self.sessionManager.requestSerializer.HTTPRequestHeaders, timeoutInterval, scc2, scc3, requestType, URLString, parameters, isCache, allCacheSize);
         NSLog(@"\n********************************************************");
     }
 
@@ -204,7 +209,7 @@ static NSMutableArray *tasks;
         {
             successBlock(responseCacheData);
         }
-        if (LZBNetManagerShare.isOpenLog)
+        if (self.isOpenLog)
         {
             NSLog(@"取用缓存数据结果： *** %@", responseCacheData);
         }
@@ -212,9 +217,9 @@ static NSMutableArray *tasks;
         return nil;
     }
     
-    if (LZBNetManagerShare.isSetQueryStringSerialization)
+    if (self.isSetQueryStringSerialization)
     {
-        [LZBNetManagerShare.sessionManager.requestSerializer setQueryStringSerializationWithBlock:^NSString * _Nonnull(NSURLRequest * _Nonnull request, id  _Nonnull parameters, NSError * _Nullable __autoreleasing * _Nullable error) {
+        [self.sessionManager.requestSerializer setQueryStringSerializationWithBlock:^NSString * _Nonnull(NSURLRequest * _Nonnull request, id  _Nonnull parameters, NSError * _Nullable __autoreleasing * _Nullable error) {
             
             return parameters;
             
@@ -223,13 +228,23 @@ static NSMutableArray *tasks;
     
     if (type == LZBHttpRequestTypeGet)
     {
-        sessionTask = [LZBNetManagerShare.sessionManager GET:URLString parameters:parameters  progress:^(NSProgress * _Nonnull downloadProgress) {
+        sessionTask = [self.sessionManager GET:URLString parameters:parameters  progress:^(NSProgress * _Nonnull downloadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
-            if (successBlock)
-            {
-                successBlock(responseObject);
+            if ([self.delegate lzbManager:self response:responseObject]) {
+                if (successBlock)
+                {
+                    successBlock(responseObject);
+                }
+            }else{
+                NSDictionary *ret = responseObject;
+                NSError *error = [NSError errorWithDomain:(ret[@"message"] == nil ? @"" : ret[@"message"])
+                                                     code:[ret[@"flag"] integerValue]
+                                                 userInfo:responseObject];
+                if ([self.delegate respondsToSelector:@selector(lzbManager:response:error:)]) {
+                    [self.delegate lzbManager:self response:responseObject error:error];
+                }
             }
             // 对数据进行异步缓存
             [LZBNetManagerCache lzb_setHttpCache:responseObject urlString:urlString parameters:parameters];
@@ -237,6 +252,9 @@ static NSMutableArray *tasks;
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
+            if ([self.delegate respondsToSelector:@selector(lzbManager:response:error:)]) {
+                [self.delegate lzbManager:self response:nil error:error];
+            }
             if (failureBlock)
             {
                 failureBlock(error);
@@ -247,8 +265,8 @@ static NSMutableArray *tasks;
     }
     else if (type == LZBHttpRequestTypePost)
     {
-        sessionTask = [LZBNetManagerShare.sessionManager POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
-            if (LZBNetManagerShare.isOpenLog)
+        sessionTask = [self.sessionManager POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+            if (self.isOpenLog)
             {
                 NSLog(@"上传进度--%lld, 总进度---%lld",uploadProgress.completedUnitCount,uploadProgress.totalUnitCount);
             }
@@ -260,13 +278,23 @@ static NSMutableArray *tasks;
                 }
             });
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            if (LZBNetManagerShare.isOpenLog)
+            if (self.isOpenLog)
             {
                 NSLog(@"post 请求数据结果： *** %@", responseObject);
             }
-            if (successBlock)
-            {
-                successBlock(responseObject);
+            if ([self.delegate lzbManager:self response:responseObject]) {
+                if (successBlock)
+                {
+                    successBlock(responseObject);
+                }
+            }else{
+                NSDictionary *ret = responseObject;
+                NSError *error = [NSError errorWithDomain:(ret[@"message"] == nil ? @"" : ret[@"message"])
+                                                     code:[ret[@"flag"] integerValue]
+                                                 userInfo:responseObject];
+                if ([self.delegate respondsToSelector:@selector(lzbManager:response:error:)]) {
+                    [self.delegate lzbManager:self response:responseObject error:error];
+                }
             }
             
             // 对数据进行异步缓存
@@ -275,7 +303,10 @@ static NSMutableArray *tasks;
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"错误信息：%@",error);
-
+            
+            if ([self.delegate respondsToSelector:@selector(lzbManager:response:error:)]) {
+                [self.delegate lzbManager:self response:nil error:error];
+            }
             if (failureBlock)
             {
                 failureBlock(error);
@@ -286,7 +317,7 @@ static NSMutableArray *tasks;
     }
     else if (type == LZBHttpRequestTypePut)
     {
-        sessionTask = [LZBNetManagerShare.sessionManager PUT:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        sessionTask = [self.sessionManager PUT:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
             if (successBlock)
             {
@@ -307,7 +338,7 @@ static NSMutableArray *tasks;
     }
     else if (type == LZBHttpRequestTypeDelete)
     {
-        sessionTask = [LZBNetManagerShare.sessionManager DELETE:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        sessionTask = [self.sessionManager DELETE:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             if (successBlock)
             {
                 successBlock(responseObject);
@@ -334,7 +365,7 @@ static NSMutableArray *tasks;
     return sessionTask;
 }
 
-#pragma mark - 网络请求的类方法 + Entity --- get / post / put / delete
+#pragma mark - 网络请求的类方法 - Entity --- get / post / put / delete
 
 /**
  网络请求的实例方法 get
@@ -345,7 +376,7 @@ static NSMutableArray *tasks;
  @param progressBlock 进度回调
  @return LZBUrlSessionTask
  */
-+ (LZBUrlSessionTask *)lzb_request_getWithEntity:(LZBDataEntity *)entity
+- (LZBUrlSessionTask *)lzb_request_getWithEntity:(LZBDataEntity *)entity
                                     successBlock:(LZBResponseSuccessBlock)successBlock
                                     failureBlock:(LZBResponseFailBlock)failureBlock
                                    progressBlock:(LZBDownloadProgressBlock)progressBlock
@@ -366,7 +397,7 @@ static NSMutableArray *tasks;
  @param progressBlock 进度
  @return LZBUrlSessionTask
  */
-+ (LZBUrlSessionTask *)lzb_request_postWithEntity:(LZBDataEntity *)entity
+- (LZBUrlSessionTask *)lzb_request_postWithEntity:(LZBDataEntity *)entity
                                      successBlock:(LZBResponseSuccessBlock)successBlock
                                      failureBlock:(LZBResponseFailBlock)failureBlock
                                     progressBlock:(LZBDownloadProgressBlock)progressBlock
@@ -386,7 +417,7 @@ static NSMutableArray *tasks;
  @param progressBlock 进度
  @return LZBUrlSessionTask
  */
-+ (LZBUrlSessionTask *)lzb_request_putWithEntity:(LZBDataEntity *)entity
+- (LZBUrlSessionTask *)lzb_request_putWithEntity:(LZBDataEntity *)entity
                                   successBlock:(LZBResponseSuccessBlock)successBlock
                                   failureBlock:(LZBResponseFailBlock)failureBlock
                                  progressBlock:(LZBDownloadProgressBlock)progressBlock
@@ -406,7 +437,7 @@ static NSMutableArray *tasks;
  @param progressBlock 进度
  @return LZBUrlSessionTask
  */
-+ (LZBUrlSessionTask *)lzb_request_deleteWithEntity:(LZBDataEntity *)entity
+- (LZBUrlSessionTask *)lzb_request_deleteWithEntity:(LZBDataEntity *)entity
                                      successBlock:(LZBResponseSuccessBlock)successBlock
                                      failureBlock:(LZBResponseFailBlock)failureBlock
                                     progressBlock:(LZBDownloadProgressBlock)progressBlock
@@ -426,7 +457,7 @@ static NSMutableArray *tasks;
  @param progressBlock 上传进度
  @return LZBUrlSessionTask
  */
-+ (LZBUrlSessionTask *)lzb_uploadImageWithEntity:(LZBDataEntity *)entity
+- (LZBUrlSessionTask *)lzb_uploadImageWithEntity:(LZBDataEntity *)entity
                                     successBlock:(LZBResponseSuccessBlock)successBlock
                                     failureBlock:(LZBResponseFailBlock)failureBlock
                                    progressBlock:(LZBUploadProgressBlock)progressBlock
@@ -441,14 +472,14 @@ static NSMutableArray *tasks;
     /*! 检查地址中是否有中文 */
     NSString *URLString = [NSURL URLWithString:imageEntity.urlString] ? imageEntity.urlString : [self strUTF8Encoding:imageEntity.urlString];
     
-    if (LZBNetManagerShare.isOpenLog)
+    if (self.isOpenLog)
     {
         NSLog(@"******************** 请求参数 ***************************");
-        NSLog(@"请求头: %@\n请求方式: %@\n请求URL: %@\n请求param: %@\n\n",LZBNetManagerShare.sessionManager.requestSerializer.HTTPRequestHeaders, @"POST",URLString, imageEntity.parameters);
+        NSLog(@"请求头: %@\n请求方式: %@\n请求URL: %@\n请求param: %@\n\n",self.sessionManager.requestSerializer.HTTPRequestHeaders, @"POST",URLString, imageEntity.parameters);
         NSLog(@"********************************************************");
     }
     LZBUrlSessionTask *sessionTask = nil;
-    sessionTask = [LZBNetManagerShare.sessionManager POST:URLString parameters:imageEntity.parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    sessionTask = [self.sessionManager POST:URLString parameters:imageEntity.parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         /*! 出于性能考虑,将上传图片进行压缩 */
         [imageEntity.imageArray enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
@@ -459,7 +490,7 @@ static NSMutableArray *tasks;
                 PHAsset *asset = (PHAsset *)obj;
                 PHCachingImageManager *imageManager = [[PHCachingImageManager alloc] init];
                 [imageManager requestImageForAsset:asset targetSize:CGSizeMake(asset.pixelWidth , asset.pixelHeight) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                    if (LZBNetManagerShare.isOpenLog)
+                    if (self.isOpenLog)
                     {
                         NSLog(@" width:%f height:%f",result.size.width,result.size.height);
                     }
@@ -473,7 +504,7 @@ static NSMutableArray *tasks;
         }];
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
-        if (LZBNetManagerShare.isOpenLog)
+        if (self.isOpenLog)
         {
             NSLog(@"上传进度--%lld, 总进度---%lld",uploadProgress.completedUnitCount,uploadProgress.totalUnitCount);
         }
@@ -484,7 +515,7 @@ static NSMutableArray *tasks;
             }
         });
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (LZBNetManagerShare.isOpenLog)
+        if (self.isOpenLog)
         {
             NSLog(@"上传图片成功 = %@",responseObject);
         }
@@ -516,7 +547,7 @@ static NSMutableArray *tasks;
  @param failureBlock 失败的回调
  @param progressBlock 上传的进度
  */
-+ (void)lzb_uploadVideoWithEntity:(LZBDataEntity *)entity
+- (void)lzb_uploadVideoWithEntity:(LZBDataEntity *)entity
                                     successBlock:(LZBResponseSuccessBlock)successBlock
                                     failureBlock:(LZBResponseFailBlock)failureBlock
                                    progressBlock:(LZBUploadProgressBlock)progressBlock
@@ -555,14 +586,14 @@ static NSMutableArray *tasks;
         switch ([avAssetExport status]) {
             case AVAssetExportSessionStatusCompleted:
             {
-                [LZBNetManagerShare.sessionManager POST:fileEntity.urlString parameters:fileEntity.parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+                [self.sessionManager POST:fileEntity.urlString parameters:fileEntity.parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                     
                     NSURL *filePathURL2 = [NSURL URLWithString:[NSString stringWithFormat:@"file://%@", outfilePath]];
                     // 获得沙盒中的视频内容
                     [formData appendPartWithFileURL:filePathURL2 name:@"video" fileName:outfilePath mimeType:@"application/octet-stream" error:nil];
                     
                 } progress:^(NSProgress * _Nonnull uploadProgress) {
-                    if (LZBNetManagerShare.isOpenLog)
+                    if (self.isOpenLog)
                     {
                         NSLog(@"上传进度--%lld, 总进度---%lld",uploadProgress.completedUnitCount,uploadProgress.totalUnitCount);
                     }
@@ -605,7 +636,7 @@ static NSMutableArray *tasks;
  @return LZBUrlSessionTask
  */
 
-+ (LZBUrlSessionTask *)lzb_downLoadFileWithEntity:(LZBDataEntity *)entity
+- (LZBUrlSessionTask *)lzb_downLoadFileWithEntity:(LZBDataEntity *)entity
                                      successBlock:(LZBResponseSuccessBlock)successBlock
                                      failureBlock:(LZBResponseFailBlock)failureBlock
                                     progressBlock:(LZBDownloadProgressBlock)progressBlock
@@ -617,17 +648,17 @@ static NSMutableArray *tasks;
     LZBFileDataEntity *fileEntity = (LZBFileDataEntity *)entity;
     
     NSURLRequest *downloadRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:fileEntity.urlString]];
-    if (LZBNetManagerShare.isOpenLog)
+    if (self.isOpenLog)
     {
         NSLog(@"******************** 请求参数 ***************************");
-        NSLog(@"请求头: %@\n请求方式: %@\n请求URL: %@\n请求param: %@\n\n",LZBNetManagerShare.sessionManager.requestSerializer.HTTPRequestHeaders, @"download", fileEntity.urlString, fileEntity.parameters);
+        NSLog(@"请求头: %@\n请求方式: %@\n请求URL: %@\n请求param: %@\n\n",self.sessionManager.requestSerializer.HTTPRequestHeaders, @"download", fileEntity.urlString, fileEntity.parameters);
         NSLog(@"******************************************************");
     }
     
     LZBUrlSessionTask *sessionTask = nil;
     
-    sessionTask = [LZBNetManagerShare.sessionManager downloadTaskWithRequest:downloadRequest progress:^(NSProgress * _Nonnull downloadProgress) {
-        if (LZBNetManagerShare.isOpenLog)
+    sessionTask = [self.sessionManager downloadTaskWithRequest:downloadRequest progress:^(NSProgress * _Nonnull downloadProgress) {
+        if (self.isOpenLog)
         {
             NSLog(@"下载进度：%.2lld%%",100 * downloadProgress.completedUnitCount/downloadProgress.totalUnitCount);
         }
@@ -646,7 +677,7 @@ static NSMutableArray *tasks;
         if (!fileEntity.filePath)
         {
             NSURL *downloadURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-            if (LZBNetManagerShare.isOpenLog)
+            if (self.isOpenLog)
             {
                 NSLog(@"默认路径--%@",downloadURL);
             }
@@ -699,7 +730,7 @@ static NSMutableArray *tasks;
  @return LZBUrlSessionTask
  */
 
-+ (LZBUrlSessionTask *)lzb_uploadFileWithEntity:(LZBDataEntity *)entity
+- (LZBUrlSessionTask *)lzb_uploadFileWithEntity:(LZBDataEntity *)entity
                                    successBlock:(LZBResponseSuccessBlock)successBlock
                                    failureBlock:(LZBResponseFailBlock)failureBlock
                                   progressBlock:(LZBUploadProgressBlock)progressBlock
@@ -709,14 +740,14 @@ static NSMutableArray *tasks;
     }
     
     LZBFileDataEntity *fileEntity = (LZBFileDataEntity *)entity;
-    if (LZBNetManagerShare.isOpenLog)
+    if (self.isOpenLog)
     {
         NSLog(@"******************** 请求参数 ***************************");
-        NSLog(@"请求头: %@\n请求方式: %@\n请求URL: %@\n请求param: %@\n\n",LZBNetManagerShare.sessionManager.requestSerializer.HTTPRequestHeaders, @"uploadFile", fileEntity.urlString, fileEntity.parameters);
+        NSLog(@"请求头: %@\n请求方式: %@\n请求URL: %@\n请求param: %@\n\n",self.sessionManager.requestSerializer.HTTPRequestHeaders, @"uploadFile", fileEntity.urlString, fileEntity.parameters);
         NSLog(@"******************************************************");
     }
     LZBUrlSessionTask *sessionTask = nil;
-    sessionTask = [LZBNetManagerShare.sessionManager POST:fileEntity.urlString parameters:fileEntity.parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    sessionTask = [self.sessionManager POST:fileEntity.urlString parameters:fileEntity.parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         NSError *error = nil;
         [formData appendPartWithFileURL:[NSURL URLWithString:fileEntity.filePath] name:fileEntity.fileName error:&error];
@@ -725,7 +756,7 @@ static NSMutableArray *tasks;
             failureBlock(error);
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {
-        if (LZBNetManagerShare.isOpenLog)
+        if (self.isOpenLog)
         {
             NSLog(@"上传进度--%lld, 总进度---%lld",uploadProgress.completedUnitCount,uploadProgress.totalUnitCount);
         }
@@ -768,7 +799,7 @@ static NSMutableArray *tasks;
 /*!
  *  开启网络监测
  */
-+ (void)lzb_startNetWorkMonitoringWithBlock:(LZBNetworkStatusBlock)networkStatus
+- (void)lzb_startNetWorkMonitoringWithBlock:(LZBNetworkStatusBlock)networkStatus
 {
     /*! 1.获得网络监控的管理者 */
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
@@ -804,7 +835,7 @@ static NSMutableArray *tasks;
 /*!
  *  取消所有 Http 请求
  */
-+ (void)lzb_cancelAllRequest {
+- (void)lzb_cancelAllRequest {
     // 锁操作
     @synchronized(self)
     {
@@ -818,7 +849,7 @@ static NSMutableArray *tasks;
 /*!
  *  取消指定 URL 的 Http 请求
  */
-+ (void)lzb_cancelRequestWithURL:(NSString *)URL
+- (void)lzb_cancelRequestWithURL:(NSString *)URL
 {
     if (!URL)
     {
@@ -840,7 +871,7 @@ static NSMutableArray *tasks;
 
 #pragma mark - 压缩图片尺寸
 /*! 对图片尺寸进行压缩 */
-+ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize
 {
     if (newSize.height > 375/newSize.width*newSize.height)
     {
@@ -858,7 +889,7 @@ static NSMutableArray *tasks;
 }
 
 #pragma mark - url 中文格式化
-+ (NSString *)strUTF8Encoding:(NSString *)str
+- (NSString *)strUTF8Encoding:(NSString *)str
 {
     /*! ios9适配的话 打开第一个 */
     if ([[UIDevice currentDevice] systemVersion].floatValue >= 9.0)
@@ -877,7 +908,7 @@ static NSMutableArray *tasks;
  
  @return 存储着所有的请求task数组
  */
-+ (NSMutableArray *)tasks
+- (NSMutableArray *)tasks
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -890,7 +921,7 @@ static NSMutableArray *tasks;
 - (void)setTimeoutInterval:(NSTimeInterval)timeoutInterval
 {
     _timeoutInterval = timeoutInterval;
-    LZBNetManagerShare.sessionManager.requestSerializer.timeoutInterval = timeoutInterval;
+    self.sessionManager.requestSerializer.timeoutInterval = timeoutInterval;
 }
 
 - (void)setRequestSerializer:(LZBHttpRequestSerializer)requestSerializer
@@ -899,12 +930,12 @@ static NSMutableArray *tasks;
     switch (requestSerializer) {
         case LZBHttpRequestSerializerJSON:
         {
-            LZBNetManagerShare.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer] ;
+            self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer] ;
         }
             break;
         case LZBHttpRequestSerializerHTTP:
         {
-            LZBNetManagerShare.sessionManager.requestSerializer = [AFHTTPRequestSerializer serializer] ;
+            self.sessionManager.requestSerializer = [AFHTTPRequestSerializer serializer] ;
         }
             break;
             
@@ -919,12 +950,12 @@ static NSMutableArray *tasks;
     switch (responseSerializer) {
         case LZBHttpResponseSerializerJSON:
         {
-            LZBNetManagerShare.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer] ;
+            self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer] ;
         }
             break;
         case LZBHttpResponseSerializerHTTP:
         {
-            LZBNetManagerShare.sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer] ;
+            self.sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer] ;
         }
             break;
             
@@ -950,33 +981,33 @@ static NSMutableArray *tasks;
         return;
     }
     
-    for (NSInteger i = 0; i < keyArray.count; i ++)
+    for (NSInteger i = 0; i < keyArray.count; i --)
     {
         NSString *keyString = keyArray[i];
         NSString *valueString = httpHeaderFieldDictionary[keyString];
         
-        [LZBNetManager lzb_setValue:valueString forHTTPHeaderKey:keyString];
+        [self lzb_setValue:valueString forHTTPHeaderKey:keyString];
     }
 }
 
 /**
  *  自定义请求头
  */
-+ (void)lzb_setValue:(NSString *)value forHTTPHeaderKey:(NSString *)HTTPHeaderKey
+- (void)lzb_setValue:(NSString *)value forHTTPHeaderKey:(NSString *)HTTPHeaderKey
 {
-    [LZBNetManagerShare.sessionManager.requestSerializer setValue:value forHTTPHeaderField:HTTPHeaderKey];
+    [self.sessionManager.requestSerializer setValue:value forHTTPHeaderField:HTTPHeaderKey];
 }
 
 
 /**
  删除所有请求头
  */
-+ (void)lzb_clearAuthorizationHeader
+- (void)lzb_clearAuthorizationHeader
 {
-    [LZBNetManagerShare.sessionManager.requestSerializer clearAuthorizationHeader];
+    [self.sessionManager.requestSerializer clearAuthorizationHeader];
 }
 
-+ (void)lzb_uploadImageWithFormData:(id<AFMultipartFormData>  _Nonnull )formData
+- (void)lzb_uploadImageWithFormData:(id<AFMultipartFormData>  _Nonnull )formData
                       resizedImage:(UIImage *)resizedImage
                          imageType:(NSString *)imageType
                         imageScale:(CGFloat)imageScale

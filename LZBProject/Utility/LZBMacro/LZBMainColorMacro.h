@@ -50,7 +50,9 @@
 
 #define kMAINF1F5   [UIColor colorWithHex:@"#F1F5F5"]
 
-#define KMAIN7777   [UIColor colorWithHex:@"#777777"]
+#define kMAIN7777   [UIColor colorWithHex:@"#777777"]
+
+#define kMAINEEEE   [UIColor colorWithHex:@"#EEEEEE"]
 
 #define KMAIN80B4   [UIColor colorWithHex:@"#80B491"]
 
@@ -64,6 +66,8 @@
 #define BLUECOLOR   UIColor.blueColor
 /// 用户须知 蒙层
 #define kUserNoticeTrans    [UIColor colorWithHex:@"#000000" alpha:0.3]
+
+#define kMineAlertTrans     [UIColor colorWithHex:@"#000000" alpha:0.5]
 
 /// 控制器背景
 #define VC_BACKGROUNDCOLOR  [UIColor colorWithPatternImage:[UIImage imageNamed:@"vc_bg"]]

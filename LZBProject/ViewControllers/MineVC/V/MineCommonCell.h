@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UILabel *rightLb;
 
+- (void)selectedCellWithIndex:(NSIndexPath *)indexPath;
+
 @end
 
 NS_ASSUME_NONNULL_END

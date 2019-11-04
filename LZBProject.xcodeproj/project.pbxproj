@@ -106,6 +106,13 @@
 		8B9CB3122369699D0092F7DE /* LYZCleanCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB3112369699D0092F7DE /* LYZCleanCache.m */; };
 		8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB31623697C8A0092F7DE /* LYZSandBoxPath.m */; };
 		8BCD1226236192F600BCCB08 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCD1225236192F600BCCB08 /* Login.storyboard */; };
+		BA5BFE81236BC46200D231F0 /* UITableView+MTExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE80236BC46200D231F0 /* UITableView+MTExtension.m */; };
+		BA5BFE84236BC4DA00D231F0 /* NotificationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE83236BC4DA00D231F0 /* NotificationListCell.m */; };
+		BA5BFE87236BCC8D00D231F0 /* NotificaitonIconItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE86236BCC8D00D231F0 /* NotificaitonIconItem.m */; };
+		BA5BFE8A236BE0F400D231F0 /* NotificationImageItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE89236BE0F400D231F0 /* NotificationImageItemCell.m */; };
+		BA5BFE8D236BEC1B00D231F0 /* NotificationToolItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE8C236BEC1B00D231F0 /* NotificationToolItem.m */; };
+		BA5BFE90236C057500D231F0 /* NotifyAllSelectToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE8F236C057500D231F0 /* NotifyAllSelectToolView.m */; };
+		BA5BFE93236C17A800D231F0 /* NotifyListEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE92236C17A800D231F0 /* NotifyListEntry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -319,6 +326,20 @@
 		8BCD1225236192F600BCCB08 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9AE17617E18522B97D9845A4 /* Pods-LZBProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProjectTests.release.xcconfig"; path = "Target Support Files/Pods-LZBProjectTests/Pods-LZBProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		A33E99BEAFCC1F68B0B814EB /* Pods-LZBProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-LZBProjectTests/Pods-LZBProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BA5BFE7F236BC46200D231F0 /* UITableView+MTExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+MTExtension.h"; sourceTree = "<group>"; };
+		BA5BFE80236BC46200D231F0 /* UITableView+MTExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+MTExtension.m"; sourceTree = "<group>"; };
+		BA5BFE82236BC4DA00D231F0 /* NotificationListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationListCell.h; sourceTree = "<group>"; };
+		BA5BFE83236BC4DA00D231F0 /* NotificationListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationListCell.m; sourceTree = "<group>"; };
+		BA5BFE85236BCC8D00D231F0 /* NotificaitonIconItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificaitonIconItem.h; sourceTree = "<group>"; };
+		BA5BFE86236BCC8D00D231F0 /* NotificaitonIconItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificaitonIconItem.m; sourceTree = "<group>"; };
+		BA5BFE88236BE0F400D231F0 /* NotificationImageItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationImageItemCell.h; sourceTree = "<group>"; };
+		BA5BFE89236BE0F400D231F0 /* NotificationImageItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationImageItemCell.m; sourceTree = "<group>"; };
+		BA5BFE8B236BEC1B00D231F0 /* NotificationToolItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationToolItem.h; sourceTree = "<group>"; };
+		BA5BFE8C236BEC1B00D231F0 /* NotificationToolItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationToolItem.m; sourceTree = "<group>"; };
+		BA5BFE8E236C057500D231F0 /* NotifyAllSelectToolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifyAllSelectToolView.h; sourceTree = "<group>"; };
+		BA5BFE8F236C057500D231F0 /* NotifyAllSelectToolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotifyAllSelectToolView.m; sourceTree = "<group>"; };
+		BA5BFE91236C17A800D231F0 /* NotifyListEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifyListEntry.h; sourceTree = "<group>"; };
+		BA5BFE92236C17A800D231F0 /* NotifyListEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotifyListEntry.m; sourceTree = "<group>"; };
 		C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProject_LZBProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF14C585C96A1396A7EB144 /* Pods-LZBProject-LZBProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject-LZBProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-LZBProject-LZBProjectUITests/Pods-LZBProject-LZBProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -445,10 +466,10 @@
 		0B0F6BF22366C10800537128 /* BootstrapButton */ = {
 			isa = PBXGroup;
 			children = (
-				0B0F6BF32366C10800537128 /* JMBootstrapButtonConfig.m */,
+				0B0F6BF62366C10800537128 /* JMBootstrapButton.h */,
 				0B0F6BF42366C10800537128 /* JMBootstrapButton.m */,
 				0B0F6BF52366C10800537128 /* JMBootstrapButtonConfig.h */,
-				0B0F6BF62366C10800537128 /* JMBootstrapButton.h */,
+				0B0F6BF32366C10800537128 /* JMBootstrapButtonConfig.m */,
 			);
 			path = BootstrapButton;
 			sourceTree = "<group>";
@@ -782,6 +803,7 @@
 		0B820167234EC1C900D983AE /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				BA5BFE7E236BC42A00D231F0 /* UITableView */,
 				8B21DF06236930D7000F0DAB /* UIView */,
 				8B8CFE0A23667D8100AC4DAC /* UIImage */,
 				8B6B6A0E2362D905008B7585 /* TextField */,
@@ -928,6 +950,16 @@
 			children = (
 				8B1753AA236994EF00509317 /* NotifySystemNotiCell.h */,
 				8B1753AB236994EF00509317 /* NotifySystemNotiCell.m */,
+				BA5BFE82236BC4DA00D231F0 /* NotificationListCell.h */,
+				BA5BFE83236BC4DA00D231F0 /* NotificationListCell.m */,
+				BA5BFE85236BCC8D00D231F0 /* NotificaitonIconItem.h */,
+				BA5BFE86236BCC8D00D231F0 /* NotificaitonIconItem.m */,
+				BA5BFE8B236BEC1B00D231F0 /* NotificationToolItem.h */,
+				BA5BFE8C236BEC1B00D231F0 /* NotificationToolItem.m */,
+				BA5BFE88236BE0F400D231F0 /* NotificationImageItemCell.h */,
+				BA5BFE89236BE0F400D231F0 /* NotificationImageItemCell.m */,
+				BA5BFE8E236C057500D231F0 /* NotifyAllSelectToolView.h */,
+				BA5BFE8F236C057500D231F0 /* NotifyAllSelectToolView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -937,6 +969,8 @@
 			children = (
 				8B1753B0236A766100509317 /* NotifyCellModel.h */,
 				8B1753B1236A766100509317 /* NotifyCellModel.m */,
+				BA5BFE91236C17A800D231F0 /* NotifyListEntry.h */,
+				BA5BFE92236C17A800D231F0 /* NotifyListEntry.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1078,6 +1112,15 @@
 				8BCD1225236192F600BCCB08 /* Login.storyboard */,
 			);
 			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		BA5BFE7E236BC42A00D231F0 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				BA5BFE7F236BC46200D231F0 /* UITableView+MTExtension.h */,
+				BA5BFE80236BC46200D231F0 /* UITableView+MTExtension.m */,
+			);
+			path = UITableView;
 			sourceTree = "<group>";
 		};
 		E891B3A032A33E1398D77910 /* Frameworks */ = {
@@ -1346,6 +1389,7 @@
 				0B0F6C212366C10900537128 /* UIColor+JM.m in Sources */,
 				0B5E6D4823545DC7008D9A76 /* LZBCalendar.m in Sources */,
 				0BBE4770235990A100D30C4B /* LZBCalendarDayModel.m in Sources */,
+				BA5BFE90236C057500D231F0 /* NotifyAllSelectToolView.m in Sources */,
 				0BBCD673234DBFAD00E4970A /* ViewController.m in Sources */,
 				0B0F6C172366C10900537128 /* JMBaseButton.m in Sources */,
 				0B3D00102368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m in Sources */,
@@ -1357,14 +1401,17 @@
 				0B0F6C182366C10900537128 /* JMBaseButtonConfig.m in Sources */,
 				8B1753B2236A766100509317 /* NotifyCellModel.m in Sources */,
 				8B4D1C5823618CD2008B2CCA /* UserNoticeView.m in Sources */,
+				BA5BFE8D236BEC1B00D231F0 /* NotificationToolItem.m in Sources */,
 				0B0F6C1D2366C10900537128 /* JMButton.m in Sources */,
 				0B0F6C152366C10900537128 /* JMBootstrapButtonConfig.m in Sources */,
+				BA5BFE84236BC4DA00D231F0 /* NotificationListCell.m in Sources */,
 				0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */,
 				0BBE47782359B0FD00D30C4B /* LZBBaseViewController.m in Sources */,
 				8B1753AD236994EF00509317 /* NotifySystemNotiCell.m in Sources */,
 				0B3D0028236934FE00BD4AA1 /* TestListBaseView.m in Sources */,
 				0B0F6C292366F92700537128 /* MutualLearningViewController.m in Sources */,
 				0B0F6C1C2366C10900537128 /* JMNumberButton.m in Sources */,
+				BA5BFE87236BCC8D00D231F0 /* NotificaitonIconItem.m in Sources */,
 				0B3D002C236ABE8900BD4AA1 /* LZBEmptyBaseView.m in Sources */,
 				0B3D0024236934FE00BD4AA1 /* JXPagerView.m in Sources */,
 				0B5E6D4C2354728A008D9A76 /* UIColor+lzbColor.m in Sources */,
@@ -1392,6 +1439,7 @@
 				0B098C682351B942000934EB /* LZBNetManagerCache.m in Sources */,
 				8B175399236987BC00509317 /* MineCommonCell.m in Sources */,
 				0B0F6BE42362D00600537128 /* MineViewController.m in Sources */,
+				BA5BFE93236C17A800D231F0 /* NotifyListEntry.m in Sources */,
 				0B3D0022236934FE00BD4AA1 /* JXPagerListContainerView.m in Sources */,
 				0B0F6BDA2361B43B00537128 /* LZB_TabBarItem.m in Sources */,
 				0B0F6C1E2366C10900537128 /* JMRuntime.m in Sources */,
@@ -1402,7 +1450,9 @@
 				0B0F6BB423601F5D00537128 /* MBProgressHUD+LZBvcHelper.m in Sources */,
 				0B0F6C1F2366C10900537128 /* UIView+JM.m in Sources */,
 				0B0F6C222366C10900537128 /* JMBadgeValue.m in Sources */,
+				BA5BFE81236BC46200D231F0 /* UITableView+MTExtension.m in Sources */,
 				0BBE47742359989500D30C4B /* LXCalenderCell.m in Sources */,
+				BA5BFE8A236BE0F400D231F0 /* NotificationImageItemCell.m in Sources */,
 				0B0F6C162366C10900537128 /* JMBootstrapButton.m in Sources */,
 				0B0F6C142366C10900537128 /* JMRadioButton.m in Sources */,
 				0B6192E9235D573600BE3BBA /* LZBBaseTabBarController.m in Sources */,

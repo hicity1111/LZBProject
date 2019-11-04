@@ -36,6 +36,9 @@
 
 //状态栏的高度
 #define kStatusBar_Height ((iPhoneX || iPhoneXSMax || iPhoneXR) ? 44.0f : 20.0f)
+//底部安全高度
+#define kBottomSafeSpace ([[UIApplication sharedApplication] statusBarFrame].size.height > 20 ? 34 : 0)
+
 
 //NavigationBar的高度
 #define kNavBar_Height 44

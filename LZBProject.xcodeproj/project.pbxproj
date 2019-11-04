@@ -101,6 +101,7 @@
 		8B21DEFE23681118000F0DAB /* HomeWorkAlreadyStartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DEFC23681118000F0DAB /* HomeWorkAlreadyStartCell.m */; };
 		8B21DEFF23681118000F0DAB /* HomeWorkAlreadyStartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B21DEFD23681118000F0DAB /* HomeWorkAlreadyStartCell.xib */; };
 		8B21DF0A2369316B000F0DAB /* UIView+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DF092369316B000F0DAB /* UIView+CornerRadius.m */; };
+		8B225CBD236FD38600BD5756 /* LZBTypeConvertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B225CBC236FD38600BD5756 /* LZBTypeConvertHelper.m */; };
 		8B4D1C5623618CD2008B2CCA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1C5023618CD2008B2CCA /* LoginViewController.m */; };
 		8B4D1C5823618CD2008B2CCA /* UserNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1C5423618CD2008B2CCA /* UserNoticeView.m */; };
 		8B6B6A0B2362D8C2008B7585 /* login_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B6A082362D8C2008B7585 /* login_bg@3x.png */; };
@@ -110,6 +111,9 @@
 		8B9CB3122369699D0092F7DE /* LYZCleanCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB3112369699D0092F7DE /* LYZCleanCache.m */; };
 		8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB31623697C8A0092F7DE /* LYZSandBoxPath.m */; };
 		8BCD1226236192F600BCCB08 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCD1225236192F600BCCB08 /* Login.storyboard */; };
+		8BD1BA15236BCF890088A136 /* UIImage+QRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1BA14236BCF890088A136 /* UIImage+QRCode.m */; };
+		8BD1BA18236BDCC20088A136 /* QRCodeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1BA17236BDCC20088A136 /* QRCodeAlertView.m */; };
+		8BD1BA1E236C3E200088A136 /* LYZCurrentVCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1BA1D236C3E200088A136 /* LYZCurrentVCHelper.m */; };
 		BA5BFE81236BC46200D231F0 /* UITableView+MTExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE80236BC46200D231F0 /* UITableView+MTExtension.m */; };
 		BA5BFE84236BC4DA00D231F0 /* NotificationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE83236BC4DA00D231F0 /* NotificationListCell.m */; };
 		BA5BFE87236BCC8D00D231F0 /* NotificaitonIconItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE86236BCC8D00D231F0 /* NotificaitonIconItem.m */; };
@@ -117,9 +121,6 @@
 		BA5BFE8D236BEC1B00D231F0 /* NotificationToolItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE8C236BEC1B00D231F0 /* NotificationToolItem.m */; };
 		BA5BFE90236C057500D231F0 /* NotifyAllSelectToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE8F236C057500D231F0 /* NotifyAllSelectToolView.m */; };
 		BA5BFE93236C17A800D231F0 /* NotifyListEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BFE92236C17A800D231F0 /* NotifyListEntry.m */; };
-		8BD1BA15236BCF890088A136 /* UIImage+QRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1BA14236BCF890088A136 /* UIImage+QRCode.m */; };
-		8BD1BA18236BDCC20088A136 /* QRCodeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1BA17236BDCC20088A136 /* QRCodeAlertView.m */; };
-		8BD1BA1E236C3E200088A136 /* LYZCurrentVCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1BA1D236C3E200088A136 /* LYZCurrentVCHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -324,6 +325,8 @@
 		8B21DEFD23681118000F0DAB /* HomeWorkAlreadyStartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeWorkAlreadyStartCell.xib; sourceTree = "<group>"; };
 		8B21DF082369316B000F0DAB /* UIView+CornerRadius.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+CornerRadius.h"; sourceTree = "<group>"; };
 		8B21DF092369316B000F0DAB /* UIView+CornerRadius.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+CornerRadius.m"; sourceTree = "<group>"; };
+		8B225CBB236FD38600BD5756 /* LZBTypeConvertHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZBTypeConvertHelper.h; sourceTree = "<group>"; };
+		8B225CBC236FD38600BD5756 /* LZBTypeConvertHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBTypeConvertHelper.m; sourceTree = "<group>"; };
 		8B4D1C5023618CD2008B2CCA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8B4D1C5223618CD2008B2CCA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		8B4D1C5423618CD2008B2CCA /* UserNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNoticeView.m; sourceTree = "<group>"; };
@@ -398,6 +401,8 @@
 		0B0F6BB523601FD500537128 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8B225CBB236FD38600BD5756 /* LZBTypeConvertHelper.h */,
+				8B225CBC236FD38600BD5756 /* LZBTypeConvertHelper.m */,
 				8BD1BA1C236C3E200088A136 /* LYZCurrentVCHelper.h */,
 				8BD1BA1D236C3E200088A136 /* LYZCurrentVCHelper.m */,
 				8B9CB31723697C8A0092F7DE /* LYZSandBoxPath.h */,
@@ -688,6 +693,7 @@
 		0B6192F0235D5DBB00BE3BBA /* MineVC */ = {
 			isa = PBXGroup;
 			children = (
+				8B225CBE236FD3A000BD5756 /* Alert */,
 				8B21DF00236835B2000F0DAB /* V */,
 				0B6192FC235D7B5500BE3BBA /* C */,
 				0B6192F1235D5DD800BE3BBA /* StoryBoard */,
@@ -1042,8 +1048,6 @@
 				8B175392236987BB00509317 /* PCenterHeaderView.h */,
 				8B17538F236987BB00509317 /* PCenterHeaderView.m */,
 				8B175390236987BB00509317 /* PCenterHeaderView.xib */,
-				8BD1BA16236BDCC20088A136 /* QRCodeAlertView.h */,
-				8BD1BA17236BDCC20088A136 /* QRCodeAlertView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1055,6 +1059,15 @@
 				8B21DF092369316B000F0DAB /* UIView+CornerRadius.m */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		8B225CBE236FD3A000BD5756 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				8BD1BA16236BDCC20088A136 /* QRCodeAlertView.h */,
+				8BD1BA17236BDCC20088A136 /* QRCodeAlertView.m */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		8B4D1C4D23618CD2008B2CCA /* LoginVC */ = {
@@ -1441,6 +1454,7 @@
 				0B0F6C1D2366C10900537128 /* JMButton.m in Sources */,
 				0B0F6C152366C10900537128 /* JMBootstrapButtonConfig.m in Sources */,
 				BA5BFE84236BC4DA00D231F0 /* NotificationListCell.m in Sources */,
+				8B225CBD236FD38600BD5756 /* LZBTypeConvertHelper.m in Sources */,
 				0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */,
 				0BBE47782359B0FD00D30C4B /* LZBBaseViewController.m in Sources */,
 				8BD1BA15236BCF890088A136 /* UIImage+QRCode.m in Sources */,

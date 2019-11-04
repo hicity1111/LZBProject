@@ -13,6 +13,8 @@
 #define SafeNetUrl          @"http://plan-api.abnertech.com"
 #define SafeNetUrl_Alpha    @"http://sit-api.abnertech.com"
 
+#define BaseURL_QRCode      @"https://sit-wechat.abnertech.com"
+
 #ifdef DEBUG
     #define BASEURL(urlStr) [NSString stringWithFormat:@"%@%@", SafeNetUrl_Alpha, urlStr]
 #else

@@ -233,9 +233,10 @@ static NSMutableArray *tasks;
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
             if ([self.delegate lzbManager:self response:responseObject]) {
+                LZBAPIResponseBaseModel *resultModel = [self.delegate lzbManagerModel:self response:responseObject];
                 if (successBlock)
                 {
-                    successBlock(responseObject);
+                    successBlock(resultModel);
                 }
             }else{
                 NSDictionary *ret = responseObject;
@@ -253,6 +254,7 @@ static NSMutableArray *tasks;
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
             if ([self.delegate respondsToSelector:@selector(lzbManager:response:error:)]) {
+                
                 [self.delegate lzbManager:self response:nil error:error];
             }
             if (failureBlock)
@@ -283,9 +285,11 @@ static NSMutableArray *tasks;
                 NSLog(@"post 请求数据结果： *** %@", responseObject);
             }
             if ([self.delegate lzbManager:self response:responseObject]) {
+                
+                LZBAPIResponseBaseModel *resultModel = [self.delegate lzbManagerModel:self response:responseObject];
                 if (successBlock)
                 {
-                    successBlock(responseObject);
+                    successBlock(resultModel);
                 }
             }else{
                 NSDictionary *ret = responseObject;
@@ -305,6 +309,7 @@ static NSMutableArray *tasks;
             NSLog(@"错误信息：%@",error);
             
             if ([self.delegate respondsToSelector:@selector(lzbManager:response:error:)]) {
+                
                 [self.delegate lzbManager:self response:nil error:error];
             }
             if (failureBlock)

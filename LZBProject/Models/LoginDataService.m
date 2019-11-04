@@ -28,11 +28,17 @@
     LZBDataEntity *entity = [[LZBDataEntity alloc] init];
     entity.urlString = LoginUrl_full;
     entity.parameters = @{@"userName": username, @"password": password, @"appChannelId": @"studentApp"};
-    [self.netManager lzb_request_postWithEntity:entity successBlock:^(id  _Nonnull reponse) {
-        XLDLog(@"返回结果");
-        
+    self.responseClassName = NSStringFromClass([UserModel class]);
+    //传入必要的参数
+//    entity.parameters = [self necessaryParamsDictionary:@{@"userName": username, @"password": password, @"appChannelId": @"studentApp"}];
+    [self.netManager lzb_request_postWithEntity:entity successBlock:^(UserModel *model) {
+        if (success) {
+            success(model.infos);
+        }
     } failureBlock:^(NSError * _Nonnull error) {
-        
+        if (failure) {
+            failure(error);
+        }
     } progressBlock:^(int64_t bytesProgress, int64_t totalBytesProgress) {
     }];
     

@@ -10,4 +10,9 @@
 
 @implementation UserModel
 
++ (NSDictionary *)mj_objectClassInArray{
+    return @{
+        @"infos":[UserModel class]
+    };
+}
 @end

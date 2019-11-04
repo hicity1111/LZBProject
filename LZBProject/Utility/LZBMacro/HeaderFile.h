@@ -21,6 +21,7 @@
 #import <YYText/YYText.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <JXCategoryView/JXCategoryView.h>
+#import <MJExtension/MJExtension.h>
 
 #import "LZBBaseViewController.h"
 #import "UINavigationBar+handle.h"

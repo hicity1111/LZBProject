@@ -71,7 +71,7 @@ typedef void(^ LZBDownloadProgressBlock)(int64_t bytesProgress, int64_t totalByt
 typedef NSURLSessionTask LZBUrlSessionTask;
 
 @class LZBDataEntity;
-
+@class LZBAPIResponseBaseModel;
 
 @protocol LZBNetManagerDelegate <NSObject>
 
@@ -80,6 +80,8 @@ typedef NSURLSessionTask LZBUrlSessionTask;
 - (BOOL)lzbManager:(id)hepler response:(id)response;
 
 - (void)lzbManager:(id)helper response:(id)response error:(NSError *)error;
+
+- (LZBAPIResponseBaseModel *)lzbManagerModel:(id)hepler response:(id)response;
 
 @end
 

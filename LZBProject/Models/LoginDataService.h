@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (LoginDataService *)shareData;
 
+
 - (void)loginWithUsername:(NSString *)username
 password:(NSString *)password
  success:(void (^)(UserModel *user))success failure:(void (^)(NSError *error))failure;

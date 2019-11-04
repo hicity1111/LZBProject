@@ -25,7 +25,6 @@
     
     NSMutableDictionary *deviceParam = [NSMutableDictionary dictionaryWithDictionary:param];
 
-    //暂时不知道是否可行
     deviceParam[@"deviceId"] = [[UIDevice currentDevice].identifierForVendor UUIDString];
     
     deviceParam[@"token"] = [Utils loadUserToken];
@@ -68,6 +67,21 @@
     }
 }
 
+- (LZBAPIResponseBaseModel *)lzbManagerModel:(id)hepler response:(id)response{
+    
+    NSDictionary *resultDic = (NSDictionary *)response;
+    
+    Class responseClass = NSClassFromString(self.responseClassName);
+    
+    LZBAPIResponseBaseModel *model = [responseClass mj_objectWithKeyValues:resultDic];
+    
+    return model;
+}
+
+- (void)setResponseClassName:(NSString *)responseClassName{
+    _responseClassName = responseClassName;
+}
+
 - (LZBNetManager *)netManager{
     if (!_netManager) {
         _netManager = [LZBNetManager sharedLZBNetManager];
@@ -75,4 +89,5 @@
     }
     return _netManager;
 }
+
 @end

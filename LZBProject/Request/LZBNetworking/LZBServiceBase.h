@@ -25,7 +25,10 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, strong) LZBNetManager *netManager;
 
-+ (NSDictionary *)necessaryParamsDictionary:(NSDictionary *)param;
+- (NSDictionary *)necessaryParamsDictionary:(NSDictionary *)param;
+
+@property (nonatomic, strong) NSString *responseClassName;
+
 @end
 
 NS_ASSUME_NONNULL_END

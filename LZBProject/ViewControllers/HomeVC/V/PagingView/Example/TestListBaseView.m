@@ -9,6 +9,7 @@
 #import "TestListBaseView.h"
 #import "HomeWorkAlreadyStartCell.h"
 #import "HomeWorkNotStartCell.h"
+#import "NSDate+MTExtension.h"
 
 
 @interface TestListBaseView()<UITableViewDataSource, UITableViewDelegate>
@@ -59,6 +60,16 @@
     HomeWorkNotStartCell *cell1 = [tableView dequeueReusableCellWithIdentifier:@"HomeWorkNotStartCell" forIndexPath:indexPath];
     cell1.selectionStyle = UITableViewCellSelectionStyleNone;
     cell1.backgroundColor = [UIColor clearColor];
+    
+    HomeModel *model = self.dataSource[indexPath.row];
+    
+    if ([model.taskType intValue] == 1) {//任务
+        
+    }else{//
+        
+    }
+    
+
     
     if (indexPath.row%2 == 0) {
         return cell1;

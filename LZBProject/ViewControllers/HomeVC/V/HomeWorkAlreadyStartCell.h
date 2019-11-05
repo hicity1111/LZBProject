@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeWorkAlreadyStartCell : UITableViewCell
 
+@property (nonatomic, strong) HomeModel *model;
 @end
 
 NS_ASSUME_NONNULL_END

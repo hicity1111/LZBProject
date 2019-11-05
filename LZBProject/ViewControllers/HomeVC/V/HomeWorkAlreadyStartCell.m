@@ -7,6 +7,7 @@
 //
 
 #import "HomeWorkAlreadyStartCell.h"
+#import "GGProgressView.h"
 
 @interface HomeWorkAlreadyStartCell ()
 
@@ -44,6 +45,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *progressUpper;
 @property (weak, nonatomic) IBOutlet UILabel *progressLower;
 @property (weak, nonatomic) IBOutlet UILabel *progressDescLb;
+@property (weak, nonatomic) IBOutlet UIView *proView;
+
+@property (nonatomic, strong) GGProgressView *ggprogressView;
 
 
 
@@ -52,8 +56,20 @@
 
 @implementation HomeWorkAlreadyStartCell
 
+- (void)layoutSubviews{
+    [super layoutSubviews];
+//    self.ggprogressView.frame.size = self.proView.frame.size;
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    _ggprogressView = [[GGProgressView alloc] initWithFrame:self.proView.bounds progressViewStyle:GGProgressViewStyleAllFillet];
+    _ggprogressView.layer.borderWidth = 0.5f;
+    _ggprogressView.layer.borderColor = kMAIN00B5.CGColor;
+    _ggprogressView.progress = 0.8;
+    _ggprogressView.trackTintColor = KMAINFFFF;
+    _ggprogressView.progressTintColor = kMAIN00B5;
+    [self.proView addSubview:self.ggprogressView];
     // Initialization code
 }
 
@@ -63,4 +79,8 @@
     // Configure the view for the selected state
 }
 
+-(void)setModel:(HomeModel *)model{
+    _model = model;
+    
+}
 @end

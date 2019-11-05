@@ -128,13 +128,39 @@ static const CGFloat JXheightForHeaderInSection = 30;
 - (id<JXPagerViewListViewDelegate>)pagerView:(JXPagerView *)pagerView initListAtIndex:(NSInteger)index {
     
     TestListBaseView *list = [[TestListBaseView alloc] init];
-    NSMutableArray *arr = [NSMutableArray new];
-    for (int i = 0; i < 20; i++) {
-        [arr addObject:[NSString stringWithFormat:@"测试数据---%d",i]];
-    }
-    list.dataSource = [arr mutableCopy];
+    
+    NSMutableArray *resultArr = [self groupAction:self.resultTaskArr];;
+    [resultArr insertObject:self.resultTaskArr atIndex:0];
+    list.dataSource = [resultArr[index] mutableCopy];
     return list;
 }
+
+
+#pragma mark - 数组分组
+- (NSMutableArray *)groupAction:(NSMutableArray *)arr {
+
+    NSArray *serviceTypes = [arr valueForKeyPath:@"@distinctUnionOfObjects.subjectAbbreviation"];
+
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES]];
+
+    self.titles = [serviceTypes sortedArrayUsingDescriptors:sortDesc];
+
+    __block NSMutableArray *groupArr = [NSMutableArray array];
+
+    [self.titles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"subjectAbbreviation = %@", obj];
+
+        NSArray *tempArr = [NSArray arrayWithArray:[arr filteredArrayUsingPredicate:predicate]];
+
+        [groupArr addObject:tempArr];
+
+    }];
+
+    return groupArr;
+
+}
+
 
 - (void)mainTableViewDidScroll:(UIScrollView *)scrollView {
     !self.didScrollCallback ?: self.didScrollCallback(scrollView);
@@ -142,9 +168,9 @@ static const CGFloat JXheightForHeaderInSection = 30;
 
 - (void)screenButtonAct:(JMButton *)screenButton{
     XLDLog(@"点击了筛选");
+    [MBProgressHUD showMessage:@"点击了筛选" inView:self.view];
     CGRect rect = [screenButton convertRect:screenButton.frame toView:[UIApplication sharedApplication].keyWindow];
     
-    XLDLog(@"结果");
     
 }
 /*

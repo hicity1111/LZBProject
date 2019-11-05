@@ -83,6 +83,8 @@
 		0BBE47782359B0FD00D30C4B /* LZBBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBE47772359B0FD00D30C4B /* LZBBaseViewController.m */; };
 		0BF05336236FD4910091EFB2 /* HomeDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF05335236FD4910091EFB2 /* HomeDataService.m */; };
 		0BF05339237014F10091EFB2 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF05338237014F10091EFB2 /* HomeModel.m */; };
+		0BF0533D237152400091EFB2 /* LZBProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0533C237152400091EFB2 /* LZBProgressView.m */; };
+		0BF053402371631D0091EFB2 /* GGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0533F2371631D0091EFB2 /* GGProgressView.m */; };
 		170A91ACB3928B17BD894640 /* Pods_LZBProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */; };
 		34045572ED131BFDD841F7D6 /* Pods_LZBProject_LZBProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */; };
 		85F372E2BD4721F567D05450 /* Pods_LZBProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */; };
@@ -340,6 +342,10 @@
 		0BF05335236FD4910091EFB2 /* HomeDataService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDataService.m; sourceTree = "<group>"; };
 		0BF05337237014F10091EFB2 /* HomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
 		0BF05338237014F10091EFB2 /* HomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
+		0BF0533B237152400091EFB2 /* LZBProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBProgressView.h; sourceTree = "<group>"; };
+		0BF0533C237152400091EFB2 /* LZBProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBProgressView.m; sourceTree = "<group>"; };
+		0BF0533E2371631D0091EFB2 /* GGProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGProgressView.h; sourceTree = "<group>"; };
+		0BF0533F2371631D0091EFB2 /* GGProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGProgressView.m; sourceTree = "<group>"; };
 		23FB01E150EBC5D9CF6D00A2 /* Pods-LZBProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject.release.xcconfig"; path = "Target Support Files/Pods-LZBProject/Pods-LZBProject.release.xcconfig"; sourceTree = "<group>"; };
 		577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770848CE74481CA6FF8ECE16 /* Pods-LZBProject-LZBProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-LZBProject-LZBProjectUITests/Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -701,6 +707,7 @@
 		0B3D0011236934FD00BD4AA1 /* PagingView */ = {
 			isa = PBXGroup;
 			children = (
+				0BF0533A237151F70091EFB2 /* ProgressView */,
 				0B3D0012236934FD00BD4AA1 /* JXPagerView */,
 				0B3D001B236934FD00BD4AA1 /* Example */,
 			);
@@ -1101,6 +1108,17 @@
 				0BF05338237014F10091EFB2 /* HomeModel.m */,
 			);
 			path = M;
+			sourceTree = "<group>";
+		};
+		0BF0533A237151F70091EFB2 /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				0BF0533E2371631D0091EFB2 /* GGProgressView.h */,
+				0BF0533F2371631D0091EFB2 /* GGProgressView.m */,
+				0BF0533B237152400091EFB2 /* LZBProgressView.h */,
+				0BF0533C237152400091EFB2 /* LZBProgressView.m */,
+			);
+			path = ProgressView;
 			sourceTree = "<group>";
 		};
 		6A4B0F9B754FC431EF4EEC13 /* Pods */ = {
@@ -1779,11 +1797,13 @@
 				BA6CD800237124AA0008113F /* YBIBImageLayout.m in Sources */,
 				0B3D00102368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m in Sources */,
 				0B619307235D7BDC00BE3BBA /* HomeViewController.m in Sources */,
+				0BF0533D237152400091EFB2 /* LZBProgressView.m in Sources */,
 				0B4945D52357258500F19EE2 /* TriangleView.m in Sources */,
 				8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */,
 				BA6CD811237124AA0008113F /* YBIBSheetView.m in Sources */,
 				0B0F6C192366C10900537128 /* JMWaveButton.m in Sources */,
 				0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */,
+				0BF053402371631D0091EFB2 /* GGProgressView.m in Sources */,
 				0B112179236C207900944C24 /* UserModel.m in Sources */,
 				0B0F6C182366C10900537128 /* JMBaseButtonConfig.m in Sources */,
 				8B1753B2236A766100509317 /* NotifyCellModel.m in Sources */,

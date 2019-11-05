@@ -86,8 +86,6 @@
 //    }
     
     NotificationViewController *msgVC = [[NotificationViewController alloc] init];
-    // 进入后隐藏tabbar
-    msgVC.hidesBottomBarWhenPushed = YES;
     [self.vc.navigationController pushViewController:msgVC animated:YES];
 }
 

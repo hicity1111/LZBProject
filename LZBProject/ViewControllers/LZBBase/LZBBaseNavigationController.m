@@ -7,8 +7,13 @@
 //
 
 #import "LZBBaseNavigationController.h"
+#import "UIBarButtonItem+SXCreate.h"
+
 
 @interface LZBBaseNavigationController ()
+
+///返回按钮
+@property (nonatomic, strong) UIBarButtonItem *leftBarBtn;
 
 @end
 
@@ -17,7 +22,8 @@
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     
     if (self.viewControllers.count > 0) {
-        [super setHidesBottomBarWhenPushed:YES];
+        viewController.hidesBottomBarWhenPushed = YES;
+        viewController.navigationItem.leftBarButtonItem = self.leftBarBtn;
     }
     [super pushViewController:viewController animated:animated];
 }
@@ -27,24 +33,24 @@
     self.fd_fullscreenPopGestureRecognizer.enabled = YES;
     self.navigationBar.tintColor = KMAINFFFF;
     [self.navigationBar navBarBackGroundColor:kMAIN31AC image:nil isOpaque:YES];
-    
-//    [self.navigationBar navBarBottomLineHidden:YES];
-
-    // Do any additional setup after loading the view.
 }
 
-//- (UIStatusBarStyle)preferredStatusBarStyle{
-//    return UIStatusBarStyleLightContent;
-//}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+///MARK:- 返回事件
+- (void)backEvent {
+    if ([self respondsToSelector:@selector(popViewControllerAnimated:)]) {
+        [self popViewControllerAnimated:YES];
+    }
 }
-*/
+
+
+#pragma mark 懒加载
+- (UIBarButtonItem *)leftBarBtn {
+    if (!_leftBarBtn) {
+        _leftBarBtn = [UIBarButtonItem itemWithTarget:self action:@selector(backEvent) image:[UIImage imageNamed:@"back_white"] imageEdgeInsets:UIEdgeInsetsMake(0, -11, 0, 11)];
+        
+    }
+    return _leftBarBtn;
+}
 
 @end

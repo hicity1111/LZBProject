@@ -11,13 +11,16 @@
 
 
 #define SafeNetUrl          @"http://plan-api.abnertech.com"
-//#define SafeNetUrl_Alpha    @"http://sit-api.abnertech.com"
+#define SafeNetUrl_Alpha    @"http://sit-api.abnertech.com"
 
-#define SafeNetUrl_Alpha    @"http://192.168.7.157:8082"
+//#define SafeNetUrl_Alpha    @"http://192.168.7.157:8082"
 
 
 //本地URL
-#define SafeLocalUrl        @"http://192.168.6.104:8081/api"
+//#define SafeLocalUrl        @"http://192.168.6.104:8081/api"
+
+#define SafeLocalUrl        @"http://192.168.7.157:8082"
+
 
 #define BaseURL_QRCode      @"https://sit-wechat.abnertech.com"
 

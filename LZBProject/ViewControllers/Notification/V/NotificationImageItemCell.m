@@ -43,6 +43,7 @@
     if (!_imageV) {
         _imageV = [UIImageView new];
         _imageV.backgroundColor = [UIColor lightGrayColor];
+        _imageV.contentMode = UIViewContentModeScaleAspectFill;
         [_imageV setCornerRadius:5];
     }
     return _imageV;

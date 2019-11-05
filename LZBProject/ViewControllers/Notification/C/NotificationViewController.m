@@ -12,6 +12,7 @@
 #import "NotifyAllSelectToolView.h"         ///全选工具栏
 #import "NotifyListEntry.h"                 ///数据模型
 #import "NotifyDataService.h"
+#import "UIBarButtonItem+SXCreate.h"
 
 
 @interface NotificationViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -25,6 +26,8 @@
 @property (nonatomic, strong) UILabel *titleLab;
 ///deleteBtn
 @property (nonatomic, strong) UIButton *deleteBtn;
+///分页
+@property (nonatomic, assign) NSInteger page;
 
 @end
 
@@ -38,6 +41,8 @@
     [self mt_loadUI];
     ///获取用户信息
     [self obtainMessageListData];
+    ///获取未读数
+    [self loadUnreadCount];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -49,11 +54,15 @@
     ///添加消息中心
     self.navigationItem.titleView = self.titleLab;
     ///添加列表控件
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.deleteBtn];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:self.deleteBtn];
+    self.navigationItem.rightBarButtonItem = rightItem;
     ///添加列表
     [self.view addSubview:self.tableView];
     ///添加全选工具栏
     [self.view addSubview:self.allToolView];
+    ///空白占位图
+    LZBEmptyView *emptyView = [LZBEmptyView emptyViewWithImage:IMAGE_NAMED(@"pic_default_wrong") titleStr:@"暂无数据~" detailStr:@""];
+    self.tableView.lzbemptyView = emptyView;
 }
 
 
@@ -62,7 +71,7 @@
 - (void)deleteEvent {
     self.deleteBtn.selected = !self.deleteBtn.selected;
     self.allToolView.hidden = !self.deleteBtn.selected;
-    [self.navigationItem setHidesBackButton:self.deleteBtn.selected];
+    self.navigationItem.leftBarButtonItem.customView.hidden = self.deleteBtn.selected;
     
     if (!self.deleteBtn.selected) {
         ///全部清空 利用kvc机制
@@ -105,8 +114,7 @@
                            confirmTitle:@"确定"
                             cancleTitle:@"取消"
                           confirmAction:^{
-            [weakSelf.dataSource removeAllObjects];
-            [weakSelf.tableView reloadData];
+            [weakSelf handleAllDeleteEvent];
         } cancleAction:^{
             
         }];
@@ -114,16 +122,70 @@
     
 }
 
-///
+///处理全部删除事件
+- (void)handleAllDeleteEvent {
+    NSMutableArray *deleteArray = [[NSMutableArray alloc] init];
+    for (NotifyListEntry *model in self.dataSource) {
+        if (model.isSelected) {
+            [deleteArray addObject:model];
+        }
+    }
+    [self.dataSource removeObjectsInArray:deleteArray];
+    if (self.dataSource.count == 0 ) {
+        self.deleteBtn.selected = NO;
+        [self.allToolView resetData];
+        self.allToolView.hidden = YES;
+        self.navigationItem.leftBarButtonItem.customView.hidden = NO;
+    }
+    [self.tableView reloadData];
+    
+}
+
 
 
 ///MARK:- Remote API
 ///获取列表数据
 - (void)obtainMessageListData {
+    self.page = 1;
     MJWeakSelf
-    [[NotifyDataService shareData] obtainMessageList:@"" studentInfoId:@"1634" success:^(LZBAPIResponseBaseModel * _Nonnull baseM) {
+    [self showLoading];
+    UserModel *infoM = [UserModel findUserInfoResult];
+    [[NotifyDataService shareData] obtainMessageList:@""
+                                       studentInfoId:[NSString stringWithFormat:@"%@", infoM.studentInfoId] success:^(LZBAPIResponseBaseModel * _Nonnull baseM) {
+        [weakSelf.tableView.mj_header endRefreshing];
         weakSelf.dataSource = [NotifyListEntry mj_objectArrayWithKeyValuesArray:baseM.infos];
         [weakSelf.tableView reloadData];
+        [weakSelf hideHUD];
+    } failure:^(NSError * _Nonnull error) {
+        [weakSelf.tableView.mj_header endRefreshing];
+        [weakSelf hideHUD];
+    }];
+}
+
+- (void)obtainMoreData {
+    self.page ++;
+    MJWeakSelf
+    [self showLoading];
+    UserModel *infoM = [UserModel findUserInfoResult];
+    [[NotifyDataService shareData] loadMoreMessageList:[NSString stringWithFormat:@"%@", infoM.studentInfoId] page:self.page success:^(LZBAPIResponseBaseModel * _Nonnull baseM) {
+        NSMutableArray *tempArray = [NotifyListEntry mj_objectArrayWithKeyValuesArray:baseM.infos];
+        [weakSelf.dataSource addObjectsFromArray:tempArray];
+        [weakSelf.tableView reloadData];
+        [weakSelf.tableView.mj_footer endRefreshing];
+        [weakSelf hideHUD];
+    } failure:^(NSError * _Nonnull error) {
+        [weakSelf.tableView.mj_footer endRefreshing];
+        [weakSelf hideHUD];
+    }];
+}
+
+///获取未读数
+- (void)loadUnreadCount {
+    ///noticeCount
+    [[NotifyDataService shareData] loadUnreadMessageCountSuccess:^(LZBAPIResponseBaseModel * _Nonnull baseM) {
+        if (baseM && baseM.infos && [baseM.infos isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"未读消息数目: %@", baseM.infos[@"noticeCount"]);
+        }
     } failure:^(NSError * _Nonnull error) {
         
     }];
@@ -148,7 +210,9 @@
     cell.itemSelectedCallBack = ^(NotifyListEntry * _Nonnull model, NSIndexPath * _Nonnull index) {
         model.isSelected = !model.isSelected;
         [weakSelf.dataSource replaceObjectAtIndex:index.row withObject:model];
-        [weakSelf.tableView reloadData];
+//        [weakSelf.tableView reloadData];
+        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+
         
         NSInteger nums = 0;
         for (NotifyListEntry *entry in weakSelf.dataSource) {
@@ -223,6 +287,16 @@
         ///注册列表
         [_tableView mt_registerCell:[NotificationListCell class]];
         
+        ///下拉刷新
+        MJWeakSelf
+        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [weakSelf obtainMessageListData];
+        }];
+        ///上拉加载更多
+        _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            [weakSelf obtainMoreData];
+        }];
+        
     }
     return _tableView;
 }
@@ -268,7 +342,8 @@
 
 - (UIButton *)deleteBtn {
     if (!_deleteBtn) {
-        _deleteBtn = [UIButton new];
+        _deleteBtn = [[UIButton alloc] init];
+        _deleteBtn.frame = CGRectMake(0, 0, 85, 44);
         [_deleteBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_deleteBtn setTitle:@"批量删除" forState:UIControlStateNormal];
         [_deleteBtn setTitle:@"取消删除" forState:UIControlStateSelected];

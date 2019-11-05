@@ -67,7 +67,8 @@
 #pragma mark - HomeHeaderDelegate
 
 - (void)messageAct {
-    
+    NotificationViewController *notifyVC = [[NotificationViewController alloc] init];
+    [self.navigationController pushViewController:notifyVC animated:YES];
 }
 
 #pragma mark - UITableView Delegate

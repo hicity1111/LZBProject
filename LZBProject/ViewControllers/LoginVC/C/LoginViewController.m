@@ -316,6 +316,9 @@
         NSDictionary *userInfoDic = [userModel mj_keyValues];
         [Utils saveUserInfo:userInfoDic];
         
+        ///持久化用户信息
+        [UserModel save:userModel resBlock:^(BOOL res) {}];
+        
         SETUSER_OBJ(USER_NAME, name);
         if (weakSelf.savePwdBtn.selected) {
             SETUSER_OBJ(USER_PASSWORD, pwd);

@@ -43,5 +43,6 @@
 #import "NSObject+LZBExtension.h"
 
 #import "LYZCurrentVCHelper.h"
+#import "UserModel.h"
 
 #endif /* HeaderFile_h */

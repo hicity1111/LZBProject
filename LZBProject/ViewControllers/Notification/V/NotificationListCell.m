@@ -11,6 +11,7 @@
 #import "NotificationImageItemCell.h"
 #import "NotificationToolItem.h"
 #import "NotifyListEntry.h"
+#import "YBImageBrowser.h"
 
 #define shadowOffset 6.0
 
@@ -30,6 +31,8 @@
 @property (nonatomic, strong) NotificationToolItem *toolView;
 ///多选button
 @property (nonatomic, strong) UIButton *selectedBtn;
+///小红点
+@property (nonatomic, strong) UIView *redDotV;
 
 @end
 
@@ -62,6 +65,8 @@
     self.selectedBtn.selected = model.isSelected;
     ///icon head
     self.iconHeaderV.model = model;
+    ///消息红点
+    self.redDotV.hidden = model.isRead;
     ///title赋值
     NSMutableAttributedString *titleString = [NotificationListCell mt_generateString:IFISNIL(model.noticeTitle) color:[UIColor colorWithRed:88/255.0 green:104/255.0 blue:120/255.0 alpha:1.0] font:KMAINFONTBOLD22];
     self.titleLab.attributedText = titleString;
@@ -168,6 +173,8 @@
     [self.cardView addSubview:self.iconHeaderV];
     ///添加选择button
     [self.iconHeaderV addSubview:self.selectedBtn];
+    ///添加小红点
+    [self.iconHeaderV addSubview:self.redDotV];
     ///添加标题
     [self.cardView addSubview:self.titleLab];
     ///添加描述
@@ -197,6 +204,12 @@
         make.size.mas_equalTo(CGSizeMake(44, 44));
         make.top.mas_equalTo(0);
         make.right.mas_equalTo(0);
+    }];
+    
+    [self.redDotV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(6, 6));
+        make.top.mas_equalTo(4);
+        make.right.mas_equalTo(-4);
     }];
     
     [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -248,6 +261,17 @@
 
 //点击事件
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // 网络图片
+    NSMutableArray *imageUrls = [NSMutableArray new];
+    for (NSString *path in self.model.noticeImagesUrl) {
+        YBIBImageData *data = [YBIBImageData new];
+        data.imageURL = [NSURL URLWithString:path];
+        [imageUrls addObject:data];
+    }
+    YBImageBrowser *browser = [YBImageBrowser new];
+    browser.dataSourceArray = imageUrls;
+    browser.currentPage = indexPath.row;
+    [browser show];
 }
 
 
@@ -329,6 +353,17 @@
         [_selectedBtn addTarget:self action:@selector(selectedEvent) forControlEvents:UIControlEventTouchUpInside];
     }
     return _selectedBtn;
+}
+
+
+- (UIView *)redDotV {
+    if (!_redDotV) {
+        _redDotV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 6, 6)];
+        [_redDotV setCornerRadius:3.0];
+        _redDotV.hidden = NO;
+        _redDotV.backgroundColor = [UIColor colorWithRed:255/255.0 green:0/255.0 blue:0/255.0 alpha:1.0];
+    }
+    return _redDotV;
 }
 
 

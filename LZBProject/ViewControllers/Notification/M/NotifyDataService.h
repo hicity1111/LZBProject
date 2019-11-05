@@ -26,6 +26,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
+///加载更多
+- (void)loadMoreMessageList:(NSString *)studentInfoId
+                       page:(NSInteger)page
+                    success:(void (^)(LZBAPIResponseBaseModel *baseM))success
+                    failure:(void (^)(NSError *error))failure;
+
+
+///获取未读消息数
+- (void)loadUnreadMessageCountSuccess:(void (^)(LZBAPIResponseBaseModel *baseM))success         failure:(void (^)(NSError *error))failure;
+
 @end
 
 NS_ASSUME_NONNULL_END

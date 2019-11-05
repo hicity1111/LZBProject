@@ -153,8 +153,7 @@
 - (void)messageAct{
 
     [_homeHeaderView removeBadgValue];
-    HomeDetailViewController *homeDetai = [HomeDetailViewController new];
-    [homeDetai setHidesBottomBarWhenPushed:YES];
+    NotificationViewController *homeDetai = [NotificationViewController new];
     [self.navigationController pushViewController:homeDetai animated:YES];
 
    

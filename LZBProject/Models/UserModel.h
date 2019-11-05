@@ -10,7 +10,7 @@
 #import "LZBAPIResponseBaseModel.h"
 #import "UserModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface UserModel : LZBAPIResponseBaseModel
 
@@ -54,6 +54,30 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// token
 @property (nonatomic, copy) NSString *token;
+
+
+/** 使用单例 */
++ (instancetype)manager;
+
+///释放单例
++ (void)deallocManager;
+
+/**
+ 保存用户信息
+ @param model 对象
+ @param resBlock 保存结果
+ */
++ (void)save:(id)model resBlock:(void(^)(BOOL res))resBlock;
+
+/**
+ 查找用户信息
+ */
++ (UserModel *)findUserInfoResult;
+
+/**
+ 登出后 移除用户信息
+*/
++ (void)removeUserInfo;
+
 @end
 
-NS_ASSUME_NONNULL_END

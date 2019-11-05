@@ -33,11 +33,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///通知类型     通知类型（1：系统，2：作业提醒（半小时），3：改错提醒,4：班级通知，5发布作业。6作业撤回 9重批申请10重批处理完成11未提交作业提醒
 @property (nonatomic, assign) NSInteger noticeType;
 ///消息图片地址
-@property (nonatomic, strong) NSArray<NSString *> *noticeImagesUrl;
+@property (nonatomic, strong) NSArray *noticeImagesUrl;
+///科目
+@property (nonnull, copy) NSString *subjectAbbreviation;
 
-
-///测试字段
-@property (nonatomic, assign) NSInteger imageNums;
 ///MARK:- 自定义字段
 //高度缓存
 @property (nonatomic, assign) CGFloat cellHeight;

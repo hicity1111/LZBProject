@@ -60,13 +60,31 @@
     _model = model;
     ///多选 按钮状态
     self.selectedBtn.selected = model.isSelected;
+    ///icon head
+    self.iconHeaderV.model = model;
+    ///title赋值
+    NSMutableAttributedString *titleString = [NotificationListCell mt_generateString:IFISNIL(model.noticeTitle) color:[UIColor colorWithRed:88/255.0 green:104/255.0 blue:120/255.0 alpha:1.0] font:KMAINFONTBOLD22];
+    self.titleLab.attributedText = titleString;
     
-    ///跟新collection 布局
+    ///描述赋值
+    NSMutableAttributedString *descString = [NotificationListCell mt_generateString:IFISNIL(model.noticeContent) color:[UIColor colorWithRed:119/255.0 green:119/255.0 blue:119/255.0 alpha:1.0] font:KMAINFONT16];
+//    ///消息
+//    if (model.noticeType == 1) {
+//        descString = [[[NSAttributedString alloc] initWithData:[IFISNIL(model.noticeContent) dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil] mutableCopy];
+//    } else {
+//
+//    }
+    self.descLab.attributedText = descString;
+
+    ///底部工具条
+    self.toolView.model = model;
+    
+    ///更新collection 布局
     [self.collectionView reloadData];
     CGFloat collectionHeight = 0.0;
-    if (model.imageNums == 0) {
+    if (model.noticeImagesUrl.count == 0) {
          collectionHeight = 0.0f;
-     } else if (model.imageNums <= 3) {
+     } else if (model.noticeImagesUrl.count <= 3) {
          collectionHeight = 70.0f;
      } else {
          collectionHeight = 150.0f;
@@ -96,18 +114,18 @@
     ///iCON  header 到 titleView 的 间距
     CGFloat iconHeaderToTitleSpace = 0.f;
     ///titleView 的高度
-    NSMutableAttributedString *titleString = [NotificationListCell mt_generateString:@"这里是系统消息的名字，最多显示两行，后台限制字数30个汉字以内。" color:[UIColor colorWithRed:88/255.0 green:104/255.0 blue:120/255.0 alpha:1.0] font:KMAINFONTBOLD22];
+    NSMutableAttributedString *titleString = [NotificationListCell mt_generateString:IFISNIL(model.noticeTitle) color:[UIColor colorWithRed:88/255.0 green:104/255.0 blue:120/255.0 alpha:1.0] font:KMAINFONTBOLD22];
     CGFloat titleHeight = [NotificationListCell mt_computeAttributedStringHeight:titleString];
     ///title 到 desc 的间距
     CGFloat titleToDescSpace = 15.0f;
     ///desc 高度
-    NSMutableAttributedString *descString = [NotificationListCell mt_generateString:@"这里是老师编辑的消息内容，最多200个字，全部展示。这里是老师编辑的消息内容，最多200个字，全部展示。这里是老师编辑的消息内容，最多200个字，全部展示。" color:[UIColor colorWithRed:119/255.0 green:119/255.0 blue:119/255.0 alpha:1.0] font:KMAINFONT16];
+    NSMutableAttributedString *descString = [NotificationListCell mt_generateString:IFISNIL(model.noticeContent) color:[UIColor colorWithRed:119/255.0 green:119/255.0 blue:119/255.0 alpha:1.0] font:KMAINFONT16];
     CGFloat descHeight = [NotificationListCell mt_computeAttributedStringHeight:descString];
     ///宫格图片高度 高度计算
     CGFloat collectionHeight = 0;
-    if (model.imageNums == 0) {
+    if (model.noticeImagesUrl.count == 0) {
         collectionHeight = 15.0f;
-    } else if (model.imageNums <= 3) {
+    } else if (model.noticeImagesUrl.count <= 3) {
         collectionHeight = 10.0f + 70.0f + 10.0f;
     } else {
         collectionHeight = 10.0f + 150.0f + 10.f;
@@ -159,13 +177,6 @@
     ///添加底部工具栏
     [self.cardView addSubview:self.toolView];
     
-    ///临时赋值
-    NSMutableAttributedString *titleString = [NotificationListCell mt_generateString:@"这里是系统消息的名字，最多显示两行，后台限制字数30个汉字以内。" color:[UIColor colorWithRed:88/255.0 green:104/255.0 blue:120/255.0 alpha:1.0] font:KMAINFONTBOLD22];
-    self.titleLab.attributedText = titleString;
-    
-    ///临时复制
-      NSMutableAttributedString *descString = [NotificationListCell mt_generateString:@"这里是老师编辑的消息内容，最多200个字，全部展示。这里是老师编辑的消息内容，最多200个字，全部展示。这里是老师编辑的消息内容，最多200个字，全部展示。" color:[UIColor colorWithRed:119/255.0 green:119/255.0 blue:119/255.0 alpha:1.0] font:KMAINFONT16];
-      self.descLab.attributedText = descString;
 }
 
 - (void)mt_loadFrame {
@@ -218,7 +229,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.model.imageNums;
+    return self.model.noticeImagesUrl.count;
 }
 
 
@@ -229,6 +240,8 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NotificationImageItemCell *cell = (NotificationImageItemCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"NotificationImageItemCell" forIndexPath:indexPath];
+    NSString *imageUrl = self.model.noticeImagesUrl[indexPath.row];
+    [cell.imageV sd_setImageWithURL:[NSURL URLWithString:IFISNIL(imageUrl)]];
     return cell;
 }
 

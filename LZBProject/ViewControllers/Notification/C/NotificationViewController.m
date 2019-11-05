@@ -90,15 +90,40 @@
 ///确定删除事件
 - (void)doneDeleteEvent {
     NSLog(@"确定删除事件 ......");
+    NSInteger nums = 0;
+    for (NotifyListEntry *model in self.dataSource) {
+        if (model.isSelected) {
+            nums++;
+        }
+    }
+    if (nums == 0) {
+        [self showMessage:@"没有选择任何内容哦~" afterDelay:1.5];
+    } else {
+        MJWeakSelf
+        [NSObject mt_showAlertWithTitle:@"删除消息"
+                                message:@"是否确认删除所选消息"
+                           confirmTitle:@"确定"
+                            cancleTitle:@"取消"
+                          confirmAction:^{
+            [weakSelf.dataSource removeAllObjects];
+            [weakSelf.tableView reloadData];
+        } cancleAction:^{
+            
+        }];
+    }
     
 }
+
+///
 
 
 ///MARK:- Remote API
 ///获取列表数据
 - (void)obtainMessageListData {
+    MJWeakSelf
     [[NotifyDataService shareData] obtainMessageList:@"" studentInfoId:@"1634" success:^(LZBAPIResponseBaseModel * _Nonnull baseM) {
-        
+        weakSelf.dataSource = [NotifyListEntry mj_objectArrayWithKeyValuesArray:baseM.infos];
+        [weakSelf.tableView reloadData];
     } failure:^(NSError * _Nonnull error) {
         
     }];
@@ -162,7 +187,8 @@
 // 进入编辑模式，按下出现的编辑按钮后,进行删除操作
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
+        [self.dataSource removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
     }
 }
  
@@ -206,16 +232,6 @@
 - (NSArray *)dataSource {
     if (!_dataSource) {
         _dataSource = [[NSMutableArray alloc] init];
-        ///测试数据
-        NotifyListEntry *model = [NotifyListEntry alloc];
-        model.imageNums = 6;
-        NotifyListEntry *model2 = [NotifyListEntry alloc];
-        model2.imageNums = 0;
-        NotifyListEntry *model3 = [NotifyListEntry alloc];
-        model3.imageNums = 2;
-        NotifyListEntry *model4 = [NotifyListEntry alloc];
-        model4.imageNums = 4;
-        [_dataSource addObjectsFromArray:@[model, model2, model3, model4]];
     }
     return _dataSource;
 }

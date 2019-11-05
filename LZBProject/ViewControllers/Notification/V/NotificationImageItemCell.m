@@ -9,8 +9,7 @@
 #import "NotificationImageItemCell.h"
 
 @interface NotificationImageItemCell()
-///图片
-@property (nonatomic, strong) UIImageView *imageV;
+
 
 @end
 

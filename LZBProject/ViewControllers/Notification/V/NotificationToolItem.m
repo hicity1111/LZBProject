@@ -7,6 +7,7 @@
 //
 
 #import "NotificationToolItem.h"
+#import "NotifyListEntry.h"
 
 @interface NotificationToolItem()
 ///虚线
@@ -32,6 +33,29 @@
         [self mt_loadFrame];
     }
     return self;
+}
+
+
+///MARK:- 赋值
+- (void)setModel:(NotifyListEntry *)model {
+    _model = model;
+    
+    ///系统消息
+    if (model.noticeType == 1) {
+        self.sourceLab.text = @"乐知帮";
+        self.rightTitleV.hidden = NO;
+        self.arrowImageV.hidden = NO;
+    } else {
+        self.sourceLab.text = [NSString stringWithFormat:@"%@", IFISNIL(model.noticeSendname)];
+        self.rightTitleV.hidden = YES;
+        self.arrowImageV.hidden = YES;
+    }
+}
+
+
+///MARK:- 点击查看 点击事件
+- (void)clickEvent {
+    
 }
 
 
@@ -65,7 +89,7 @@
     
     [self.arrowImageV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(weakSelf.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(15, 18));
+        make.size.mas_equalTo(CGSizeMake(14, 17));
         make.right.mas_equalTo(0);
     }];
     
@@ -110,6 +134,9 @@
     if (!_arrowImageV) {
         _arrowImageV = [[UIImageView alloc] init];
         _arrowImageV.image = [UIImage imageNamed:@"notify_arrow"];
+        _arrowImageV.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickEvent)];
+        [_arrowImageV addGestureRecognizer:tap];
     }
     return _arrowImageV;
 }
@@ -120,6 +147,9 @@
         _rightTitleV.textColor = KMAIN00A2;
         _rightTitleV.font = KMAINFONT14;
         _rightTitleV.text = @"点击查看   ";
+        _rightTitleV.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickEvent)];
+        [_rightTitleV addGestureRecognizer:tap];
     }
     return _rightTitleV;
 }

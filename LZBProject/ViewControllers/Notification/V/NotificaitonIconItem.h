@@ -10,7 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class NotifyListEntry;
 @interface NotificaitonIconItem : UIView
+
+///数据模型
+@property (nonatomic, strong) NotifyListEntry *model;
 
 @end
 

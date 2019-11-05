@@ -30,7 +30,8 @@ studentInfoId:(NSString *)studentInfoId
       failure:(void (^)(NSError *error))failure {
     
     LZBDataEntity *entity = [[LZBDataEntity alloc] init];
-    entity.urlString = NotifyListAPI_full;
+//    entity.urlString = NotifyListAPI_full;
+    entity.urlString = @"http://192.168.7.157:8082/studentApi/student/notice/getList";
     NSDictionary *paramsDict = @{@"currentPage": @(1),
                                  @"pageSize": @(12),
                                  @"studentInfoId": studentInfoId
@@ -39,9 +40,9 @@ studentInfoId:(NSString *)studentInfoId
     entity.parameters = [self necessaryParamsDictionary:paramsDict];
     
     [self.netManager lzb_request_getWithEntity:entity successBlock:^(id  _Nonnull reponse) {
-        NSLog(@"^^^ == %@",reponse);
+        !success ?: success(reponse);
     } failureBlock:^(NSError * _Nonnull error) {
-        NSLog(@"^^^^ == %@", error);
+        !failure ?: failure(error);
     } progressBlock:^(int64_t bytesProgress, int64_t totalBytesProgress) {}];
   
 }

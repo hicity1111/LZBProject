@@ -39,6 +39,8 @@
 //底部安全高度
 #define kBottomSafeSpace ([[UIApplication sharedApplication] statusBarFrame].size.height > 20 ? 34 : 0)
 
+/// 判断字符串是否为空
+#define IFISNIL(v)                                 (v = (v != nil) ? v : @"")
 
 //NavigationBar的高度
 #define kNavBar_Height 44

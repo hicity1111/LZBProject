@@ -37,11 +37,9 @@
 #import "NotificationViewController.h"
 #import "LZBEmptyView.h"
 #import "UIView+Empty.h"
-<<<<<<< HEAD
 #import "LZBAPIResponseBaseModel.h"
-=======
 #import "LZBNetworkURL.h"
 #import "LZBNetManager.h"
->>>>>>> 54a7b969804eedb17eb398e10ea38e31fa861c70
+#import "NSObject+LZBExtension.h"
 
 #endif /* HeaderFile_h */

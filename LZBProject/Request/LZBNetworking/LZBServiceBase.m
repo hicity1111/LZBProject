@@ -29,9 +29,10 @@
     
     deviceParam[@"token"] = [Utils loadUserToken];
     //版本号
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    deviceParam[@"appVersion"] = appVersion;
+//    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+//    NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    deviceParam[@"appVersion"] = @"1.3.2";
+    deviceParam[@"appVersionCode"] = @"7";
     
     deviceParam[@"appChannelId"] = @"studentApp";
     

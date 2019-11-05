@@ -10,4 +10,11 @@
 
 @implementation NotifyListEntry
 
+- (NSArray *)noticeImagesUrl {
+    if (!_noticeImagesUrl) {
+        _noticeImagesUrl = [[NSArray alloc] init];
+    }
+    return _noticeImagesUrl;
+}
+
 @end

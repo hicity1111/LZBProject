@@ -11,6 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NotificationImageItemCell : UICollectionViewCell
+///图片
+@property (nonatomic, strong) UIImageView *imageV;
 
 @end
 

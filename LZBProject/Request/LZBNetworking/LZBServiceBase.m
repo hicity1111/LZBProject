@@ -27,7 +27,7 @@
     
     NSMutableDictionary *deviceParam = [NSMutableDictionary dictionaryWithDictionary:param];
 
-    deviceParam[@"deviceId"] = [[UIDevice currentDevice].identifierForVendor UUIDString];
+    deviceParam[@"deviceUUID"] = [[UIDevice currentDevice].identifierForVendor UUIDString];
     
     deviceParam[@"token"] = [Utils loadUserToken];
     //版本号

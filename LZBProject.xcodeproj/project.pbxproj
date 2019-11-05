@@ -110,6 +110,9 @@
 		8B6B6A0C2362D8C2008B7585 /* login_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B6A092362D8C2008B7585 /* login_bg.png */; };
 		8B6B6A0D2362D8C2008B7585 /* login_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B6A0A2362D8C2008B7585 /* login_bg@2x.png */; };
 		8B6B6A112362D905008B7585 /* LYZTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B6A0F2362D905008B7585 /* LYZTextField.m */; };
+		8B7ED9E5237011B30017B08B /* LZBAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7ED9E4237011B30017B08B /* LZBAlertViewController.m */; };
+		8B7ED9F1237151DD0017B08B /* CTB_SubjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7ED9F0237151DD0017B08B /* CTB_SubjectModel.m */; };
+		8B7ED9F4237152190017B08B /* CTB_SubjectDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7ED9F3237152190017B08B /* CTB_SubjectDataService.m */; };
 		8B9CB3122369699D0092F7DE /* LYZCleanCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB3112369699D0092F7DE /* LYZCleanCache.m */; };
 		8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB31623697C8A0092F7DE /* LYZSandBoxPath.m */; };
 		8BCD1226236192F600BCCB08 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCD1225236192F600BCCB08 /* Login.storyboard */; };
@@ -380,6 +383,12 @@
 		8B6B6A0F2362D905008B7585 /* LYZTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYZTextField.m; sourceTree = "<group>"; };
 		8B6B6A102362D905008B7585 /* LYZTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYZTextField.h; sourceTree = "<group>"; };
 		8B6B6A382362FE9B008B7585 /* LZBNetworkURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBNetworkURL.h; sourceTree = "<group>"; };
+		8B7ED9E3237011B30017B08B /* LZBAlertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBAlertViewController.h; sourceTree = "<group>"; };
+		8B7ED9E4237011B30017B08B /* LZBAlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBAlertViewController.m; sourceTree = "<group>"; };
+		8B7ED9EF237151DD0017B08B /* CTB_SubjectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTB_SubjectModel.h; sourceTree = "<group>"; };
+		8B7ED9F0237151DD0017B08B /* CTB_SubjectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTB_SubjectModel.m; sourceTree = "<group>"; };
+		8B7ED9F2237152190017B08B /* CTB_SubjectDataService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTB_SubjectDataService.h; sourceTree = "<group>"; };
+		8B7ED9F3237152190017B08B /* CTB_SubjectDataService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTB_SubjectDataService.m; sourceTree = "<group>"; };
 		8B9CB3102369699D0092F7DE /* LYZCleanCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYZCleanCache.h; sourceTree = "<group>"; };
 		8B9CB3112369699D0092F7DE /* LYZCleanCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYZCleanCache.m; sourceTree = "<group>"; };
 		8B9CB31623697C8A0092F7DE /* LYZSandBoxPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYZSandBoxPath.m; sourceTree = "<group>"; };
@@ -1171,6 +1180,10 @@
 		8B21DEEC2366F574000F0DAB /* M */ = {
 			isa = PBXGroup;
 			children = (
+				8B7ED9EF237151DD0017B08B /* CTB_SubjectModel.h */,
+				8B7ED9F0237151DD0017B08B /* CTB_SubjectModel.m */,
+				8B7ED9F2237152190017B08B /* CTB_SubjectDataService.h */,
+				8B7ED9F3237152190017B08B /* CTB_SubjectDataService.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1214,6 +1227,8 @@
 			children = (
 				8BD1BA16236BDCC20088A136 /* QRCodeAlertView.h */,
 				8BD1BA17236BDCC20088A136 /* QRCodeAlertView.m */,
+				8B7ED9E3237011B30017B08B /* LZBAlertViewController.h */,
+				8B7ED9E4237011B30017B08B /* LZBAlertViewController.m */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -1819,7 +1834,9 @@
 				0BF05336236FD4910091EFB2 /* HomeDataService.m in Sources */,
 				BA6CD805237124AA0008113F /* YBIBImageCell.m in Sources */,
 				BA6CD809237124AA0008113F /* YBIBAuxiliaryViewHandler.m in Sources */,
+				8B7ED9F1237151DD0017B08B /* CTB_SubjectModel.m in Sources */,
 				0B619304235D7BC900BE3BBA /* CTBViewController.m in Sources */,
+				8B7ED9F4237152190017B08B /* CTB_SubjectDataService.m in Sources */,
 				0B0F6BD72361A90400537128 /* LZB_TabBarBadge.m in Sources */,
 				BA6CD815237124AA0008113F /* YBIBCollectionView.m in Sources */,
 				0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */,
@@ -1876,6 +1893,7 @@
 				0B6192ED235D58E600BE3BBA /* UINavigationBar+handle.m in Sources */,
 				0BF05339237014F10091EFB2 /* HomeModel.m in Sources */,
 				0B112176236C071200944C24 /* LZBServiceBase.m in Sources */,
+				8B7ED9E5237011B30017B08B /* LZBAlertViewController.m in Sources */,
 				8B9CB3122369699D0092F7DE /* LYZCleanCache.m in Sources */,
 				BA6CD818237124AA0008113F /* NSObject+YBImageBrowser.m in Sources */,
 				BA6CD7B2237114040008113F /* NSObject+LZBExtension.m in Sources */,

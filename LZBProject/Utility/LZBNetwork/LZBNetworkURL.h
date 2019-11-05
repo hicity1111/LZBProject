@@ -30,11 +30,14 @@
     #define BASEURL(urlStr) [NSString stringWithFormat:@"%@%@", SafeNetUrl, urlStr]
 #endif
 
-#define LoginUrl_sim    @"/api/system/student/login"
-#define LoginUrl_full   BASEURL(LoginUrl_sim)
+#define LoginUrl_sim        @"/api/system/student/login"
+#define LoginUrl_full       BASEURL(LoginUrl_sim)
 
-#define HomeWork_Student @"/app/homework/student/list"
-#define HomeWork_full        BASEURL(HomeWork_Student)
+#define HomeWork_Student    @"/app/homework/student/list"
+#define HomeWork_full       BASEURL(HomeWork_Student)
+
+#define CTBSSubject_sim     @"/api/wrongquestion/subject"
+#define CTBSSubject_full    BASEURL(CTBSSubject_sim)
 
 
 //消息中心

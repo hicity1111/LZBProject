@@ -11,11 +11,14 @@
 #import "CTBSubjectCell.h"
 #import "LZBEmptyView.h"
 #import "LZB_CTB_CellHelper.h"
+#import "CTB_SubjectDataService.h"
 
 #define cellID @"CTBSubjectCell"
 
 
 @interface CTBViewController () <UITableViewDelegate, UITableViewDataSource, HomeHeaderDelegate>
+
+@property (nonatomic, strong) CTB_SubjectDataService *dataService;
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -27,11 +30,20 @@
 
 @implementation CTBViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self addCustomNavHeader];
+    [self.view addSubview:self.tableView];
+    
+    LZBEmptyView *emptyView = [LZBEmptyView emptyViewWithImage:IMAGE_NAMED(@"pic_default_wrong") titleStr:@"还没有错题哦~" detailStr:@""];
+    self.tableView.lzbemptyView = emptyView;
+    
+    [self requestData];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [super viewWillAppear:animated];
-    
-    [self addCustomNavHeader];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -40,28 +52,25 @@
 }
 
 
-- (void)viewDidLoad {
-    
-    [super viewDidLoad];
-    
-    self.dataSource = [NSMutableArray arrayWithCapacity:0];
-    
-    [self.view addSubview:self.tableView];
-    
-    LZBEmptyView *emptyView = [LZBEmptyView emptyViewWithImage:IMAGE_NAMED(@"pic_default_wrong") titleStr:@"还没有错题哦~" detailStr:nil];
-    self.tableView.lzbemptyView = emptyView;
-}
-
-
 
 #pragma mark - private Method
 
 - (void)addCustomNavHeader {
     _homeHeaderView = [[HomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kTopBarHeight)];
-    _homeHeaderView.titleString = @"Hi，张芳同学，今天又见面了！";
+    UserModel *uModel = [UserModel findUserInfoResult];
+    _homeHeaderView.titleString = [NSString stringWithFormat:@"Hi，%@同学，今天又见面了！", uModel.studentName];
     [_homeHeaderView showNumberBadgeValue:@"44"];
     _homeHeaderView.delegate = self;
     [self.view addSubview:_homeHeaderView];
+}
+
+- (void)requestData {
+    [self.dataService requestDataWithSuccessBlock:^(LZBAPIResponseBaseModel * _Nonnull model) {
+        self.dataSource = [CTB_SubjectModel mj_objectArrayWithKeyValuesArray:model.infos];
+        [self.tableView reloadData];
+    } failureBlock:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 #pragma mark - HomeHeaderDelegate
@@ -75,9 +84,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSDictionary *model = @{@"imgName": @"subject_chinese",
-                            @"title": @"国学",
-                            @"desc": @"你好棒！已经全部完成。"};
+    CTB_SubjectModel *model = self.dataSource[indexPath.row];
     UITableViewCell *cell = [LZB_CTB_CellHelper cellWithTableView:tableView withIndexPath:indexPath withModel:model];
     
     return cell;
@@ -124,6 +131,17 @@
     return _tableView;
 }
 
+- (NSMutableArray *)dataSource {
+    if (!_dataSource) {
+        _dataSource = [NSMutableArray array];
+    }
+    return _dataSource;
+}
+
+- (CTB_SubjectDataService *)dataService {
+    _dataService = [CTB_SubjectDataService sharedService];
+    return _dataService;
+}
 
 
 @end

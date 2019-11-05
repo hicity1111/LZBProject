@@ -24,7 +24,11 @@
 
 #define kMAIN0099   [UIColor colorWithHex:@"#00995E"]
 
+#define kMAINCCCC   [UIColor colorWithHex:@"#CCCCCC"]
+
 #define kMAIN9999   [UIColor colorWithHex:@"#999999"]
+
+#define kMAIN6666   [UIColor colorWithHex:@"#666666"]
 
 #define kMAIN3333   [UIColor colorWithHex:@"#333333"]
 
@@ -58,6 +62,14 @@
 
 #define KMAINB2E3   [UIColor colorWithHex:@"#B2E3E2"]
 
+#define kMAIN0098   [UIColor colorWithHex:@"#00985B"]
+
+
+
+
+
+
+
 
 #define WHITECOLOR  UIColor.whiteColor
 #define BLACKCOLOR  UIColor.blackColor
@@ -68,6 +80,8 @@
 #define kUserNoticeTrans    [UIColor colorWithHex:@"#000000" alpha:0.3]
 
 #define kMineAlertTrans     [UIColor colorWithHex:@"#000000" alpha:0.5]
+
+#define kMineAlertBgColor   [UIColor colorWithHex:@"#000000" alpha:0.4]
 
 /// 控制器背景
 #define VC_BACKGROUNDCOLOR  [UIColor colorWithPatternImage:[UIImage imageNamed:@"vc_bg"]]

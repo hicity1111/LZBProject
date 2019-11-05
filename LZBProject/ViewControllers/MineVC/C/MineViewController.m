@@ -190,7 +190,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIAlertAction *sureAction = [UIAlertAction actionWithTitle:sureText style:UIAlertActionStyleDefault handler:sureBlock];
     [alert addAction:sureAction];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelText style:UIAlertActionStyleDestructive handler:cancelBlock];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelText style:UIAlertActionStyleCancel handler:cancelBlock];
     [alert addAction:cancelAction];
     
     return alert;

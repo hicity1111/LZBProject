@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTB_SubjectModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UITableViewCell *)cellWithTableView:(UITableView *)tableView
                          withIndexPath:(NSIndexPath *)indexpath
-                             withModel:(NSDictionary *)model;
+                             withModel:(CTB_SubjectModel *)model;
 
 @end
 

@@ -10,6 +10,7 @@
 #import "LYZCleanCache.h"
 #import "LYZSandBoxPath.h"
 #import "LYZCurrentVCHelper.h"
+#import "LZBAlertViewController.h"
 
 @interface MineCommonCell ()
 
@@ -180,7 +181,7 @@
     UIAlertAction *sureAction = [UIAlertAction actionWithTitle:sureText style:UIAlertActionStyleDefault handler:sureBlock];
     [alert addAction:sureAction];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelText style:UIAlertActionStyleDestructive handler:cancelBlock];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelText style:UIAlertActionStyleCancel handler:cancelBlock];
     [alert addAction:cancelAction];
     
     [[LYZCurrentVCHelper getCurrentVC] presentViewController:alert animated:YES completion:^{

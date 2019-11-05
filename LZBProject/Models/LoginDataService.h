@@ -18,8 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (void)loginWithUsername:(NSString *)username
-password:(NSString *)password
- success:(void (^)(UserModel *user))success failure:(void (^)(NSError *error))failure;
+                 password:(NSString *)password
+                  success:(void (^)(UserModel *user))success
+                  failure:(void (^)(NSError *error))failure;
 
 
 @end

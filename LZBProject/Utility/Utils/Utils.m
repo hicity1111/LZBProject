@@ -37,5 +37,19 @@
 }
 
 
++ (void)saveUserInfo:(NSDictionary *)userInfoDic{
+    if (userInfoDic) {
+        SETUSER_OBJ(USER_INFO, userInfoDic);
+        [SDUserDefaults synchronize];
+    }
+}
+
++ (NSDictionary *)loadUserInfo{
+    if (GETUSER_OBJ(USER_INFO)) {
+        return GETUSER_OBJ(USER_INFO);
+    }
+    return nil;
+}
+
 
 @end

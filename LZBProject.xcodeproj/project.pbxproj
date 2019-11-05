@@ -82,6 +82,7 @@
 		0BBE47752359989500D30C4B /* LXCalenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BBE47732359989500D30C4B /* LXCalenderCell.xib */; };
 		0BBE47782359B0FD00D30C4B /* LZBBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBE47772359B0FD00D30C4B /* LZBBaseViewController.m */; };
 		0BF05336236FD4910091EFB2 /* HomeDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF05335236FD4910091EFB2 /* HomeDataService.m */; };
+		0BF05339237014F10091EFB2 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF05338237014F10091EFB2 /* HomeModel.m */; };
 		170A91ACB3928B17BD894640 /* Pods_LZBProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */; };
 		34045572ED131BFDD841F7D6 /* Pods_LZBProject_LZBProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */; };
 		85F372E2BD4721F567D05450 /* Pods_LZBProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */; };
@@ -302,6 +303,8 @@
 		0BBE47772359B0FD00D30C4B /* LZBBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBBaseViewController.m; sourceTree = "<group>"; };
 		0BF05334236FD4910091EFB2 /* HomeDataService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDataService.h; sourceTree = "<group>"; };
 		0BF05335236FD4910091EFB2 /* HomeDataService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDataService.m; sourceTree = "<group>"; };
+		0BF05337237014F10091EFB2 /* HomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
+		0BF05338237014F10091EFB2 /* HomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
 		23FB01E150EBC5D9CF6D00A2 /* Pods-LZBProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject.release.xcconfig"; path = "Target Support Files/Pods-LZBProject/Pods-LZBProject.release.xcconfig"; sourceTree = "<group>"; };
 		577831C8F43BC61BE0D68512 /* Pods_LZBProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770848CE74481CA6FF8ECE16 /* Pods-LZBProject-LZBProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-LZBProject-LZBProjectUITests/Pods-LZBProject-LZBProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -977,6 +980,8 @@
 			children = (
 				0BF05334236FD4910091EFB2 /* HomeDataService.h */,
 				0BF05335236FD4910091EFB2 /* HomeDataService.m */,
+				0BF05337237014F10091EFB2 /* HomeModel.h */,
+				0BF05338237014F10091EFB2 /* HomeModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1587,6 +1592,7 @@
 				0B3D002F236AD8E000BD4AA1 /* UIView+Empty.m in Sources */,
 				0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */,
 				0B6192ED235D58E600BE3BBA /* UINavigationBar+handle.m in Sources */,
+				0BF05339237014F10091EFB2 /* HomeModel.m in Sources */,
 				0B112176236C071200944C24 /* LZBServiceBase.m in Sources */,
 				8B9CB3122369699D0092F7DE /* LYZCleanCache.m in Sources */,
 				BA6CD7B2237114040008113F /* NSObject+LZBExtension.m in Sources */,

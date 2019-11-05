@@ -11,6 +11,7 @@
 #import "JXCategoryTitleVerticalZoomView.h"
 #import "HomeHeaderView.h"
 #import "MutualLearningViewController.h"
+#import "HomeDataService.h"
 
 #define CategoryTitles  @[@"待处理任务",@"互评学习", @"历史任务"]
 
@@ -28,6 +29,10 @@
 
 @property (nonatomic, strong) HomeHeaderView *homeHeaderView;
 
+@property (nonatomic, strong) NSArray *titles;//bia标题
+
+@property (nonatomic, strong) NSMutableArray *resultPendingTaskArr;//待处理任务数据
+
 @end
 
 @implementation HomeViewController
@@ -44,8 +49,57 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configHeaderView];
-    [self configCategoryView];
+    [self requestHomeWorkList];
+//    [self configCategoryView];
 }
+#pragma mark - 首页作业列表数据请求
+- (void)requestHomeWorkList{
+    
+    NSDictionary *studentInfoDic = [Utils loadUserInfo];
+
+    NSDictionary *parameters = @{
+            @"studentInfoId":studentInfoDic[@"studentInfoId"],
+            @"appVersionCode":@"7"
+        };
+    [self.dataService loadRequestDic:parameters success:^(NSArray *modelArr) {
+        XLDLog(@"首页数据获取到");
+        self.resultPendingTaskArr = [self groupAction:[modelArr mutableCopy]];
+        if (self.resultPendingTaskArr != nil || self.resultPendingTaskArr.count != 0) {
+            [self configCategoryView];
+        }
+
+    } failure:^(NSError * _Nonnull error) {
+        XLDLog(@"获取数据失败！");
+        [MBProgressHUD showMessage:@"网络岔气了" inView:self.view];
+
+    }];
+}
+
+- (NSMutableArray *)groupAction:(NSMutableArray *)arr {
+
+    NSArray *serviceTypes = [arr valueForKeyPath:@"@distinctUnionOfObjects.subjectAbbreviation"];
+
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES]];
+
+    self.titles = [serviceTypes sortedArrayUsingDescriptors:sortDesc];
+
+    __block NSMutableArray *groupArr = [NSMutableArray array];
+
+    [self.titles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"subjectAbbreviation = %@", obj];
+
+        NSArray *tempArr = [NSArray arrayWithArray:[arr filteredArrayUsingPredicate:predicate]];
+
+        [groupArr addObject:tempArr];
+
+    }];
+
+    return groupArr;
+
+}
+
+
 #pragma mark - 任务view
 - (void)configCategoryView{
     
@@ -62,7 +116,7 @@
     self.categoryView.frame = CGRectMake(0, self.homeHeaderView.bottom, kScreenWidth, self.maxCategoryViewHeight);
     self.categoryView.listContainer = self.listContainerView;
     self.categoryView.averageCellSpacingEnabled = NO;
-    self.categoryView.titles = @[@"待处理任务",@"互评学习", @"历史任务"];
+    self.categoryView.titles = @[@"待处理任务",@"互评学习",@"历史任务"];
     self.categoryView.delegate = self;
     self.categoryView.backgroundColor = [UIColor colorWithPatternImage:IMAGE_NAMED(@"home_top_bg")];
     self.categoryView.titleLabelAnchorPointStyle = JXCategoryTitleLabelAnchorPointStyleBottom;
@@ -87,23 +141,26 @@
 #pragma mark - 布局导航标题栏
 - (void)configHeaderView{
     _homeHeaderView = [[HomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kTopBarHeight)];
-    _homeHeaderView.titleString = @"Hi，张芳同学，今天又见面了！";
+    
+    NSDictionary *userInfoDic = [Utils loadUserInfo];
+    _homeHeaderView.titleString = [NSString stringWithFormat:@"Hi，%@同学，今天又见面了！",userInfoDic[@"studentName"]];
     [_homeHeaderView showNumberBadgeValue:@"44"];
     _homeHeaderView.delegate = self;
     [self.view addSubview:_homeHeaderView];
 }
 
+#pragma mark - 点击消息
 - (void)messageAct{
 
-    XLDLog(@"点击了消息");
     [_homeHeaderView removeBadgValue];
-    
     HomeDetailViewController *homeDetai = [HomeDetailViewController new];
     [homeDetai setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:homeDetai animated:YES];
 
    
 }
+
+#pragma mark - 监听滚动更新frame
 - (void)listScrollViewDidScroll:(UIScrollView *)scrollView {
     if (!(scrollView.isTracking || scrollView.isDecelerating)) {
         //用户交互引起的滚动才处理
@@ -172,7 +229,7 @@
 
     MutualLearningViewController *pendingTaskVC = [[MutualLearningViewController alloc] init];
     if (index == 0) {
-        pendingTaskVC.titles = @[@"全部", @"语文", @"数学"];
+        pendingTaskVC.titles = self.titles;
     }else if(index == 1) {
         pendingTaskVC.titles = @[@"全部", @"数学"];
     }else if (index == 2) {
@@ -187,6 +244,11 @@
 
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
     return self.categoryView.titles.count;
+}
+
+- (HomeDataService *)dataService{
+    _dataService = [HomeDataService shareDate];
+    return _dataService;
 }
 
 @end

@@ -17,8 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) JXPagerView *pagingView;
 
-
 @property (nonatomic, strong) NSArray *titles;
+
+@property (nonatomic, strong) NSMutableArray *resultTaskArr;//任务链表数据
 
 - (void)loadDataForFirst;
 @end

@@ -312,6 +312,10 @@
     
     [self.dataService loginWithUsername:name password:pwd success:^(UserModel *userModel) {
         XLDLog(@"请求成功");
+        
+        NSDictionary *userInfoDic = [userModel mj_keyValues];
+        [Utils saveUserInfo:userInfoDic];
+        
         SETUSER_OBJ(USER_NAME, name);
         if (weakSelf.savePwdBtn.selected) {
             SETUSER_OBJ(USER_PASSWORD, pwd);

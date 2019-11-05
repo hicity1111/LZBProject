@@ -58,4 +58,7 @@
 /// 用户登录密码
 #define USER_PASSWORD       @"userPassword"
 
+///用户信息
+#define USER_INFO           @"studentUserInfo"
+
 #endif /* LZBUtilsMacro_h */

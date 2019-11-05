@@ -16,8 +16,8 @@
 #import "LZBNetManagerCache.h"
 #import <AFNetworkActivityIndicatorManager.h>
 #import "UIImage+CompressImage.h"
-
 #import "LZBDataEntity.h"
+#import "LZBTypeConvertHelper.h"
 
 static NSMutableArray *tasks;
 
@@ -285,6 +285,8 @@ static NSMutableArray *tasks;
                 NSLog(@"post 请求数据结果： *** %@", responseObject);
             }
             if ([self.delegate lzbManager:self response:responseObject]) {
+                
+                NSString *resultStr = [LZBTypeConvertHelper dictionaryToJson:responseObject];
                 
                 LZBAPIResponseBaseModel *resultModel = [self.delegate lzbManagerModel:self response:responseObject];
                 if (successBlock)

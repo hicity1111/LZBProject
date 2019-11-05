@@ -22,6 +22,14 @@ NS_ASSUME_NONNULL_BEGIN
  *  加载前用户Token
  */
 + (NSString *)loadUserToken;
+
+/// 保存用户信息
+/// @param userInfoDic 后台返回数据
++ (void)saveUserInfo:(NSDictionary *)userInfoDic;
+
+
+/// 获取用户信息
++ (NSDictionary *)loadUserInfo;
 @end
 
 NS_ASSUME_NONNULL_END

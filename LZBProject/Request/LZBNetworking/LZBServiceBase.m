@@ -7,6 +7,8 @@
 //
 
 #import "LZBServiceBase.h"
+#import "AppDelegate.h"
+#import "LYZCurrentVCHelper.h"
 
 @implementation LZBServiceBase
 
@@ -33,6 +35,9 @@
 //    NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     deviceParam[@"appVersion"] = @"1.3.2";
     deviceParam[@"appVersionCode"] = @"7";
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    deviceParam[@"appVersion"] = @"2.1.0.05";
     
     deviceParam[@"appChannelId"] = @"studentApp";
     
@@ -46,22 +51,29 @@
     }else if (error){
         switch (error.code) {
             case kErrorFlagShiBai:
+                [[LYZCurrentVCHelper getCurrentVC] showError:response[@"message"]];
                 XLDLog(@"请求失败");
                 break;
 
             case kErrorFlagSuccess:
                 XLDLog(@"请求成功");
                 break;
-            case kErrorFlagQiangZhiShenJi:
-                XLDLog(@"非强制审计");
+            case kErrorFlagQiangZhiShengJi:
+                XLDLog(@"强制升级");
                 break;
                 
-            case kErrorFlagFeiQiangZhiShenJi:
+            case kErrorFlagFeiQiangZhiShengJi:
                 XLDLog(@"非强制升级");
                 break;
                 
-            case kErrorFlagInvalidToken:
+            case kErrorFlagInvalidToken:{
+                
                 XLDLog(@"token失效");
+                SETUSER_BOOL(IS_USER_LOGIN, NO);
+                SDUserDefaultsSync;
+                AppDelegate *appd = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [appd entryDoor];
+            }
                 break;
                 
             default:

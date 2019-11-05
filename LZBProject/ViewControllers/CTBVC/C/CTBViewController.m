@@ -42,13 +42,13 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
     [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
 
@@ -76,6 +76,7 @@
 #pragma mark - HomeHeaderDelegate
 
 - (void)messageAct {
+    [_homeHeaderView removeBadgValue];
     NotificationViewController *notifyVC = [[NotificationViewController alloc] init];
     [self.navigationController pushViewController:notifyVC animated:YES];
 }

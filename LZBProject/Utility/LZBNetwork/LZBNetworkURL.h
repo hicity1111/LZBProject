@@ -16,19 +16,22 @@
 #define SafeNetUrl_Alpha    @"http://192.168.7.157:8082"
 
 
+//本地URL
+#define SafeLocalUrl        @"http://192.168.6.104:8081/api"
+
 #define BaseURL_QRCode      @"https://sit-wechat.abnertech.com"
 
 #ifdef DEBUG
-    #define BASEURL(urlStr) [NSString stringWithFormat:@"%@%@", SafeNetUrl_Alpha, urlStr]
+    #define BASEURL(urlStr) [NSString stringWithFormat:@"%@%@", SafeLocalUrl, urlStr]
 #else
     #define BASEURL(urlStr) [NSString stringWithFormat:@"%@%@", SafeNetUrl, urlStr]
 #endif
 
 #define LoginUrl_sim    @"/api/system/student/login"
-
 #define LoginUrl_full   BASEURL(LoginUrl_sim)
 
-
+#define HomeWork_Student @"/app/homework/student/list"
+#define HomeWork_full        BASEURL(HomeWork_Student)
 
 
 //消息中心

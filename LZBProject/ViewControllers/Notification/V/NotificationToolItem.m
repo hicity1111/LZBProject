@@ -89,7 +89,7 @@
     
     [self.arrowImageV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(weakSelf.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(14, 17));
+        make.size.mas_equalTo(CGSizeMake(15 * 0.6, 18 * 0.6));
         make.right.mas_equalTo(0);
     }];
     
@@ -146,7 +146,7 @@
         _rightTitleV = [UILabel new];
         _rightTitleV.textColor = KMAIN00A2;
         _rightTitleV.font = KMAINFONT14;
-        _rightTitleV.text = @"点击查看   ";
+        _rightTitleV.text = @"点击查看 ";
         _rightTitleV.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickEvent)];
         [_rightTitleV addGestureRecognizer:tap];

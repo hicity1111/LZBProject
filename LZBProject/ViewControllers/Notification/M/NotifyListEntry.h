@@ -42,6 +42,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat cellHeight;
 //是否选中状态 默认false 非选中状态
 @property (nonatomic, assign) BOOL isSelected;
+///自定义contentStr
+@property (nonatomic, copy) NSString *contentStr;
 
 @end
 

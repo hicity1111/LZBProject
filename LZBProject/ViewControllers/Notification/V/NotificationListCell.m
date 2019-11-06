@@ -68,17 +68,11 @@
     ///消息红点
     self.redDotV.hidden = model.isRead;
     ///title赋值
-    NSMutableAttributedString *titleString = [NotificationListCell mt_generateString:IFISNIL(model.noticeTitle) color:[UIColor colorWithRed:88/255.0 green:104/255.0 blue:120/255.0 alpha:1.0] font:KMAINFONTBOLD22];
+    NSMutableAttributedString *titleString = [NotificationListCell mt_generateString:IFISNIL(model.noticeTitle) color:[UIColor colorWithRed:88/255.0 green:104/255.0 blue:120/255.0 alpha:1.0] font:LZBFont(18, YES)];
     self.titleLab.attributedText = titleString;
     
     ///描述赋值
-    NSMutableAttributedString *descString = [NotificationListCell mt_generateString:IFISNIL(model.noticeContent) color:[UIColor colorWithRed:119/255.0 green:119/255.0 blue:119/255.0 alpha:1.0] font:KMAINFONT16];
-//    ///消息
-//    if (model.noticeType == 1) {
-//        descString = [[[NSAttributedString alloc] initWithData:[IFISNIL(model.noticeContent) dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil] mutableCopy];
-//    } else {
-//
-//    }
+    NSMutableAttributedString *descString = [NotificationListCell mt_generateString:IFISNIL(model.contentStr) color:[UIColor colorWithRed:119/255.0 green:119/255.0 blue:119/255.0 alpha:1.0] font:KMAINFONT16];
     self.descLab.attributedText = descString;
 
     ///底部工具条
@@ -119,12 +113,12 @@
     ///iCON  header 到 titleView 的 间距
     CGFloat iconHeaderToTitleSpace = 0.f;
     ///titleView 的高度
-    NSMutableAttributedString *titleString = [NotificationListCell mt_generateString:IFISNIL(model.noticeTitle) color:[UIColor colorWithRed:88/255.0 green:104/255.0 blue:120/255.0 alpha:1.0] font:KMAINFONTBOLD22];
+    NSMutableAttributedString *titleString = [NotificationListCell mt_generateString:IFISNIL(model.noticeTitle) color:[UIColor colorWithRed:88/255.0 green:104/255.0 blue:120/255.0 alpha:1.0] font:LZBFont(18, YES)];
     CGFloat titleHeight = [NotificationListCell mt_computeAttributedStringHeight:titleString];
     ///title 到 desc 的间距
     CGFloat titleToDescSpace = 15.0f;
     ///desc 高度
-    NSMutableAttributedString *descString = [NotificationListCell mt_generateString:IFISNIL(model.noticeContent) color:[UIColor colorWithRed:119/255.0 green:119/255.0 blue:119/255.0 alpha:1.0] font:KMAINFONT16];
+    NSMutableAttributedString *descString = [NotificationListCell mt_generateString:IFISNIL(model.contentStr) color:[UIColor colorWithRed:119/255.0 green:119/255.0 blue:119/255.0 alpha:1.0] font:KMAINFONT16];
     CGFloat descHeight = [NotificationListCell mt_computeAttributedStringHeight:descString];
     ///宫格图片高度 高度计算
     CGFloat collectionHeight = 0;

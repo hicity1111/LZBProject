@@ -17,4 +17,16 @@
     return _noticeImagesUrl;
 }
 
+- (NSString *)contentStr {
+    if (!_contentStr) {
+        if (self.noticeType == 1) {
+             _contentStr = [[NSAttributedString alloc] initWithData:[IFISNIL(self.noticeContent) dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil].string;
+        } else {
+            _contentStr = _noticeContent;
+        }
+   
+    }
+    return _contentStr;
+}
+
 @end

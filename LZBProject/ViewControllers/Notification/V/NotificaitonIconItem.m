@@ -52,7 +52,7 @@
             make.width.mas_equalTo(47);
         }];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [weakSelf.leftIconLab setRoundedCorners:LYZRectCornerTopLeft withRadius:8.0];
             [weakSelf.onlyIconLab setRoundedCorners:LYZRectCornerBottomRight  withRadius:8.0];
         });
@@ -63,7 +63,7 @@
             make.width.mas_equalTo(0);
         }];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [weakSelf.onlyIconLab setRoundedCorners:LYZRectCornerTopLeft|LYZRectCornerBottomRight  withRadius:8.0];
          });
     }
@@ -71,20 +71,20 @@
     
     if (model.noticeType == 1) {
         self.onlyIconLab.text = @"系统消息";
-        self.onlyIconLab.backgroundColor = [UIColor colorWithRed:133/255.0 green:139/255.0 blue:212/255.0 alpha:1.0];
+        self.onlyIconLab.backgroundColor = [UIColor colorWithRed:133/255.0 green:139/255.0 blue:212/255.0 alpha:0.34];
         self.onlyIconLab.textColor = [UIColor colorWithRed:99/255.0 green:102/255.0 blue:149/255.0 alpha:1.0];
     } else if (model.noticeType == 4) {
         self.onlyIconLab.text = @"班级通知";
-        self.onlyIconLab.backgroundColor = [UIColor colorWithRed:250/255.0 green:234/255.0 blue:219/255.0 alpha:1.0];
+        self.onlyIconLab.backgroundColor = [UIColor colorWithRed:250/255.0 green:234/255.0 blue:219/255.0 alpha:0.6];
         self.onlyIconLab.textColor = [UIColor colorWithRed:30/255.0 green:162/255.0 blue:106/255.0 alpha:1.0];
     } else if (model.noticeType == 9 || model.noticeType == 10) {
         self.onlyIconLab.text = @"重批申请";
-        self.onlyIconLab.backgroundColor = [UIColor colorWithRed:250/255.0 green:234/255.0 blue:219/255.0 alpha:1.0];
-               self.onlyIconLab.textColor = [UIColor colorWithRed:30/255.0 green:162/255.0 blue:106/255.0 alpha:1.0];
+        self.onlyIconLab.backgroundColor = [UIColor colorWithRed:250/255.0 green:234/255.0 blue:219/255.0 alpha:0.6];
+        self.onlyIconLab.textColor = [UIColor colorWithRed:30/255.0 green:162/255.0 blue:106/255.0 alpha:1.0];
     } else {
         self.onlyIconLab.text = @"";
-        self.onlyIconLab.backgroundColor = [UIColor colorWithRed:133/255.0 green:139/255.0 blue:212/255.0 alpha:1.0];
-           self.onlyIconLab.textColor = [UIColor colorWithRed:99/255.0 green:102/255.0 blue:149/255.0 alpha:1.0];
+        self.onlyIconLab.backgroundColor = [UIColor colorWithRed:133/255.0 green:139/255.0 blue:212/255.0 alpha:0.34];
+        self.onlyIconLab.textColor = [UIColor colorWithRed:99/255.0 green:102/255.0 blue:149/255.0 alpha:1.0];
     }
     
  
@@ -152,7 +152,7 @@
          _leftIconLab = [UILabel new];
          _leftIconLab.textAlignment = NSTextAlignmentCenter;
          _leftIconLab.text = @"";
-         _leftIconLab.backgroundColor = [UIColor colorWithRed:178/255.0 green:227/255.0 blue:226/255.0 alpha:1.0];
+         _leftIconLab.backgroundColor = [UIColor colorWithRed:178/255.0 green:227/255.0 blue:226/255.0 alpha:0.6];
          _leftIconLab.font = KMAINFONT14;
          _leftIconLab.textColor = [UIColor colorWithRed:0/255.0 green:161/255.0 blue:159/255.0 alpha:1.0];
     }

@@ -218,6 +218,8 @@
 		0B098FBF23728AA600AB19F3 /* NSMutableAttributedString+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Addtion.m"; sourceTree = "<group>"; };
 		0B098FC123728ABB00AB19F3 /* NSObject+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Addition.h"; sourceTree = "<group>"; };
 		0B098FC223728ABB00AB19F3 /* NSObject+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Addition.m"; sourceTree = "<group>"; };
+		0B098FC42372AD9B00AB19F3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		0B098FC52372AD9B00AB19F3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		0B09920423517A0D001E5389 /* LZBDataEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBDataEntity.h; sourceTree = "<group>"; };
 		0B09920523517A0D001E5389 /* LZBDataEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBDataEntity.m; sourceTree = "<group>"; };
 		0B0F6BAC23601E3A00537128 /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
@@ -1746,6 +1748,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 0BBCD65F234DBFAD00E4970A;
 			productRefGroup = 0BBCD669234DBFAD00E4970A /* Products */;
@@ -2096,6 +2099,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0BBCD675234DBFAD00E4970A /* Base */,
+				0B098FC42372AD9B00AB19F3 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2104,6 +2108,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0BBCD67A234DBFAE00E4970A /* Base */,
+				0B098FC52372AD9B00AB19F3 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -2115,6 +2120,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2173,6 +2179,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

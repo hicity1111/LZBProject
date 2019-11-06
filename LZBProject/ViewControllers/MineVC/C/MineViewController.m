@@ -25,7 +25,11 @@
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource>
 
+/// 列表
 @property (nonatomic, strong) UITableView *tableView;
+
+/// 列表 headerView
+@property (nonatomic, strong) PCenterHeaderView *pchView;
 
 
 @end
@@ -60,7 +64,10 @@
     [[NotifyDataService shareData] loadUnreadMessageCountSuccess:^(LZBAPIResponseBaseModel * _Nonnull baseM) {
         if (baseM && baseM.infos && [baseM.infos isKindOfClass:[NSDictionary class]]) {
             NSLog(@"未读消息数目: %@", baseM.infos[@"noticeCount"]);
-//            [weakSelf.homeHeaderView showNumberBadgeValue:baseM.infos[@"noticeCount"]];
+            [weakSelf.pchView.noticeBtn removeBadgeValue];
+            if ([baseM.infos[@"noticeCount"] integerValue] > 0) {
+                [weakSelf.pchView.noticeBtn showNumberBadgeValue:[NSString stringWithFormat:@"%@", baseM.infos[@"noticeCount"]]];
+            }
         }
     } failure:^(NSError * _Nonnull error) {
         
@@ -74,13 +81,11 @@
     [self.view addSubview:self.tableView];
     
     NSArray *nibView = [[NSBundle mainBundle] loadNibNamed:@"PCenterHeaderView" owner:nil options:nil];
-    PCenterHeaderView *pchView = [nibView firstObject];
-    pchView.frame = CGRectMake(0, 0, kScreenWidth, tableView_HeaderView_Height);
-    pchView.vc = self;
-    pchView.model = [UserModel findUserInfoResult];
-    
-    self.tableView.tableHeaderView = pchView;
-    [pchView.noticeBtn showNumberBadgeValue:@"20"];
+    self.pchView = [nibView firstObject];
+    self.pchView.frame = CGRectMake(0, 0, kScreenWidth, tableView_HeaderView_Height);
+    self.pchView.vc = self;
+    self.pchView.model = [UserModel findUserInfoResult];
+    self.tableView.tableHeaderView = self.pchView;
 }
 
 /// 退出登录

@@ -79,6 +79,7 @@
 
     for (id<JXPagerViewListViewDelegate> list in self.validListDict.allValues) {
         [list.listView removeFromSuperview];
+        
     }
     [_validListDict removeAllObjects];
 
@@ -211,7 +212,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     UIView *footer = [[UIView alloc] initWithFrame:CGRectZero];
-    footer.backgroundColor = [UIColor clearColor];
+    footer.backgroundColor = [UIColor colorWithPatternImage:IMAGE_NAMED(@"home_botton_bg")];
     return footer;
 }
 

@@ -11,6 +11,8 @@
 #import "JXCategoryIndicatorSpringBackgroundView.h"
 #import "TestListBaseView.h"
 #import "OYCountDownManager.h"
+#import "HomeDataService.h"
+#import "NSString+LZBMap.h"
 
 #define  homeApplecation [UIApplication sharedApplication].keyWindow
 
@@ -30,7 +32,7 @@ static const CGFloat JXheightForHeaderInSection = 30;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [kCountDownManager start];
     
     _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 80, JXheightForHeaderInSection)];
@@ -41,6 +43,8 @@ static const CGFloat JXheightForHeaderInSection = 30;
     self.categoryView.averageCellSpacingEnabled = NO;
     self.categoryView.titleColor = kMAIN9999;
     self.categoryView.titleFont = KMAINFONT16;
+//    self.categoryView.collectionView.backgroundColor = [UIColor colorWithPatternImage:IMAGE_NAMED(@"home_top_bg")];
+    self.categoryView.backgroundColor = [UIColor colorWithPatternImage:IMAGE_NAMED(@"home_top_bg")];
     self.categoryView.titleSelectedColor  = KMAINFFFF;
     
     
@@ -48,11 +52,65 @@ static const CGFloat JXheightForHeaderInSection = 30;
     ((JXCategoryIndicatorView *)self.categoryView).indicators = @[lineView];
     
     _pagingView = [[JXPagerView alloc] initWithDelegate:self];
+    _pagingView.mainTableView.backgroundColor = [UIColor colorWithPatternImage:IMAGE_NAMED(@"home_top_bg")];
+    MJWeakSelf
+    _pagingView.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf requestHomeWorkList];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [weakSelf.pagingView.mainTableView.mj_header endRefreshing];
+//        });
+    }];
     [self.view addSubview:self.pagingView];
     
     //FIXME:如果和JXPagingView联动
     self.categoryView.contentScrollView = self.pagingView.listContainerView.collectionView;
     self.navigationController.interactivePopGestureRecognizer.enabled = (self.categoryView.selectedIndex == 0);
+}
+
+- (void)requestHomeWorkList{
+    
+    NSDictionary *studentInfoDic = [Utils loadUserInfo];
+
+    NSDictionary *parameters = @{
+            @"studentInfoId":studentInfoDic[@"studentInfoId"],
+            @"appVersionCode":@"7"
+        };
+    [self.dataService loadRequestDic:parameters success:^(NSArray *modelArr) {
+        XLDLog(@"首页数据获取到");
+        
+        NSMutableArray *resultArr = [self groupAction:[modelArr mutableCopy]];;
+        [resultArr insertObject:[modelArr mutableCopy] atIndex:0];
+        self.resultTaskArr = resultArr;
+
+        NSArray *serviceTypes = [modelArr valueForKeyPath:@"@distinctUnionOfObjects.subjectAbbreviation"];
+        NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES]];
+        self.titles = [serviceTypes sortedArrayUsingDescriptors:sortDesc];
+        self.titles = [self replace:self.titles];
+        
+        if (self.resultTaskArr != nil || self.resultTaskArr.count != 0) {
+
+        }
+        [self.pagingView.mainTableView.mj_header endRefreshing];
+        self.categoryView.titles = self.titles;
+        [self.categoryView reloadData];
+        [self.pagingView reloadData];
+        
+
+    } failure:^(NSError * _Nonnull error) {
+        XLDLog(@"获取数据失败！");
+        [MBProgressHUD showMessage:@"网络岔气了" inView:self.view];
+
+    }];
+}
+
+- (NSMutableArray *)replace:(NSArray *)arr{
+    NSMutableArray *replaceArr = [[NSMutableArray alloc] init];
+    [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [replaceArr addObject:[NSString mt_abbreviationMap:IFISNIL(obj)]];
+        
+    }];
+    [replaceArr insertObject:@"全部" atIndex:0];
+    return replaceArr;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -94,6 +152,10 @@ static const CGFloat JXheightForHeaderInSection = 30;
     return _topView;
 }
 
+- (HomeDataService *)dataService{
+    _dataService = [HomeDataService shareDate];
+    return _dataService;
+}
 #pragma mark - 第一次才加载，后续触发的不处理
 - (void)loadDataForFirst {
 //    if (!self.isDataLoaded) {
@@ -175,8 +237,9 @@ static const CGFloat JXheightForHeaderInSection = 30;
     [MBProgressHUD showMessage:@"点击了筛选" inView:self.view];
     CGRect rect = [screenButton convertRect:screenButton.frame toView:[UIApplication sharedApplication].keyWindow];
     
-    
 }
+
+
 /*
 #pragma mark - Navigation
 

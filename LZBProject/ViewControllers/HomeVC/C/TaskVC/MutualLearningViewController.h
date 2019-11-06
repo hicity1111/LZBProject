@@ -8,6 +8,7 @@
 
 #import "LZBBaseViewController.h"
 #import "JXPagerView.h"
+#import "HomeDataService.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 任务链表数据
 @property (nonatomic, strong) NSMutableArray *resultTaskArr;
+
+@property (nonatomic, strong) HomeDataService *dataService;
+
 
 - (void)loadDataForFirst;
 @end

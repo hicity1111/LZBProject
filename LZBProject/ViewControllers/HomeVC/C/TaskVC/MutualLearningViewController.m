@@ -10,6 +10,7 @@
 #import "JXCategoryView.h"
 #import "JXCategoryIndicatorSpringBackgroundView.h"
 #import "TestListBaseView.h"
+#import "OYCountDownManager.h"
 
 #define  homeApplecation [UIApplication sharedApplication].keyWindow
 
@@ -29,6 +30,8 @@ static const CGFloat JXheightForHeaderInSection = 30;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [kCountDownManager start];
     
     _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 80, JXheightForHeaderInSection)];
     self.categoryView.delegate = self;
@@ -39,6 +42,7 @@ static const CGFloat JXheightForHeaderInSection = 30;
     self.categoryView.titleColor = kMAIN9999;
     self.categoryView.titleFont = KMAINFONT16;
     self.categoryView.titleSelectedColor  = KMAINFFFF;
+    
     
     JXCategoryIndicatorSpringBackgroundView *lineView = [[JXCategoryIndicatorSpringBackgroundView alloc] init];
     ((JXCategoryIndicatorView *)self.categoryView).indicators = @[lineView];

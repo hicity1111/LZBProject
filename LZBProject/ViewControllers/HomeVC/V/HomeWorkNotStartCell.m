@@ -7,6 +7,8 @@
 //
 
 #import "HomeWorkNotStartCell.h"
+#import "NSString+LZBMap.h"
+#import "OYCountDownManager.h"
 
 @interface HomeWorkNotStartCell ()
 
@@ -46,7 +48,73 @@
 
 - (void)setModel:(HomeModel *)model{
     _model = model;
+    _subjectLb.text = [NSString mt_abbreviationMap:IFISNIL(model.subjectAbbreviation)];
+    NSInteger homeworkType = [model.homeworkType intValue];
+    NSInteger homeworkIshp = model.homeworkIshp;
+    if (homeworkType == 1) {//普通作业
+        _questionTypeLb.text = @"普通";
+    }else if (homeworkType == 2){
+        _questionTypeLb.text = @"错题";
+    }else if (homeworkType == 3){
+        _questionTypeLb.text = @"听说";
+    }else if (homeworkType == 4){
+        _questionTypeLb.text = @"单词";
+    }else if (homeworkType == 5){
+        _questionTypeLb.text = @"阅读";
+    }else if (homeworkType == 6){
+        _questionTypeLb.text = @"作文";
+    }
+    if (homeworkIshp == 2) {//不是是互批
+        _hupiLb.hidden = YES;
+        _tagSepLine.hidden = YES;
+        _cellFlagImgV.hidden = YES;
+    }else{//
+        _hupiLb.hidden = NO;
+        _tagSepLine.hidden = NO;
+        _cellFlagImgV.hidden = NO;
+    }
+    _titleLb.text = _model.homeworkName;
+    
+    NSNumber *homeworkStarttime = model.homeworkStarttime;
+    NSTimeInterval timeInterval=[homeworkStarttime doubleValue];
+    NSDate *UTCDate=[NSDate dateWithTimeIntervalSince1970:timeInterval/1000];
+    NSString *homeworkEndtime = [self UTCStringFromUTCDate:UTCDate];
+    
+    _timeLb.text = [NSString stringWithFormat:@"开始时间%@",homeworkEndtime];//截止时间
+    _countLb.text = [NSString stringWithFormat:@"题数%@",model.questionNumber];
+    _promptLb.text = @"距离开始时间";
+    
+    NSDate *currentDate = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeZone *current = [NSTimeZone systemTimeZone];
+    NSTimeInterval interval = [current secondsFromGMTForDate:currentDate];
+    NSDate *currentResult = [currentDate dateByAddingTimeInterval:interval];
+
+    //截止时间
+    NSTimeInterval utcInterval = [current secondsFromGMTForDate:UTCDate];
+    NSDate *utcResult = [UTCDate dateByAddingTimeInterval:utcInterval];
+
+    NSTimeInterval endTimeInterval = [utcResult timeIntervalSinceDate:currentResult];
+    NSInteger _timeCountDown = endTimeInterval;
+
+    NSTimeInterval value =  _timeCountDown;
+    int day = (int)value / (24 *3600);
+    int house = (int)value / 3600%3600;
+    int minute = (int)value /60%60;
+    self.leftTimeLb.text = [NSString stringWithFormat:@"%02zd天%02zd小时%02zd分", day, house, minute];
+    
 }
+
+-(NSString *)UTCStringFromUTCDate:(NSDate *)UTCDate{
+    
+     NSDateFormatter *dataFormatter = [[NSDateFormatter alloc]init];
+     [dataFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+     NSTimeZone *tz = [NSTimeZone systemTimeZone];
+//     NSTimeZone *tz = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+     [dataFormatter setTimeZone:tz];
+     NSString *UTCString = [dataFormatter stringFromDate:UTCDate];
+     return UTCString;
+
+ }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

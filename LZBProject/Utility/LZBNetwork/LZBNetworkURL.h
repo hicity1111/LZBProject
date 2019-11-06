@@ -23,7 +23,7 @@
 
 
 #define BaseURL_QRCode      @"https://sit-wechat.abnertech.com"
-#define Aggrement_URL       @"http://agreement.abnertech.com"
+#define Agrement_URL        @"http://agreement.abnertech.com"
 
 #ifdef DEBUG
     #define BASEURL(urlStr) [NSString stringWithFormat:@"%@%@", SafeLocalUrl, urlStr]

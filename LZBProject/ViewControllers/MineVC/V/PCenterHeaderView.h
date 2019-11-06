@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PCenterHeaderView : UIView
 
-@property (nonatomic, strong) NSDictionary *model;
+@property (nonatomic, strong) UserModel *model;
 
 @property (nonatomic, strong) UIViewController *vc;
 
@@ -34,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///// 反馈
 //@property (nonatomic, copy) void (^clickFeedbackButton)(UIButton *btn);
 
+/// 通知消息
+@property (nonatomic, strong) JMButton *noticeBtn;
 
 @end
 

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeModel : LZBAPIResponseBaseModel
 
+/// 资源分享时间
+@property (nonatomic, copy) NSNumber *createTime;
 /// 作业截止时间/资源分享时间
 @property (nonatomic, copy) NSNumber *homeworkEndtime;
 ///资源名称
@@ -26,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString * subjectName;
 /// 资源章节    
 @property (nonatomic, copy) NSString * textbookChapterName;
+
+/// 老师名称
+@property (nonatomic, strong) NSString *teacherName;
 
 /// 判断课本类型
 @property (nonatomic, copy) NSString *subjectAbbreviation;

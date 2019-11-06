@@ -9,9 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "JXPagerView.h"
 
+/**！定义刷新block*/
+typedef void(^ refreshBlock)(void);
+
 @interface TestListBaseView : UIView <JXPagerViewListViewDelegate>
+
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataSource;
+
+
+
+
 
 @end

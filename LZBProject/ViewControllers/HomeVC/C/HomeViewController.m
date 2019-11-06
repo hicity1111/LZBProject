@@ -233,9 +233,11 @@
         pendingTaskVC.titles = [self replace: self.titles];
         pendingTaskVC.resultTaskArr = self.resultPendingTaskArr;
     }else if(index == 1) {
-        pendingTaskVC.titles = @[@"全部", @"数学"];
+        pendingTaskVC.titles = [self replace: self.titles];
+        pendingTaskVC.resultTaskArr = self.resultPendingTaskArr;
     }else if (index == 2) {
-        pendingTaskVC.titles = @[@"全部", @"语文", @"生物",@"物理"];
+        pendingTaskVC.titles = [self replace: self.titles];
+        pendingTaskVC.resultTaskArr = self.resultPendingTaskArr;
     }
     LZBWeak;
     pendingTaskVC.didScrollCallback = ^(UIScrollView *scrollView) {
@@ -252,6 +254,7 @@
     NSMutableArray *replaceArr = [[NSMutableArray alloc] init];
     [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [replaceArr addObject:[NSString mt_abbreviationMap:IFISNIL(obj)]];
+        
     }];
     [replaceArr insertObject:@"全部" atIndex:0];
     return replaceArr;

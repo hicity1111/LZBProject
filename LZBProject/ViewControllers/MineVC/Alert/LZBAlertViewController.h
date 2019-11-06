@@ -103,15 +103,17 @@ typedef NS_ENUM(NSInteger, LZBAlertViewHideAnimation) {
 @property (nonatomic, assign) CGFloat sepline_height;
 /// 默认 50.f
 @property (nonatomic, assign) CGFloat button_height;
+/// 显示容器 centerY 在 VCHeight的比例，默认为 0.5
+@property (nonatomic, assign) CGFloat centerYPersent;
 
 
 /// 默认 “提示”
 @property (nonatomic, strong) NSString *title;
 /// 默认 nil
 @property (nonatomic, strong) NSString *message;
-/// 默认 “确定”
+/// 默认 “”（如果为“”，则这个按钮不显示）
 @property (nonatomic, strong) NSString *sureText;
-/// 默认 “取消”
+/// 默认 “”（如果为“”，则这个按钮不显示）
 @property (nonatomic, strong) NSString *cancelText;
 
 
@@ -127,6 +129,7 @@ typedef NS_ENUM(NSInteger, LZBAlertViewHideAnimation) {
 
 - (instancetype)initWithConfig:(LZBAlertConfig *)config;
 
+/// cancelBlock 默认 Hide AlertVC
 - (void)alertWithViewController:(UIViewController *)vc
                      AgreeBlock:(void (^)(UIButton *btn))agreeBlock
                     cancelBlock:(void (^ _Nullable)(UIButton *btn))cancelBlock;

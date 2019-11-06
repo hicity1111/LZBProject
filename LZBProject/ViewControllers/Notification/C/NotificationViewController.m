@@ -280,7 +280,12 @@
         bgV.contentMode = UIViewContentModeScaleAspectFill;
         bgV.image = [UIImage imageNamed:@"vc_bg"];
         _tableView.backgroundView = bgV;
-        
+
+        ///bug-fix解决加载更多回弹问题
+        _tableView.estimatedRowHeight = 0;
+        _tableView.estimatedSectionHeaderHeight = 0;
+        _tableView.estimatedSectionFooterHeight = 0;
+        ///代理
         _tableView.delegate = self;
         _tableView.dataSource = self;
         

@@ -12,6 +12,7 @@
 #import "PCenterHeaderView.h"
 #import "MineCommonCell.h"
 #import "MineLogoutCell.h"
+#import "NotifyDataService.h"
 
 #define tableView_HeaderView_Height 300.f
 #define tableView_CommonCell_Height 45.f
@@ -43,6 +44,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    ///获取未读消息数
+    [self loadUnreadCount];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -50,6 +53,20 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
+#pragma mark - remote data
+///获取未读数
+- (void)loadUnreadCount {
+    ///noticeCount
+    MJWeakSelf
+    [[NotifyDataService shareData] loadUnreadMessageCountSuccess:^(LZBAPIResponseBaseModel * _Nonnull baseM) {
+        if (baseM && baseM.infos && [baseM.infos isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"未读消息数目: %@", baseM.infos[@"noticeCount"]);
+//            [weakSelf.homeHeaderView showNumberBadgeValue:baseM.infos[@"noticeCount"]];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
 
 #pragma mark - Custom Method
 

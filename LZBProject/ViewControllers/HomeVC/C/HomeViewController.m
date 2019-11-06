@@ -13,6 +13,7 @@
 #import "MutualLearningViewController.h"
 #import "HomeDataService.h"
 #import "NSString+LZBMap.h"
+#import "NotifyDataService.h"
 
 #define CategoryTitles  @[@"待处理任务",@"互评学习", @"历史任务"]
 
@@ -41,6 +42,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    ///获取未读消息数目
+    [self loadUnreadCount];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -81,6 +84,24 @@
 
     }];
 }
+
+///获取未读数
+- (void)loadUnreadCount {
+    ///noticeCount
+    MJWeakSelf
+    [[NotifyDataService shareData] loadUnreadMessageCountSuccess:^(LZBAPIResponseBaseModel * _Nonnull baseM) {
+        if (baseM && baseM.infos && [baseM.infos isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"未读消息数目: %@", baseM.infos[@"noticeCount"]);
+            [weakSelf.homeHeaderView removeBadgValue];
+            if ([baseM.infos[@"noticeCount"] integerValue] > 0) {
+                [weakSelf.homeHeaderView showNumberBadgeValue:[NSString stringWithFormat:@"%@", baseM.infos[@"noticeCount"]]];
+            }
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
 
 
 #pragma mark - 任务view

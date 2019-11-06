@@ -10,6 +10,12 @@
 		0B098C652351A077000934EB /* LZBNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B098C642351A077000934EB /* LZBNetManager.m */; };
 		0B098C682351B942000934EB /* LZBNetManagerCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B098C672351B942000934EB /* LZBNetManagerCache.m */; };
 		0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B098C6A2351BFE2000934EB /* UIImage+CompressImage.m */; };
+		0B098FB42371B03B00AB19F3 /* OYCountDownManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B098FB32371B03B00AB19F3 /* OYCountDownManager.m */; };
+		0B098FB8237250C400AB19F3 /* HomeResourcesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B098FB6237250C400AB19F3 /* HomeResourcesTableViewCell.m */; };
+		0B098FB9237250C400AB19F3 /* HomeResourcesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B098FB7237250C400AB19F3 /* HomeResourcesTableViewCell.xib */; };
+		0B098FBD23728A7900AB19F3 /* UILabel+AttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B098FBC23728A7900AB19F3 /* UILabel+AttributedString.m */; };
+		0B098FC023728AA600AB19F3 /* NSMutableAttributedString+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B098FBF23728AA600AB19F3 /* NSMutableAttributedString+Addtion.m */; };
+		0B098FC323728ABB00AB19F3 /* NSObject+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B098FC223728ABB00AB19F3 /* NSObject+Addition.m */; };
 		0B09920623517A0D001E5389 /* LZBDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B09920523517A0D001E5389 /* LZBDataEntity.m */; };
 		0B0F6BAE23601E3A00537128 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BAC23601E3A00537128 /* UIViewController+HUD.m */; };
 		0B0F6BB423601F5D00537128 /* MBProgressHUD+LZBvcHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6BB323601F5D00537128 /* MBProgressHUD+LZBvcHelper.m */; };
@@ -201,6 +207,17 @@
 		0B098C672351B942000934EB /* LZBNetManagerCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBNetManagerCache.m; sourceTree = "<group>"; };
 		0B098C692351BFE2000934EB /* UIImage+CompressImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+CompressImage.h"; sourceTree = "<group>"; };
 		0B098C6A2351BFE2000934EB /* UIImage+CompressImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CompressImage.m"; sourceTree = "<group>"; };
+		0B098FB22371B03A00AB19F3 /* OYCountDownManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OYCountDownManager.h; sourceTree = "<group>"; };
+		0B098FB32371B03B00AB19F3 /* OYCountDownManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OYCountDownManager.m; sourceTree = "<group>"; };
+		0B098FB5237250C400AB19F3 /* HomeResourcesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeResourcesTableViewCell.h; sourceTree = "<group>"; };
+		0B098FB6237250C400AB19F3 /* HomeResourcesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeResourcesTableViewCell.m; sourceTree = "<group>"; };
+		0B098FB7237250C400AB19F3 /* HomeResourcesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeResourcesTableViewCell.xib; sourceTree = "<group>"; };
+		0B098FBB23728A7900AB19F3 /* UILabel+AttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+AttributedString.h"; sourceTree = "<group>"; };
+		0B098FBC23728A7900AB19F3 /* UILabel+AttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+AttributedString.m"; sourceTree = "<group>"; };
+		0B098FBE23728AA600AB19F3 /* NSMutableAttributedString+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Addtion.h"; sourceTree = "<group>"; };
+		0B098FBF23728AA600AB19F3 /* NSMutableAttributedString+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Addtion.m"; sourceTree = "<group>"; };
+		0B098FC123728ABB00AB19F3 /* NSObject+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Addition.h"; sourceTree = "<group>"; };
+		0B098FC223728ABB00AB19F3 /* NSObject+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Addition.m"; sourceTree = "<group>"; };
 		0B09920423517A0D001E5389 /* LZBDataEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBDataEntity.h; sourceTree = "<group>"; };
 		0B09920523517A0D001E5389 /* LZBDataEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBDataEntity.m; sourceTree = "<group>"; };
 		0B0F6BAC23601E3A00537128 /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
@@ -567,6 +584,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B098FBA23728A6000AB19F3 /* UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				0B098FC123728ABB00AB19F3 /* NSObject+Addition.h */,
+				0B098FC223728ABB00AB19F3 /* NSObject+Addition.m */,
+				0B098FBE23728AA600AB19F3 /* NSMutableAttributedString+Addtion.h */,
+				0B098FBF23728AA600AB19F3 /* NSMutableAttributedString+Addtion.m */,
+				0B098FBB23728A7900AB19F3 /* UILabel+AttributedString.h */,
+				0B098FBC23728A7900AB19F3 /* UILabel+AttributedString.m */,
+			);
+			path = UILabel;
+			sourceTree = "<group>";
+		};
 		0B0F6BB523601FD500537128 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,6 +661,9 @@
 				8B21DEFD23681118000F0DAB /* HomeWorkAlreadyStartCell.xib */,
 				0B3D000E2368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.h */,
 				0B3D000F2368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m */,
+				0B098FB5237250C400AB19F3 /* HomeResourcesTableViewCell.h */,
+				0B098FB6237250C400AB19F3 /* HomeResourcesTableViewCell.m */,
+				0B098FB7237250C400AB19F3 /* HomeResourcesTableViewCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -759,6 +792,8 @@
 		0B3D001B236934FD00BD4AA1 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				0B098FB22371B03A00AB19F3 /* OYCountDownManager.h */,
+				0B098FB32371B03B00AB19F3 /* OYCountDownManager.m */,
 				0B3D001C236934FD00BD4AA1 /* TestListBaseView.h */,
 				0B3D0020236934FD00BD4AA1 /* TestListBaseView.m */,
 			);
@@ -1012,6 +1047,7 @@
 		0B820167234EC1C900D983AE /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				0B098FBA23728A6000AB19F3 /* UILabel */,
 				BA6CD7AC237113C50008113F /* NSObject */,
 				BA6CD7A8237112170008113F /* UIAlert */,
 				BA6CD79E2370232C0008113F /* NSDate */,
@@ -1744,6 +1780,7 @@
 				8B175397236987BC00509317 /* PCenterHeaderView.xib in Resources */,
 				8B21DEFA2367ECEB000F0DAB /* HomeWorkNotStartCell.xib in Resources */,
 				0B6192F7235D5E2300BE3BBA /* Mine.storyboard in Resources */,
+				0B098FB9237250C400AB19F3 /* HomeResourcesTableViewCell.xib in Resources */,
 				0BBCD678234DBFAE00E4970A /* Assets.xcassets in Resources */,
 				0BBCD676234DBFAD00E4970A /* Main.storyboard in Resources */,
 			);
@@ -1909,6 +1946,7 @@
 				0B3D0028236934FE00BD4AA1 /* TestListBaseView.m in Sources */,
 				BA6CD803237124AA0008113F /* YBIBImageScrollView.m in Sources */,
 				8BD1BA1E236C3E200088A136 /* LYZCurrentVCHelper.m in Sources */,
+				0B098FBD23728A7900AB19F3 /* UILabel+AttributedString.m in Sources */,
 				0B0F6C292366F92700537128 /* MutualLearningViewController.m in Sources */,
 				0B0F6C1C2366C10900537128 /* JMNumberButton.m in Sources */,
 				BA5BFE87236BCC8D00D231F0 /* NotificaitonIconItem.m in Sources */,
@@ -1929,6 +1967,7 @@
 				8B6B6A112362D905008B7585 /* LYZTextField.m in Sources */,
 				BA6CD812237124AA0008113F /* YBIBScreenRotationHandler.m in Sources */,
 				0B11217C236C20EF00944C24 /* LoginDataService.m in Sources */,
+				0B098FB8237250C400AB19F3 /* HomeResourcesTableViewCell.m in Sources */,
 				0B112173236BFEE500944C24 /* LZBAPIResponseBaseModel.m in Sources */,
 				BA6CD7AB237112930008113F /* UIAlertController+LZBExtension.m in Sources */,
 				BA6CD801237124AA0008113F /* YBImage.m in Sources */,
@@ -1945,9 +1984,11 @@
 				8B7ED9F1237151DD0017B08B /* CTB_SubjectModel.m in Sources */,
 				0B619304235D7BC900BE3BBA /* CTBViewController.m in Sources */,
 				8B7ED9F4237152190017B08B /* CTB_SubjectDataService.m in Sources */,
+				0B098FC323728ABB00AB19F3 /* NSObject+Addition.m in Sources */,
 				0B0F6BD72361A90400537128 /* LZB_TabBarBadge.m in Sources */,
 				BA6CD815237124AA0008113F /* YBIBCollectionView.m in Sources */,
 				0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */,
+				0B098FB42371B03B00AB19F3 /* OYCountDownManager.m in Sources */,
 				0B09920623517A0D001E5389 /* LZBDataEntity.m in Sources */,
 				0B3D0035236ADAE300BD4AA1 /* LZBEmptyView.m in Sources */,
 				0B0F6BEC236682DF00537128 /* HomeHeaderView.m in Sources */,
@@ -1991,6 +2032,7 @@
 				BA6CD7A4237036570008113F /* NSString+LZBMap.m in Sources */,
 				0B6192E9235D573600BE3BBA /* LZBBaseTabBarController.m in Sources */,
 				0B0F6BAE23601E3A00537128 /* UIViewController+HUD.m in Sources */,
+				0B098FC023728AA600AB19F3 /* NSMutableAttributedString+Addtion.m in Sources */,
 				0B0F6BE12362C3F500537128 /* WHGradientHelper.m in Sources */,
 				0B0F6C1B2366C10900537128 /* JMNumberButtonConfig.m in Sources */,
 				8B21DF0A2369316B000F0DAB /* UIView+CornerRadius.m in Sources */,

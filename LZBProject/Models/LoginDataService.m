@@ -28,12 +28,12 @@
     
     LZBDataEntity *entity = [[LZBDataEntity alloc] init];
     entity.urlString = LoginUrl_full;
-    NSDictionary *para = @{@"userName": username, @"password": password, @"appChannelId": @"studentApp"};
+    NSDictionary *para = @{@"userName": username, @"password": password, @"appChannelId": @"studentApp",@"appVersion":@"2.1.0.05",@"appVersionCode":@"22"};
     self.responseClassName = NSStringFromClass([UserModel class]);
     //传入必要的参数
-    NSMutableDictionary *mpara = [NSMutableDictionary dictionaryWithDictionary:[self necessaryParamsDictionary:para]];
-    [mpara removeObjectForKey:@"token"];
-    entity.parameters = mpara;
+//    NSMutableDictionary *mpara = [NSMutableDictionary dictionaryWithDictionary:[self necessaryParamsDictionary:para]];
+//    [mpara removeObjectForKey:@"token"];
+    entity.parameters = para;
     [self.netManager lzb_request_postWithEntity:entity successBlock:^(LZBAPIResponseBaseModel *model) {
         if (success) {
             UserModel *UserM = [UserModel mj_objectWithKeyValues:model.infos];

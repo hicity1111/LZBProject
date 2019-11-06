@@ -47,7 +47,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
+
 
 #pragma mark - Private Methods
 - (void)mt_loadUI {

@@ -231,13 +231,22 @@
     MutualLearningViewController *pendingTaskVC = [[MutualLearningViewController alloc] init];
     if (index == 0) {
         pendingTaskVC.titles = [self replace: self.titles];
-        pendingTaskVC.resultTaskArr = self.resultPendingTaskArr;
+        
+        NSMutableArray *resultArr = [self groupAction:self.resultPendingTaskArr];;
+        [resultArr insertObject:self.resultPendingTaskArr atIndex:0];
+        pendingTaskVC.resultTaskArr = resultArr;
+        
     }else if(index == 1) {
         pendingTaskVC.titles = [self replace: self.titles];
-        pendingTaskVC.resultTaskArr = self.resultPendingTaskArr;
+        NSMutableArray *resultArr = [self groupAction:self.resultPendingTaskArr];;
+        [resultArr insertObject:self.resultPendingTaskArr atIndex:0];
+        pendingTaskVC.resultTaskArr = resultArr;
+        
     }else if (index == 2) {
         pendingTaskVC.titles = [self replace: self.titles];
-        pendingTaskVC.resultTaskArr = self.resultPendingTaskArr;
+        NSMutableArray *resultArr = [self groupAction:self.resultPendingTaskArr];;
+        [resultArr insertObject:self.resultPendingTaskArr atIndex:0];
+        pendingTaskVC.resultTaskArr = resultArr;
     }
     LZBWeak;
     pendingTaskVC.didScrollCallback = ^(UIScrollView *scrollView) {
@@ -247,7 +256,7 @@
 }
 
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
-    return self.categoryView.titles.count;
+    return self.categoryView.titles.count + 1;
 }
 
 - (NSMutableArray *)replace:(NSArray *)arr{
@@ -263,6 +272,31 @@
 - (HomeDataService *)dataService{
     _dataService = [HomeDataService shareDate];
     return _dataService;
+}
+
+#pragma mark - 数组分组
+- (NSMutableArray *)groupAction:(NSMutableArray *)arr {
+
+    NSArray *serviceTypes = [arr valueForKeyPath:@"@distinctUnionOfObjects.subjectAbbreviation"];
+
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES]];
+
+    self.titles = [serviceTypes sortedArrayUsingDescriptors:sortDesc];
+
+    __block NSMutableArray *groupArr = [NSMutableArray array];
+
+    [self.titles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"subjectAbbreviation = %@", obj];
+
+        NSArray *tempArr = [NSArray arrayWithArray:[arr filteredArrayUsingPredicate:predicate]];
+
+        [groupArr addObject:tempArr];
+
+    }];
+
+    return groupArr;
+
 }
 
 @end

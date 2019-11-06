@@ -133,9 +133,9 @@ static const CGFloat JXheightForHeaderInSection = 30;
     
     TestListBaseView *list = [[TestListBaseView alloc] init];
     
-    NSMutableArray *resultArr = [self groupAction:self.resultTaskArr];;
-    [resultArr insertObject:self.resultTaskArr atIndex:0];
-    list.dataSource = [resultArr[index] mutableCopy];
+//    NSMutableArray *resultArr = [self groupAction:self.resultTaskArr];;
+//    [resultArr insertObject:self.resultTaskArr atIndex:0];
+    list.dataSource = [self.resultTaskArr[index] mutableCopy];
     return list;
 }
 

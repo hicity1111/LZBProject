@@ -26,7 +26,13 @@
     if (self) {
         
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height) style:UITableViewStylePlain];
-        self.tableView.backgroundColor = [UIColor colorWithPatternImage:IMAGE_NAMED(@"home_botton_bg")];
+//        self.tableView.backgroundColor = [UIColor colorWithPatternImage:IMAGE_NAMED(@"home_botton_bg")];
+        
+        UIImageView *bgV = [[UIImageView alloc] initWithFrame:_tableView.bounds];
+        bgV.contentMode = UIViewContentModeScaleAspectFill;
+        bgV.image = [UIImage imageNamed:@"home_botton_bg"];
+        _tableView.backgroundView = bgV;
+        
         self.tableView.tableFooterView = [UIView new];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;

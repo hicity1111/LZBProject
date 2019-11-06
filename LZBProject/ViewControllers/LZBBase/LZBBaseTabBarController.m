@@ -104,7 +104,7 @@
 - (void)LZB_TabBar:(LZB_TabBar *)tabbar selectIndex:(NSInteger)index{
     // 通知 切换视图控制器
     [self setSelectedIndex:index];
-    [tabbar setBadge:[NSString stringWithFormat:@"%d",arc4random()%100] index:1];
+//    [tabbar setBadge:[NSString stringWithFormat:@"%d",arc4random()%100] index:1];
     // 自定义的AE_TabBar回调点击事件给TabBarVC，TabBarVC用父类的TabBarController函数完成切换
 }
 - (void)setSelectedIndex:(NSUInteger)selectedIndex{

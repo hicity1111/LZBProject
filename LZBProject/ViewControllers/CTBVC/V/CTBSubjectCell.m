@@ -22,7 +22,14 @@
     self.subject_nameLb.textColor = KMAIN5868;
     self.subject_descLb.textColor = kMAIN7777;
     
+    // 圆角
     self.containerView.layer.cornerRadius = 8.f;
+    
+    // 阴影
+    self.containerView.layer.shadowColor = kMAIN7F7F.CGColor;
+    self.containerView.layer.shadowOffset = CGSizeMake(0, 1);
+    self.containerView.layer.shadowOpacity = 1;
+    self.containerView.layer.shadowRadius = 8;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

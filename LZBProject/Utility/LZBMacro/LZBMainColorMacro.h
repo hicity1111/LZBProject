@@ -56,6 +56,8 @@
 
 #define kMAIN7777   [UIColor colorWithHex:@"#777777"]
 
+#define kMAIN7F7F   [UIColor colorWithHex:@"#7F7F7F" alpha:0.18]
+
 #define kMAINEEEE   [UIColor colorWithHex:@"#EEEEEE"]
 
 #define KMAIN80B4   [UIColor colorWithHex:@"#80B491"]
@@ -64,9 +66,9 @@
 
 #define kMAIN0098   [UIColor colorWithHex:@"#00985B"]
 
+#define kMAINAA6F   [UIColor colorWithHex:@"#AA6FD6"]
 
-
-
+#define kMAINE4D1   [UIColor colorWithHex:@"#E4D1F2"]
 
 
 

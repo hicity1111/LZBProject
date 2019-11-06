@@ -41,7 +41,13 @@
     self.mainTableView.showsVerticalScrollIndicator = NO;
     self.mainTableView.showsHorizontalScrollIndicator = NO;
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.mainTableView.backgroundColor = [UIColor colorWithPatternImage:IMAGE_NAMED(@"home_botton_bg")];
+//    self.mainTableView.backgroundColor = [UIColor colorWithPatternImage:IMAGE_NAMED(@"home_botton_bg")];
+    
+    UIImageView *bgV = [[UIImageView alloc] initWithFrame:self.mainTableView.bounds];
+    bgV.contentMode = UIViewContentModeScaleAspectFill;
+    bgV.image = [UIImage imageNamed:@"vc_bg"];
+    self.mainTableView.backgroundView = bgV;
+    
     self.mainTableView.scrollsToTop = NO;
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;

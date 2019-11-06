@@ -165,7 +165,6 @@
 		BA6CD83A2371410C0008113F /* UINavigationItem+SXFixSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD8352371410B0008113F /* UINavigationItem+SXFixSpace.m */; };
 		BA6CD83B2371410C0008113F /* UIBarButtonItem+SXCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD8372371410C0008113F /* UIBarButtonItem+SXCreate.m */; };
 		BA6CD83C2371410C0008113F /* UINavigationController+SXFullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD8382371410C0008113F /* UINavigationController+SXFullScreen.m */; };
-		BA6CD840237270ED0008113F /* UIScrollView+PYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD83E237270ED0008113F /* UIScrollView+PYExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -507,8 +506,6 @@
 		BA6CD8362371410C0008113F /* UIBarButtonItem+SXCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+SXCreate.h"; sourceTree = "<group>"; };
 		BA6CD8372371410C0008113F /* UIBarButtonItem+SXCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+SXCreate.m"; sourceTree = "<group>"; };
 		BA6CD8382371410C0008113F /* UINavigationController+SXFullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SXFullScreen.m"; sourceTree = "<group>"; };
-		BA6CD83E237270ED0008113F /* UIScrollView+PYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+PYExtension.m"; sourceTree = "<group>"; };
-		BA6CD83F237270ED0008113F /* UIScrollView+PYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+PYExtension.h"; sourceTree = "<group>"; };
 		C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProject_LZBProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF14C585C96A1396A7EB144 /* Pods-LZBProject-LZBProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject-LZBProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-LZBProject-LZBProjectUITests/Pods-LZBProject-LZBProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -987,7 +984,6 @@
 		0B820167234EC1C900D983AE /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				BA6CD83D237270ED0008113F /* UIScrollView */,
 				BA6CD7AC237113C50008113F /* NSObject */,
 				BA6CD7A8237112170008113F /* UIAlert */,
 				BA6CD79E2370232C0008113F /* NSDate */,
@@ -1527,16 +1523,6 @@
 			path = "UINavigationBar-SpaceFix";
 			sourceTree = "<group>";
 		};
-		BA6CD83D237270ED0008113F /* UIScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				BA6CD83E237270ED0008113F /* UIScrollView+PYExtension.m */,
-				BA6CD83F237270ED0008113F /* UIScrollView+PYExtension.h */,
-			);
-			name = UIScrollView;
-			path = "../../../../海豚思维-APP/YixiuStudentApp-iOS/YixiuStudentApp/YixiuStudentApp/Classes/Category/UIScrollView";
-			sourceTree = "<group>";
-		};
 		E891B3A032A33E1398D77910 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1924,7 +1910,6 @@
 				0B3D002F236AD8E000BD4AA1 /* UIView+Empty.m in Sources */,
 				0B098C6B2351BFE2000934EB /* UIImage+CompressImage.m in Sources */,
 				BA6CD8392371410C0008113F /* NSObject+SXRuntime.m in Sources */,
-				BA6CD840237270ED0008113F /* UIScrollView+PYExtension.m in Sources */,
 				0B6192ED235D58E600BE3BBA /* UINavigationBar+handle.m in Sources */,
 				0BF05339237014F10091EFB2 /* HomeModel.m in Sources */,
 				0B112176236C071200944C24 /* LZBServiceBase.m in Sources */,

@@ -359,4 +359,8 @@
 }
 
 
+- (void)dealloc {
+    NSLog(@"✔️消息中心 - VC - 被释放 ");
+}
+
 @end

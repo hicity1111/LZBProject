@@ -12,6 +12,8 @@
 #import "HomeHeaderView.h"
 #import "MutualLearningViewController.h"
 #import "HomeDataService.h"
+#import "NSString+LZBMap.h"
+#import "NotifyDataService.h"
 
 #define CategoryTitles  @[@"待处理任务",@"互评学习", @"历史任务"]
 
@@ -40,6 +42,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    ///获取未读消息数目
+    [self loadUnreadCount];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -63,7 +67,13 @@
         };
     [self.dataService loadRequestDic:parameters success:^(NSArray *modelArr) {
         XLDLog(@"首页数据获取到");
-        self.resultPendingTaskArr = [self groupAction:[modelArr mutableCopy]];
+        
+        self.resultPendingTaskArr = [modelArr mutableCopy];
+        
+        NSArray *serviceTypes = [modelArr valueForKeyPath:@"@distinctUnionOfObjects.subjectAbbreviation"];
+        NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES]];
+        self.titles = [serviceTypes sortedArrayUsingDescriptors:sortDesc];
+        
         if (self.resultPendingTaskArr != nil || self.resultPendingTaskArr.count != 0) {
             [self configCategoryView];
         }
@@ -75,29 +85,23 @@
     }];
 }
 
-- (NSMutableArray *)groupAction:(NSMutableArray *)arr {
-
-    NSArray *serviceTypes = [arr valueForKeyPath:@"@distinctUnionOfObjects.subjectAbbreviation"];
-
-    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES]];
-
-    self.titles = [serviceTypes sortedArrayUsingDescriptors:sortDesc];
-
-    __block NSMutableArray *groupArr = [NSMutableArray array];
-
-    [self.titles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"subjectAbbreviation = %@", obj];
-
-        NSArray *tempArr = [NSArray arrayWithArray:[arr filteredArrayUsingPredicate:predicate]];
-
-        [groupArr addObject:tempArr];
-
+///获取未读数
+- (void)loadUnreadCount {
+    ///noticeCount
+    MJWeakSelf
+    [[NotifyDataService shareData] loadUnreadMessageCountSuccess:^(LZBAPIResponseBaseModel * _Nonnull baseM) {
+        if (baseM && baseM.infos && [baseM.infos isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"未读消息数目: %@", baseM.infos[@"noticeCount"]);
+            [weakSelf.homeHeaderView removeBadgValue];
+            if ([baseM.infos[@"noticeCount"] integerValue] > 0) {
+                [weakSelf.homeHeaderView showNumberBadgeValue:[NSString stringWithFormat:@"%@", baseM.infos[@"noticeCount"]]];
+            }
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
     }];
-
-    return groupArr;
-
 }
+
 
 
 #pragma mark - 任务view
@@ -130,12 +134,14 @@
     self.categoryView.separatorLineColor = KMAIN80B4;
     self.categoryView.separatorLineSize  = CGSizeMake(2, 14);
     self.categoryView.contentEdgeInsetLeft = 15;    //设置内容左边距
+    self.categoryView.defaultSelectedIndex = 0;
     //推荐配置方案
     self.categoryView.maxVerticalCellSpacing = 10;
     self.categoryView.minVerticalCellSpacing = 5;
     self.categoryView.maxVerticalFontScale = 1.6;
     self.categoryView.minVerticalFontScale = 1.05;
 
+    [self.categoryView reloadData];
 
 }
 #pragma mark - 布局导航标题栏
@@ -151,12 +157,9 @@
 
 #pragma mark - 点击消息
 - (void)messageAct{
-
     [_homeHeaderView removeBadgValue];
     NotificationViewController *homeDetai = [NotificationViewController new];
     [self.navigationController pushViewController:homeDetai animated:YES];
-
-   
 }
 
 #pragma mark - 监听滚动更新frame
@@ -228,7 +231,8 @@
 
     MutualLearningViewController *pendingTaskVC = [[MutualLearningViewController alloc] init];
     if (index == 0) {
-        pendingTaskVC.titles = self.titles;
+        pendingTaskVC.titles = [self replace: self.titles];
+        pendingTaskVC.resultTaskArr = self.resultPendingTaskArr;
     }else if(index == 1) {
         pendingTaskVC.titles = @[@"全部", @"数学"];
     }else if (index == 2) {
@@ -243,6 +247,15 @@
 
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
     return self.categoryView.titles.count;
+}
+
+- (NSMutableArray *)replace:(NSArray *)arr{
+    NSMutableArray *replaceArr = [[NSMutableArray alloc] init];
+    [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [replaceArr addObject:[NSString mt_abbreviationMap:IFISNIL(obj)]];
+    }];
+    [replaceArr insertObject:@"全部" atIndex:0];
+    return replaceArr;
 }
 
 - (HomeDataService *)dataService{

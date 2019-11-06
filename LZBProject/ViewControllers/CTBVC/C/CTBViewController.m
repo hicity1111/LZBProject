@@ -12,6 +12,7 @@
 #import "LZBEmptyView.h"
 #import "LZB_CTB_CellHelper.h"
 #import "CTB_SubjectDataService.h"
+#import "NotifyDataService.h"
 
 #define cellID @"CTBSubjectCell"
 
@@ -44,6 +45,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    ///获取未读数
+    [self loadUnreadCount];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -72,6 +75,24 @@
         
     }];
 }
+
+///获取未读数
+- (void)loadUnreadCount {
+    ///noticeCount
+    MJWeakSelf
+    [[NotifyDataService shareData] loadUnreadMessageCountSuccess:^(LZBAPIResponseBaseModel * _Nonnull baseM) {
+        if (baseM && baseM.infos && [baseM.infos isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"未读消息数目: %@", baseM.infos[@"noticeCount"]);
+            [weakSelf.homeHeaderView removeBadgValue];
+              if ([baseM.infos[@"noticeCount"] integerValue] > 0) {
+                  [weakSelf.homeHeaderView showNumberBadgeValue:[NSString stringWithFormat:@"%@", baseM.infos[@"noticeCount"]]];
+              }
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
 
 #pragma mark - HomeHeaderDelegate
 

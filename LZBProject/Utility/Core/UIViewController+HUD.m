@@ -85,6 +85,7 @@
     HUD.removeFromSuperViewOnHide=YES;
     [[self getView] addSubview:HUD];
     [HUD showAnimated:YES];
+    [HUD hideAnimated:YES afterDelay:20.0f];
 }
 -(void)showLoadingWithMessage:(NSString *)message
 {

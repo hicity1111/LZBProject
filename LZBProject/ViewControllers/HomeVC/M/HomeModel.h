@@ -57,7 +57,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 作业状态 1：未答 2：未完成 3：已完成
 @property (nonatomic, copy) NSNumber *submitType;
 
+/// 结束相差时间毫秒    
+@property (nonatomic, copy) NSNumber *diffMillisecond;
 
+/// 资源类型1任务 2资源
+@property (nonatomic, copy) NSNumber *taskType;
 
 @end
 

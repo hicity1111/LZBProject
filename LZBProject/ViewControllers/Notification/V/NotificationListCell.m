@@ -329,6 +329,7 @@
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.alwaysBounceVertical = YES;
+        _collectionView.scrollEnabled = NO;
         
         [_collectionView registerClass:[NotificationImageItemCell class] forCellWithReuseIdentifier:@"NotificationImageItemCell"];
     }

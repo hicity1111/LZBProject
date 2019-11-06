@@ -12,6 +12,6 @@
 @interface TestListBaseView : UIView <JXPagerViewListViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSArray <NSString *> *dataSource;
+@property (nonatomic, strong) NSArray *dataSource;
 
 @end

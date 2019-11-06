@@ -17,9 +17,9 @@
 
 
 //本地URL
-//#define SafeLocalUrl        @"http://192.168.6.104:8081/api"
+#define SafeLocalUrl        @"http://192.168.6.104:8081"
 
-#define SafeLocalUrl        @"http://192.168.7.157:8082"
+//#define SafeLocalUrl        @"http://192.168.7.157:8082"
 
 
 #define BaseURL_QRCode      @"https://sit-wechat.abnertech.com"
@@ -34,7 +34,7 @@
 #define LoginUrl_sim        @"/api/system/student/login"
 #define LoginUrl_full       BASEURL(LoginUrl_sim)
 
-#define HomeWork_Student    @"/app/homework/student/list"
+#define HomeWork_Student    @"/api/app/homework/student/list"
 #define HomeWork_full       BASEURL(HomeWork_Student)
 
 #define CTBSSubject_sim     @"/api/wrongquestion/subject"

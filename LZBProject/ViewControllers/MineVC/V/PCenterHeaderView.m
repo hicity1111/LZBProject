@@ -68,7 +68,7 @@
     JMBaseButtonConfig *buttonConfig = [JMBaseButtonConfig buttonConfig];
     buttonConfig.titleFont = LZBFont(9.5f, NO);
     buttonConfig.backgroundColor = [UIColor clearColor];
-    buttonConfig.backgroundImage = IMAGE_NAMED(@"ic_message");
+    buttonConfig.image = IMAGE_NAMED(@"ic_message");
     
     CGFloat notice_w = 30.f;
     CGFloat notice_y =  kStatusBar_Height + (kNavBar_Height - notice_w) / 2.f;

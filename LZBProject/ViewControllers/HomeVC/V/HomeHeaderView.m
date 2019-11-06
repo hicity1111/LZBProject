@@ -52,19 +52,19 @@
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_imageView.mas_right).offset(6);
         make.bottom.equalTo(_imageView);
-        make.right.mas_equalTo(self).offset(42);
+        make.right.mas_equalTo(self).offset(-42);
         make.height.mas_equalTo(14);
     }];
     
     JMBaseButtonConfig *buttonConfig = [JMBaseButtonConfig buttonConfig];
     buttonConfig.titleFont = LZBFont(9.5f, NO);
     buttonConfig.backgroundColor = [UIColor clearColor];
-    buttonConfig.backgroundImage = IMAGE_NAMED(@"ic_message");
+    buttonConfig.image = IMAGE_NAMED(@"ic_message");
     
-    _messageButton = [[JMButton alloc] initWithFrame:CGRectMake(kScreenWidth - 30, self.height - 31, 17, 17) ButtonConfig:buttonConfig];
+    _messageButton = [[JMButton alloc] initWithFrame:CGRectMake(kScreenWidth - 44, self.height - 44, 44, 44) ButtonConfig:buttonConfig];
     _messageButton.badgeTextFont = LZBFont(9.5, NO);
     _messageButton.badgeBackgroundColor = kMAINFCOD;
-    _messageButton.badgeOffset = CGPointMake(0, -10);
+    _messageButton.badgeOffset = CGPointMake(20, -10);
     [_messageButton addTarget:self action:@selector(messageAct) forControlEvents:UIControlEventTouchUpInside];
 
     [self addSubview:_messageButton];

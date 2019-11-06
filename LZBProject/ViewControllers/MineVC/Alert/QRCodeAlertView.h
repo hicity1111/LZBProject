@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *studentName;
 
-@property (nonatomic, assign) BOOL isGirl;
+@property (nonatomic, assign) LZBStudentSex sex;
 
 @property (nonatomic, strong) NSString *schoolName;
 

@@ -7,7 +7,7 @@
 //
 
 #import "LZBAlertViewController.h"
-
+#import "HWPop.h"
 
 
 @implementation LZBAlertConfig
@@ -38,10 +38,11 @@
         self.corner_radius = 10.f;
         self.sepline_height = 1.f;
         self.button_height = 50.f;
+        self.centerYPersent = 0.5;
         
         self.title = @"提示";
-        self.sureText = @"确定";
-        self.cancelText = @"取消";
+        self.sureText = @"";
+        self.cancelText = @"";
     }
     return self;
 }
@@ -111,9 +112,18 @@
     [self addSubviews];
     [self updateSubviewsFrame];
     
-    [vc presentViewController:self animated:YES completion:^{
+    HWPopController *popController = [[HWPopController alloc] initWithViewController:self];
+    popController.popPosition = HWPopPositionCenter;
+    popController.popType = HWPopTypeFadeIn;
+    popController.dismissType = HWDismissTypeFadeOut;
+    popController.shouldDismissOnBackgroundTouch = NO;
+    [popController presentInViewController:vc completion:^{
         
     }];
+    
+//    [vc presentViewController:self animated:YES completion:^{
+//
+//    }];
 }
 
 
@@ -122,11 +132,31 @@
     [self.view addSubview:self.containerView];
     
     [self.containerView addSubview:self.titleLab];
-    [self.containerView addSubview:self.messageLab];
-    [self.containerView addSubview:self.sepLine_H];
-    [self.containerView addSubview:self.cancelBtn];
-    [self.containerView addSubview:self.sepLine_V];
-    [self.containerView addSubview:self.sureBtn];
+    
+    NSInteger msgLen = self.config.message.length;
+    if (msgLen > 0) {
+        [self.containerView addSubview:self.messageLab];
+    }
+    
+    NSInteger ctLen = self.config.cancelText.length;
+    NSInteger stLen = self.config.sureText.length;
+    if (ctLen != 0 && stLen != 0) {
+        [self.containerView addSubview:self.sepLine_H];
+        [self.containerView addSubview:self.cancelBtn];
+        [self.containerView addSubview:self.sepLine_V];
+        [self.containerView addSubview:self.sureBtn];
+    }
+    else if (ctLen == 0 && stLen != 0) {
+        [self.containerView addSubview:self.sepLine_H];
+        [self.containerView addSubview:self.sureBtn];
+    }
+    else if (ctLen != 0 && stLen == 0) {
+        [self.containerView addSubview:self.sepLine_H];
+        [self.containerView addSubview:self.cancelBtn];
+    }
+    else if (ctLen == 0 && stLen == 0) {
+        
+    }
 }
 
 - (void)updateSubviewsFrame {
@@ -135,19 +165,41 @@
     CGFloat lb_w = con_w - 2 * margin;
     
     CGSize titleS = [self.titleLab sizeThatFits:CGSizeMake(lb_w, INTMAX_MAX)];
-    self.titleLab.frame = CGRectMake(margin, margin, lb_w, titleS.height);
+    self.titleLab.frame = CGRectMake(margin, margin + 5.f, lb_w, titleS.height);
     
-    CGSize msgS = [self.messageLab sizeThatFits:CGSizeMake(lb_w, INTMAX_MAX)];
-    self.messageLab.frame = CGRectMake(margin, self.titleLab.bottom + margin, lb_w, msgS.height);
+    CGFloat sepLineTop = self.titleLab.bottom;
+    NSInteger msgLen = self.config.message.length;
+    if (msgLen > 0) {
+        CGSize msgS = [self.messageLab sizeThatFits:CGSizeMake(lb_w, INTMAX_MAX)];
+        self.messageLab.frame = CGRectMake(margin, self.titleLab.bottom + margin - 10.f, lb_w, msgS.height);
+        sepLineTop = self.messageLab.bottom;
+    }
     
-    self.sepLine_H.frame = CGRectMake(0, self.messageLab.bottom + margin, con_w, self.config.sepline_height);
+    NSInteger ctLen = self.config.cancelText.length;
+    NSInteger stLen = self.config.sureText.length;
+    if (ctLen != 0 && stLen != 0) {
+        self.sepLine_H.frame = CGRectMake(0, sepLineTop + margin, con_w, self.config.sepline_height);
+        self.cancelBtn.frame = CGRectMake(0, self.sepLine_H.bottom, con_w / 2.f, self.config.button_height);
+        self.sureBtn.frame = CGRectMake(con_w / 2.f, self.cancelBtn.top, con_w / 2.f, self.config.button_height);
+        self.sepLine_V.frame = CGRectMake(self.cancelBtn.right, self.cancelBtn.top, self.config.sepline_height, self.cancelBtn.height);
+    }
+    else if (ctLen == 0 && stLen != 0) {
+        self.sepLine_H.frame = CGRectMake(0, sepLineTop + margin, con_w, self.config.sepline_height);
+        self.sureBtn.frame = CGRectMake(0, self.sepLine_H.top, con_w, self.config.button_height);
+    }
+    else if (ctLen != 0 && stLen == 0) {
+        self.sepLine_H.frame = CGRectMake(0, sepLineTop + margin, con_w, self.config.sepline_height);
+        self.cancelBtn.frame = CGRectMake(0, self.sepLine_H.bottom, con_w, self.config.button_height);
+    }
+    else if (ctLen == 0 && stLen == 0) {
+        
+    }
     
-    self.cancelBtn.frame = CGRectMake(0, self.sepLine_H.bottom, con_w / 2.f, self.config.button_height);
-    self.sureBtn.frame = CGRectMake(con_w / 2.f, self.cancelBtn.top, con_w / 2.f, self.config.button_height);
-    self.sepLine_V.frame = CGRectMake(self.cancelBtn.right, self.cancelBtn.top, self.config.sepline_height, self.cancelBtn.height);
+    CGFloat conH = ctLen || stLen ? (self.sepLine_H.bottom + self.config.button_height) : (sepLineTop + self.config.container_left_margin);
+    self.containerView.size = CGSizeMake(con_w, conH);
+    self.containerView.center = CGPointMake(self.view.centerX, self.view.height * self.config.centerYPersent);
     
-    self.containerView.size = CGSizeMake(con_w, self.sureBtn.bottom);
-    self.containerView.center = CGPointMake(self.view.centerX, self.view.height * 0.4);
+    self.contentSizeInPop = [UIScreen mainScreen].bounds.size;
 }
 
 - (void)hideAlert {
@@ -162,6 +214,7 @@
     if (self.sureButtonAction) {
         self.sureButtonAction(btn);
     }
+    [self hideAlert];
 }
 
 - (void)cancelAction:(UIButton *)btn {

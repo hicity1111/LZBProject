@@ -44,5 +44,6 @@
 
 #import "LYZCurrentVCHelper.h"
 #import "UserModel.h"
+#import "LZBEnum.h"
 
 #endif /* HeaderFile_h */

@@ -161,7 +161,23 @@
     self.avatarView.image = self.config.avatarImg;
     self.nameLb.text = self.config.studentName;
     [self.nameLb sizeToFit];
-    self.sexImgV.image = self.config.isGirl ? IMAGE_NAMED(@"user_girl") : IMAGE_NAMED(@"user_boy");
+    
+    switch (self.config.sex) {
+        case LZBStudentSex_Boy:
+            self.sexImgV.hidden = NO;
+            self.sexImgV.image = IMAGE_NAMED(@"user_boy");
+            break;
+        case LZBStudentSex_Girl:
+            self.sexImgV.hidden = NO;
+            self.sexImgV.image = IMAGE_NAMED(@"user_girl");
+            break;
+        case LZBStudentSex_Secret:
+            self.sexImgV.hidden = YES;
+            break;
+        default:
+            break;
+    }
+    
     self.schoolLb.text = self.config.schoolName;
     [self.schoolLb sizeToFit];
     self.classLb.text = self.config.className;

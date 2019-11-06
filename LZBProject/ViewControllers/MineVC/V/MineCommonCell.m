@@ -12,6 +12,8 @@
 #import "LYZCurrentVCHelper.h"
 #import "LZBAlertViewController.h"
 
+#import "HWPop.h"
+
 @interface MineCommonCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *leftLb;
@@ -135,26 +137,52 @@
 
 /// 清除缓存
 - (void)cleanCache {
-    LYZCleanCache *manager = [LYZCleanCache sharedCleanManager];
-    NSString *cacheFolder = [LYZSandBoxPath path4Tmp];
-    CGFloat folderSize = [manager folderSizeAtPath:cacheFolder];
-//    [manager cleanFoldersWithPath:cacheFolder];
+    LZBAlertConfig *config = [[LZBAlertConfig alloc] init];
+    config.title = @"清除缓存";
+    config.message = @"确定要清除缓存？";
+    config.cancelText = @"取消";
+    config.sureText = @"确定";
     
-    NSString *message = [NSString stringWithFormat:@"共清理了 %.2f M", folderSize];
-    [manager tokenAnimationWithView:[UIApplication sharedApplication].keyWindow
-                            message:message];
+    LZBAlertViewController *alertVC = [[LZBAlertViewController alloc] initWithConfig:config];
+    [alertVC alertWithViewController:[LYZCurrentVCHelper getCurrentVC] AgreeBlock:^(UIButton * _Nonnull btn) {
+        
+        LYZCleanCache *manager = [LYZCleanCache sharedCleanManager];
+            NSString *cacheFolder = [LYZSandBoxPath path4Tmp];
+            CGFloat folderSize = [manager folderSizeAtPath:cacheFolder];
+        //    [manager cleanFoldersWithPath:cacheFolder];
+            
+            NSString *message = [NSString stringWithFormat:@"共清理了 %.2f M", folderSize];
+            [manager tokenAnimationWithView:[UIApplication sharedApplication].keyWindow
+                                    message:message];
+        
+    } cancelBlock:nil];
 }
 
 /// 用户协议
 - (void)seeUserProtocol {
+    LZBAlertConfig *config = [[LZBAlertConfig alloc] init];
+    config.title = @"用户协议";
+    config.message = @" 这里是用户须知这里是用户须知这里是用户须知这里是用户须知这里是用户须知这里是用户须知这里是用户须知这里是用户须知这里是用户须知\n   这里是用户须知这里是用户须知这里户须知这里是用户须知这里是用户须知这里是用户须知这里是用户须知这里是用户须知这里是用户须知这里是用户须知这里是用户须知这里是用户须知";
+    config.sureText = @"确定";
     
+    LZBAlertViewController *alertVC = [[LZBAlertViewController alloc] initWithConfig:config];
+    [alertVC alertWithViewController:[LYZCurrentVCHelper getCurrentVC] AgreeBlock:^(UIButton * _Nonnull btn) {
+        
+    } cancelBlock:nil];
 }
 
 /// 版本号
 - (void)requestVersionUpdate {
-    [self alertWithTitle:@"更新版本" message:@"有新版本啦，是否去AppStore更新？" sureButtonText:@"确定" cancelButtonText:@"取消" sureActionBlock:^(UIAlertAction *action) {
+    LZBAlertConfig *config = [[LZBAlertConfig alloc] init];
+    config.title = @"更新版本";
+    config.message = @"有新版本啦，是否去AppStore更新？";
+    config.cancelText = @"取消";
+    config.sureText = @"确定";
+    
+    LZBAlertViewController *alertVC = [[LZBAlertViewController alloc] initWithConfig:config];
+    [alertVC alertWithViewController:[LYZCurrentVCHelper getCurrentVC] AgreeBlock:^(UIButton * _Nonnull btn) {
         
-    } cancelActionBlock:nil];
+    } cancelBlock:nil];
 }
 
 /// 打客服电话

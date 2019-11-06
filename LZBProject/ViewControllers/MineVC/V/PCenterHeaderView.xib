@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15508"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -130,17 +130,6 @@
                         <constraint firstItem="FkM-Yc-czl" firstAttribute="leading" secondItem="jpE-Qd-0Xi" secondAttribute="trailing" constant="60" id="xtx-KF-wp2"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7i-vI-osf">
-                    <rect key="frame" x="339.5" y="44" width="30" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="Z7i-vI-osf" secondAttribute="height" multiplier="1:1" id="Gzy-rk-CDs"/>
-                        <constraint firstAttribute="width" constant="30" id="hrD-3J-H7Z"/>
-                    </constraints>
-                    <state key="normal" image="ic_message"/>
-                    <connections>
-                        <action selector="seeNoticeAction:" destination="EfQ-fb-WaE" eventType="touchUpInside" id="Jbw-Wm-Ve5"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234567890" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSW-lj-v7g">
                     <rect key="frame" x="145.5" y="86.5" width="78" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -173,7 +162,6 @@
                 <constraint firstItem="8UO-9I-euI" firstAttribute="leading" secondItem="QZG-h7-Qi5" secondAttribute="leading" id="1xf-hN-2Pp"/>
                 <constraint firstItem="fl1-d0-X4f" firstAttribute="top" secondItem="MSW-lj-v7g" secondAttribute="top" id="2da-rk-Pj1"/>
                 <constraint firstItem="MSW-lj-v7g" firstAttribute="centerY" secondItem="QZG-h7-Qi5" secondAttribute="centerY" id="3V6-uR-c7f"/>
-                <constraint firstItem="Z7i-vI-osf" firstAttribute="top" secondItem="EfQ-fb-WaE" secondAttribute="top" constant="44" id="8bw-fG-cFq"/>
                 <constraint firstItem="k2w-P2-k3O" firstAttribute="leading" secondItem="jRV-7c-fnM" secondAttribute="trailing" constant="6.5" id="AYe-5D-JL7"/>
                 <constraint firstItem="R9f-ny-WWo" firstAttribute="leading" secondItem="Cv0-Eb-5KE" secondAttribute="leading" constant="20" id="CYp-40-kyj"/>
                 <constraint firstItem="QZG-h7-Qi5" firstAttribute="leading" secondItem="jRV-7c-fnM" secondAttribute="leading" id="Dau-tE-0Ha"/>
@@ -189,7 +177,6 @@
                 <constraint firstItem="eiB-Pw-46L" firstAttribute="leading" secondItem="Cv0-Eb-5KE" secondAttribute="leading" id="cdw-Uh-RLx"/>
                 <constraint firstItem="8UO-9I-euI" firstAttribute="top" secondItem="QZG-h7-Qi5" secondAttribute="bottom" constant="12" id="fOG-VW-AEt"/>
                 <constraint firstItem="eiB-Pw-46L" firstAttribute="trailing" secondItem="Cv0-Eb-5KE" secondAttribute="trailing" id="h2S-wK-diZ"/>
-                <constraint firstItem="Cv0-Eb-5KE" firstAttribute="trailing" secondItem="Z7i-vI-osf" secondAttribute="trailing" constant="5.5" id="hOV-DQ-tcX"/>
                 <constraint firstItem="JxW-nO-1KH" firstAttribute="leading" secondItem="8UO-9I-euI" secondAttribute="leading" id="ic7-fv-Ixt"/>
                 <constraint firstItem="ATF-o9-IJK" firstAttribute="leading" secondItem="Cv0-Eb-5KE" secondAttribute="leading" constant="15" id="pfY-hA-ET0"/>
                 <constraint firstItem="eiB-Pw-46L" firstAttribute="top" secondItem="EfQ-fb-WaE" secondAttribute="top" id="qb1-Cc-tfc"/>
@@ -203,8 +190,6 @@
                 <outlet property="changePwdBtn" destination="FkM-Yc-czl" id="bZR-Mx-DSZ"/>
                 <outlet property="feedbackBtn" destination="ZPJ-hg-kdy" id="uGu-Vf-nOU"/>
                 <outlet property="myResourceBtn" destination="jpE-Qd-0Xi" id="tiZ-bb-zZM"/>
-                <outlet property="noticeBtn" destination="Z7i-vI-osf" id="zLK-p9-bAg"/>
-                <outlet property="noticeBtnTopConstraint" destination="8bw-fG-cFq" id="vFO-3M-Gdg"/>
                 <outlet property="userAccountLb" destination="MSW-lj-v7g" id="f27-fo-pc5"/>
                 <outlet property="userClassLb" destination="JxW-nO-1KH" id="BMm-Uw-7Ic"/>
                 <outlet property="userGenderImgV" destination="k2w-P2-k3O" id="U0K-K6-5Gf"/>
@@ -217,7 +202,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_message" width="17" height="17"/>
         <image name="user_QRCode" width="32" height="32"/>
         <image name="user_feedback" width="60" height="60"/>
         <image name="user_girl" width="15" height="15"/>

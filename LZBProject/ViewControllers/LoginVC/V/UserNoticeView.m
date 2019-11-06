@@ -51,7 +51,7 @@
     btmLine.backgroundColor = kMAIN00B5;
     
     WKWebView *wv = [[WKWebView alloc] initWithFrame:CGRectZero configuration:[[WKWebViewConfiguration alloc] init]];
-    NSURLRequest *reqest = [NSURLRequest requestWithURL:[NSURL URLWithString:Aggrement_URL]];
+    NSURLRequest *reqest = [NSURLRequest requestWithURL:[NSURL URLWithString:Agrement_URL]];
     [wv loadRequest:reqest];
     
     UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];

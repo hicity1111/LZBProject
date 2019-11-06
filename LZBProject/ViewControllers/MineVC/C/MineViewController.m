@@ -12,6 +12,7 @@
 #import "PCenterHeaderView.h"
 #import "MineCommonCell.h"
 #import "MineLogoutCell.h"
+#import "LZBAlertViewController.h"
 
 #define tableView_HeaderView_Height 300.f
 #define tableView_CommonCell_Height 45.f
@@ -37,7 +38,6 @@
     
     self.view.backgroundColor = VC_BACKGROUNDCOLOR;
     [self addCustomView];
-        
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -47,7 +47,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 
@@ -61,22 +61,28 @@
     PCenterHeaderView *pchView = [nibView firstObject];
     pchView.frame = CGRectMake(0, 0, kScreenWidth, tableView_HeaderView_Height);
     pchView.vc = self;
+    pchView.model = [UserModel findUserInfoResult];
     
     self.tableView.tableHeaderView = pchView;
+    [pchView.noticeBtn showNumberBadgeValue:@"20"];
 }
 
 /// 退出登录
 - (void)logoutAction {
-    UIAlertController *alert = [self alertWithTitle:@"确定退出？" sureButtonText:@"确定" cancelButtonText:@"取消" sureActionBlock:^(UIAlertAction *action) {
-        [self sureLogout];
-    } cancelActionBlock:nil];
+    LZBAlertConfig *config = [[LZBAlertConfig alloc] init];
+    config.title = @"确定退出？";
+    config.message = @"";
+    config.cancelText = @"取消";
+    config.sureText = @"确定";
     
-    [self presentViewController:alert animated:YES completion:nil];
+    LZBAlertViewController *alertVC = [[LZBAlertViewController alloc] initWithConfig:config];
+    [alertVC alertWithViewController:[LYZCurrentVCHelper getCurrentVC] AgreeBlock:^(UIButton * _Nonnull btn) {
+        [self sureLogout];
+    } cancelBlock:nil];
 }
 
 - (void)sureLogout {
     /// 请求后台退出登录
-    
     SETUSER_BOOL(IS_USER_LOGIN, NO);
     SDUserDefaultsSync;
     

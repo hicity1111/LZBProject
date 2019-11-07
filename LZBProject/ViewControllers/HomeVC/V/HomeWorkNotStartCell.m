@@ -9,6 +9,7 @@
 #import "HomeWorkNotStartCell.h"
 #import "NSString+LZBMap.h"
 #import "OYCountDownManager.h"
+#import "LZBSubjectLabelColorModel.h"
 
 @interface HomeWorkNotStartCell ()
 
@@ -58,39 +59,20 @@
     self.containerView.layer.shadowRadius = 8;
     
     [self.leftTimeLb setCornerRadiusAuto];
+    
+    [self.subjectLb setRoundedCorners:LYZRectCornerTopLeft
+                           withRadius:8.f];
+    self.subjectLb.clipsToBounds = YES;
 }
 
 - (void)setModel:(HomeModel *)model{
     _model = model;
     
     NSString *subjectText = [NSString mt_abbreviationMap:IFISNIL(model.subjectAbbreviation)];
+    LZBSubjectLabelColorModel *slcModel = [LZBSubjectLabelColorModel getModelWithSubjectName:subjectText];
     _subjectLb.text = subjectText;
-    
-    if ([subjectText isEqualToString:@"语文"]) {
-        _subjectLb.textColor = kMAIN00A1;
-        _subjectLb.backgroundColor = KMAINB2E3;
-    }
-    else if ([subjectText isEqualToString:@"数学"]) {
-        _subjectLb.textColor = kMAIN4D93;
-        _subjectLb.backgroundColor = [UIColor colorWithHex:@"#4D93FD" alpha:0.34];
-    }
-    else if ([subjectText isEqualToString:@"英语"]) {
-        _subjectLb.textColor = kMAINAA6F;
-        _subjectLb.backgroundColor = kMAINE4D1;
-    }
-    else if ([subjectText isEqualToString:@"物理"]) {
-//        _subjectLb.textColor = kMAIN00A1;
-//        _subjectLb.backgroundColor = KMAINB2E3;
-    }
-    else if ([subjectText isEqualToString:@"化学"]) {
-//        _subjectLb.textColor = kMAIN00A1;
-//        _subjectLb.backgroundColor = KMAINB2E3;
-    }
-    else if ([subjectText isEqualToString:@"生物"]) {
-//        _subjectLb.textColor = kMAIN00A1;
-//        _subjectLb.backgroundColor = KMAINB2E3;
-    }
-    
+    _subjectLb.textColor = slcModel.textColor;
+    _subjectLb.backgroundColor = slcModel.backgroundColor;
     
     NSInteger homeworkType = [model.homeworkType intValue];
     NSInteger homeworkIshp = model.homeworkIshp;
@@ -114,6 +96,7 @@
         
         [_questionTypeLb setRoundedCorners:LYZRectCornerBottomRight
                                 withRadius:8.f];
+        _questionTypeLb.clipsToBounds = YES;
     } else {//
         _hupiLb.hidden = NO;
         _tagSepLine.hidden = NO;
@@ -122,6 +105,7 @@
         [_questionTypeLb noCornerRadius];
         [_hupiLb setRoundedCorners:LYZRectCornerBottomRight
                         withRadius:8.f];
+        _hupiLb.clipsToBounds = YES;
     }
     _titleLb.text = _model.homeworkName;
     

@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 倒计时到0时回调
 @property (nonatomic, copy) void(^countDownZero)(void);
+
 @property (nonatomic, strong) HomeModel *model;
 
 @property (nonatomic, strong) HomeModel *resourcesModel;

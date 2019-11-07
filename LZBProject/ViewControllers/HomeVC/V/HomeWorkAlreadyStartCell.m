@@ -11,6 +11,7 @@
 #import "NSString+LZBMap.h"
 #import "OYCountDownManager.h"
 #import "UILabel+AttributedString.h"
+#import "LZBSubjectLabelColorModel.h"
 
 @interface HomeWorkAlreadyStartCell (){
     NSInteger   _timeCountDown;
@@ -82,6 +83,8 @@
     return self;
 }
 
+
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     
@@ -104,6 +107,7 @@
     
     [self.subjectLb setRoundedCorners:LYZRectCornerTopLeft
                            withRadius:8.f];
+    self.subjectLb.clipsToBounds = YES;
     // Initialization code
 }
 
@@ -123,33 +127,10 @@
 -(void)setModel:(HomeModel *)model{
     _model = model;
     NSString *subjectText = [NSString mt_abbreviationMap:IFISNIL(model.subjectAbbreviation)];
+    LZBSubjectLabelColorModel *slcModel = [LZBSubjectLabelColorModel getModelWithSubjectName:subjectText];
     _subjectLb.text = subjectText;
-    
-    if ([subjectText isEqualToString:@"语文"]) {
-        _subjectLb.textColor = kMAIN00A1;
-        _subjectLb.backgroundColor = KMAINB2E3;
-    }
-    else if ([subjectText isEqualToString:@"数学"]) {
-        _subjectLb.textColor = kMAIN4D93;
-        _subjectLb.backgroundColor = [UIColor colorWithHex:@"#4D93FD" alpha:0.34];
-    }
-    else if ([subjectText isEqualToString:@"英语"]) {
-        _subjectLb.textColor = kMAINAA6F;
-        _subjectLb.backgroundColor = kMAINE4D1;
-    }
-    else if ([subjectText isEqualToString:@"物理"]) {
-//        _subjectLb.textColor = kMAIN00A1;
-//        _subjectLb.backgroundColor = KMAINB2E3;
-    }
-    else if ([subjectText isEqualToString:@"化学"]) {
-//        _subjectLb.textColor = kMAIN00A1;
-//        _subjectLb.backgroundColor = KMAINB2E3;
-    }
-    else if ([subjectText isEqualToString:@"生物"]) {
-//        _subjectLb.textColor = kMAIN00A1;
-//        _subjectLb.backgroundColor = KMAINB2E3;
-    }
-    
+    _subjectLb.textColor = slcModel.textColor;
+    _subjectLb.backgroundColor = slcModel.backgroundColor;
     
    NSInteger homeworkType = [model.homeworkType intValue];
    NSInteger homeworkIshp = model.homeworkIshp;
@@ -173,6 +154,7 @@
        
        [_questionTypeLb setRoundedCorners:LYZRectCornerBottomRight
                                withRadius:8.f];
+       _questionTypeLb.clipsToBounds = YES;
        
    } else {//
        _hupiLb.hidden = NO;
@@ -182,6 +164,7 @@
        [_questionTypeLb noCornerRadius];
        [_hupiLb setRoundedCorners:LYZRectCornerBottomRight
                        withRadius:8.f];
+       _hupiLb.clipsToBounds = YES;
    }
    _titleLb.text = _model.homeworkName;
    
@@ -247,21 +230,29 @@
 - (void)setResourcesModel:(HomeModel *)resourcesModel{
     _resourcesModel = resourcesModel;
     
-    _subjectLb.text = [NSString mt_abbreviationMap:IFISNIL(_resourcesModel.subjectAbbreviation)];
-      NSInteger homeworkType = _resourcesModel.resourceType;
-      NSInteger homeworkIshp = _resourcesModel.homeworkIshp;
-      if (homeworkType == 1) {//普通作业
-          _questionTypeLb.text = @"视频";
-      }else if (homeworkType == 2){
-          _questionTypeLb.text = @"音频";
-      }else if (homeworkType == 3){
-          _questionTypeLb.text = @"图片";
-      }
-      _hupiLb.hidden = YES;
-      _tagSepLine.hidden = YES;
-      _cellFlagImgV.hidden = YES;
-
-      _titleLb.text = _resourcesModel.resourceName;
+    NSString *subjectText = [NSString mt_abbreviationMap:IFISNIL(resourcesModel.subjectAbbreviation)];
+    LZBSubjectLabelColorModel *slcModel = [LZBSubjectLabelColorModel getModelWithSubjectName:subjectText];
+    _subjectLb.text = subjectText;
+    _subjectLb.textColor = slcModel.textColor;
+    _subjectLb.backgroundColor = slcModel.backgroundColor;
+    
+    NSInteger homeworkType = _resourcesModel.resourceType;
+//    NSInteger homeworkIshp = _resourcesModel.homeworkIshp;
+    if (homeworkType == 1) {//普通作业
+        _questionTypeLb.text = @"视频";
+    }else if (homeworkType == 2){
+        _questionTypeLb.text = @"音频";
+    }else if (homeworkType == 3){
+        _questionTypeLb.text = @"图片";
+    }
+    [_questionTypeLb setRoundedCorners:LYZRectCornerBottomRight
+                            withRadius:8.f];
+    
+    _hupiLb.hidden = YES;
+    _tagSepLine.hidden = YES;
+    _cellFlagImgV.hidden = YES;
+    
+    _titleLb.text = _resourcesModel.resourceName;
     
     NSNumber *homeworkStarttime = _resourcesModel.createTime;
     NSTimeInterval timeInterval=[homeworkStarttime doubleValue];

@@ -13,11 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef enum : NSUInteger {
     
-    kErrorFlagShiBai                   = 0,//失败
-    kErrorFlagSuccess                  = 1,//成功
-    kErrorFlagQiangZhiShengJi           = 2,//强制升级
-    kErrorFlagFeiQiangZhiShengJi        = 3,//非强制升级
-    kErrorFlagInvalidToken             = 4,//token失效
+    kErrorFlagShiBai                = 0,//失败
+    kErrorFlagSuccess               = 1,//成功
+    kErrorFlagQiangZhiShengJi       = 2,//强制升级
+    kErrorFlagFeiQiangZhiShengJi    = 3,//非强制升级
+    kErrorFlagInvalidToken          = 4,//token失效
     
 } ErrorFlag;
 

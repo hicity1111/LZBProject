@@ -129,6 +129,7 @@
 		8B7EDA17237255CA0017B08B /* HWPopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA0A237255C90017B08B /* HWPopController.m */; };
 		8B7EDA18237255CA0017B08B /* HWPopNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA0B237255C90017B08B /* HWPopNavigationController.m */; };
 		8B7EDA19237255CA0017B08B /* HWPopTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA11237255C90017B08B /* HWPopTransitioningDelegate.m */; };
+		8B7EDA202373ECCA0017B08B /* LZBSubjectLabelColorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA1F2373ECCA0017B08B /* LZBSubjectLabelColorModel.m */; };
 		8B9CB3122369699D0092F7DE /* LYZCleanCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB3112369699D0092F7DE /* LYZCleanCache.m */; };
 		8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB31623697C8A0092F7DE /* LYZSandBoxPath.m */; };
 		8BCD1226236192F600BCCB08 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCD1225236192F600BCCB08 /* Login.storyboard */; };
@@ -338,7 +339,7 @@
 		0B92FB5C2350820000D813B3 /* UIFont+LZBExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+LZBExtension.h"; sourceTree = "<group>"; };
 		0B92FB5D2350820000D813B3 /* UIFont+LZBExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+LZBExtension.m"; sourceTree = "<group>"; };
 		0B92FB62235087A500D813B3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		0BBCD668234DBFAD00E4970A /* LZBProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LZBProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BBCD668234DBFAD00E4970A /* 乐知帮.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "乐知帮.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BBCD66B234DBFAD00E4970A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0BBCD66C234DBFAD00E4970A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0BBCD671234DBFAD00E4970A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -441,6 +442,8 @@
 		8B7EDA10237255C90017B08B /* HWPopTransitioningDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWPopTransitioningDelegate.h; sourceTree = "<group>"; };
 		8B7EDA11237255C90017B08B /* HWPopTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWPopTransitioningDelegate.m; sourceTree = "<group>"; };
 		8B7EDA1A237277340017B08B /* LZBEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBEnum.h; sourceTree = "<group>"; };
+		8B7EDA1E2373ECCA0017B08B /* LZBSubjectLabelColorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBSubjectLabelColorModel.h; sourceTree = "<group>"; };
+		8B7EDA1F2373ECCA0017B08B /* LZBSubjectLabelColorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBSubjectLabelColorModel.m; sourceTree = "<group>"; };
 		8B9CB3102369699D0092F7DE /* LYZCleanCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYZCleanCache.h; sourceTree = "<group>"; };
 		8B9CB3112369699D0092F7DE /* LYZCleanCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYZCleanCache.m; sourceTree = "<group>"; };
 		8B9CB31623697C8A0092F7DE /* LYZSandBoxPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYZSandBoxPath.m; sourceTree = "<group>"; };
@@ -612,6 +615,8 @@
 				8B9CB3112369699D0092F7DE /* LYZCleanCache.m */,
 				0B0F6BB623601FF200537128 /* Utils.h */,
 				0B0F6BB723601FF200537128 /* Utils.m */,
+				8B7EDA1E2373ECCA0017B08B /* LZBSubjectLabelColorModel.h */,
+				8B7EDA1F2373ECCA0017B08B /* LZBSubjectLabelColorModel.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1119,7 +1124,7 @@
 		0BBCD669234DBFAD00E4970A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0BBCD668234DBFAD00E4970A /* LZBProject.app */,
+				0BBCD668234DBFAD00E4970A /* 乐知帮.app */,
 				0BBCD683234DBFAE00E4970A /* LZBProjectTests.xctest */,
 				0BBCD68E234DBFAE00E4970A /* LZBProjectUITests.xctest */,
 			);
@@ -1677,7 +1682,7 @@
 			);
 			name = LZBProject;
 			productName = LZBProject;
-			productReference = 0BBCD668234DBFAD00E4970A /* LZBProject.app */;
+			productReference = 0BBCD668234DBFAD00E4970A /* 乐知帮.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0BBCD682234DBFAE00E4970A /* LZBProjectTests */ = {
@@ -1927,6 +1932,7 @@
 				0B4945D52357258500F19EE2 /* TriangleView.m in Sources */,
 				8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */,
 				BA6CD811237124AA0008113F /* YBIBSheetView.m in Sources */,
+				8B7EDA202373ECCA0017B08B /* LZBSubjectLabelColorModel.m in Sources */,
 				0B0F6C192366C10900537128 /* JMWaveButton.m in Sources */,
 				0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */,
 				0BF053402371631D0091EFB2 /* GGProgressView.m in Sources */,
@@ -2244,7 +2250,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.abnert.lzbStudent;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "乐知帮";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2265,7 +2271,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.abnert.lzbStudent;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "乐知帮";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -382,6 +382,130 @@ static CGFloat phoheH = 48.f, verH = 48.f, pvSpace = 16.f, vsSpace = 15.f;
     return (c >= 65 && c <= 90);
 }
 
+
+/// 整页翻转
+- (void)switchLoginWay_trans:(BOOL)sel {
+    UIViewAnimationOptions animationOptions = sel ? UIViewAnimationOptionTransitionFlipFromLeft : UIViewAnimationOptionTransitionFlipFromRight;
+    [UIView transitionFromView:(sel ? self.pwdContainerV : self.verifyCodeContainerV)
+                        toView:(sel ? self.verifyCodeContainerV : self.pwdContainerV)
+                      duration:1.f
+                       options:(animationOptions | UIViewAnimationOptionShowHideTransitionViews)
+                    completion:nil];
+    
+    if (sel) {
+        [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(bigViewW);
+            make.height.mas_equalTo(44.f);
+            make.centerX.equalTo(self.view);
+            make.top.equalTo(self.pwdContainerV.mas_bottom).offset(10.f);
+        }];
+        [self.view layoutIfNeeded];
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(bigViewW);
+                make.height.mas_equalTo(44.f);
+                make.centerX.equalTo(self.view);
+                make.top.equalTo(self.verifyCodeContainerV.mas_bottom).offset(10.f);
+            }];
+            [self.view layoutIfNeeded];
+        }];
+    } else {
+        [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(bigViewW);
+            make.height.mas_equalTo(44.f);
+            make.centerX.equalTo(self.view);
+            make.top.equalTo(self.verifyCodeContainerV.mas_bottom).offset(10.f);
+        }];
+        [self.view layoutIfNeeded];
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(bigViewW);
+                make.height.mas_equalTo(44.f);
+                make.centerX.equalTo(self.view);
+                make.top.equalTo(self.pwdContainerV.mas_bottom).offset(10.f);
+            }];
+            [self.view layoutIfNeeded];
+        }];
+    }
+}
+/// 卡片式
+- (void)switchLoginWay_sysAni:(BOOL)sel {
+    if (sel) {
+        self.verifyCodeContainerV.hidden = NO;
+        self.verifyCodeContainerV.width = 0.f;
+        self.verifyCodeContainerV.alpha = 0.f;
+        
+        self.pwdContainerV.alpha = 1.f;
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            self.verifyCodeContainerV.width = bigViewW;
+            self.verifyCodeContainerV.alpha = 1.f;
+            
+            self.pwdContainerV.width = 0.f;
+            self.pwdContainerV.alpha = 0.f;
+            
+        } completion:^(BOOL finished) {
+            self.pwdContainerV.hidden = YES;
+        }];
+        
+        [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(bigViewW);
+            make.height.mas_equalTo(44.f);
+            make.centerX.equalTo(self.view);
+            make.top.equalTo(self.pwdContainerV.mas_bottom).offset(10.f);
+        }];
+        [self.view layoutIfNeeded];
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(bigViewW);
+                make.height.mas_equalTo(44.f);
+                make.centerX.equalTo(self.view);
+                make.top.equalTo(self.verifyCodeContainerV.mas_bottom).offset(10.f);
+            }];
+            [self.view layoutIfNeeded];
+        }];
+    }
+    else {
+        self.pwdContainerV.hidden = NO;
+        self.pwdContainerV.alpha = 0.f;
+        self.pwdContainerV.width = 0.f;
+        
+        self.verifyCodeContainerV.alpha = 1.f;
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            self.pwdContainerV.width = bigViewW;
+            self.pwdContainerV.alpha = 1.f;
+            
+            self.verifyCodeContainerV.width = 0;
+            self.verifyCodeContainerV.alpha = 0.f;
+            
+            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(bigViewW);
+                make.height.mas_equalTo(44.f);
+                make.centerX.equalTo(self.view);
+                make.top.equalTo(self.pwdContainerV.mas_bottom).offset(10.f);
+            }];
+        } completion:^(BOOL finished) {
+            self.verifyCodeContainerV.hidden = YES;
+        }];
+        
+        [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(bigViewW);
+            make.height.mas_equalTo(44.f);
+            make.centerX.equalTo(self.view);
+            make.top.equalTo(self.verifyCodeContainerV.mas_bottom).offset(10.f);
+        }];
+        [self.view layoutIfNeeded];
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(bigViewW);
+                make.height.mas_equalTo(44.f);
+                make.centerX.equalTo(self.view);
+                make.top.equalTo(self.pwdContainerV.mas_bottom).offset(10.f);
+            }];
+            [self.view layoutIfNeeded];
+        }];
+    }
+}
+
 #pragma mark - Event Response
 
 /// 点击显示密码
@@ -450,85 +574,7 @@ static CGFloat phoheH = 48.f, verH = 48.f, pvSpace = 16.f, vsSpace = 15.f;
     [self updateLoginButtonState];
     self.verifyCodeTF.text = @"";
     
-    BOOL sel = btn.selected;
-    if (sel) {
-        self.verifyCodeContainerV.hidden = NO;
-        self.verifyCodeContainerV.width = 0.f;
-        self.verifyCodeContainerV.alpha = 0.f;
-        
-        
-//        [UIView transitionFromView:<#(nonnull UIView *)#> toView:<#(nonnull UIView *)#> duration:<#(NSTimeInterval)#> options:<#(UIViewAnimationOptions)#> completion:<#^(BOOL finished)completion#>];
-        
-        self.pwdContainerV.alpha = 1.f;
-        [UIView animateWithDuration:kAnimationDuration animations:^{
-            self.verifyCodeContainerV.width = bigViewW;
-            self.verifyCodeContainerV.alpha = 1.f;
-            
-            self.pwdContainerV.width = 0.f;
-            self.pwdContainerV.alpha = 0.f;
-            
-        } completion:^(BOOL finished) {
-            self.pwdContainerV.hidden = YES;
-        }];
-        
-        [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(bigViewW);
-            make.height.mas_equalTo(44.f);
-            make.centerX.equalTo(self.view);
-            make.top.equalTo(self.pwdContainerV.mas_bottom).offset(10.f);
-        }];
-        [self.view layoutIfNeeded];
-        [UIView animateWithDuration:kAnimationDuration animations:^{
-            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.width.mas_equalTo(bigViewW);
-                make.height.mas_equalTo(44.f);
-                make.centerX.equalTo(self.view);
-                make.top.equalTo(self.verifyCodeContainerV.mas_bottom).offset(10.f);
-            }];
-            [self.view layoutIfNeeded];
-        }];
-        
-        
-    } else {
-        self.pwdContainerV.hidden = NO;
-        self.pwdContainerV.alpha = 0.f;
-        self.pwdContainerV.width = 0.f;
-        
-        self.verifyCodeContainerV.alpha = 1.f;
-        [UIView animateWithDuration:kAnimationDuration animations:^{
-            self.pwdContainerV.width = bigViewW;
-            self.pwdContainerV.alpha = 1.f;
-            
-            self.verifyCodeContainerV.width = 0;
-            self.verifyCodeContainerV.alpha = 0.f;
-            
-            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.width.mas_equalTo(bigViewW);
-                make.height.mas_equalTo(44.f);
-                make.centerX.equalTo(self.view);
-                make.top.equalTo(self.pwdContainerV.mas_bottom).offset(10.f);
-            }];
-        } completion:^(BOOL finished) {
-            self.verifyCodeContainerV.hidden = YES;
-        }];
-        
-        [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(bigViewW);
-            make.height.mas_equalTo(44.f);
-            make.centerX.equalTo(self.view);
-            make.top.equalTo(self.verifyCodeContainerV.mas_bottom).offset(10.f);
-        }];
-        [self.view layoutIfNeeded];
-        [UIView animateWithDuration:kAnimationDuration animations:^{
-            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.width.mas_equalTo(bigViewW);
-                make.height.mas_equalTo(44.f);
-                make.centerX.equalTo(self.view);
-                make.top.equalTo(self.pwdContainerV.mas_bottom).offset(10.f);
-            }];
-            [self.view layoutIfNeeded];
-        }];
-    }
+    [self switchLoginWay_sysAni:btn.selected];
 }
 
 - (void)seeUserNoticeAction:(UIButton *)btn {

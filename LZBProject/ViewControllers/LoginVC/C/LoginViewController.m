@@ -11,35 +11,68 @@
 #import "LYZTextField.h"
 #import "LZBNetworkURL.h"
 #import "LoginDataService.h"
+#import "UIImage+CompressImage.h"
 
 #import "AppDelegate.h"
+
+static CGFloat bigViewW = 300.f;
+//static CGFloat bigViewLeftSpace = 37.5;
+static CGFloat userH = 48.f, pwdH = 48.f, saveH = 30.f, upSpace = 16.f, psSpace = 10.f;
+static CGFloat phoheH = 48.f, verH = 48.f, pvSpace = 16.f, vsSpace = 15.f;
 
 @interface LoginViewController () <UITextFieldDelegate>
 {
     NSString *_username;
     NSString *_password;
+    
+    CGFloat pwdConH;
+    CGFloat verConH;
 }
 
-@property (nonatomic, strong) LoginDataService *dataService;
+@property (nonatomic, strong) LoginDataService  *dataService;
+
+/// backgroundImage
+@property (nonatomic, strong) UIImageView       *backImgV;
+/// logo
+@property (nonatomic, strong) UIImageView       *logoV;
+
+/// 密码登录容器（用户名、密码、记住密码、忘记密码）
+@property (nonatomic, strong) UIView            *pwdContainerV;
+/// 验证码登录容器（手机号、验证码）
+@property (nonatomic, strong) UIView            *verifyCodeContainerV;
+
+
 /// 用户名 输入框
-@property (nonatomic, strong) LYZTextField *userTF;
-
+@property (nonatomic, strong) LYZTextField      *userTF;
 /// 密码 输入框
-@property (nonatomic, strong) LYZTextField *pwdTF;
-
+@property (nonatomic, strong) LYZTextField      *pwdTF;
 /// 显示/隐藏 密码
-@property (nonatomic, strong) UIButton *showPwdBtn;
-
+@property (nonatomic, strong) UIButton          *showPwdBtn;
 /// 记住密码
-@property (nonatomic, strong) UIButton *savePwdBtn;
-
+@property (nonatomic, strong) UIButton          *savePwdBtn;
 /// 忘记密码
-@property (nonatomic, strong) UIButton *forgetPwdBtn;
+@property (nonatomic, strong) UIButton          *forgetPwdBtn;
+
+
+/// 手机号
+@property (nonatomic, strong) LYZTextField      *phoneTF;
+/// 验证码
+@property (nonatomic, strong) LYZTextField      *verifyCodeTF;
+/// 发送验证码按钮
+@property (nonatomic, strong) JMButton          *sendVerifyCodeBtn;
+
 
 /// 登录
-@property (nonatomic, strong) UIButton *loginBtn;
+@property (nonatomic, strong) UIButton          *loginBtn;
+/// 密码登录/验证码登录切换按钮
+@property (nonatomic, strong) UIButton          *swichBtn;
 
-@property (nonatomic, strong) UIButton *seeUserNotice;
+/// 查看用户服务协议
+@property (nonatomic, strong) UIButton          *seeUserNotice;
+/// 公司信息
+@property (nonatomic, strong) UILabel           *compLb;
+/// 公司电话
+@property (nonatomic, strong) UILabel           *phoneLb;
 
 @end
 
@@ -51,11 +84,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    [super viewWillAppear:animated];
+    pwdConH = userH + upSpace + pwdH + psSpace + saveH;
+    verConH = phoheH + verH + pvSpace + vsSpace;
     
     [self addSubviews];
     [self adjustShowUserNoticeView];
@@ -63,24 +93,21 @@
     BOOL isSavePwd = GETUSER_BOOL(IS_SELECT_SAVEPWD);
     self.savePwdBtn.selected = isSavePwd;
     
-    NSString *userName = GETUSER_STRING(USER_NAME);
-    if (userName && userName.length > 0) {
-        self.userTF.text = userName;
-    }
-    NSString *pwd = GETUSER_STRING(USER_PASSWORD);
-    if (pwd && pwd.length > 0) {
-        self.pwdTF.text = pwd;
-    }
+    [self fillTextField];
+    [self updateLoginButtonState];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
 }
 
 
@@ -95,217 +122,197 @@
     }
 }
 
+- (void) fillTextField {
+    NSString *userName = GETUSER_STRING(USER_NAME);
+    if (userName && userName.length > 0) {
+        self.userTF.text = userName;
+    }
+    NSString *pwd = GETUSER_STRING(USER_PASSWORD);
+    if (pwd && pwd.length > 0) {
+        self.pwdTF.text = pwd;
+    }
+}
+
+- (void)updateLoginButtonState {
+    /// 验证码登录
+    if (self.swichBtn.selected) {
+        if (self.phoneTF.text.length > 0 && self.verifyCodeTF.text.length > 0) {
+            self.loginBtn.enabled = YES;
+            _loginBtn.layer.shadowColor = kMAIN4759.CGColor;
+        } else {
+            self.loginBtn.enabled = NO;
+            _loginBtn.layer.shadowColor = kMAINDDDD.CGColor;
+        }
+    }
+    /// 密码登录
+    else {
+        if (self.pwdTF.text.length > 0 && self.userTF.text.length > 0) {
+            self.loginBtn.enabled = YES;
+            _loginBtn.layer.shadowColor = kMAIN4759.CGColor;
+        } else {
+            self.loginBtn.enabled = NO;
+            _loginBtn.layer.shadowColor = kMAINDDDD.CGColor;
+        }
+    }
+}
+
 - (void)showUserNoticeView {
     UserNoticeView *unv = [[UserNoticeView alloc] init];
     [unv show];
 }
 
+// 添加subviews
 - (void)addSubviews {
-    [self addBackgroundImage];
+    [self.view addSubview:self.backImgV];
+    [self.view addSubview:self.logoV];
     
-    // 创建subviews
-    UIImageView *logoV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_logo"]];
-    logoV.size = CGSizeMake(185.f, 71.f);
+    [self.view addSubview:self.pwdContainerV];
+    [self.view addSubview:self.verifyCodeContainerV];
+    self.verifyCodeContainerV.hidden = YES;
     
-    LYZTextField *userTF = [[LYZTextField alloc] init];
-    userTF.backgroundColor = WHITECOLOR;
-    userTF.placeholder = @"请输入账号";
-    userTF.textColor = kMAIN3333;
-    userTF.font = LZBRegularFont(16);
-    userTF.keyboardType = UIKeyboardTypeNamePhonePad;
-    userTF.autocorrectionType = UITextAutocorrectionTypeNo;
-    userTF.clearButtonMode = UITextFieldViewModeWhileEditing;
-    // 开始编辑前清空输入框
-//    userTF.clearsOnBeginEditing = YES;
-    userTF.tintColor = kMAIN3333;
-    userTF.delegate = self;
-    self.userTF = userTF;
+    [self.view addSubview:self.loginBtn];
+    self.loginBtn.enabled = NO;
     
-    LYZTextField *pwdTF = [[LYZTextField alloc] init];
-    pwdTF.backgroundColor = WHITECOLOR;
-    pwdTF.placeholder = @"请输入密码";
-    pwdTF.textColor = kMAIN3333;
-    pwdTF.font = LZBRegularFont(16);
-    pwdTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
-    pwdTF.autocorrectionType = UITextAutocorrectionTypeNo;
-    pwdTF.secureTextEntry = YES;
-    pwdTF.tintColor = kMAIN3333;
-    pwdTF.delegate = self;
-    self.pwdTF = pwdTF;
+    [self.view addSubview:self.swichBtn];
+    [self.view addSubview:self.seeUserNotice];
+    [self.view addSubview:self.compLb];
+    [self.view addSubview:self.phoneLb];
     
-    /// 记住密码
-    UIButton *savePwd = [UIButton buttonWithType:UIButtonTypeCustom];
-    savePwd.backgroundColor = UIColor.clearColor;
-    [savePwd setTitle:@"记住密码" forState:UIControlStateNormal];
-    [savePwd setTitleColor:WHITECOLOR forState:UIControlStateNormal];
-    savePwd.titleLabel.font = LZBRegularFont(14);
-    [savePwd setImage:[UIImage imageNamed:@"login_pwd_save_uncheck"] forState:UIControlStateNormal];
-    [savePwd setImage:[UIImage imageNamed:@"login_pwd_save_check"] forState:UIControlStateSelected];
-    savePwd.adjustsImageWhenHighlighted = NO;
-    [savePwd setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 10)];
-    [savePwd addTarget:self action:@selector(savePasswordButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.savePwdBtn = savePwd;
-    
-    /// 忘记密码
-    UIButton *forgetPwd = [UIButton buttonWithType:UIButtonTypeCustom];
-    forgetPwd.backgroundColor = UIColor.clearColor;
-    [forgetPwd setTitle:@"忘记密码？" forState:UIControlStateNormal];
-    [forgetPwd setTitleColor:WHITECOLOR forState:UIControlStateNormal];
-    forgetPwd.titleLabel.font = LZBRegularFont(14);
-    [forgetPwd addTarget:self action:@selector(forgetPasswordButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.forgetPwdBtn = forgetPwd;
-    
-    /// 登录按钮
-    UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    loginBtn.backgroundColor = kMAINFF7E;
-    [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
-    [loginBtn setTitleColor:WHITECOLOR forState:UIControlStateNormal];
-    loginBtn.titleLabel.font = LZBRegularFont(18);
-    [loginBtn addTarget:self action:@selector(loginButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.loginBtn = loginBtn;
-    
-    /// 查看用户协议
-    NSAttributedString *un1 = [[NSAttributedString alloc] initWithString:@"《" attributes:@{NSFontAttributeName: LZBRegularFont(13), NSForegroundColorAttributeName: kMAINCBE6}];
-    NSAttributedString *un2 = [[NSAttributedString alloc] initWithString:@"用户服务协议" attributes:@{NSFontAttributeName: LZBRegularFont(13), NSForegroundColorAttributeName: kMAINCBE6, NSUnderlineStyleAttributeName: @(1), NSUnderlineColorAttributeName: kMAINCBE6}];
-    NSAttributedString *un3 = [[NSAttributedString alloc] initWithString:@"》" attributes:@{NSFontAttributeName: LZBRegularFont(13), NSForegroundColorAttributeName: kMAINCBE6}];
-    NSMutableAttributedString *unMAttStr = [[NSMutableAttributedString alloc] initWithAttributedString:un1];
-    [unMAttStr appendAttributedString:un2];
-    [unMAttStr appendAttributedString:un3];
-    
-    UIButton *seeUserNotice = [UIButton buttonWithType:UIButtonTypeCustom];
-    seeUserNotice.backgroundColor = UIColor.clearColor;
-    [seeUserNotice addTarget:self action:@selector(seeUserNoticeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.seeUserNotice = seeUserNotice;
-    [seeUserNotice setAttributedTitle:unMAttStr forState:UIControlStateNormal];
-    
-    // 公司信息
-    UILabel *compLb = [[UILabel alloc] init];
-    compLb.text = @"北京艾博纳信息技术有限公司";
-    compLb.textAlignment = NSTextAlignmentCenter;
-    compLb.textColor = WHITECOLOR;
-    compLb.font = LZBRegularFont(14);
-    [compLb sizeToFit];
-    
-    // 电话
-    UILabel *phoneLb = [[UILabel alloc] init];
-    phoneLb.text = @"400-016-2123";
-    phoneLb.textAlignment = NSTextAlignmentCenter;
-    phoneLb.textColor = WHITECOLOR;
-    phoneLb.font = LZBRegularFont(14);
-    [phoneLb sizeToFit];
-    
-    
-    // 添加subviews
-    [self.view addSubview:logoV];
-    [self.view addSubview:userTF];
-    [self.view addSubview:pwdTF];
-    [self.view addSubview:savePwd];
-    [self.view addSubview:forgetPwd];
-    [self.view addSubview:loginBtn];
-    [self.view addSubview:seeUserNotice];
-    [self.view addSubview:compLb];
-    [self.view addSubview:phoneLb];
-    
-    
+    [self updateSubviewsFrame];
+}
+
+/// 更新frame
+- (void)updateSubviewsFrame {
     CGFloat topMargin = 88.f;
     if (kScreenHeight > 667.f) {
         topMargin = (kScreenHeight - 480.f) / 2.f;
     }
     // 设置约束
-    [logoV mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.logoV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(topMargin);
         make.centerX.equalTo(self.view);
     }];
-    [phoneLb mas_makeConstraints:^(MASConstraintMaker *make) {
+    
+    [self.phoneLb mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view).offset(-14);
         make.centerX.equalTo(self.view);
     }];
-    [compLb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(phoneLb.mas_top).offset(-10);
+    [self.compLb mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.phoneLb.mas_top).offset(-10);
         make.centerX.equalTo(self.view);
     }];
-    [userTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(300.f);
-        make.height.mas_equalTo(48.f);
-        make.centerX.equalTo(self.view);
-        make.top.equalTo(logoV.mas_bottom).offset(75.f);
-    }];
-    [pwdTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(300.f);
-        make.height.mas_equalTo(48.f);
-        make.centerX.equalTo(self.view);
-        make.top.equalTo(userTF.mas_bottom).offset(16.f);
-    }];
-    [savePwd mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(100.f);
-        make.height.mas_equalTo(30.f);
-        make.left.equalTo(self.pwdTF);
-        make.top.equalTo(pwdTF.mas_bottom).offset(10.f);
-    }];
-    [forgetPwd mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(100.f);
-        make.height.mas_equalTo(30.f);
-        make.right.equalTo(self.pwdTF);
-        make.centerY.equalTo(savePwd);
-    }];
-    [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(300.f);
-        make.height.mas_equalTo(44.f);
-        make.centerX.equalTo(self.view);
-        make.top.equalTo(savePwd.mas_bottom).offset(10.f);
-    }];
-    [seeUserNotice mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.seeUserNotice mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(120.f);
         make.height.mas_equalTo(30.f);
         make.centerX.equalTo(self.view);
-        make.top.equalTo(loginBtn.mas_bottom).offset(15.f);
+        make.bottom.equalTo(self.compLb.mas_top).offset(-10.f);
+    }];
+
+    [self.pwdContainerV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(bigViewW);
+        make.height.mas_equalTo(pwdConH);
+        make.top.equalTo(self.logoV.mas_bottom).offset(75.f);
+        make.centerX.equalTo(self.view);
+    }];
+    [self.userTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.equalTo(self.pwdContainerV);
+        make.height.mas_equalTo(userH);
+    }];
+    [self.pwdTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.pwdContainerV);
+        make.height.mas_equalTo(pwdH);
+        make.top.equalTo(self.userTF.mas_bottom).offset(upSpace);
+    }];
+    [self.savePwdBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(100.f);
+        make.height.mas_equalTo(saveH);
+        make.left.equalTo(self.pwdTF);
+        make.top.equalTo(self.pwdTF.mas_bottom).offset(psSpace);
+    }];
+    [self.forgetPwdBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(100.f);
+        make.top.bottom.equalTo(self.savePwdBtn);
+        make.right.equalTo(self.pwdTF);
     }];
     
+    [self.verifyCodeContainerV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(bigViewW);
+        make.height.mas_equalTo(verConH);
+        make.top.equalTo(self.logoV.mas_bottom).offset(75.f);
+        make.centerX.equalTo(self.view);
+    }];
+    [self.phoneTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.equalTo(self.verifyCodeContainerV);
+        make.height.mas_equalTo(phoheH);
+    }];
+    [self.verifyCodeTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.verifyCodeContainerV);
+        make.height.mas_equalTo(verH);
+        make.top.equalTo(self.userTF.mas_bottom).offset(pvSpace);
+    }];
+
+    [self.loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(bigViewW);
+        make.height.mas_equalTo(44.f);
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.pwdContainerV.mas_bottom).offset(10.f);
+    }];
+    
+    [self.swichBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(120.f);
+        make.height.mas_equalTo(30.f);
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.loginBtn.mas_bottom).offset(22.f);
+    }];
+
     [self.view layoutIfNeeded];
-    userTF.layer.cornerRadius = userTF.height / 2;
-    pwdTF.layer.cornerRadius = userTF.height / 2;
-    loginBtn.layer.cornerRadius = userTF.height / 2;
     
-    
-    
+    [self.userTF setCornerRadiusAuto];
+    [self.pwdTF setCornerRadiusAuto];
+    [self.phoneTF setCornerRadiusAuto];
+    [self.verifyCodeTF setCornerRadiusAuto];
+    [self.loginBtn setCornerRadiusAuto];
+
     // 设置约束过后，textfield才有正确的frame
     [self textfieldAddCustomView];
 }
 
-- (void)addBackgroundImage {
-    UIImageView *imgV = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"login_bg@3x.png" ofType:nil];
-    imgV.image = [UIImage imageWithContentsOfFile:imgPath];
-//    imgV.image = [UIImage imageNamed:@"login_bg"];
-    [self.view addSubview:imgV];
-}
-
 - (void)textfieldAddCustomView {
-    self.userTF.leftMargin = 15.f;
+    CGFloat leftMargin = 15.f;
+    CGRect iconRect = CGRectMake(0, 0, 35, 17);
+    
+    self.userTF.leftMargin = leftMargin;
     self.userTF.rightMargin = 20.f;
     UIImageView *userIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_user"]];
-    userIcon.frame = CGRectMake(0, 0, 35, 17);
+    userIcon.frame = iconRect;
     userIcon.contentMode = UIViewContentModeCenter;
     self.userTF.cusLeftView = userIcon;
     
-    self.pwdTF.leftMargin = 15.f;
+    self.pwdTF.leftMargin = leftMargin;
     self.pwdTF.rightMargin = 10.f;
     UIImageView *pwdIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_pwd"]];
-    pwdIcon.frame = CGRectMake(0, 0, 35, 17);
+    pwdIcon.frame = iconRect;
     pwdIcon.contentMode = UIViewContentModeCenter;
     self.pwdTF.cusLeftView = pwdIcon;
+    self.pwdTF.cusRightView = self.showPwdBtn;
     
-    UIButton *showPwdBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    showPwdBtn.frame = CGRectMake(0, 0, 35, 30);
-    [showPwdBtn setImage:[UIImage imageNamed:@"login_pwd_hide"] forState:UIControlStateNormal];
-    [showPwdBtn setImage:[UIImage imageNamed:@"login_pwd_show"] forState:UIControlStateSelected];
-    showPwdBtn.adjustsImageWhenHighlighted = NO;
-    [showPwdBtn addTarget:self action:@selector(showPasswordButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.pwdTF.cusRightView = showPwdBtn;
+    self.phoneTF.leftMargin = leftMargin;
+    self.phoneTF.rightMargin = 20.f;
+    UIImageView *phoneIcon = [[UIImageView alloc] initWithImage:IMAGE_NAMED(@"login_phoneNum")];
+    phoneIcon.frame = iconRect;
+    phoneIcon.contentMode = UIViewContentModeCenter;
+    self.phoneTF.cusLeftView = phoneIcon;
     
+    self.verifyCodeTF.leftMargin = leftMargin;
+    self.verifyCodeTF.rightMargin = 20.f;
+    UIImageView *verifyIcon = [[UIImageView alloc] initWithImage:IMAGE_NAMED(@"login_verifyCode")];
+    verifyIcon.frame = iconRect;
+    verifyIcon.contentMode = UIViewContentModeCenter;
+    self.verifyCodeTF.cusLeftView = verifyIcon;
+    self.verifyCodeTF.cusRightView = self.sendVerifyCodeBtn;
 }
 
-- (void)loginAction {
+- (void)loginWithUsernameAndPassword {
     LZBWeak;
     NSString *name = self.userTF.text;
     NSString *pwd = self.pwdTF.text;
@@ -356,66 +363,476 @@
 
 }
 
+- (void)loginWithPhoneNumAndVerifyCode {
+    NSString *phone = self.phoneTF.text;
+    NSString *veriCode = self.verifyCodeTF.text;
+    
+    [self showSuccess:[NSString stringWithFormat:@"%@ + %@", phone, veriCode]];
+}
+
+- (BOOL)isChar0to9:(char)c {
+    return (c >= 48 && c <= 57);
+}
+
+- (BOOL)isCharatoz:(char)c {
+    return (c >= 97 && c <= 122);
+}
+
+- (BOOL)isCharAtoZ:(char)c {
+    return (c >= 65 && c <= 90);
+}
+
 #pragma mark - Event Response
 
-- (void)showPasswordButtonClick:(UIButton *)btn {
+/// 点击显示密码
+- (void)showPasswordAction:(UIButton *)btn {
     btn.selected = !btn.selected;
     self.pwdTF.secureTextEntry = !btn.selected;
 }
 
-- (void)savePasswordButtonClick:(UIButton *)btn {
+/// 点击 记住密码
+- (void)savePasswordAction:(UIButton *)btn {
     btn.selected = !btn.selected;
     
     SETUSER_BOOL(IS_SELECT_SAVEPWD, btn.selected);
-    [SDUserDefaults synchronize];
+    SDUserDefaultsSync;
 }
 
-- (void)forgetPasswordButtonClick:(UIButton *)btn {
-    
+/// 点击 忘记密码？
+- (void)forgetPasswordAction:(UIButton *)btn {
+    [self showMessage:@"重设密码" afterDelay:0.5];
 }
 
-- (void)loginButtonClick:(UIButton *)btn {
-    NSString *user = self.userTF.text;
-    if (user.length < 3) {
-        [self showError:@"请输入正确的用户名"];
+/// 点击 获取验证码按钮
+- (void)sendVerifyCodeAction:(UIButton *)btn {
+    [self showMessage:@"获取验证码" afterDelay:0.5];
+}
+
+/// 点击 登录按钮
+- (void)loginAction:(UIButton *)btn {
+    /// 验证码登录
+    if (self.swichBtn.selected) {
+        NSString *phone = self.phoneTF.text;
+        BOOL isValidPhone = [IFISNIL(phone) mh_isValidMobile];
+        if (!isValidPhone) {
+            [self showError:@"请输入正确的手机号"];
+            return;
+        }
+        
+        [self loginWithPhoneNumAndVerifyCode];
     }
-//    BOOL isValidPhone = [NSString mh_isValidMobile:user];
-//    if (!isValidPhone) {
-//        [self showError:@"请输入正确的手机号"];
-//        return;
-//    }
-    
-    NSString *pwd = self.pwdTF.text;
-    if (pwd.length == 0) {
-        [self showError:@"请输入密码"];
-        return;
+    /// 密码登录
+    else {
+        NSString *user = self.userTF.text;
+        if (user.length < 3) {
+            [self showError:@"请输入正确的用户名"];
+            return;
+        }
+        
+        NSString *pwd = self.pwdTF.text;
+        // 密码为空时，登录按钮不可用
+//        if (pwd.length == 0) {
+//            [self showError:@"请输入密码"];
+//            return;
+//        }
+        if (![pwd lzb_isValidPassword]) {
+            [self showError:@"请输入8-16位数字字母组合"];
+            return;
+        }
+        
+        [self loginWithUsernameAndPassword];
     }
-    
-    [self loginAction];
 }
 
-- (void)seeUserNoticeButtonClick:(UIButton *)btn {
+/// 点击 验证码登录按钮
+- (void)switchLoginWayAction:(UIButton *)btn {
+    btn.selected = !btn.selected;
+    [self updateLoginButtonState];
+    self.verifyCodeTF.text = @"";
+    
+    BOOL sel = btn.selected;
+    if (sel) {
+        self.verifyCodeContainerV.hidden = NO;
+        self.verifyCodeContainerV.width = 0.f;
+        self.verifyCodeContainerV.alpha = 0.f;
+        
+        
+//        [UIView transitionFromView:<#(nonnull UIView *)#> toView:<#(nonnull UIView *)#> duration:<#(NSTimeInterval)#> options:<#(UIViewAnimationOptions)#> completion:<#^(BOOL finished)completion#>];
+        
+        self.pwdContainerV.alpha = 1.f;
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            self.verifyCodeContainerV.width = bigViewW;
+            self.verifyCodeContainerV.alpha = 1.f;
+            
+            self.pwdContainerV.width = 0.f;
+            self.pwdContainerV.alpha = 0.f;
+            
+        } completion:^(BOOL finished) {
+            self.pwdContainerV.hidden = YES;
+        }];
+        
+        [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(bigViewW);
+            make.height.mas_equalTo(44.f);
+            make.centerX.equalTo(self.view);
+            make.top.equalTo(self.pwdContainerV.mas_bottom).offset(10.f);
+        }];
+        [self.view layoutIfNeeded];
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(bigViewW);
+                make.height.mas_equalTo(44.f);
+                make.centerX.equalTo(self.view);
+                make.top.equalTo(self.verifyCodeContainerV.mas_bottom).offset(10.f);
+            }];
+            [self.view layoutIfNeeded];
+        }];
+        
+        
+    } else {
+        self.pwdContainerV.hidden = NO;
+        self.pwdContainerV.alpha = 0.f;
+        self.pwdContainerV.width = 0.f;
+        
+        self.verifyCodeContainerV.alpha = 1.f;
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            self.pwdContainerV.width = bigViewW;
+            self.pwdContainerV.alpha = 1.f;
+            
+            self.verifyCodeContainerV.width = 0;
+            self.verifyCodeContainerV.alpha = 0.f;
+            
+            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(bigViewW);
+                make.height.mas_equalTo(44.f);
+                make.centerX.equalTo(self.view);
+                make.top.equalTo(self.pwdContainerV.mas_bottom).offset(10.f);
+            }];
+        } completion:^(BOOL finished) {
+            self.verifyCodeContainerV.hidden = YES;
+        }];
+        
+        [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(bigViewW);
+            make.height.mas_equalTo(44.f);
+            make.centerX.equalTo(self.view);
+            make.top.equalTo(self.verifyCodeContainerV.mas_bottom).offset(10.f);
+        }];
+        [self.view layoutIfNeeded];
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            [self.loginBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.width.mas_equalTo(bigViewW);
+                make.height.mas_equalTo(44.f);
+                make.centerX.equalTo(self.view);
+                make.top.equalTo(self.pwdContainerV.mas_bottom).offset(10.f);
+            }];
+            [self.view layoutIfNeeded];
+        }];
+    }
+}
+
+- (void)seeUserNoticeAction:(UIButton *)btn {
     [self showUserNoticeView];
 }
 
 #pragma mark - UITextfield Delegate
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+/**
+ 0-9     48-57
+ A-Z     65-90
+ a-z     97-122
+ */
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string {
+    /// 删除键
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    
+    const char *chars = [string cStringUsingEncoding:NSUTF8StringEncoding];
+    char c = chars[0];
+    
+    if (textField == self.userTF || textField == self.pwdTF) {
+        if ([self isChar0to9:c] ||
+            [self isCharAtoZ:c] ||
+            [self isCharatoz:c]) {
+            return YES;
+        }
+        return NO;
+    }
+    else if (textField == self.phoneTF || textField == self.verifyCodeTF) {
+        if ([self isChar0to9:c]) {
+            return YES;
+        }
+        return NO;
+    }
+    return YES;
+}
+
+
+- (void)textFieldDidChange:(UITextField *)textField {
     if (textField == self.userTF) {
         if (textField.text.length > 10) {
             textField.text = [textField.text substringToIndex:10];
         }
     }
     else if (textField == self.pwdTF) {
-        
+        if (textField.text.length > 16) {
+            textField.text = [textField.text substringToIndex:16];
+        }
     }
-    return YES;
+    else if (textField == self.phoneTF) {
+        if (textField.text.length > 11) {
+            textField.text = [textField.text substringToIndex:11];
+        }
+    }
+    else if (textField == self.verifyCodeTF) {
+        if (textField.text.length > 6) {
+            textField.text = [textField.text substringToIndex:6];
+        }
+    }
+    
+    [self updateLoginButtonState];
 }
+
+
+#pragma mark - LazyLoad
 
 - (LoginDataService *)dataService{
     _dataService = [LoginDataService shareData];
     return _dataService;
 }
 
+- (UIImageView *)backImgV {
+    if (!_backImgV) {
+        _backImgV = [[UIImageView alloc] initWithFrame:self.view.bounds];
+        NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"login_bg@3x.png" ofType:nil];
+        _backImgV.image = [UIImage imageWithContentsOfFile:imgPath];
+    }
+    return _backImgV;
+}
+
+- (UIImageView *)logoV {
+    if (!_logoV) {
+        _logoV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_logo"]];
+        _logoV.size = CGSizeMake(185.f, 71.f);
+    }
+    return _logoV;
+}
+
+- (UIView *)pwdContainerV {
+    if (!_pwdContainerV) {
+        _pwdContainerV = [[UIView alloc] init];
+        _pwdContainerV.backgroundColor = UIColor.clearColor;
+        [_pwdContainerV addSubview:self.userTF];
+        [_pwdContainerV addSubview:self.pwdTF];
+        [_pwdContainerV addSubview:self.savePwdBtn];
+        [_pwdContainerV addSubview:self.forgetPwdBtn];
+    }
+    return _pwdContainerV;
+}
+
+- (UIView *)verifyCodeContainerV {
+    if (!_verifyCodeContainerV) {
+        _verifyCodeContainerV = [[UIView alloc] init];
+        _verifyCodeContainerV.backgroundColor = UIColor.clearColor;
+        [_verifyCodeContainerV addSubview:self.phoneTF];
+        [_verifyCodeContainerV addSubview:self.verifyCodeTF];
+    }
+    return _verifyCodeContainerV;
+}
+
+- (LYZTextField *)userTF {
+    if (!_userTF) {
+        _userTF = [[LYZTextField alloc] init];
+        _userTF.backgroundColor = WHITECOLOR;
+        _userTF.placeholder = @"请输入账号";
+        _userTF.textColor = kMAIN3333;
+        _userTF.font = LZBRegularFont(16);
+        _userTF.keyboardType = UIKeyboardTypeNamePhonePad;
+        _userTF.autocorrectionType = UITextAutocorrectionTypeNo;
+        _userTF.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _userTF.tintColor = kMAIN3333;
+        _userTF.delegate = self;
+        [_userTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    }
+    return _userTF;
+}
+
+- (LYZTextField *)pwdTF {
+    if (!_pwdTF) {
+        _pwdTF = [[LYZTextField alloc] init];
+        _pwdTF.backgroundColor = WHITECOLOR;
+        _pwdTF.placeholder = @"请输入密码";
+        _pwdTF.textColor = kMAIN3333;
+        _pwdTF.font = LZBRegularFont(16);
+        _pwdTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        _pwdTF.autocorrectionType = UITextAutocorrectionTypeNo;
+        _pwdTF.secureTextEntry = YES;
+        _pwdTF.tintColor = kMAIN3333;
+        _pwdTF.delegate = self;
+        [_pwdTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    }
+    return _pwdTF;
+}
+
+- (UIButton *)showPwdBtn {
+    if (!_showPwdBtn) {
+        _showPwdBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _showPwdBtn.frame = CGRectMake(0, 0, 35, 30);
+        [_showPwdBtn setImage:[UIImage imageNamed:@"login_pwd_hide"] forState:UIControlStateNormal];
+        [_showPwdBtn setImage:[UIImage imageNamed:@"login_pwd_show"] forState:UIControlStateSelected];
+        _showPwdBtn.adjustsImageWhenHighlighted = NO;
+        [_showPwdBtn addTarget:self action:@selector(showPasswordAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _showPwdBtn;
+}
+
+- (UIButton *)savePwdBtn {
+    if (!_savePwdBtn) {
+        _savePwdBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _savePwdBtn.backgroundColor = UIColor.clearColor;
+        [_savePwdBtn setTitle:@"记住密码" forState:UIControlStateNormal];
+        [_savePwdBtn setTitleColor:WHITECOLOR forState:UIControlStateNormal];
+        _savePwdBtn.titleLabel.font = LZBRegularFont(14);
+        [_savePwdBtn setImage:[UIImage imageNamed:@"login_pwd_save_uncheck"] forState:UIControlStateNormal];
+        [_savePwdBtn setImage:[UIImage imageNamed:@"login_pwd_save_check"] forState:UIControlStateSelected];
+        _savePwdBtn.adjustsImageWhenHighlighted = NO;
+        [_savePwdBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 10)];
+        [_savePwdBtn addTarget:self action:@selector(savePasswordAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _savePwdBtn;
+}
+
+- (UIButton *)forgetPwdBtn {
+    if (!_forgetPwdBtn) {
+        _forgetPwdBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _forgetPwdBtn.backgroundColor = UIColor.clearColor;
+        [_forgetPwdBtn setTitle:@"忘记密码？" forState:UIControlStateNormal];
+        [_forgetPwdBtn setTitleColor:WHITECOLOR forState:UIControlStateNormal];
+        _forgetPwdBtn.titleLabel.font = LZBRegularFont(14);
+        [_forgetPwdBtn addTarget:self action:@selector(forgetPasswordAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _forgetPwdBtn;
+}
+
+- (LYZTextField *)phoneTF {
+    if (!_phoneTF) {
+        _phoneTF = [[LYZTextField alloc] init];
+        _phoneTF.backgroundColor = WHITECOLOR;
+        _phoneTF.placeholder = @"请输入手机号";
+        _phoneTF.textColor = kMAIN3333;
+        _phoneTF.font = LZBRegularFont(16);
+        _phoneTF.keyboardType = UIKeyboardTypePhonePad;
+        _phoneTF.autocorrectionType = UITextAutocorrectionTypeNo;
+        _phoneTF.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _phoneTF.tintColor = kMAIN3333;
+        _phoneTF.delegate = self;
+        [_phoneTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    }
+    return _phoneTF;
+}
+
+- (LYZTextField *)verifyCodeTF {
+    if (!_verifyCodeTF) {
+        _verifyCodeTF = [[LYZTextField alloc] init];
+        _verifyCodeTF.backgroundColor = WHITECOLOR;
+        _verifyCodeTF.placeholder = @"请输入验证码";
+        _verifyCodeTF.textColor = kMAIN3333;
+        _verifyCodeTF.font = LZBRegularFont(16);
+        _verifyCodeTF.keyboardType = UIKeyboardTypeNumberPad;
+        _verifyCodeTF.autocorrectionType = UITextAutocorrectionTypeNo;
+        _verifyCodeTF.tintColor = kMAIN3333;
+        _verifyCodeTF.delegate = self;
+        [_verifyCodeTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    }
+    return _verifyCodeTF;
+}
+
+- (JMButton *)sendVerifyCodeBtn {
+    if (!_sendVerifyCodeBtn) {
+        JMBaseButtonConfig *config = [JMBaseButtonConfig buttonConfig];
+        config.title = @"获取验证码";
+        config.titleColor = kMAIN0098;
+        config.titleFont = LZBFont(16.f, NO);
+        _sendVerifyCodeBtn = [[JMButton alloc] initWithFrame:CGRectMake(0, 0, 90, 30) ButtonConfig:config];
+        _sendVerifyCodeBtn.backgroundColor = UIColor.redColor;
+        [_sendVerifyCodeBtn addTarget:self action:@selector(sendVerifyCodeAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _sendVerifyCodeBtn;
+}
+
+- (UIButton *)loginBtn {
+    if (!_loginBtn) {
+        _loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+        [_loginBtn setTitleColor:WHITECOLOR forState:UIControlStateNormal];
+        _loginBtn.titleLabel.font = LZBRegularFont(18);
+        [_loginBtn addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_loginBtn setBackgroundImage:[UIImage imageWithColor:kMAINFF7E] forState:UIControlStateNormal];
+        [_loginBtn setBackgroundImage:[UIImage imageWithColor:kMAINDDDD] forState:UIControlStateDisabled];
+        
+        _loginBtn.layer.shadowOffset = CGSizeMake(0, 2.f);
+        _loginBtn.layer.shadowOpacity = 1.f;
+        _loginBtn.layer.shadowRadius = 2.f;
+        _loginBtn.layer.cornerRadius = 22.f;
+    }
+    return _loginBtn;
+}
+
+- (UIButton *)swichBtn {
+    if (!_swichBtn) {
+        _swichBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _swichBtn.backgroundColor = UIColor.clearColor;
+        [_swichBtn setTitle:@"验证码登录" forState:UIControlStateNormal];
+        [_swichBtn setTitle:@"密码登录" forState:UIControlStateSelected];
+        [_swichBtn setTitleColor:WHITECOLOR forState:UIControlStateNormal];
+        _swichBtn.titleLabel.font = LZBFont(14.f, NO);
+        [_swichBtn addTarget:self action:@selector(switchLoginWayAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _swichBtn;
+}
+
+- (UIButton *)seeUserNotice {
+    if (!_seeUserNotice) {
+        NSAttributedString *un1 = [[NSAttributedString alloc] initWithString:@"《" attributes:@{NSFontAttributeName: LZBRegularFont(13), NSForegroundColorAttributeName: kMAINCBE6}];
+        NSAttributedString *un2 = [[NSAttributedString alloc] initWithString:@"用户服务协议" attributes:@{NSFontAttributeName: LZBRegularFont(13), NSForegroundColorAttributeName: kMAINCBE6, NSUnderlineStyleAttributeName: @(1), NSUnderlineColorAttributeName: kMAINCBE6}];
+        NSAttributedString *un3 = [[NSAttributedString alloc] initWithString:@"》" attributes:@{NSFontAttributeName: LZBRegularFont(13), NSForegroundColorAttributeName: kMAINCBE6}];
+        NSMutableAttributedString *unMAttStr = [[NSMutableAttributedString alloc] initWithAttributedString:un1];
+        [unMAttStr appendAttributedString:un2];
+        [unMAttStr appendAttributedString:un3];
+        
+        _seeUserNotice = [UIButton buttonWithType:UIButtonTypeCustom];
+        _seeUserNotice.backgroundColor = UIColor.clearColor;
+        [_seeUserNotice addTarget:self action:@selector(seeUserNoticeAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_seeUserNotice setAttributedTitle:unMAttStr forState:UIControlStateNormal];
+    }
+    return _seeUserNotice;
+}
+
+- (UILabel *)compLb {
+    if (!_compLb) {
+        _compLb = [[UILabel alloc] init];
+        _compLb.text = @"北京艾博纳信息技术有限公司";
+        _compLb.textAlignment = NSTextAlignmentCenter;
+        _compLb.textColor = WHITECOLOR;
+        _compLb.font = LZBRegularFont(14);
+        [_compLb sizeToFit];
+    }
+    return _compLb;
+}
+
+- (UILabel *)phoneLb {
+    if (!_phoneLb) {
+        _phoneLb = [[UILabel alloc] init];
+        _phoneLb.text = @"400-016-2123";
+        _phoneLb.textAlignment = NSTextAlignmentCenter;
+        _phoneLb.textColor = WHITECOLOR;
+        _phoneLb.font = LZBRegularFont(14);
+        [_phoneLb sizeToFit];
+    }
+    return _phoneLb;
+}
 
 @end

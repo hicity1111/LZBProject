@@ -13,7 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSString (LZBValid)
 
 /// 有效的手机号码
-+ (BOOL)mh_isValidMobile:(NSString *)str;
+- (BOOL)mh_isValidMobile;
+
+/// 有效的密码（8-16位 数字+字母组合）
+- (BOOL)lzb_isValidPassword;
 
 /**
  nil, @"", @"  ", @"\n" will Returns NO; otherwise Returns YES.
@@ -40,6 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 判断字母数字组合
 /// @param patternStr 输入字符串
 +(BOOL)detectionIsPasswordQualified:(NSString *)patternStr;
+
 @end
 
 NS_ASSUME_NONNULL_END

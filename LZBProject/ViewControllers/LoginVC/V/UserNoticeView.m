@@ -10,8 +10,6 @@
 #import "AppDelegate.h"
 #import <WebKit/WebKit.h>
 
-#define kAnimationDuration  0.25
-
 @interface UserNoticeView ()
 
 @property (nonatomic, strong) UIButton *selectBtn;

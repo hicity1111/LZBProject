@@ -80,4 +80,28 @@
 {
     return UIImageJPEGRepresentation([UIImage jpegImageWithPNGImage:pngImage], 1.0);
 }
+
+
+///  颜色转换为背景图片
++ (UIImage *)imageWithColor:(UIColor *)color {
+    return [self imageWithColor:color withSize:CGSizeMake(10.f, 10.f)];
+}
+
+///  颜色转换为背景图片
++ (UIImage *)imageWithColor:(UIColor *)color withSize:(CGSize)size {
+    CGRect rect = CGRectMake(0.0f, 0.0f, size.width, size.height);
+    UIGraphicsBeginImageContext(size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+     
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+     
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+     
+    return image;
+}
+
+
+
 @end

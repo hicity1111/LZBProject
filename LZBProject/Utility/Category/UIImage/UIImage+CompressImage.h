@@ -53,6 +53,13 @@ typedef NSData PNGData;
 + (JPEGData *)jpegDataWithPNGData:(PNGData *)pngData;
 + (JPEGData *)jpegDataWithPNGImage:(PNGImage *)pngImage;
 
+///  颜色转换为背景图片
++ (UIImage *)imageWithColor:(UIColor *)color
+                   withSize:(CGSize)size;
+
+///  颜色转换为背景图片
++ (UIImage *)imageWithColor:(UIColor *)color;
+
 @end
 
 NS_ASSUME_NONNULL_END

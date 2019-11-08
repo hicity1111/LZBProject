@@ -53,6 +53,8 @@
 #define kWidthScale  (kScreenWidth / 375.f)
 #define kHeightScale (kScreenHeight / 667.f)
 
+#define kAnimationDuration  0.25
+
 //手势宏定义
 #define LZBTAPGES(tapName, tapAct) UIGestureRecognizer *tapName = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(tapAct)];
 

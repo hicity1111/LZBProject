@@ -8,6 +8,7 @@
 
 #import "PCenterHeaderView.h"
 #import "QRCodeAlertView.h"
+#import "UIViewController+MTPhoto.h"
 
 @interface PCenterHeaderView ()
 
@@ -100,6 +101,10 @@
 //    if (self.selectHeadImageGes) {
 //        self.selectHeadImageGes(tap);
 //    }
+    
+    [[UIViewController mt_currentViewController] pickImageWithCompletionHandler:^(NSData *imageData, UIImage *image) {
+        NSLog(@"...... %@   %@", image, imageData);
+    }];
 }
 
 - (IBAction)seeMyQRCodeAction:(UIButton *)sender {

@@ -9,6 +9,7 @@
 #import "HomeWorkNotStartCell.h"
 #import "NSString+LZBMap.h"
 #import "OYCountDownManager.h"
+#import "LZBSubjectLabelColorModel.h"
 
 @interface HomeWorkNotStartCell ()
 
@@ -35,6 +36,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *leftTimeLb;
 /// 图片标识
 @property (weak, nonatomic) IBOutlet UIImageView *cellFlagImgV;
+/// 蒙层
+@property (weak, nonatomic) IBOutlet UIView *coverV;
 
 
 @end
@@ -44,34 +47,65 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    // 圆角
+    self.containerView.layer.cornerRadius = 8.f;
+    self.coverV.layer.cornerRadius = 8.f;
+    
+    // 阴影
+    self.containerView.layer.shadowColor = kMAIN7F7F.CGColor;
+    self.containerView.layer.shadowOffset = CGSizeMake(0, 1);
+    self.containerView.layer.shadowOpacity = 1;
+    self.containerView.layer.shadowRadius = 8;
+    
+    [self.leftTimeLb setCornerRadiusAuto];
+    
+    [self.subjectLb setRoundedCorners:LYZRectCornerTopLeft
+                           withRadius:8.f];
+    self.subjectLb.clipsToBounds = YES;
 }
 
 - (void)setModel:(HomeModel *)model{
     _model = model;
-    _subjectLb.text = [NSString mt_abbreviationMap:IFISNIL(model.subjectAbbreviation)];
+    
+    NSString *subjectText = [NSString mt_abbreviationMap:IFISNIL(model.subjectAbbreviation)];
+    LZBSubjectLabelColorModel *slcModel = [LZBSubjectLabelColorModel getModelWithSubjectName:subjectText];
+    _subjectLb.text = subjectText;
+    _subjectLb.textColor = slcModel.textColor;
+    _subjectLb.backgroundColor = slcModel.backgroundColor;
+    
     NSInteger homeworkType = [model.homeworkType intValue];
     NSInteger homeworkIshp = model.homeworkIshp;
     if (homeworkType == 1) {//普通作业
         _questionTypeLb.text = @"普通";
-    }else if (homeworkType == 2){
+    } else if (homeworkType == 2){
         _questionTypeLb.text = @"错题";
-    }else if (homeworkType == 3){
+    } else if (homeworkType == 3){
         _questionTypeLb.text = @"听说";
-    }else if (homeworkType == 4){
+    } else if (homeworkType == 4){
         _questionTypeLb.text = @"单词";
-    }else if (homeworkType == 5){
+    } else if (homeworkType == 5){
         _questionTypeLb.text = @"阅读";
-    }else if (homeworkType == 6){
+    } else if (homeworkType == 6){
         _questionTypeLb.text = @"作文";
     }
     if (homeworkIshp == 2) {//不是是互批
         _hupiLb.hidden = YES;
         _tagSepLine.hidden = YES;
         _cellFlagImgV.hidden = YES;
-    }else{//
+        
+        [_questionTypeLb setRoundedCorners:LYZRectCornerBottomRight
+                                withRadius:8.f];
+        _questionTypeLb.clipsToBounds = YES;
+    } else {//
         _hupiLb.hidden = NO;
         _tagSepLine.hidden = NO;
         _cellFlagImgV.hidden = NO;
+        
+        [_questionTypeLb noCornerRadius];
+        [_hupiLb setRoundedCorners:LYZRectCornerBottomRight
+                        withRadius:8.f];
+        _hupiLb.clipsToBounds = YES;
     }
     _titleLb.text = _model.homeworkName;
     
@@ -100,7 +134,7 @@
     int day = (int)value / (24 *3600);
     int house = (int)value / 3600%3600;
     int minute = (int)value /60%60;
-    self.leftTimeLb.text = [NSString stringWithFormat:@"%02zd天%02zd小时%02zd分", day, house, minute];
+    self.leftTimeLb.text = [NSString stringWithFormat:@"%02d天%02d小时%02d分", day, house, minute];
     
 }
 

@@ -14,6 +14,8 @@
 #import "CTB_SubjectDataService.h"
 #import "NotifyDataService.h"
 
+#import "LZBBaseTabBarController.h"
+
 #define cellID @"CTBSubjectCell"
 
 
@@ -67,15 +69,21 @@
 }
 
 - (void)requestData {
+    MJWeakSelf
     [self.dataService requestDataWithSuccessBlock:^(LZBAPIResponseBaseModel * _Nonnull model) {
-        self.dataSource = [CTB_SubjectModel mj_objectArrayWithKeyValuesArray:model.infos];
+        weakSelf.dataSource = [CTB_SubjectModel mj_objectArrayWithKeyValuesArray:model.infos];
         [self.tableView reloadData];
+        
+        NSString *noExamCount = [NSString stringWithFormat:@"%@", [self.dataSource valueForKeyPath:@"@sum.noexamineCount"]];
+        LZBBaseTabBarController *tabCT = (LZBBaseTabBarController *)self.tabBarController;
+        [tabCT.lzbTabBar setBadge:noExamCount index:tabCT.lzbTabBar.selectIndex];
+        
     } failureBlock:^(NSError * _Nonnull error) {
         
     }];
 }
 
-///获取未读数
+///获取消息未读数
 - (void)loadUnreadCount {
     ///noticeCount
     MJWeakSelf
@@ -132,6 +140,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.contentInset = UIEdgeInsetsMake(10, 0, 10, 0);
 
         if (@available(iOS 11.0, *)) {
             /// 阻止 ScrollView 自动判断 对（safeArea）的 ContentInset
@@ -147,7 +156,7 @@
         _tableView.showsHorizontalScrollIndicator = NO;
         
         [_tableView registerNib:[UINib nibWithNibName:cellID bundle:nil] forCellReuseIdentifier:cellID];
-        _tableView.rowHeight = 130.f;
+        _tableView.rowHeight = 135.f;
     }
     return _tableView;
 }

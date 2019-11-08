@@ -11,46 +11,48 @@
 #import "NSString+LZBMap.h"
 #import "OYCountDownManager.h"
 #import "UILabel+AttributedString.h"
+#import "LZBSubjectLabelColorModel.h"
 
 @interface HomeWorkAlreadyStartCell (){
-    NSInteger _timeCountDown;
+    NSInteger   _timeCountDown;
+    CGFloat     _hw_progress;
 }
 
 /// 容器
-@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIView     *containerView;
 
 /// 学科
-@property (weak, nonatomic) IBOutlet UILabel *subjectLb;
+@property (weak, nonatomic) IBOutlet UILabel    *subjectLb;
 /// 题型
-@property (weak, nonatomic) IBOutlet UILabel *questionTypeLb;
+@property (weak, nonatomic) IBOutlet UILabel    *questionTypeLb;
 /// 是否互批（如果是，下两个属性 hidden=NO，否则为YES）
-@property (weak, nonatomic) IBOutlet UILabel *hupiLb;
-@property (weak, nonatomic) IBOutlet UILabel *tagSepLine;
+@property (weak, nonatomic) IBOutlet UILabel    *hupiLb;
+@property (weak, nonatomic) IBOutlet UILabel    *tagSepLine;
 
 /// 图片标识
 @property (weak, nonatomic) IBOutlet UIImageView *cellFlagImgV;
 /// 作业名字
-@property (weak, nonatomic) IBOutlet UILabel *titleLb;
+@property (weak, nonatomic) IBOutlet UILabel    *titleLb;
 /// 时间
-@property (weak, nonatomic) IBOutlet UILabel *timeLb;
+@property (weak, nonatomic) IBOutlet UILabel    *timeLb;
 /// 题数
-@property (weak, nonatomic) IBOutlet UILabel *countLb;
+@property (weak, nonatomic) IBOutlet UILabel    *countLb;
 /// 提示文字
-@property (weak, nonatomic) IBOutlet UILabel *promptLb;
+@property (weak, nonatomic) IBOutlet UILabel    *promptLb;
 /// 剩余时间
-@property (weak, nonatomic) IBOutlet UILabel *leftTimeLb;
+@property (weak, nonatomic) IBOutlet UILabel    *leftTimeLb;
 /// 点我开始、点我继续、点我查看、去互批
-@property (weak, nonatomic) IBOutlet UIButton *actionButton;
+@property (weak, nonatomic) IBOutlet UIButton   *actionButton;
 
 /// 作业来源
-@property (weak, nonatomic) IBOutlet UILabel *homeworkSourceLb;
+@property (weak, nonatomic) IBOutlet UILabel    *homeworkSourceLb;
 /// 进度父View
-@property (weak, nonatomic) IBOutlet UIView *progressView;
+@property (weak, nonatomic) IBOutlet UIView     *progressView;
 
-@property (weak, nonatomic) IBOutlet UILabel *progressUpper;
-@property (weak, nonatomic) IBOutlet UILabel *progressLower;
-@property (weak, nonatomic) IBOutlet UILabel *progressDescLb;
-@property (weak, nonatomic) IBOutlet UIView *proView;
+@property (weak, nonatomic) IBOutlet UILabel    *progressUpper;
+@property (weak, nonatomic) IBOutlet UILabel    *progressLower;
+@property (weak, nonatomic) IBOutlet UILabel    *progressDescLb;
+@property (weak, nonatomic) IBOutlet UIView     *proView;
 
 @property (nonatomic, strong) GGProgressView *ggprogressView;
 
@@ -82,15 +84,19 @@
 }
 
 
-- (void)layoutSubviews{
-    [super layoutSubviews];
-    self.actionButton.layer.cornerRadius = 32/2;
-//    self.ggprogressView.frame.size = self.proView.frame.size;
-}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countDownNotification) name:kCountDownNotification object:nil];
+    
+    // 圆角
+    self.containerView.layer.cornerRadius = 8.f;
+    // 阴影
+    self.containerView.layer.shadowColor = kMAIN7F7F.CGColor;
+    self.containerView.layer.shadowOffset = CGSizeMake(0, 1);
+    self.containerView.layer.shadowOpacity = 1;
+    self.containerView.layer.shadowRadius = 8;
     
     _ggprogressView = [[GGProgressView alloc] initWithFrame:self.proView.bounds progressViewStyle:GGProgressViewStyleAllFillet];
     _ggprogressView.layer.borderWidth = 0.5f;
@@ -99,7 +105,17 @@
     _ggprogressView.progressTintColor = kMAIN00B5;
     [self.proView addSubview:self.ggprogressView];
     
+    [self.subjectLb setRoundedCorners:LYZRectCornerTopLeft
+                           withRadius:8.f];
+    self.subjectLb.clipsToBounds = YES;
     // Initialization code
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    self.actionButton.layer.cornerRadius = self.actionButton.height / 2.f;
+    self.ggprogressView.frame = self.proView.bounds;
+    self.ggprogressView.progress = _hw_progress;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -110,30 +126,45 @@
 
 -(void)setModel:(HomeModel *)model{
     _model = model;
-   _subjectLb.text = [NSString mt_abbreviationMap:IFISNIL(model.subjectAbbreviation)];
+    NSString *subjectText = [NSString mt_abbreviationMap:IFISNIL(model.subjectAbbreviation)];
+    LZBSubjectLabelColorModel *slcModel = [LZBSubjectLabelColorModel getModelWithSubjectName:subjectText];
+    _subjectLb.text = subjectText;
+    _subjectLb.textColor = slcModel.textColor;
+    _subjectLb.backgroundColor = slcModel.backgroundColor;
+    
    NSInteger homeworkType = [model.homeworkType intValue];
    NSInteger homeworkIshp = model.homeworkIshp;
    if (homeworkType == 1) {//普通作业
        _questionTypeLb.text = @"普通";
-   }else if (homeworkType == 2){
+   } else if (homeworkType == 2){
        _questionTypeLb.text = @"错题";
-   }else if (homeworkType == 3){
+   } else if (homeworkType == 3){
        _questionTypeLb.text = @"听说";
-   }else if (homeworkType == 4){
+   } else if (homeworkType == 4){
        _questionTypeLb.text = @"单词";
-   }else if (homeworkType == 5){
+   } else if (homeworkType == 5){
        _questionTypeLb.text = @"阅读";
-   }else if (homeworkType == 6){
+   } else if (homeworkType == 6){
        _questionTypeLb.text = @"作文";
    }
    if (homeworkIshp == 2) {//不是是互批
        _hupiLb.hidden = YES;
        _tagSepLine.hidden = YES;
        _cellFlagImgV.hidden = YES;
-   }else{//
+       
+       [_questionTypeLb setRoundedCorners:LYZRectCornerBottomRight
+                               withRadius:8.f];
+       _questionTypeLb.clipsToBounds = YES;
+       
+   } else {//
        _hupiLb.hidden = NO;
        _tagSepLine.hidden = NO;
        _cellFlagImgV.hidden = NO;
+       
+       [_questionTypeLb noCornerRadius];
+       [_hupiLb setRoundedCorners:LYZRectCornerBottomRight
+                       withRadius:8.f];
+       _hupiLb.clipsToBounds = YES;
    }
    _titleLb.text = _model.homeworkName;
    
@@ -155,8 +186,7 @@
     }else{
         [self.actionButton setTitle:@"点我继续" forState:UIControlStateNormal];
     }
-    _ggprogressView.progress = [_model.studentDoneQuestionNum floatValue]/[_model.questionNumber floatValue];
-    
+    _hw_progress = [_model.studentDoneQuestionNum floatValue]/[_model.questionNumber floatValue];
     
     _progressDescLb.text = [NSString stringWithFormat:@"%ld/%ld",studentDoneQuestionNum,questionNumber];
     
@@ -200,21 +230,29 @@
 - (void)setResourcesModel:(HomeModel *)resourcesModel{
     _resourcesModel = resourcesModel;
     
-    _subjectLb.text = [NSString mt_abbreviationMap:IFISNIL(_resourcesModel.subjectAbbreviation)];
-      NSInteger homeworkType = _resourcesModel.resourceType;
-      NSInteger homeworkIshp = _resourcesModel.homeworkIshp;
-      if (homeworkType == 1) {//普通作业
-          _questionTypeLb.text = @"视频";
-      }else if (homeworkType == 2){
-          _questionTypeLb.text = @"音频";
-      }else if (homeworkType == 3){
-          _questionTypeLb.text = @"图片";
-      }
-      _hupiLb.hidden = YES;
-      _tagSepLine.hidden = YES;
-      _cellFlagImgV.hidden = YES;
-
-      _titleLb.text = _resourcesModel.resourceName;
+    NSString *subjectText = [NSString mt_abbreviationMap:IFISNIL(resourcesModel.subjectAbbreviation)];
+    LZBSubjectLabelColorModel *slcModel = [LZBSubjectLabelColorModel getModelWithSubjectName:subjectText];
+    _subjectLb.text = subjectText;
+    _subjectLb.textColor = slcModel.textColor;
+    _subjectLb.backgroundColor = slcModel.backgroundColor;
+    
+    NSInteger homeworkType = _resourcesModel.resourceType;
+//    NSInteger homeworkIshp = _resourcesModel.homeworkIshp;
+    if (homeworkType == 1) {//普通作业
+        _questionTypeLb.text = @"视频";
+    }else if (homeworkType == 2){
+        _questionTypeLb.text = @"音频";
+    }else if (homeworkType == 3){
+        _questionTypeLb.text = @"图片";
+    }
+    [_questionTypeLb setRoundedCorners:LYZRectCornerBottomRight
+                            withRadius:8.f];
+    
+    _hupiLb.hidden = YES;
+    _tagSepLine.hidden = YES;
+    _cellFlagImgV.hidden = YES;
+    
+    _titleLb.text = _resourcesModel.resourceName;
     
     NSNumber *homeworkStarttime = _resourcesModel.createTime;
     NSTimeInterval timeInterval=[homeworkStarttime doubleValue];

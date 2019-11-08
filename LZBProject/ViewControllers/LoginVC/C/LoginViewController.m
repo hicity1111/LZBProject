@@ -335,8 +335,23 @@
         [appd entryDoor];
         
     } failure:^(NSError * _Nonnull error) {
-        
-        XLDLog(@"请求失败");
+        NSInteger code = error.code;
+        switch (code) {
+            case NSURLErrorTimedOut:
+                [weakSelf showError:@"网络不给力，请稍后再试"];
+                break;
+            case NSURLErrorUnknown:
+            case NSURLErrorBadURL:
+                [weakSelf showError:@"无效的URL地址"];
+                break;
+            case NSURLErrorCancelled:
+                [weakSelf showError:@"请求被取消"];
+                break;
+                
+            default:
+                [weakSelf showError:@"未知错误"];
+                break;
+        }
     }];
 
 }

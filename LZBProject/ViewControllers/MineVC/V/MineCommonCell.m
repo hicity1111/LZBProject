@@ -11,6 +11,7 @@
 #import "LYZSandBoxPath.h"
 #import "LYZCurrentVCHelper.h"
 #import "LZBAlertViewController.h"
+#import "NSObject+LZBCall.h"
 
 #import "HWPop.h"
 
@@ -188,10 +189,7 @@
 /// 打客服电话
 - (void)callCustomerService {
     NSString *number = self.rightLb.text;
-    NSMutableString *str = [[NSMutableString alloc] initWithFormat:@"tel:%@", number];
-    NSURL *url = [NSURL URLWithString:str];
-    UIApplication *application = [UIApplication sharedApplication];
-    [application openURL:url options:@{} completionHandler:^(BOOL success) {
+    [self callWithPhoneNumber:number completionHandler:^(BOOL success) {
         //OpenSuccess=选择 呼叫 为 1  选择 取消 为0
         NSLog(@"OpenSuccess=%d", success);
     }];

@@ -13,6 +13,7 @@
 #import "LoginDataService.h"
 #import "UIImage+CompressImage.h"
 #import "LoginNobindPhoneAlertView.h"
+#import "LoginObtainPhoneNumVC.h"
 
 #import "AppDelegate.h"
 
@@ -98,11 +99,6 @@ static CGFloat phoheH = 48.f, verH = 48.f, pvSpace = 16.f, vsSpace = 15.f;
     [self updateLoginButtonState];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-}
-
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
 }
@@ -169,7 +165,9 @@ static CGFloat phoheH = 48.f, verH = 48.f, pvSpace = 16.f, vsSpace = 15.f;
 - (void)showUnbindingPhoneAlertView {
     LoginNobindPhoneAlertView *alert = [[LoginNobindPhoneAlertView alloc] init];
     [alert setTouchAlreadyBindBlock:^(UIButton * _Nonnull btn) {
-        [self showSuccess:@"已绑定手机号跳转"];
+//        [self showSuccess:@"已绑定手机号跳转"];
+        LoginObtainPhoneNumVC *fillNumVC = [[LoginObtainPhoneNumVC alloc] init];
+        [self.navigationController pushViewController:fillNumVC animated:YES];
     }];
     [alert show];
 }

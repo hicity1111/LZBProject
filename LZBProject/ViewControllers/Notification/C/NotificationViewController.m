@@ -47,8 +47,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    ///默认隐藏系统导航条
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 

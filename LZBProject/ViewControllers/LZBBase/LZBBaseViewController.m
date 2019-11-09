@@ -16,11 +16,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = WHITECOLOR;
+    self.fd_prefersNavigationBarHidden = YES;
     ///适配ScrollView 偏移
     self.automaticallyAdjustsScrollViewInsets = NO;
     ///添加自定义导航
     [self.view addSubview:self.navView];
-    ///默认隐藏系统导航条
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    /// 隐藏系统导航栏
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "LoginNobindPhoneAlertView.h"
-
+#import "NSObject+LZBCall.h"
 
 
 static CGFloat containLeftMargin = 30.f, imageW = 125.f, buttonLeftMargin =  22.5, buttonH = 40.f;
@@ -61,15 +61,17 @@ static CGFloat containH = 340.f, imgTopMargin = 25.f;
 #pragma mark - custom Method
 
 - (void)allInitMetiond {
-    [self addGesture];
     [self addSubviews];
     [self updateSubviewsFrame];
+    [self addGesture];
 }
 
 - (void)addGesture {
     [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFullView:)]];
     
     [self.containerView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapContainerView:)]];
+    
+    [self.customerPhoneLb addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCustomerPhoneView:)]];
 }
 
 - (void)addSubviews {
@@ -151,6 +153,15 @@ static CGFloat containH = 340.f, imgTopMargin = 25.f;
     
 }
 
+- (void)tapCustomerPhoneView:(UITapGestureRecognizer *)tap {
+    UILabel *lb = (UILabel *)tap.view;
+    NSString *text = lb.text;
+    NSString *num = [text substringFromIndex:5];
+    [self callWithPhoneNumber:num completionHandler:^(BOOL success) {
+        
+    }];
+}
+
 - (void)touchAlreadyBindPhoneAction:(UIButton *)btn {
     [self hide];
     
@@ -198,6 +209,7 @@ static CGFloat containH = 340.f, imgTopMargin = 25.f;
         
         _customerPhoneLb = [[UILabel alloc] init];
         _customerPhoneLb.attributedText = muattr;
+        _customerPhoneLb.userInteractionEnabled = YES;
     }
     return _customerPhoneLb;
 }

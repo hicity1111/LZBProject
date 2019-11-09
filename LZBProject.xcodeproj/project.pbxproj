@@ -139,6 +139,10 @@
 		8B7EDA19237255CA0017B08B /* HWPopTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA11237255C90017B08B /* HWPopTransitioningDelegate.m */; };
 		8B7EDA202373ECCA0017B08B /* LZBSubjectLabelColorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA1F2373ECCA0017B08B /* LZBSubjectLabelColorModel.m */; };
 		8B7EDA2423765AF60017B08B /* LoginNobindPhoneAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA2323765AF60017B08B /* LoginNobindPhoneAlertView.m */; };
+		8B7EDA27237683B20017B08B /* LoginObtainPhoneNumVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA26237683B20017B08B /* LoginObtainPhoneNumVC.m */; };
+		8B7EDA2A237684470017B08B /* LoginObtainVerifyCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA29237684470017B08B /* LoginObtainVerifyCodeVC.m */; };
+		8B7EDA2D237684A80017B08B /* LoginResetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA2C237684A80017B08B /* LoginResetPwdVC.m */; };
+		8B7EDA30237685F60017B08B /* NSObject+LZBCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA2F237685F60017B08B /* NSObject+LZBCall.m */; };
 		8B9CB3122369699D0092F7DE /* LYZCleanCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB3112369699D0092F7DE /* LYZCleanCache.m */; };
 		8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB31623697C8A0092F7DE /* LYZSandBoxPath.m */; };
 		8BCD1226236192F600BCCB08 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCD1225236192F600BCCB08 /* Login.storyboard */; };
@@ -476,6 +480,14 @@
 		8B7EDA1F2373ECCA0017B08B /* LZBSubjectLabelColorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBSubjectLabelColorModel.m; sourceTree = "<group>"; };
 		8B7EDA2223765AF60017B08B /* LoginNobindPhoneAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginNobindPhoneAlertView.h; sourceTree = "<group>"; };
 		8B7EDA2323765AF60017B08B /* LoginNobindPhoneAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginNobindPhoneAlertView.m; sourceTree = "<group>"; };
+		8B7EDA25237683B20017B08B /* LoginObtainPhoneNumVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginObtainPhoneNumVC.h; sourceTree = "<group>"; };
+		8B7EDA26237683B20017B08B /* LoginObtainPhoneNumVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginObtainPhoneNumVC.m; sourceTree = "<group>"; };
+		8B7EDA28237684470017B08B /* LoginObtainVerifyCodeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginObtainVerifyCodeVC.h; sourceTree = "<group>"; };
+		8B7EDA29237684470017B08B /* LoginObtainVerifyCodeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginObtainVerifyCodeVC.m; sourceTree = "<group>"; };
+		8B7EDA2B237684A80017B08B /* LoginResetPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginResetPwdVC.h; sourceTree = "<group>"; };
+		8B7EDA2C237684A80017B08B /* LoginResetPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginResetPwdVC.m; sourceTree = "<group>"; };
+		8B7EDA2E237685F60017B08B /* NSObject+LZBCall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LZBCall.h"; sourceTree = "<group>"; };
+		8B7EDA2F237685F60017B08B /* NSObject+LZBCall.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LZBCall.m"; sourceTree = "<group>"; };
 		8B9CB3102369699D0092F7DE /* LYZCleanCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYZCleanCache.h; sourceTree = "<group>"; };
 		8B9CB3112369699D0092F7DE /* LYZCleanCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYZCleanCache.m; sourceTree = "<group>"; };
 		8B9CB31623697C8A0092F7DE /* LYZSandBoxPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYZSandBoxPath.m; sourceTree = "<group>"; };
@@ -1424,6 +1436,12 @@
 			children = (
 				8B4D1C5223618CD2008B2CCA /* LoginViewController.h */,
 				8B4D1C5023618CD2008B2CCA /* LoginViewController.m */,
+				8B7EDA25237683B20017B08B /* LoginObtainPhoneNumVC.h */,
+				8B7EDA26237683B20017B08B /* LoginObtainPhoneNumVC.m */,
+				8B7EDA28237684470017B08B /* LoginObtainVerifyCodeVC.h */,
+				8B7EDA29237684470017B08B /* LoginObtainVerifyCodeVC.m */,
+				8B7EDA2B237684A80017B08B /* LoginResetPwdVC.h */,
+				8B7EDA2C237684A80017B08B /* LoginResetPwdVC.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1589,6 +1607,8 @@
 			children = (
 				BA6CD7B0237114040008113F /* NSObject+LZBExtension.h */,
 				BA6CD7B1237114040008113F /* NSObject+LZBExtension.m */,
+				8B7EDA2E237685F60017B08B /* NSObject+LZBCall.h */,
+				8B7EDA2F237685F60017B08B /* NSObject+LZBCall.m */,
 			);
 			path = NSObject;
 			sourceTree = "<group>";
@@ -2043,11 +2063,13 @@
 				0B3D00102368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m in Sources */,
 				0B619307235D7BDC00BE3BBA /* HomeViewController.m in Sources */,
 				0BF0533D237152400091EFB2 /* LZBProgressView.m in Sources */,
+				8B7EDA2D237684A80017B08B /* LoginResetPwdVC.m in Sources */,
 				0B4945D52357258500F19EE2 /* TriangleView.m in Sources */,
 				8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */,
 				0B7A8F652375557000827699 /* LZBIntroductionView.m in Sources */,
 				BA6CD811237124AA0008113F /* YBIBSheetView.m in Sources */,
 				8B7EDA202373ECCA0017B08B /* LZBSubjectLabelColorModel.m in Sources */,
+				8B7EDA30237685F60017B08B /* NSObject+LZBCall.m in Sources */,
 				0B0F6C192366C10900537128 /* JMWaveButton.m in Sources */,
 				0B17674223584758008979C5 /* LZBCalendarMonth.m in Sources */,
 				0BF053402371631D0091EFB2 /* GGProgressView.m in Sources */,
@@ -2056,6 +2078,7 @@
 				0B0F6C182366C10900537128 /* JMBaseButtonConfig.m in Sources */,
 				8B1753B2236A766100509317 /* NotifyCellModel.m in Sources */,
 				8B4D1C5823618CD2008B2CCA /* UserNoticeView.m in Sources */,
+				8B7EDA27237683B20017B08B /* LoginObtainPhoneNumVC.m in Sources */,
 				BA5BFE8D236BEC1B00D231F0 /* NotificationToolItem.m in Sources */,
 				0B0F6C1D2366C10900537128 /* JMButton.m in Sources */,
 				0B0F6C152366C10900537128 /* JMBootstrapButtonConfig.m in Sources */,
@@ -2105,6 +2128,7 @@
 				0B098C652351A077000934EB /* LZBNetManager.m in Sources */,
 				8B21DEF92367ECEB000F0DAB /* HomeWorkNotStartCell.m in Sources */,
 				0BF05336236FD4910091EFB2 /* HomeDataService.m in Sources */,
+				8B7EDA2A237684470017B08B /* LoginObtainVerifyCodeVC.m in Sources */,
 				BA6CD805237124AA0008113F /* YBIBImageCell.m in Sources */,
 				BA6CD809237124AA0008113F /* YBIBAuxiliaryViewHandler.m in Sources */,
 				8B7ED9F1237151DD0017B08B /* CTB_SubjectModel.m in Sources */,

@@ -74,6 +74,8 @@
 
 #define kMAIN4759   [UIColor colorWithHex:@"#4759B2"]
 
+#define kMAIN2D80   [UIColor colorWithHex:@"#2D8065" alpha:0.2]
+
 
 #define WHITECOLOR  UIColor.whiteColor
 #define BLACKCOLOR  UIColor.blackColor

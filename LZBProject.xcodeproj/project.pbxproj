@@ -138,6 +138,7 @@
 		8B7EDA18237255CA0017B08B /* HWPopNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA0B237255C90017B08B /* HWPopNavigationController.m */; };
 		8B7EDA19237255CA0017B08B /* HWPopTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA11237255C90017B08B /* HWPopTransitioningDelegate.m */; };
 		8B7EDA202373ECCA0017B08B /* LZBSubjectLabelColorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA1F2373ECCA0017B08B /* LZBSubjectLabelColorModel.m */; };
+		8B7EDA2423765AF60017B08B /* LoginNobindPhoneAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EDA2323765AF60017B08B /* LoginNobindPhoneAlertView.m */; };
 		8B9CB3122369699D0092F7DE /* LYZCleanCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB3112369699D0092F7DE /* LYZCleanCache.m */; };
 		8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9CB31623697C8A0092F7DE /* LYZSandBoxPath.m */; };
 		8BCD1226236192F600BCCB08 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCD1225236192F600BCCB08 /* Login.storyboard */; };
@@ -471,6 +472,8 @@
 		8B7EDA1A237277340017B08B /* LZBEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBEnum.h; sourceTree = "<group>"; };
 		8B7EDA1E2373ECCA0017B08B /* LZBSubjectLabelColorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBSubjectLabelColorModel.h; sourceTree = "<group>"; };
 		8B7EDA1F2373ECCA0017B08B /* LZBSubjectLabelColorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBSubjectLabelColorModel.m; sourceTree = "<group>"; };
+		8B7EDA2223765AF60017B08B /* LoginNobindPhoneAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginNobindPhoneAlertView.h; sourceTree = "<group>"; };
+		8B7EDA2323765AF60017B08B /* LoginNobindPhoneAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginNobindPhoneAlertView.m; sourceTree = "<group>"; };
 		8B9CB3102369699D0092F7DE /* LYZCleanCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYZCleanCache.h; sourceTree = "<group>"; };
 		8B9CB3112369699D0092F7DE /* LYZCleanCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYZCleanCache.m; sourceTree = "<group>"; };
 		8B9CB31623697C8A0092F7DE /* LYZSandBoxPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYZSandBoxPath.m; sourceTree = "<group>"; };
@@ -1387,6 +1390,7 @@
 		8B4D1C4D23618CD2008B2CCA /* LoginVC */ = {
 			isa = PBXGroup;
 			children = (
+				8B7EDA2123765AC70017B08B /* Alert */,
 				8BCD12272361999300BCCB08 /* StoryBoard */,
 				8B4D1C4E23618CD2008B2CCA /* M */,
 				8B4D1C4F23618CD2008B2CCA /* C */,
@@ -1512,6 +1516,15 @@
 				8B7EDA11237255C90017B08B /* HWPopTransitioningDelegate.m */,
 			);
 			path = TransitioningDelegate;
+			sourceTree = "<group>";
+		};
+		8B7EDA2123765AC70017B08B /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				8B7EDA2223765AF60017B08B /* LoginNobindPhoneAlertView.h */,
+				8B7EDA2323765AF60017B08B /* LoginNobindPhoneAlertView.m */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		8B8CFE0A23667D8100AC4DAC /* UIImage */ = {
@@ -2061,6 +2074,7 @@
 				0B098FB8237250C400AB19F3 /* HomeResourcesTableViewCell.m in Sources */,
 				0B112173236BFEE500944C24 /* LZBAPIResponseBaseModel.m in Sources */,
 				BA6CD7AB237112930008113F /* UIAlertController+LZBExtension.m in Sources */,
+				8B7EDA2423765AF60017B08B /* LoginNobindPhoneAlertView.m in Sources */,
 				BA6CD801237124AA0008113F /* YBImage.m in Sources */,
 				BA6CD83C2371410C0008113F /* UINavigationController+SXFullScreen.m in Sources */,
 				0B0F6BDD236294EE00537128 /* LZB_TabBar.m in Sources */,

@@ -125,4 +125,15 @@
 ///比aDate早多少天
 - (NSInteger)mt_daysBeforeDate:(NSDate *)aDate;
 
+///将时间字符串转换为时间戳
++ (NSString *)timeStrToTimestamp:(NSString *)timeStr;
+
+///将时间转换为时间字符串
++ (NSString *)dateToTimeStr:(NSDate *)date;
+
+///获取当前时间戳
++(NSString *)getNowTimestamp;
+
+//将时间转换为时间戳
++ (NSString *)dateToTimestamp:(NSDate *)date;
 @end

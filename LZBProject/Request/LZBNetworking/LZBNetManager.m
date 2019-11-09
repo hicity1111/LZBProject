@@ -233,7 +233,7 @@ static NSMutableArray *tasks;
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
-            NSLog(@"%@", [LZBTypeConvertHelper dictionaryToJson:responseObject]);
+//            NSLog(@"%@", [LZBTypeConvertHelper dictionaryToJson:responseObject]);
             
             if ([self.delegate lzbManager:self response:responseObject entity:entity]) {
                 id resultModel = [self.delegate lzbManagerModel:self response:responseObject entity:entity];
@@ -283,7 +283,7 @@ static NSMutableArray *tasks;
                 }
             });
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSLog(@"%@", [LZBTypeConvertHelper dictionaryToJson:responseObject]);
+//            NSLog(@"%@", [LZBTypeConvertHelper dictionaryToJson:responseObject]);
             if (self.isOpenLog)
             {
                 NSLog(@"post 请求数据结果： *** %@", responseObject);

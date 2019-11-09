@@ -10,6 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol LZBLastIntroductionCellDelegate <NSObject>
+
+@optional
+
+- (void)didClickEnter;
+
+@end
+
 @interface LZBLastIntroductionCell : UICollectionViewCell
 
 /// 顶部高度
@@ -39,6 +47,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 //中间图片距离顶部按钮间距
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *middlePadding;
+
+@property (nonatomic, assign) id<LZBLastIntroductionCellDelegate> delegate;
 @end
 
 NS_ASSUME_NONNULL_END

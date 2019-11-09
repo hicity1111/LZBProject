@@ -12,7 +12,18 @@
 @implementation AppDelegate (LZBIntroduction)
 
 - (void)initIntroduct{
-    [self example];
+    
+    if (![SDUserDefaults boolForKey:@"everLaunched"]) {
+        [SDUserDefaults setBool:YES forKey:@"everLaunched"];
+        [SDUserDefaults setBool:YES forKey:@"firstLaunch"];
+        XLDLog(@"first launch第一次程序启动");
+        //这里进入引导画面
+        [self example];
+    }else {
+        XLDLog(@"second launch再次程序启动");
+        ////直接进入主界面
+        [self entryDoor];
+    }
 }
 
 
@@ -28,11 +39,13 @@
 }
 - (void)introductionViewDidClickEnterAction:(LZBIntroductionView *)introductionView
 {
-    NSLog(@"代理回调 点击进入");
     
     [self.introductionView removeFromSuperview];
     self.introductionView = nil;
     
+}
+- (void)didClickEnter{
+    [self entryDoor];
 }
 - (void)introductionView:(LZBIntroductionView *)introductionView didClickPageIndexPath:(NSIndexPath *)indexPath
 {
@@ -40,21 +53,20 @@
 }
 
 
-
 // GYIntroductionDataSource
 - (__kindof UICollectionViewCell *)introductionView:(LZBIntroductionView *)introductionView cellForItemAtIndex:(NSIndexPath *)indexPath
 {
     LZBIntroductionCell *cell = [introductionView.introlCollectionView dequeueReusableCellWithReuseIdentifier:@"LZBIntroductionCell" forIndexPath:indexPath];
-    LZBMiddleIntroductionCell *cell1 = [introductionView.introlCollectionView dequeueReusableCellWithReuseIdentifier:@"LZBMiddleIntroductionCell" forIndexPath:indexPath];
-    LZBLastIntroductionCell *cell2 = [introductionView.introlCollectionView dequeueReusableCellWithReuseIdentifier:@"LZBLastIntroductionCell" forIndexPath:indexPath];
-//    cell.delegate = self;
+    LZBMiddleIntroductionCell *middleCell = [introductionView.introlCollectionView dequeueReusableCellWithReuseIdentifier:@"LZBMiddleIntroductionCell" forIndexPath:indexPath];
+    LZBLastIntroductionCell *lastCell = [introductionView.introlCollectionView dequeueReusableCellWithReuseIdentifier:@"LZBLastIntroductionCell" forIndexPath:indexPath];
+    lastCell.delegate = self;
     if (indexPath.item == 0) {
         // the last one
         return cell;
     }else if (indexPath.item == 1){
-        return cell1;
+        return middleCell;
     }else{
-        return cell2;
+        return lastCell;
     }
 }
 @end

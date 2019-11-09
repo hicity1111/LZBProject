@@ -50,6 +50,10 @@
     self.startButton.layer.shadowRadius = 20*kWidthScale;
 }
 - (IBAction)startAction:(id)sender {
+    
+    if ([self.delegate respondsToSelector:@selector(didClickEnter)]) {
+        [self.delegate didClickEnter];
+    }
 }
 
 @end

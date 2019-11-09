@@ -110,7 +110,6 @@
             return cell1;
         }
     }else{//资源
-        XLDLog(@"这个是资源");
         cell.resourcesModel = model;
         return cell;
     }

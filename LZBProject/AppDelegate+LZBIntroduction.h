@@ -15,7 +15,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AppDelegate (LZBIntroduction)<LZBIntroductionDelegate,LZBIntroductionDataSource>
+@interface AppDelegate (LZBIntroduction)<LZBIntroductionDelegate,LZBIntroductionDataSource,LZBLastIntroductionCellDelegate>
 
 
 - (void)initIntroduct;

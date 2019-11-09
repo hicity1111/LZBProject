@@ -12,6 +12,7 @@
 #import "OYCountDownManager.h"
 #import "UILabel+AttributedString.h"
 #import "LZBSubjectLabelColorModel.h"
+#import "NSDate+MTExtension.h"
 
 @interface HomeWorkAlreadyStartCell (){
     NSInteger   _timeCountDown;
@@ -168,10 +169,8 @@
    }
    _titleLb.text = _model.homeworkName;
    
-   NSNumber *homeworkStarttime = model.homeworkEndtime;
-   NSTimeInterval timeInterval=[homeworkStarttime doubleValue];
-   NSDate *UTCDate=[NSDate dateWithTimeIntervalSince1970:timeInterval/1000];
-   NSString *homeworkEndtime = [self UTCStringFromUTCDate:UTCDate];
+    NSDate *UTCDate = [NSDate timeStampToDate:[NSString stringWithFormat:@"%@",model.homeworkEndtime]];
+    NSString *homeworkEndtime = [NSDate dateToTimeStr:UTCDate];
    
    _timeLb.text = [NSString stringWithFormat:@"截止时间%@",homeworkEndtime];//截止时间
    _countLb.text = [NSString stringWithFormat:@"题数%@",model.questionNumber];
@@ -190,17 +189,11 @@
     
     _progressDescLb.text = [NSString stringWithFormat:@"%ld/%ld",studentDoneQuestionNum,questionNumber];
     
-    NSDate *currentDate = [NSDate dateWithTimeIntervalSinceNow:0];
-    NSTimeZone *current = [NSTimeZone systemTimeZone];
-    NSTimeInterval interval = [current secondsFromGMTForDate:currentDate];
-    NSDate *currentResult = [currentDate dateByAddingTimeInterval:interval];
-
+    NSDate *currentDate = [NSDate timeStampToDate:[NSDate dateToTimeStr:[NSDate date]]];
     //截止时间
-    
-    NSTimeInterval utcInterval = [current secondsFromGMTForDate:UTCDate];
-    NSDate *utcResult = [UTCDate dateByAddingTimeInterval:utcInterval];
+    NSDate *utcResult = [NSDate timeStampToDate:[NSString stringWithFormat:@"%@",model.homeworkEndtime]];;
 
-    NSTimeInterval endTimeInterval = [utcResult timeIntervalSinceDate:currentResult];
+    NSTimeInterval endTimeInterval = [utcResult timeIntervalSinceDate:currentDate];
     _timeCountDown = endTimeInterval;
     
     if (endTimeInterval < 5400) {//1.5小时
@@ -223,7 +216,7 @@
         // 分
         int minute = (int)value /60%60;
         
-        self.leftTimeLb.text = [NSString stringWithFormat:@"%02zd天%02zd小时%02zd分", day, house, minute];
+        self.leftTimeLb.text = [NSString stringWithFormat:@"%02d天%02d小时%02d分", day, house, minute];
     }
 }
 
@@ -255,9 +248,8 @@
     _titleLb.text = _resourcesModel.resourceName;
     
     NSNumber *homeworkStarttime = _resourcesModel.createTime;
-    NSTimeInterval timeInterval=[homeworkStarttime doubleValue];
-    NSDate *UTCDate=[NSDate dateWithTimeIntervalSince1970:timeInterval/1000];
-    NSString *homeworkEndtime = [self UTCStringFromUTCDate:UTCDate];
+    NSDate *UTCDate = [NSDate timeStampToDate:[NSString stringWithFormat:@"%@",homeworkStarttime]];
+    NSString *homeworkEndtime = [NSDate dateToTimeStr:UTCDate];
     
     _timeLb.text = [NSString stringWithFormat:@"分享时间%@",homeworkEndtime];//截止时间
     _countLb.hidden = YES;
@@ -303,9 +295,9 @@
     int day = (int)value / (24 *3600);
     // 小时
     int house = (int)value / 3600%3600;
-    // 分
+    // 分      
     int minute = (int)value /60%60;
-    self.leftTimeLb.text = [NSString stringWithFormat:@"%02zd天%02zd小时%02zd分", day, house, minute];
+    self.leftTimeLb.text = [NSString stringWithFormat:@"%02d天%02d小时%02d分", day, house, minute];
     /// 当倒计时到了进行回调
     if (countDown == 0) {
         self.leftTimeLb.text = @"没有完成作业哦";

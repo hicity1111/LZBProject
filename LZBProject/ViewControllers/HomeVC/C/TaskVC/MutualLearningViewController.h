@@ -11,7 +11,7 @@
 #import "HomeDataService.h"
 
 
-@interface MutualLearningViewController : LZBBaseViewController
+@interface MutualLearningViewController : LZBBaseViewController<JXCategoryListContentViewDelegate>
 
 @property (nonatomic, copy) void(^didScrollCallback)(UIScrollView *scrollView);
 

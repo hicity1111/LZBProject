@@ -910,7 +910,11 @@ static NSMutableArray *tasks;
     }
     else
     {
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Wdeprecated-declarations"
         return [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        #pragma clang diagnostic pop
+
     }
 }
 

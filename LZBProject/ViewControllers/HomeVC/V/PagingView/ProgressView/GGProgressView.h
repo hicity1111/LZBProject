@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, GGProgressViewStyle) {
 @property(nonatomic, strong, nullable) UIImage* progressImage;  //进度条背景图片,默认拉伸填充  优先级大于背景色
 @property(nonatomic, strong, nullable) UIImage* trackImage;     //轨道填充图片
 
-- (instancetype)initWithFrame:(CGRect)frame;
-- (instancetype)initWithFrame:(CGRect)frame progressViewStyle:(GGProgressViewStyle)style;
+- (instancetype _Nonnull )initWithFrame:(CGRect)frame;
+- (instancetype _Nonnull )initWithFrame:(CGRect)frame progressViewStyle:(GGProgressViewStyle)style;
 
 @end

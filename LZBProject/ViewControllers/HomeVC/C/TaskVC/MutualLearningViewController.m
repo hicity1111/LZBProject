@@ -17,7 +17,6 @@
 #define  homeApplecation [UIApplication sharedApplication].keyWindow
 
 static const CGFloat JXheightForHeaderInSection = 30;
-
 @interface MutualLearningViewController ()<UIScrollViewDelegate, JXPagerViewDelegate, JXCategoryViewDelegate>
 
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;

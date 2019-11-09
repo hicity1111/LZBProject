@@ -152,6 +152,8 @@
 //    if (self.clickFeedbackButton) {
 //        self.clickFeedbackButton(sender);
 //    }
+    OpinionAlertView *opinionAlertView = [[OpinionAlertView alloc] init];
+    [opinionAlertView showAlert];
 }
 
 

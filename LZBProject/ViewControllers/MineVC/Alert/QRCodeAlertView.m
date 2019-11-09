@@ -45,9 +45,6 @@
 @end
 
 
-
-
-
 @interface QRCodeAlertView ()
 
 @property (nonatomic, strong) UIView *containerView;

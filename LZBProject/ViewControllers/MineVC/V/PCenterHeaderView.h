@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OpinionAlertView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UserModel *model;
 
 @property (nonatomic, strong) UIViewController *vc;
+
+@property (nonatomic, strong) OpinionAlertView *opinionAlertView;
 
 /// 更换头像
 //@property (nonatomic, copy) void (^selectHeadImageGes)(UITapGestureRecognizer *ges);

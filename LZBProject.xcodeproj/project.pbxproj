@@ -78,6 +78,9 @@
 		0B7A8F7323755CA600827699 /* LZBLastIntroductionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A8F7123755CA600827699 /* LZBLastIntroductionCell.m */; };
 		0B7A8F7423755CA600827699 /* LZBLastIntroductionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7A8F7223755CA600827699 /* LZBLastIntroductionCell.xib */; };
 		0B7A8F772375A1BE00827699 /* AppDelegate+LZBIntroduction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A8F762375A1BE00827699 /* AppDelegate+LZBIntroduction.m */; };
+		0B7A8F7B2376A73400827699 /* OpinionAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A8F7A2376A73400827699 /* OpinionAlertView.m */; };
+		0B7A8F7F2376B06000827699 /* CustomBottonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A8F7E2376B06000827699 /* CustomBottonView.m */; };
+		0B7A8F852376BCED00827699 /* XSDTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A8F832376BCED00827699 /* XSDTextView.m */; };
 		0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B92FB5D2350820000D813B3 /* UIFont+LZBExtension.m */; };
 		0B92FB63235087A500D813B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B92FB62235087A500D813B3 /* UIKit.framework */; };
 		0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD66C234DBFAD00E4970A /* AppDelegate.m */; };
@@ -363,6 +366,12 @@
 		0B7A8F7223755CA600827699 /* LZBLastIntroductionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LZBLastIntroductionCell.xib; sourceTree = "<group>"; };
 		0B7A8F752375A1BD00827699 /* AppDelegate+LZBIntroduction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+LZBIntroduction.h"; sourceTree = "<group>"; };
 		0B7A8F762375A1BE00827699 /* AppDelegate+LZBIntroduction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+LZBIntroduction.m"; sourceTree = "<group>"; };
+		0B7A8F792376A73400827699 /* OpinionAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpinionAlertView.h; sourceTree = "<group>"; };
+		0B7A8F7A2376A73400827699 /* OpinionAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpinionAlertView.m; sourceTree = "<group>"; };
+		0B7A8F7D2376B06000827699 /* CustomBottonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomBottonView.h; sourceTree = "<group>"; };
+		0B7A8F7E2376B06000827699 /* CustomBottonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomBottonView.m; sourceTree = "<group>"; };
+		0B7A8F832376BCED00827699 /* XSDTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XSDTextView.m; sourceTree = "<group>"; };
+		0B7A8F842376BCED00827699 /* XSDTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XSDTextView.h; sourceTree = "<group>"; };
 		0B92FB5023500F7100D813B3 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		0B92FB552350175200D813B3 /* LZBMainMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBMainMacro.h; sourceTree = "<group>"; };
 		0B92FB56235028C400D813B3 /* HeaderFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderFile.h; sourceTree = "<group>"; };
@@ -1048,6 +1057,19 @@
 			path = LZBIntroduction;
 			sourceTree = "<group>";
 		};
+		0B7A8F7C2376A94400827699 /* OptionAlert */ = {
+			isa = PBXGroup;
+			children = (
+				0B7A8F842376BCED00827699 /* XSDTextView.h */,
+				0B7A8F832376BCED00827699 /* XSDTextView.m */,
+				0B7A8F792376A73400827699 /* OpinionAlertView.h */,
+				0B7A8F7A2376A73400827699 /* OpinionAlertView.m */,
+				0B7A8F7D2376B06000827699 /* CustomBottonView.h */,
+				0B7A8F7E2376B06000827699 /* CustomBottonView.m */,
+			);
+			path = OptionAlert;
+			sourceTree = "<group>";
+		};
 		0B82015F234DCEAE00D983AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1400,6 +1422,7 @@
 		8B225CBE236FD3A000BD5756 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
+				0B7A8F7C2376A94400827699 /* OptionAlert */,
 				8BD1BA16236BDCC20088A136 /* QRCodeAlertView.h */,
 				8BD1BA17236BDCC20088A136 /* QRCodeAlertView.m */,
 				8B7ED9E3237011B30017B08B /* LZBAlertViewController.h */,
@@ -2063,6 +2086,7 @@
 				0B619307235D7BDC00BE3BBA /* HomeViewController.m in Sources */,
 				0BF0533D237152400091EFB2 /* LZBProgressView.m in Sources */,
 				8B7EDA2D237684A80017B08B /* LoginResetPwdVC.m in Sources */,
+				0B7A8F7F2376B06000827699 /* CustomBottonView.m in Sources */,
 				0B4945D52357258500F19EE2 /* TriangleView.m in Sources */,
 				8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */,
 				0B7A8F652375557000827699 /* LZBIntroductionView.m in Sources */,
@@ -2115,6 +2139,7 @@
 				BA6CD812237124AA0008113F /* YBIBScreenRotationHandler.m in Sources */,
 				0B11217C236C20EF00944C24 /* LoginDataService.m in Sources */,
 				0B098FB8237250C400AB19F3 /* HomeResourcesTableViewCell.m in Sources */,
+				0B7A8F7B2376A73400827699 /* OpinionAlertView.m in Sources */,
 				0B112173236BFEE500944C24 /* LZBAPIResponseBaseModel.m in Sources */,
 				BA6CD7AB237112930008113F /* UIAlertController+LZBExtension.m in Sources */,
 				8B7EDA2423765AF60017B08B /* LoginNobindPhoneAlertView.m in Sources */,
@@ -2162,6 +2187,7 @@
 				0B0F6C1E2366C10900537128 /* JMRuntime.m in Sources */,
 				BA6CD83A2371410C0008113F /* UINavigationItem+SXFixSpace.m in Sources */,
 				0B0F6BE72362D79000537128 /* HomeDetailViewController.m in Sources */,
+				0B7A8F852376BCED00827699 /* XSDTextView.m in Sources */,
 				0B0F6BB823601FF200537128 /* Utils.m in Sources */,
 				BA6CD80C237124AA0008113F /* YBIBCopywriter.m in Sources */,
 				8B17539F23698A9000509317 /* NotificationViewController.m in Sources */,

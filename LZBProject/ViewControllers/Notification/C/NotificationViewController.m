@@ -22,8 +22,6 @@
 @property (nonatomic, strong) NSMutableArray *dataSource;
 ///全选工具栏
 @property (nonatomic, strong) NotifyAllSelectToolView *allToolView;
-///titleview
-@property (nonatomic, strong) UILabel *titleLab;
 ///deleteBtn
 @property (nonatomic, strong) UIButton *deleteBtn;
 ///分页
@@ -37,6 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = WHITECOLOR;
+    ///添加导航
+    [self mt_showNavigationTitle:@"消息中心"];
     ///加载组件
     [self mt_loadUI];
     ///获取用户信息
@@ -47,17 +47,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    ///默认隐藏系统导航条
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 
 #pragma mark - Private Methods
 - (void)mt_loadUI {
-    ///添加消息中心
-    self.navigationItem.titleView = self.titleLab;
-    ///添加列表控件
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:self.deleteBtn];
-    self.navigationItem.rightBarButtonItem = rightItem;
+    ///添加右侧删除按钮
+    [self.navView addSubview:self.deleteBtn];
     ///添加列表
     [self.view addSubview:self.tableView];
     ///添加全选工具栏
@@ -73,8 +71,7 @@
 - (void)deleteEvent {
     self.deleteBtn.selected = !self.deleteBtn.selected;
     self.allToolView.hidden = !self.deleteBtn.selected;
-    self.navigationItem.leftBarButtonItem.customView.hidden = self.deleteBtn.selected;
-    
+    self.navView.backBtn.hidden = self.deleteBtn.selected;
     if (!self.deleteBtn.selected) {
         ///全部清空 利用kvc机制
         [self.dataSource setValue:@(0) forKeyPath:@"isSelected"];
@@ -137,7 +134,7 @@
         self.deleteBtn.selected = NO;
         [self.allToolView resetData];
         self.allToolView.hidden = YES;
-        self.navigationItem.leftBarButtonItem.customView.hidden = NO;
+        self.navView.backBtn.hidden = NO;
     }
     [self.tableView reloadData];
     
@@ -334,23 +331,13 @@
     return _allToolView;
 }
 
-///titleView
-- (UILabel *)titleLab {
-    if (!_titleLab) {
-       _titleLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 30)];
-       _titleLab.textAlignment = NSTextAlignmentCenter;
-       _titleLab.textColor = KMAINFFFF;
-       _titleLab.text = @"消息中心";
-       _titleLab.font = LZBFont(18, YES);
-    }
-    return _titleLab;
-}
+
 
 
 - (UIButton *)deleteBtn {
     if (!_deleteBtn) {
         _deleteBtn = [[UIButton alloc] init];
-        _deleteBtn.frame = CGRectMake(0, 0, 85, 44);
+        _deleteBtn.frame = CGRectMake(kScreenWidth - 85, kStatusBar_Height, 85, 44);
         [_deleteBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_deleteBtn setTitle:@"批量删除" forState:UIControlStateNormal];
         [_deleteBtn setTitle:@"取消删除" forState:UIControlStateSelected];

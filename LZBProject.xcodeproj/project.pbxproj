@@ -194,6 +194,8 @@
 		BA6CD850237502420008113F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6CD84F237502420008113F /* SystemConfiguration.framework */; };
 		BA6CD853237512510008113F /* AliyunDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD852237512510008113F /* AliyunDataService.m */; };
 		BA6CD856237537300008113F /* AliyunOSSUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD855237537300008113F /* AliyunOSSUpload.m */; };
+		BA6CD85A237664320008113F /* AppDelegate+APNS.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD859237664320008113F /* AppDelegate+APNS.m */; };
+		BA6CD85E237686070008113F /* LZBNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD85D237686070008113F /* LZBNavigationBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -591,6 +593,11 @@
 		BA6CD852237512510008113F /* AliyunDataService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AliyunDataService.m; sourceTree = "<group>"; };
 		BA6CD854237537300008113F /* AliyunOSSUpload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AliyunOSSUpload.h; sourceTree = "<group>"; };
 		BA6CD855237537300008113F /* AliyunOSSUpload.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AliyunOSSUpload.m; sourceTree = "<group>"; };
+		BA6CD857237663820008113F /* 乐知帮.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "乐知帮.entitlements"; sourceTree = "<group>"; };
+		BA6CD858237664320008113F /* AppDelegate+APNS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+APNS.h"; sourceTree = "<group>"; };
+		BA6CD859237664320008113F /* AppDelegate+APNS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+APNS.m"; sourceTree = "<group>"; };
+		BA6CD85C237686070008113F /* LZBNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBNavigationBar.h; sourceTree = "<group>"; };
+		BA6CD85D237686070008113F /* LZBNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBNavigationBar.m; sourceTree = "<group>"; };
 		C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProject_LZBProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF14C585C96A1396A7EB144 /* Pods-LZBProject-LZBProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject-LZBProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-LZBProject-LZBProjectUITests/Pods-LZBProject-LZBProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -895,6 +902,7 @@
 		0B6192E3235D457100BE3BBA /* LZBBase */ = {
 			isa = PBXGroup;
 			children = (
+				BA6CD85B237685E00008113F /* LZBNavigationBar */,
 				0B0F6BD42361A90400537128 /* LZBTabBar */,
 				0BBE47762359B0FD00D30C4B /* LZBBaseViewController.h */,
 				0BBE47772359B0FD00D30C4B /* LZBBaseViewController.m */,
@@ -1193,6 +1201,7 @@
 		0BBCD66A234DBFAD00E4970A /* LZBProject */ = {
 			isa = PBXGroup;
 			children = (
+				BA6CD857237663820008113F /* 乐知帮.entitlements */,
 				0B820166234DCF4C00D983AE /* Vendor */,
 				0B820165234DCF2800D983AE /* Resources */,
 				0B820164234DCF1900D983AE /* Utility */,
@@ -1204,6 +1213,8 @@
 				0BBCD66C234DBFAD00E4970A /* AppDelegate.m */,
 				0B7A8F752375A1BD00827699 /* AppDelegate+LZBIntroduction.h */,
 				0B7A8F762375A1BE00827699 /* AppDelegate+LZBIntroduction.m */,
+				BA6CD858237664320008113F /* AppDelegate+APNS.h */,
+				BA6CD859237664320008113F /* AppDelegate+APNS.m */,
 				0BBCD671234DBFAD00E4970A /* ViewController.h */,
 				0BBCD672234DBFAD00E4970A /* ViewController.m */,
 				0BBCD674234DBFAD00E4970A /* Main.storyboard */,
@@ -1726,6 +1737,15 @@
 			path = MTPhoto;
 			sourceTree = "<group>";
 		};
+		BA6CD85B237685E00008113F /* LZBNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				BA6CD85C237686070008113F /* LZBNavigationBar.h */,
+				BA6CD85D237686070008113F /* LZBNavigationBar.m */,
+			);
+			path = LZBNavigationBar;
+			sourceTree = "<group>";
+		};
 		E891B3A032A33E1398D77910 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2063,6 +2083,7 @@
 				BA6CD7AB237112930008113F /* UIAlertController+LZBExtension.m in Sources */,
 				BA6CD801237124AA0008113F /* YBImage.m in Sources */,
 				BA6CD83C2371410C0008113F /* UINavigationController+SXFullScreen.m in Sources */,
+				BA6CD85A237664320008113F /* AppDelegate+APNS.m in Sources */,
 				0B0F6BDD236294EE00537128 /* LZB_TabBar.m in Sources */,
 				0B6192E6235D570B00BE3BBA /* LZBBaseNavigationController.m in Sources */,
 				8B4D1C5623618CD2008B2CCA /* LoginViewController.m in Sources */,
@@ -2091,6 +2112,7 @@
 				BA6CD80A237124AA0008113F /* YBIBIconManager.m in Sources */,
 				8B7EDA15237255CA0017B08B /* HWDefaultPopAnimator.m in Sources */,
 				0B098C682351B942000934EB /* LZBNetManagerCache.m in Sources */,
+				BA6CD85E237686070008113F /* LZBNavigationBar.m in Sources */,
 				8B175399236987BC00509317 /* MineCommonCell.m in Sources */,
 				0B0F6BE42362D00600537128 /* MineViewController.m in Sources */,
 				BA5BFE93236C17A800D231F0 /* NotifyListEntry.m in Sources */,
@@ -2327,6 +2349,7 @@
 			baseConfigurationReference = 099B13D8A8E252E4F18BC6C5 /* Pods-LZBProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "LZBProject/乐知帮.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = Z2N4GZ9GVH;
@@ -2410,6 +2433,7 @@
 			baseConfigurationReference = 23FB01E150EBC5D9CF6D00A2 /* Pods-LZBProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "LZBProject/乐知帮.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = Z2N4GZ9GVH;

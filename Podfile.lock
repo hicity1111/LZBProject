@@ -17,6 +17,9 @@ PODS:
   - AliyunOSSiOS (2.10.7)
   - FDFullscreenPopGesture (1.1)
   - IQKeyboardManager (6.5.0)
+  - JCore (2.1.4)
+  - JPush (3.2.6):
+    - JCore (< 3.0.0, >= 2.0.0)
   - JXCategoryView (1.5.2)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
@@ -37,6 +40,8 @@ DEPENDENCIES:
   - AliyunOSSiOS
   - FDFullscreenPopGesture
   - IQKeyboardManager
+  - JCore
+  - JPush
   - JXCategoryView
   - Masonry
   - MBProgressHUD
@@ -54,6 +59,8 @@ SPEC REPOS:
     - AliyunOSSiOS
     - FDFullscreenPopGesture
     - IQKeyboardManager
+    - JCore
+    - JPush
     - JXCategoryView
     - Masonry
     - MBProgressHUD
@@ -70,6 +77,8 @@ SPEC CHECKSUMS:
   AliyunOSSiOS: 602b6a4e70e62a5f0a6431c20496343141d7e66f
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   IQKeyboardManager: 700e5155d6a292383b54e8678aec769e14fc78fc
+  JCore: d345c049141877eb61c33011455fdb5fcab1673f
+  JPush: 41dd48a69bd8c08abc692dc7f2b23c0fb281471f
   JXCategoryView: b284d35a7a8772eada05dd78642233e1eb763ea8
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
@@ -81,6 +90,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 8818267b7448ccd12ca9c90c35b3c349f5c68099
+PODFILE CHECKSUM: e84527e52f5ddcee764e9e62db08bfe46b951e3c
 
 COCOAPODS: 1.7.5

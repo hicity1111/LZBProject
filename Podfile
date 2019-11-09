@@ -21,6 +21,10 @@ target 'LZBProject' do
 
   # 阿里云
   pod 'AliyunOSSiOS'
+  
+  #  极光推送
+  pod 'JCore' # 可选项，也可由pod 'JPush'自动获取
+  pod 'JPush' # 必选项
 
 
   # Pods for LZBProject

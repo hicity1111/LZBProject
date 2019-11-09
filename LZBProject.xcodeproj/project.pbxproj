@@ -71,6 +71,14 @@
 		0B6192FB235D5E4300BE3BBA /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6192FA235D5E4300BE3BBA /* Home.storyboard */; };
 		0B619304235D7BC900BE3BBA /* CTBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B619303235D7BC900BE3BBA /* CTBViewController.m */; };
 		0B619307235D7BDC00BE3BBA /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B619306235D7BDC00BE3BBA /* HomeViewController.m */; };
+		0B7A8F652375557000827699 /* LZBIntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A8F642375557000827699 /* LZBIntroductionView.m */; };
+		0B7A8F692375587D00827699 /* LZBIntroductionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A8F672375587D00827699 /* LZBIntroductionCell.m */; };
+		0B7A8F6A2375587D00827699 /* LZBIntroductionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7A8F682375587D00827699 /* LZBIntroductionCell.xib */; };
+		0B7A8F6E23755C8A00827699 /* LZBMiddleIntroductionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A8F6C23755C8A00827699 /* LZBMiddleIntroductionCell.m */; };
+		0B7A8F6F23755C8A00827699 /* LZBMiddleIntroductionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7A8F6D23755C8A00827699 /* LZBMiddleIntroductionCell.xib */; };
+		0B7A8F7323755CA600827699 /* LZBLastIntroductionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A8F7123755CA600827699 /* LZBLastIntroductionCell.m */; };
+		0B7A8F7423755CA600827699 /* LZBLastIntroductionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7A8F7223755CA600827699 /* LZBLastIntroductionCell.xib */; };
+		0B7A8F772375A1BE00827699 /* AppDelegate+LZBIntroduction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A8F762375A1BE00827699 /* AppDelegate+LZBIntroduction.m */; };
 		0B92FB5E2350820000D813B3 /* UIFont+LZBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B92FB5D2350820000D813B3 /* UIFont+LZBExtension.m */; };
 		0B92FB63235087A500D813B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B92FB62235087A500D813B3 /* UIKit.framework */; };
 		0BBCD66D234DBFAD00E4970A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCD66C234DBFAD00E4970A /* AppDelegate.m */; };
@@ -331,6 +339,19 @@
 		0B619303235D7BC900BE3BBA /* CTBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTBViewController.m; sourceTree = "<group>"; };
 		0B619305235D7BDC00BE3BBA /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		0B619306235D7BDC00BE3BBA /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		0B7A8F632375557000827699 /* LZBIntroductionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBIntroductionView.h; sourceTree = "<group>"; };
+		0B7A8F642375557000827699 /* LZBIntroductionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBIntroductionView.m; sourceTree = "<group>"; };
+		0B7A8F662375587D00827699 /* LZBIntroductionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBIntroductionCell.h; sourceTree = "<group>"; };
+		0B7A8F672375587D00827699 /* LZBIntroductionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBIntroductionCell.m; sourceTree = "<group>"; };
+		0B7A8F682375587D00827699 /* LZBIntroductionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LZBIntroductionCell.xib; sourceTree = "<group>"; };
+		0B7A8F6B23755C8A00827699 /* LZBMiddleIntroductionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBMiddleIntroductionCell.h; sourceTree = "<group>"; };
+		0B7A8F6C23755C8A00827699 /* LZBMiddleIntroductionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBMiddleIntroductionCell.m; sourceTree = "<group>"; };
+		0B7A8F6D23755C8A00827699 /* LZBMiddleIntroductionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LZBMiddleIntroductionCell.xib; sourceTree = "<group>"; };
+		0B7A8F7023755CA600827699 /* LZBLastIntroductionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBLastIntroductionCell.h; sourceTree = "<group>"; };
+		0B7A8F7123755CA600827699 /* LZBLastIntroductionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBLastIntroductionCell.m; sourceTree = "<group>"; };
+		0B7A8F7223755CA600827699 /* LZBLastIntroductionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LZBLastIntroductionCell.xib; sourceTree = "<group>"; };
+		0B7A8F752375A1BD00827699 /* AppDelegate+LZBIntroduction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+LZBIntroduction.h"; sourceTree = "<group>"; };
+		0B7A8F762375A1BE00827699 /* AppDelegate+LZBIntroduction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+LZBIntroduction.m"; sourceTree = "<group>"; };
 		0B92FB5023500F7100D813B3 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		0B92FB552350175200D813B3 /* LZBMainMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBMainMacro.h; sourceTree = "<group>"; };
 		0B92FB56235028C400D813B3 /* HeaderFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderFile.h; sourceTree = "<group>"; };
@@ -970,6 +991,24 @@
 			path = C;
 			sourceTree = "<group>";
 		};
+		0B7A8F62237554F800827699 /* LZBIntroduction */ = {
+			isa = PBXGroup;
+			children = (
+				0B7A8F632375557000827699 /* LZBIntroductionView.h */,
+				0B7A8F642375557000827699 /* LZBIntroductionView.m */,
+				0B7A8F662375587D00827699 /* LZBIntroductionCell.h */,
+				0B7A8F672375587D00827699 /* LZBIntroductionCell.m */,
+				0B7A8F682375587D00827699 /* LZBIntroductionCell.xib */,
+				0B7A8F6B23755C8A00827699 /* LZBMiddleIntroductionCell.h */,
+				0B7A8F6C23755C8A00827699 /* LZBMiddleIntroductionCell.m */,
+				0B7A8F6D23755C8A00827699 /* LZBMiddleIntroductionCell.xib */,
+				0B7A8F7023755CA600827699 /* LZBLastIntroductionCell.h */,
+				0B7A8F7123755CA600827699 /* LZBLastIntroductionCell.m */,
+				0B7A8F7223755CA600827699 /* LZBLastIntroductionCell.xib */,
+			);
+			path = LZBIntroduction;
+			sourceTree = "<group>";
+		};
 		0B82015F234DCEAE00D983AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -983,6 +1022,7 @@
 		0B820160234DCEE100D983AE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0B7A8F62237554F800827699 /* LZBIntroduction */,
 				8B17539A236988AE00509317 /* Notification */,
 				8B4D1C4D23618CD2008B2CCA /* LoginVC */,
 				0B6192F0235D5DBB00BE3BBA /* MineVC */,
@@ -1143,6 +1183,8 @@
 				0B820160234DCEE100D983AE /* ViewControllers */,
 				0BBCD66B234DBFAD00E4970A /* AppDelegate.h */,
 				0BBCD66C234DBFAD00E4970A /* AppDelegate.m */,
+				0B7A8F752375A1BD00827699 /* AppDelegate+LZBIntroduction.h */,
+				0B7A8F762375A1BE00827699 /* AppDelegate+LZBIntroduction.m */,
 				0BBCD671234DBFAD00E4970A /* ViewController.h */,
 				0BBCD672234DBFAD00E4970A /* ViewController.m */,
 				0BBCD674234DBFAD00E4970A /* Main.storyboard */,
@@ -1774,9 +1816,11 @@
 			files = (
 				8BCD1226236192F600BCCB08 /* Login.storyboard in Resources */,
 				0B6192FB235D5E4300BE3BBA /* Home.storyboard in Resources */,
+				0B7A8F6A2375587D00827699 /* LZBIntroductionCell.xib in Resources */,
 				8B175398236987BC00509317 /* MineCommonCell.xib in Resources */,
 				8B175394236987BC00509317 /* MineLogoutCell.xib in Resources */,
 				8B6B6A0D2362D8C2008B7585 /* login_bg@2x.png in Resources */,
+				0B7A8F7423755CA600827699 /* LZBLastIntroductionCell.xib in Resources */,
 				8B6B6A0B2362D8C2008B7585 /* login_bg@3x.png in Resources */,
 				8B21DEF12366F632000F0DAB /* CTBSubjectCell.xib in Resources */,
 				0B6192F9235D5E3400BE3BBA /* CTB.storyboard in Resources */,
@@ -1789,6 +1833,7 @@
 				8B21DEFA2367ECEB000F0DAB /* HomeWorkNotStartCell.xib in Resources */,
 				0B6192F7235D5E2300BE3BBA /* Mine.storyboard in Resources */,
 				0B098FB9237250C400AB19F3 /* HomeResourcesTableViewCell.xib in Resources */,
+				0B7A8F6F23755C8A00827699 /* LZBMiddleIntroductionCell.xib in Resources */,
 				0BBCD678234DBFAE00E4970A /* Assets.xcassets in Resources */,
 				0BBCD676234DBFAD00E4970A /* Main.storyboard in Resources */,
 			);
@@ -1931,6 +1976,7 @@
 				0BF0533D237152400091EFB2 /* LZBProgressView.m in Sources */,
 				0B4945D52357258500F19EE2 /* TriangleView.m in Sources */,
 				8B9CB31823697C8A0092F7DE /* LYZSandBoxPath.m in Sources */,
+				0B7A8F652375557000827699 /* LZBIntroductionView.m in Sources */,
 				BA6CD811237124AA0008113F /* YBIBSheetView.m in Sources */,
 				8B7EDA202373ECCA0017B08B /* LZBSubjectLabelColorModel.m in Sources */,
 				0B0F6C192366C10900537128 /* JMWaveButton.m in Sources */,
@@ -1996,10 +2042,12 @@
 				0B098FC323728ABB00AB19F3 /* NSObject+Addition.m in Sources */,
 				0B0F6BD72361A90400537128 /* LZB_TabBarBadge.m in Sources */,
 				BA6CD815237124AA0008113F /* YBIBCollectionView.m in Sources */,
+				0B7A8F772375A1BE00827699 /* AppDelegate+LZBIntroduction.m in Sources */,
 				0B17673F2358471E008979C5 /* NSDate+LZBCalendar.m in Sources */,
 				0B098FB42371B03B00AB19F3 /* OYCountDownManager.m in Sources */,
 				0B09920623517A0D001E5389 /* LZBDataEntity.m in Sources */,
 				0B3D0035236ADAE300BD4AA1 /* LZBEmptyView.m in Sources */,
+				0B7A8F6E23755C8A00827699 /* LZBMiddleIntroductionCell.m in Sources */,
 				0B0F6BEC236682DF00537128 /* HomeHeaderView.m in Sources */,
 				8B175396236987BC00509317 /* PCenterHeaderView.m in Sources */,
 				0B0F6C1A2366C10900537128 /* JMWaveButtonConfig.m in Sources */,
@@ -2014,6 +2062,7 @@
 				0B0F6BDA2361B43B00537128 /* LZB_TabBarItem.m in Sources */,
 				8BD1BA18236BDCC20088A136 /* QRCodeAlertView.m in Sources */,
 				BA6CD816237124AA0008113F /* YBIBCollectionViewLayout.m in Sources */,
+				0B7A8F7323755CA600827699 /* LZBLastIntroductionCell.m in Sources */,
 				0B0F6C1E2366C10900537128 /* JMRuntime.m in Sources */,
 				BA6CD83A2371410C0008113F /* UINavigationItem+SXFixSpace.m in Sources */,
 				0B0F6BE72362D79000537128 /* HomeDetailViewController.m in Sources */,
@@ -2065,6 +2114,7 @@
 				8B21DEF52367D9C5000F0DAB /* LZB_CTB_CellHelper.m in Sources */,
 				BA6CD7FF237124AA0008113F /* YBImageBrowser.m in Sources */,
 				0B0F6BBD236020F300537128 /* NSString+LZBValid.m in Sources */,
+				0B7A8F692375587D00827699 /* LZBIntroductionCell.m in Sources */,
 				0B3D0023236934FE00BD4AA1 /* JXPagerMainTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2240,6 +2290,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = Z2N4GZ9GVH;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LZBProject/Supporting Files/PrefixHeader.pch";
@@ -2261,6 +2312,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = Z2N4GZ9GVH;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LZBProject/Supporting Files/PrefixHeader.pch";

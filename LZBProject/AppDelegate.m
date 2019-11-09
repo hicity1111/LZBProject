@@ -10,8 +10,10 @@
 #import "ViewController.h"
 #import "LZBBaseTabBarController.h"
 #import "LoginViewController.h"
+#import "AppDelegate+LZBIntroduction.h"
 
 @interface AppDelegate ()
+
 
 @end
 
@@ -26,7 +28,7 @@
     
     [self addKeyboardManager];
     [self entryDoor];
-    
+//    [self initIntroduct];
     return YES;
 }
 
@@ -44,9 +46,9 @@
 
 #pragma mark - 界面入口
 - (void)entryDoor {
+    
 //    SETUSER_BOOL(IS_USER_LOGIN, NO);
 //    [SDUserDefaults synchronize];
-    
     BOOL isLogin = GETUSER_BOOL(IS_USER_LOGIN);
     
     if (isLogin) {

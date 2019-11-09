@@ -574,6 +574,7 @@ static CGFloat phoheH = 48.f, verH = 48.f, pvSpace = 16.f, vsSpace = 15.f;
     [self updateLoginButtonState];
     self.verifyCodeTF.text = @"";
     
+//    [self switchLoginWay_trans:btn.selected];
     [self switchLoginWay_sysAni:btn.selected];
 }
 

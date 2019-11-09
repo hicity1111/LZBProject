@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0BBCD667234DBFAD00E4970A"
-               BuildableName = "LZBProject.app"
+               BuildableName = "&#x4e50;&#x77e5;&#x5e2e;.app"
                BlueprintName = "LZBProject"
                ReferencedContainer = "container:LZBProject.xcodeproj">
             </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0BBCD667234DBFAD00E4970A"
-            BuildableName = "LZBProject.app"
+            BuildableName = "&#x4e50;&#x77e5;&#x5e2e;.app"
             BlueprintName = "LZBProject"
             ReferencedContainer = "container:LZBProject.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0BBCD667234DBFAD00E4970A"
-            BuildableName = "LZBProject.app"
+            BuildableName = "&#x4e50;&#x77e5;&#x5e2e;.app"
             BlueprintName = "LZBProject"
             ReferencedContainer = "container:LZBProject.xcodeproj">
          </BuildableReference>

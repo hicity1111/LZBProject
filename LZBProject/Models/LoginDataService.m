@@ -28,7 +28,7 @@
     
     LZBDataEntity *entity = [[LZBDataEntity alloc] init];
     entity.urlString = LoginUrl_full;
-    NSDictionary *para = @{@"userName": username, @"password": password, @"appChannelId": @"studentApp",@"appVersion":@"2.1.0.05",@"appVersionCode":@"22"};
+    NSDictionary *para = @{@"userName": username, @"password": password, @"appChannelId": @"studentIosPhone",@"appVersion":@"1.0",@"appVersionCode":@"1"};
     self.responseClassName = NSStringFromClass([UserModel class]);
     //传入必要的参数
 //    NSMutableDictionary *mpara = [NSMutableDictionary dictionaryWithDictionary:[self necessaryParamsDictionary:para]];

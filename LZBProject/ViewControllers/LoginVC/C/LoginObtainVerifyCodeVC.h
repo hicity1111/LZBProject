@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LoginObtainVerifyCodeVC : LZBBaseViewController
 
+@property (nonatomic, strong) NSString *phoneNum;
+
 @end
 
 NS_ASSUME_NONNULL_END

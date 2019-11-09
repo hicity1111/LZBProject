@@ -30,6 +30,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
+
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }

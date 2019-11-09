@@ -14,6 +14,7 @@
 #import "UIImage+CompressImage.h"
 #import "LoginNobindPhoneAlertView.h"
 #import "LoginObtainPhoneNumVC.h"
+#import "NSObject+charValid.h"
 
 #import "AppDelegate.h"
 
@@ -382,18 +383,6 @@ static CGFloat phoheH = 48.f, verH = 48.f, pvSpace = 16.f, vsSpace = 15.f;
     [self showSuccess:[NSString stringWithFormat:@"%@ + %@", phone, veriCode]];
 }
 
-- (BOOL)isChar0to9:(char)c {
-    return (c >= 48 && c <= 57);
-}
-
-- (BOOL)isCharatoz:(char)c {
-    return (c >= 97 && c <= 122);
-}
-
-- (BOOL)isCharAtoZ:(char)c {
-    return (c >= 65 && c <= 90);
-}
-
 
 /// 整页翻转
 - (void)switchLoginWay_trans:(BOOL)sel {
@@ -623,15 +612,13 @@ replacementString:(NSString *)string {
     char c = chars[0];
     
     if (textField == self.userTF || textField == self.pwdTF) {
-        if ([self isChar0to9:c] ||
-            [self isCharAtoZ:c] ||
-            [self isCharatoz:c]) {
+        if ([self isAlphaNumChar:c]) {
             return YES;
         }
         return NO;
     }
     else if (textField == self.phoneTF || textField == self.verifyCodeTF) {
-        if ([self isChar0to9:c]) {
+        if ([self isNumberChar:c]) {
             return YES;
         }
         return NO;

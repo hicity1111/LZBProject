@@ -126,6 +126,7 @@
 		8B6B6A0C2362D8C2008B7585 /* login_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B6A092362D8C2008B7585 /* login_bg.png */; };
 		8B6B6A0D2362D8C2008B7585 /* login_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B6A0A2362D8C2008B7585 /* login_bg@2x.png */; };
 		8B6B6A112362D905008B7585 /* LYZTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B6A0F2362D905008B7585 /* LYZTextField.m */; };
+		8B7C87A62376C4DE00031876 /* NSObject+charValid.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C87A52376C4DE00031876 /* NSObject+charValid.m */; };
 		8B7ED9E5237011B30017B08B /* LZBAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7ED9E4237011B30017B08B /* LZBAlertViewController.m */; };
 		8B7ED9F1237151DD0017B08B /* CTB_SubjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7ED9F0237151DD0017B08B /* CTB_SubjectModel.m */; };
 		8B7ED9F4237152190017B08B /* CTB_SubjectDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7ED9F3237152190017B08B /* CTB_SubjectDataService.m */; };
@@ -451,6 +452,8 @@
 		8B6B6A0F2362D905008B7585 /* LYZTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYZTextField.m; sourceTree = "<group>"; };
 		8B6B6A102362D905008B7585 /* LYZTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYZTextField.h; sourceTree = "<group>"; };
 		8B6B6A382362FE9B008B7585 /* LZBNetworkURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBNetworkURL.h; sourceTree = "<group>"; };
+		8B7C87A42376C4DE00031876 /* NSObject+charValid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+charValid.h"; sourceTree = "<group>"; };
+		8B7C87A52376C4DE00031876 /* NSObject+charValid.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+charValid.m"; sourceTree = "<group>"; };
 		8B7ED9E3237011B30017B08B /* LZBAlertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBAlertViewController.h; sourceTree = "<group>"; };
 		8B7ED9E4237011B30017B08B /* LZBAlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBAlertViewController.m; sourceTree = "<group>"; };
 		8B7ED9EF237151DD0017B08B /* CTB_SubjectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTB_SubjectModel.h; sourceTree = "<group>"; };
@@ -1476,8 +1479,8 @@
 		8B6B6A0E2362D905008B7585 /* TextField */ = {
 			isa = PBXGroup;
 			children = (
-				8B6B6A0F2362D905008B7585 /* LYZTextField.m */,
 				8B6B6A102362D905008B7585 /* LYZTextField.h */,
+				8B6B6A0F2362D905008B7585 /* LYZTextField.m */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -1609,6 +1612,8 @@
 				BA6CD7B1237114040008113F /* NSObject+LZBExtension.m */,
 				8B7EDA2E237685F60017B08B /* NSObject+LZBCall.h */,
 				8B7EDA2F237685F60017B08B /* NSObject+LZBCall.m */,
+				8B7C87A42376C4DE00031876 /* NSObject+charValid.h */,
+				8B7C87A52376C4DE00031876 /* NSObject+charValid.m */,
 			);
 			path = NSObject;
 			sourceTree = "<group>";
@@ -2095,6 +2100,7 @@
 				8BD1BA1E236C3E200088A136 /* LYZCurrentVCHelper.m in Sources */,
 				0B098FBD23728A7900AB19F3 /* UILabel+AttributedString.m in Sources */,
 				0B0F6C292366F92700537128 /* MutualLearningViewController.m in Sources */,
+				8B7C87A62376C4DE00031876 /* NSObject+charValid.m in Sources */,
 				0B0F6C1C2366C10900537128 /* JMNumberButton.m in Sources */,
 				BA5BFE87236BCC8D00D231F0 /* NotificaitonIconItem.m in Sources */,
 				0B3D002C236ABE8900BD4AA1 /* LZBEmptyBaseView.m in Sources */,

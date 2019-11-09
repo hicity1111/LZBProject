@@ -10,6 +10,22 @@
 #define LZBMainColorMacro_h
 
 #define KMAINFFFF   [UIColor colorWithHex:@"#FFFFFF"]
+#define kMAINEEEE   [UIColor colorWithHex:@"#EEEEEE"]
+#define kMAINDDDD   [UIColor colorWithHex:@"#DDDDDD"]
+#define kMAINCCCC   [UIColor colorWithHex:@"#CCCCCC"]
+#define kMAINBBBB   [UIColor colorWithHex:@"#BBBBBB"]
+#define kMAINAAAA   [UIColor colorWithHex:@"#AAAAAA"]
+#define kMAIN9999   [UIColor colorWithHex:@"#999999"]
+#define kMAIN7777   [UIColor colorWithHex:@"#777777"]
+#define kMAIN6666   [UIColor colorWithHex:@"#666666"]
+#define kMAIN3333   [UIColor colorWithHex:@"#333333"]
+
+
+#define KMAINAFAF   [UIColor colorWithHex:@"#AFAFAF"]
+#define kMAINA6A6   [UIColor colorWithHex:@"#A6A6A6"]
+#define kMAIN9696   [UIColor colorWithHex:@"#969696"]
+#define kMAIN7F7F   [UIColor colorWithHex:@"#7F7F7F" alpha:0.18]
+
 
 #define KMAIN00A2   [UIColor colorWithHex:@"#00A26D"]
 
@@ -17,24 +33,11 @@
 
 #define KMAINFFA0   [UIColor colorWithHex:@"#FFA000"]
 
-#define KMAINAFAF   [UIColor colorWithHex:@"#AFAFAF"]
 
 /// 绿色Button
 #define kMAIN00B5   [UIColor colorWithHex:@"#00B57B"]
 
 #define kMAIN0099   [UIColor colorWithHex:@"#00995E"]
-
-#define kMAINDDDD   [UIColor colorWithHex:@"#DDDDDD"]
-
-#define kMAINCCCC   [UIColor colorWithHex:@"#CCCCCC"]
-
-#define kMAIN9999   [UIColor colorWithHex:@"#999999"]
-
-#define kMAIN6666   [UIColor colorWithHex:@"#666666"]
-
-#define kMAIN3333   [UIColor colorWithHex:@"#333333"]
-
-#define kMAIN9696   [UIColor colorWithHex:@"#969696"]
 
 #define kMAIN9966   [UIColor colorWithHex:@"#009966"]
 
@@ -52,15 +55,7 @@
 
 #define kMAINCBE6   [UIColor colorWithHex:@"#CBE6DA"]
 
-#define kMAINA6A6   [UIColor colorWithHex:@"#A6A6A6"]
-
 #define kMAINF1F5   [UIColor colorWithHex:@"#F1F5F5"]
-
-#define kMAIN7777   [UIColor colorWithHex:@"#777777"]
-
-#define kMAIN7F7F   [UIColor colorWithHex:@"#7F7F7F" alpha:0.18]
-
-#define kMAINEEEE   [UIColor colorWithHex:@"#EEEEEE"]
 
 #define KMAIN80B4   [UIColor colorWithHex:@"#80B491"]
 

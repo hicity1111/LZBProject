@@ -9,6 +9,8 @@
 #import "PCenterHeaderView.h"
 #import "QRCodeAlertView.h"
 #import "UIViewController+MTPhoto.h"
+#import "AliyunDataService.h"
+#import "AliyunOSSUpload.h"
 
 @interface PCenterHeaderView ()
 
@@ -60,6 +62,7 @@
     self.userHeadImageView.clipsToBounds = YES;
     self.userHeadImageView.layer.borderWidth = 2.f;
     self.userHeadImageView.layer.borderColor = WHITECOLOR.CGColor;
+    self.userHeadImageView.contentMode = UIViewContentModeScaleAspectFill;
     
     self.userHeadImageView.userInteractionEnabled = YES;
     [self.userHeadImageView addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectHeadImage:)]];
@@ -101,9 +104,9 @@
 //    if (self.selectHeadImageGes) {
 //        self.selectHeadImageGes(tap);
 //    }
-    
+    MJWeakSelf
     [[UIViewController mt_currentViewController] pickImageWithCompletionHandler:^(NSData *imageData, UIImage *image) {
-        NSLog(@"...... %@   %@", image, imageData);
+        [weakSelf loadOssAuthorizationInfo:imageData];
     }];
 }
 
@@ -151,6 +154,39 @@
 //    }
 }
 
+
+///MARK:- REMOTE API
+///获取鉴权信息
+- (void)loadOssAuthorizationInfo:(NSData *)image {
+    UserModel *infoM = [UserModel findUserInfoResult];
+    MJWeakSelf
+    [[AliyunDataService shareData] obtainOssAuthorizationInfoWithStudentID:[NSString stringWithFormat:@"%@", infoM.studentInfoId] success:^(AliyunModel * _Nonnull baseM) {
+        [weakSelf uploadAliyunWithImageData:image aliyunM:baseM];
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+///阿里云上传
+- (void)uploadAliyunWithImageData:(NSData *)data aliyunM:(AliyunModel *)model {
+    AliyunOSSUpload *uploadM = [AliyunOSSUpload sharedManager];
+    [uploadM generateWithAccessKeyId:model.AccessKeyId secretKeyId:model.AccessKeySecret securityToken:model.SecurityToken];
+    MJWeakSelf
+    [uploadM uploadImageData:data resultCallBack:^(NSString * _Nonnull imageUrl) {
+        [weakSelf updateUserHeadUrl:imageUrl];
+        [weakSelf.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
+    }];
+}
+
+///更新本地服务器
+- (void)updateUserHeadUrl:(NSString *)headUrl {
+    UserModel *infoM = [UserModel findUserInfoResult];
+    [[AliyunDataService shareData] updateUserHeadUrl:headUrl studentInfoId:[NSString stringWithFormat:@"%@", infoM.studentInfoId] success:^(LZBAPIResponseBaseModel *baseM) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
 
 - (void)setModel:(UserModel *)model {
     _model = model;

@@ -181,6 +181,11 @@
 		BA6CD83B2371410C0008113F /* UIBarButtonItem+SXCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD8372371410C0008113F /* UIBarButtonItem+SXCreate.m */; };
 		BA6CD83C2371410C0008113F /* UINavigationController+SXFullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD8382371410C0008113F /* UINavigationController+SXFullScreen.m */; };
 		BA6CD84A2374F5A20008113F /* UIViewController+MTPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD8492374F5A20008113F /* UIViewController+MTPhoto.m */; };
+		BA6CD84C237502300008113F /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6CD84B237502300008113F /* libresolv.tbd */; };
+		BA6CD84E2375023A0008113F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6CD84D237502390008113F /* CoreTelephony.framework */; };
+		BA6CD850237502420008113F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6CD84F237502420008113F /* SystemConfiguration.framework */; };
+		BA6CD853237512510008113F /* AliyunDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD852237512510008113F /* AliyunDataService.m */; };
+		BA6CD856237537300008113F /* AliyunOSSUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD855237537300008113F /* AliyunOSSUpload.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -558,6 +563,13 @@
 		BA6CD8382371410C0008113F /* UINavigationController+SXFullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SXFullScreen.m"; sourceTree = "<group>"; };
 		BA6CD8482374F5A20008113F /* UIViewController+MTPhoto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MTPhoto.h"; sourceTree = "<group>"; };
 		BA6CD8492374F5A20008113F /* UIViewController+MTPhoto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MTPhoto.m"; sourceTree = "<group>"; };
+		BA6CD84B237502300008113F /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		BA6CD84D237502390008113F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		BA6CD84F237502420008113F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BA6CD851237512510008113F /* AliyunDataService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AliyunDataService.h; sourceTree = "<group>"; };
+		BA6CD852237512510008113F /* AliyunDataService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AliyunDataService.m; sourceTree = "<group>"; };
+		BA6CD854237537300008113F /* AliyunOSSUpload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AliyunOSSUpload.h; sourceTree = "<group>"; };
+		BA6CD855237537300008113F /* AliyunOSSUpload.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AliyunOSSUpload.m; sourceTree = "<group>"; };
 		C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProject_LZBProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF14C585C96A1396A7EB144 /* Pods-LZBProject-LZBProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZBProject-LZBProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-LZBProject-LZBProjectUITests/Pods-LZBProject-LZBProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZBProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -568,6 +580,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA6CD850237502420008113F /* SystemConfiguration.framework in Frameworks */,
+				BA6CD84E2375023A0008113F /* CoreTelephony.framework in Frameworks */,
+				BA6CD84C237502300008113F /* libresolv.tbd in Frameworks */,
 				170A91ACB3928B17BD894640 /* Pods_LZBProject.framework in Frameworks */,
 				0B92FB63235087A500D813B3 /* UIKit.framework in Frameworks */,
 			);
@@ -1661,6 +1676,10 @@
 			children = (
 				BA6CD8482374F5A20008113F /* UIViewController+MTPhoto.h */,
 				BA6CD8492374F5A20008113F /* UIViewController+MTPhoto.m */,
+				BA6CD851237512510008113F /* AliyunDataService.h */,
+				BA6CD852237512510008113F /* AliyunDataService.m */,
+				BA6CD854237537300008113F /* AliyunOSSUpload.h */,
+				BA6CD855237537300008113F /* AliyunOSSUpload.m */,
 			);
 			path = MTPhoto;
 			sourceTree = "<group>";
@@ -1668,6 +1687,9 @@
 		E891B3A032A33E1398D77910 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA6CD84F237502420008113F /* SystemConfiguration.framework */,
+				BA6CD84D237502390008113F /* CoreTelephony.framework */,
+				BA6CD84B237502300008113F /* libresolv.tbd */,
 				0B92FB62235087A500D813B3 /* UIKit.framework */,
 				EDB157E39B72C782CE1C605C /* Pods_LZBProject.framework */,
 				C550EACB8D5970549A539515 /* Pods_LZBProject_LZBProjectUITests.framework */,
@@ -1938,6 +1960,7 @@
 				BA5BFE90236C057500D231F0 /* NotifyAllSelectToolView.m in Sources */,
 				0BBCD673234DBFAD00E4970A /* ViewController.m in Sources */,
 				0B0F6C172366C10900537128 /* JMBaseButton.m in Sources */,
+				BA6CD853237512510008113F /* AliyunDataService.m in Sources */,
 				BA6CD800237124AA0008113F /* YBIBImageLayout.m in Sources */,
 				0B3D00102368487100BD4AA1 /* JXCategoryIndicatorSpringBackgroundView.m in Sources */,
 				0B619307235D7BDC00BE3BBA /* HomeViewController.m in Sources */,
@@ -2036,6 +2059,7 @@
 				8B21DEFE23681118000F0DAB /* HomeWorkAlreadyStartCell.m in Sources */,
 				BA6CD802237124AA0008113F /* YBIBInteractionProfile.m in Sources */,
 				8B7EDA14237255CA0017B08B /* HWNavAnimatedTransitioning.m in Sources */,
+				BA6CD856237537300008113F /* AliyunOSSUpload.m in Sources */,
 				0B0F6BB423601F5D00537128 /* MBProgressHUD+LZBvcHelper.m in Sources */,
 				BA6CD804237124AA0008113F /* YBIBImageCache.m in Sources */,
 				0B0F6C1F2366C10900537128 /* UIView+JM.m in Sources */,
@@ -2263,6 +2287,67 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"resolv\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"AliyunOSSiOS\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FDFullscreenPopGesture\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"JXCategoryView\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MJExtension\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDAutoLayout\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"YYCache\"",
+					"-framework",
+					"\"YYImage\"",
+					"-framework",
+					"\"YYText\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.abnert.lzbStudent;
 				PRODUCT_NAME = "乐知帮";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2283,6 +2368,67 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"resolv\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"AliyunOSSiOS\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FDFullscreenPopGesture\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"JXCategoryView\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MJExtension\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDAutoLayout\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"YYCache\"",
+					"-framework",
+					"\"YYImage\"",
+					"-framework",
+					"\"YYText\"",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.abnert.lzbStudent;
 				PRODUCT_NAME = "乐知帮";

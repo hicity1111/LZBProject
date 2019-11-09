@@ -77,11 +77,11 @@ typedef NSURLSessionTask LZBUrlSessionTask;
 
 @required
 
-- (BOOL)lzbManager:(id)hepler response:(id)response;
+- (BOOL)lzbManager:(id)hepler response:(id)response entity:(LZBDataEntity *)entity;
 
 - (void)lzbManager:(id)helper response:(id)response error:(NSError *)error;
 
-- (LZBAPIResponseBaseModel *)lzbManagerModel:(id)hepler response:(id)response;
+- (id)lzbManagerModel:(id)hepler response:(id)response entity:(LZBDataEntity *)entity;
 
 @end
 

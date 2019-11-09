@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) id parameters;
 /**是否缓存*/
 @property (nonatomic, assign, getter=isNeedCache) BOOL needCache;
+/**响应模型*/
+@property (nonatomic, strong) NSString *responseClassName;
 @end
 
 @interface LZBFileDataEntity : LZBDataEntity

@@ -26,7 +26,7 @@
 #define Agrement_URL        @"http://agreement.abnertech.com"
 
 #ifdef DEBUG
-    #define BASEURL(urlStr) [NSString stringWithFormat:@"%@%@", SafeLocalUrl, urlStr]
+    #define BASEURL(urlStr) [NSString stringWithFormat:@"%@%@", SafeNetUrl_Alpha, urlStr]
 #else
     #define BASEURL(urlStr) [NSString stringWithFormat:@"%@%@", SafeNetUrl, urlStr]
 #endif

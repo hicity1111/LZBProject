@@ -13,10 +13,12 @@
 @implementation LZBServiceBase
 
 
-- (BOOL)lzbManager:(id)hepler response:(id)response{
+- (BOOL)lzbManager:(id)hepler response:(id)response  entity:(LZBDataEntity *)entity{
     NSDictionary *result = response;
     
-    if ([result[@"flag"] intValue] == kErrorFlagSuccess) {
+    if ([result[@"StatusCode"] integerValue] == 200) {
+        return YES;
+    } else if ([result[@"flag"] intValue] == kErrorFlagSuccess) {
         return YES;
     }else{
         return NO;
@@ -38,7 +40,9 @@
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     deviceParam[@"appVersion"] = @"2.1.0.05";
-    
+    deviceParam[@"appVersion"] = @"2.1.0.04";
+    deviceParam[@"appVersionCode"] = @"21";
+
     deviceParam[@"appChannelId"] = @"studentApp";
     
     return deviceParam;
@@ -82,18 +86,20 @@
     }
 }
 
-- (LZBAPIResponseBaseModel *)lzbManagerModel:(id)hepler response:(id)response{
+- (id)lzbManagerModel:(id)hepler response:(id)response entity:(nonnull LZBDataEntity *)entity{
     
     NSDictionary *resultDic = (NSDictionary *)response;
-        
-    LZBAPIResponseBaseModel *model = [LZBAPIResponseBaseModel mj_objectWithKeyValues:resultDic];
-    
+    Class cls;
+    if ([IFISNIL(entity.responseClassName) length] > 0) {
+        cls = NSClassFromString(IFISNIL(entity.responseClassName));
+    } else {
+        cls = [LZBAPIResponseBaseModel class];
+    }
+    id model = [cls mj_objectWithKeyValues:resultDic];
     return model;
 }
 
-- (void)setResponseClassName:(NSString *)responseClassName{
-    _responseClassName = responseClassName;
-}
+
 
 - (LZBNetManager *)netManager{
     if (!_netManager) {

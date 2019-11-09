@@ -149,6 +149,7 @@ static NSMutableArray *tasks;
 - (LZBUrlSessionTask *)lzb_requestWithType:(LZBHttpRequestType)type
                                isNeedCache:(BOOL)isNeedCache
                                  urlString:(NSString *)urlString
+                                    entity:(LZBDataEntity *)entity
                                 parameters:(id)parameters
                               successBlock:(LZBResponseSuccessBlock)successBlock
                               failureBlock:(LZBResponseFailBlock)failureBlock
@@ -234,8 +235,8 @@ static NSMutableArray *tasks;
             
             NSLog(@"%@", [LZBTypeConvertHelper dictionaryToJson:responseObject]);
             
-            if ([self.delegate lzbManager:self response:responseObject]) {
-                LZBAPIResponseBaseModel *resultModel = [self.delegate lzbManagerModel:self response:responseObject];
+            if ([self.delegate lzbManager:self response:responseObject entity:entity]) {
+                id resultModel = [self.delegate lzbManagerModel:self response:responseObject entity:entity];
                 if (successBlock)
                 {
                     successBlock(resultModel);
@@ -287,11 +288,11 @@ static NSMutableArray *tasks;
             {
                 NSLog(@"post 请求数据结果： *** %@", responseObject);
             }
-            if ([self.delegate lzbManager:self response:responseObject]) {
+            if ([self.delegate lzbManager:self response:responseObject entity:entity]) {
                 
                 NSString *resultStr = [LZBTypeConvertHelper dictionaryToJson:responseObject];
                 
-                LZBAPIResponseBaseModel *resultModel = [self.delegate lzbManagerModel:self response:responseObject];
+                id resultModel = [self.delegate lzbManagerModel:self response:responseObject entity:entity];
                 if (successBlock)
                 {
                     successBlock(resultModel);
@@ -395,6 +396,7 @@ static NSMutableArray *tasks;
         return nil;
     }
     return [self lzb_requestWithType:LZBHttpRequestTypeGet isNeedCache:entity.isNeedCache urlString:entity.urlString
+                              entity:entity
                           parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
 }
 
@@ -415,7 +417,7 @@ static NSMutableArray *tasks;
     if (!entity || ![entity isKindOfClass:[LZBDataEntity class]]) {
         return nil;
     }
-    return [self lzb_requestWithType:LZBHttpRequestTypePost isNeedCache:entity.isNeedCache urlString:entity.urlString parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
+    return [self lzb_requestWithType:LZBHttpRequestTypePost isNeedCache:entity.isNeedCache urlString:entity.urlString entity:entity parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
 }
 
 /**
@@ -435,7 +437,7 @@ static NSMutableArray *tasks;
     if (!entity || ![entity isKindOfClass:[LZBDataEntity class]]) {
         return nil;
     }
-    return [self lzb_requestWithType:LZBHttpRequestTypePut isNeedCache:NO urlString:entity.urlString parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
+    return [self lzb_requestWithType:LZBHttpRequestTypePut isNeedCache:NO urlString:entity.urlString entity:entity parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
 }
 
 /**
@@ -455,7 +457,7 @@ static NSMutableArray *tasks;
     if (!entity || ![entity isKindOfClass:[LZBDataEntity class]]) {
         return nil;
     }
-    return [self lzb_requestWithType:LZBHttpRequestTypeDelete isNeedCache:NO urlString:entity.urlString parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
+    return [self lzb_requestWithType:LZBHttpRequestTypeDelete isNeedCache:NO urlString:entity.urlString entity:entity parameters:entity.parameters successBlock:successBlock failureBlock:failureBlock progressBlock:progressBlock];
 }
 
 /**

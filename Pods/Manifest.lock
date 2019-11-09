@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - AliyunOSSiOS (2.10.7)
   - FDFullscreenPopGesture (1.1)
   - IQKeyboardManager (6.5.0)
   - JXCategoryView (1.5.2)
@@ -33,6 +34,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - AliyunOSSiOS
   - FDFullscreenPopGesture
   - IQKeyboardManager
   - JXCategoryView
@@ -49,6 +51,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - AliyunOSSiOS
     - FDFullscreenPopGesture
     - IQKeyboardManager
     - JXCategoryView
@@ -64,6 +67,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AliyunOSSiOS: 602b6a4e70e62a5f0a6431c20496343141d7e66f
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   IQKeyboardManager: 700e5155d6a292383b54e8678aec769e14fc78fc
   JXCategoryView: b284d35a7a8772eada05dd78642233e1eb763ea8
@@ -77,6 +81,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: d65386f9cbe4c99de798a49b5f88e85b67a9a430
+PODFILE CHECKSUM: 8818267b7448ccd12ca9c90c35b3c349f5c68099
 
 COCOAPODS: 1.7.5

@@ -19,6 +19,8 @@ target 'LZBProject' do
   pod 'MJExtension'
   pod 'YYImage'
 
+  # 阿里云
+  pod 'AliyunOSSiOS'
 
 
   # Pods for LZBProject

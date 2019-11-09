@@ -14,6 +14,7 @@
 #import "MineLogoutCell.h"
 #import "LZBAlertViewController.h"
 #import "NotifyDataService.h"
+#import "AliyunDataService.h"
 
 #define tableView_HeaderView_Height 300.f
 #define tableView_CommonCell_Height 45.f

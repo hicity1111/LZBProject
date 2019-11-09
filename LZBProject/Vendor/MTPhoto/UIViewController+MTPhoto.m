@@ -38,6 +38,7 @@ static void *isCut =  @"isCut"; //截取
 
 - (void)pickImageWithCompletionHandler:(ImagePickerCompletionHandler)completionHandler {
     self.completionHandler = completionHandler;
+    self.isCutImageBool = YES;
     [self presentChoseActionSheet];
 }
 
@@ -84,7 +85,9 @@ static void *isCut =  @"isCut"; //截取
         
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if (granted) {
-                [self presentViewController:self.cameraPicker animated:YES completion:nil];
+                dispatch_main_async_safe(^{
+                    [self presentViewController:self.cameraPicker animated:YES completion:nil];
+                });
             }
             else {
                 UIAlertController * noticeAlertController = [UIAlertController alertControllerWithTitle:@"未开启相机权限，请到设置界面开启" message:nil preferredStyle:UIAlertControllerStyleAlert];
@@ -101,9 +104,12 @@ static void *isCut =  @"isCut"; //截取
                 
                 [noticeAlertController addAction:cancelAction];
                 [noticeAlertController addAction:okAction];
-                [self presentViewController:noticeAlertController animated:YES completion:^{
-                    
-                }];
+
+                dispatch_main_async_safe(^{
+                    [self presentViewController:noticeAlertController animated:YES completion:^{
+                        
+                    }];
+                });
             }
         }];
 
@@ -114,9 +120,9 @@ static void *isCut =  @"isCut"; //截取
         [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
             if (status == PHAuthorizationStatusNotDetermined || status == PHAuthorizationStatusAuthorized) {
                 //未知的   第一次访问
-
-                [self presentViewController:self.photoLibraryPicker animated:YES completion:nil];
-
+                dispatch_main_async_safe(^{
+                    [self presentViewController:self.photoLibraryPicker animated:YES completion:nil];
+                });
             }
             else {
                 UIAlertController * noticeAlertController = [UIAlertController alertControllerWithTitle:@"未开启相册权限，请到设置界面开启" message:nil preferredStyle:UIAlertControllerStyleAlert];
@@ -133,9 +139,11 @@ static void *isCut =  @"isCut"; //截取
                 
                 [noticeAlertController addAction:cancelAction];
                 [noticeAlertController addAction:okAction];
-                [self presentViewController:noticeAlertController animated:YES completion:^{
-                    
-                }];
+                dispatch_main_async_safe(^{
+                    [self presentViewController:noticeAlertController animated:YES completion:^{
+                        
+                    }];
+                });
             }
         }];
 
@@ -145,9 +153,12 @@ static void *isCut =  @"isCut"; //截取
     [actionController addAction:takePhotoAction];
     [actionController addAction:choseFromAlbumAction];
     
-    [self presentViewController:actionController animated:YES completion:^{
-        
-    }];
+    dispatch_main_async_safe(^{
+        [self presentViewController:actionController animated:YES completion:^{
+            
+        }];
+    });
+
 }
 
 #pragma mark <UIImagePickerControllerDelegate>
@@ -158,16 +169,16 @@ static void *isCut =  @"isCut"; //截取
     if(self.isCutImageBool){
          //获取裁剪的图
         editedimage = info[@"UIImagePickerControllerEditedImage"]; //获取裁剪的图
-        CGSize imageSize = CGSizeMake(413, 626);
-        if (self.imageSize.height>0) {
-            imageSize = self.imageSize;
-        }
-        editedimage = [self reSizeImage:editedimage toSize:imageSize];
+//        CGSize imageSize = CGSizeMake(413, 626);
+//        if (self.imageSize.height>0) {
+//            imageSize = self.imageSize;
+//        }
+//        editedimage = [self reSizeImage:editedimage toSize:imageSize];
     }
     else{
         editedimage = info[@"UIImagePickerControllerOriginalImage"];
     }
-    NSData *imageData = UIImageJPEGRepresentation(editedimage, 0.0001);//首次进行压缩
+    NSData *imageData = UIImageJPEGRepresentation(editedimage, 0.1);//首次进行压缩
     UIImage *image = [UIImage imageWithData:imageData];
     //图片限制大小不超过 1M     CGFloat  kb =   data.lenth / 1000;  计算kb方法 os 按照千进制计算
     while (imageData.length/1000 > 1024) {

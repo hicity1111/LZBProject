@@ -27,7 +27,6 @@ typedef enum : NSUInteger {
 
 - (NSDictionary *)necessaryParamsDictionary:(NSDictionary *)param;
 
-@property (nonatomic, strong) NSString *responseClassName;
 
 @end
 

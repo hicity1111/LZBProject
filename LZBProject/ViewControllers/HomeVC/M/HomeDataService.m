@@ -24,10 +24,6 @@
     LZBDataEntity *entity = [[LZBDataEntity alloc] init];
     entity.urlString = HomeWork_full;
     entity.parameters = [self necessaryParamsDictionary:resultDic];
-    
-    
-    self.responseClassName = NSStringFromClass([HomeModel class]);
-
     [self.netManager lzb_request_postWithEntity:entity successBlock:^(LZBAPIResponseBaseModel *model) {
         
         if (success) {

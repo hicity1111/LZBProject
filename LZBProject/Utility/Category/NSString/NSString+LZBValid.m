@@ -14,11 +14,17 @@
 @implementation NSString (LZBValid)
 
 /// 有效的手机号码
-+ (BOOL)mh_isValidMobile:(NSString *)str
-{
+- (BOOL)mh_isValidMobile {
     NSString *phoneRegex = @"^1[3456789]\\d{9}$";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
-    return [phoneTest evaluateWithObject:str];
+    return [phoneTest evaluateWithObject:self];
+}
+
+/// 有效的密码（8-16位 数字+字母组合）
+- (BOOL)lzb_isValidPassword {
+    NSString *regex = @"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$";
+    NSPredicate *pwdTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [pwdTest evaluateWithObject:self];
 }
 
 - (BOOL)isNotEmpty {

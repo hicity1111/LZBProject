@@ -29,21 +29,17 @@
     
     NSMutableDictionary *deviceParam = [NSMutableDictionary dictionaryWithDictionary:param];
 
-    deviceParam[@"deviceUUID"] = [[UIDevice currentDevice].identifierForVendor UUIDString];
+//    deviceParam[@"deviceUUID"] = [[UIDevice currentDevice].identifierForVendor UUIDString];
     
     deviceParam[@"token"] = [Utils loadUserToken];
     //版本号
-//    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-//    NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    deviceParam[@"appVersion"] = @"1.3.2";
-    deviceParam[@"appVersionCode"] = @"7";
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    deviceParam[@"appVersion"] = @"2.1.0.05";
-    deviceParam[@"appVersion"] = @"2.1.0.04";
-    deviceParam[@"appVersionCode"] = @"21";
 
-    deviceParam[@"appChannelId"] = @"studentApp";
+    deviceParam[@"appVersion"] = appVersion;
+    deviceParam[@"appVersionCode"] = @"1";
+    
+    deviceParam[@"appChannelId"] = @"studentIosPhone";
     
     return deviceParam;
 }

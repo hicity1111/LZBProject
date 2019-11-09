@@ -39,6 +39,10 @@
 //底部安全高度
 #define kBottomSafeSpace ([[UIApplication sharedApplication] statusBarFrame].size.height > 20 ? 34 : 0)
 
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+
+#define IS_PAD (UI_USER_INTERFACE_IDIOM()== UIUserInterfaceIdiomPad)
+
 /// 判断字符串是否为空
 #define IFISNIL(v)                                 (v = (v != nil) ? v : @"")
 
@@ -52,6 +56,8 @@
 
 #define kWidthScale  (kScreenWidth / 375.f)
 #define kHeightScale (kScreenHeight / 667.f)
+
+#define kAnimationDuration  0.25
 
 //手势宏定义
 #define LZBTAPGES(tapName, tapAct) UIGestureRecognizer *tapName = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(tapAct)];

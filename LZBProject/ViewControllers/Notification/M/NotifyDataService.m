@@ -30,8 +30,7 @@ studentInfoId:(NSString *)studentInfoId
       failure:(void (^)(NSError *error))failure {
     
     LZBDataEntity *entity = [[LZBDataEntity alloc] init];
-//    entity.urlString = NotifyListAPI_full;
-    entity.urlString = @"http://192.168.7.157:8082/studentApi/student/notice/getList";
+    entity.urlString = BASEURL(@"/studentApi/student/notice/getList");
     NSDictionary *paramsDict = @{@"currentPage": @(1),
                                  @"pageSize": @(12),
                                  @"studentInfoId": studentInfoId
@@ -52,8 +51,7 @@ studentInfoId:(NSString *)studentInfoId
                     success:(void (^)(LZBAPIResponseBaseModel *baseM))success
                     failure:(void (^)(NSError *error))failure {
         LZBDataEntity *entity = [[LZBDataEntity alloc] init];
-    //    entity.urlString = NotifyListAPI_full;
-        entity.urlString = @"http://192.168.7.157:8082/studentApi/student/notice/getList";
+        entity.urlString = BASEURL(@"/studentApi/student/notice/getList");
         NSDictionary *paramsDict = @{@"currentPage": @(page),
                                      @"pageSize": @(12),
                                      @"studentInfoId": studentInfoId
@@ -73,7 +71,7 @@ studentInfoId:(NSString *)studentInfoId
 - (void)loadUnreadMessageCountSuccess:(void (^)(LZBAPIResponseBaseModel *baseM))success         failure:(void (^)(NSError *error))failure {
         LZBDataEntity *entity = [[LZBDataEntity alloc] init];
         UserModel *infoM = [UserModel findUserInfoResult];
-        entity.urlString = @"http://192.168.7.157:8082//studentApi/student/notice/notReadCount";
+        entity.urlString = BASEURL(@"/studentApi/student/notice/notReadCount");
         NSDictionary *paramsDict = @{ @"studentInfoId": [NSString stringWithFormat:@"%@", infoM.studentInfoId] };
         //传入必要的参数
         entity.parameters = [self necessaryParamsDictionary:paramsDict];

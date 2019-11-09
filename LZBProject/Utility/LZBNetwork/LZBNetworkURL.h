@@ -17,7 +17,7 @@
 
 
 //本地URL
-#define SafeLocalUrl        @"http://192.168.6.104:8081"
+#define SafeLocalUrl        @"http://192.168.7.254:19101"
 
 //#define SafeLocalUrl        @"http://192.168.7.157:8082"
 
@@ -26,7 +26,7 @@
 #define Agrement_URL        @"http://agreement.abnertech.com"
 
 #ifdef DEBUG
-    #define BASEURL(urlStr) [NSString stringWithFormat:@"%@%@", SafeNetUrl_Alpha, urlStr]
+    #define BASEURL(urlStr) [NSString stringWithFormat:@"%@%@", SafeLocalUrl, urlStr]
 #else
     #define BASEURL(urlStr) [NSString stringWithFormat:@"%@%@", SafeNetUrl, urlStr]
 #endif
@@ -40,10 +40,9 @@
 #define CTBSSubject_sim     @"/api/wrongquestion/subject"
 #define CTBSSubject_full    BASEURL(CTBSSubject_sim)
 
-
 //消息中心
 //学生消息列表
-#define NotifyListAPI  @"/api/notice/student/getList"
+#define NotifyListAPI  @"/studentApi/student/notice/getList"
 #define NotifyListAPI_full  BASEURL(NotifyListAPI)
 
 #endif /* LZBNetworkURL_h */

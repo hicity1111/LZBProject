@@ -24,6 +24,8 @@
 
 #define kMAIN0099   [UIColor colorWithHex:@"#00995E"]
 
+#define kMAINDDDD   [UIColor colorWithHex:@"#DDDDDD"]
+
 #define kMAINCCCC   [UIColor colorWithHex:@"#CCCCCC"]
 
 #define kMAIN9999   [UIColor colorWithHex:@"#999999"]
@@ -70,7 +72,7 @@
 
 #define kMAINE4D1   [UIColor colorWithHex:@"#E4D1F2"]
 
-
+#define kMAIN4759   [UIColor colorWithHex:@"#4759B2"]
 
 
 #define WHITECOLOR  UIColor.whiteColor

@@ -23,7 +23,6 @@
 
 #import "JMBootstrapButton.h"
 #import "JMBootstrapButtonConfig.h"
-#import "UIColor+JM.h"
 
 @implementation JMBootstrapButton
 

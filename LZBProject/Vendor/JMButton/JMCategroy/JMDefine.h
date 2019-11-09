@@ -25,8 +25,6 @@
 #define kStatusBarHeight (kiPhoneX ? 44.f : 20.f)
 // 导航栏高度
 #define kNavigationBarHeight (kiPhoneX ? 88.f : 64.f)
-// tabBar高度
-#define kTabBarHeight (kiPhoneX ? (49.f+34.f) : 49.f)
 
 
 #endif /* JMDefine_h */

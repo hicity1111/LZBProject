@@ -10,9 +10,8 @@
 #import "JXPagerView.h"
 #import "HomeDataService.h"
 
-NS_ASSUME_NONNULL_BEGIN
 
-@interface MutualLearningViewController : LZBBaseViewController
+@interface MutualLearningViewController : LZBBaseViewController<JXCategoryListContentViewDelegate>
 
 @property (nonatomic, copy) void(^didScrollCallback)(UIScrollView *scrollView);
 
@@ -29,4 +28,3 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)loadDataForFirst;
 @end
 
-NS_ASSUME_NONNULL_END

@@ -22,7 +22,6 @@
  */
 
 #import "JMNumberButton.h"
-#import "UIColor+JM.h"
 #import "UIView+JM.h"
 
 @interface JMNumberButton()

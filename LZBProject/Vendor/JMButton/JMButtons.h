@@ -14,7 +14,6 @@
 #import "JMRadioButton.h"
 #import "UIView+JM.h"
 #import "JMDefine.h"
-#import "UIColor+JM.h"
 #import "JMBaseButton+CountDown.h"
 
 

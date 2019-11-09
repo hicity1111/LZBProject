@@ -290,7 +290,7 @@ static NSMutableArray *tasks;
             }
             if ([self.delegate lzbManager:self response:responseObject entity:entity]) {
                 
-                NSString *resultStr = [LZBTypeConvertHelper dictionaryToJson:responseObject];
+//                NSString *resultStr = [LZBTypeConvertHelper dictionaryToJson:responseObject];
                 
                 id resultModel = [self.delegate lzbManagerModel:self response:responseObject entity:entity];
                 if (successBlock)
@@ -910,7 +910,11 @@ static NSMutableArray *tasks;
     }
     else
     {
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Wdeprecated-declarations"
         return [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        #pragma clang diagnostic pop
+
     }
 }
 

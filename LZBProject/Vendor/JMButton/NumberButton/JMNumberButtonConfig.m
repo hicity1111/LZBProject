@@ -23,7 +23,6 @@
 
 
 #import "JMNumberButtonConfig.h"
-#import "UIColor+JM.h"
 
 @implementation JMNumberButtonConfig
 

@@ -17,7 +17,6 @@
 #define  homeApplecation [UIApplication sharedApplication].keyWindow
 
 static const CGFloat JXheightForHeaderInSection = 30;
-
 @interface MutualLearningViewController ()<UIScrollViewDelegate, JXPagerViewDelegate, JXCategoryViewDelegate>
 
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
@@ -235,7 +234,7 @@ static const CGFloat JXheightForHeaderInSection = 30;
 - (void)screenButtonAct:(JMButton *)screenButton{
     XLDLog(@"点击了筛选");
     [MBProgressHUD showMessage:@"点击了筛选" inView:self.view];
-    CGRect rect = [screenButton convertRect:screenButton.frame toView:[UIApplication sharedApplication].keyWindow];
+//    CGRect rect = [screenButton convertRect:screenButton.frame toView:[UIApplication sharedApplication].keyWindow];
     
 }
 

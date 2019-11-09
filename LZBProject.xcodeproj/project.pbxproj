@@ -41,7 +41,6 @@
 		0B0F6C1E2366C10900537128 /* JMRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C0B2366C10800537128 /* JMRuntime.m */; };
 		0B0F6C1F2366C10900537128 /* UIView+JM.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C0C2366C10800537128 /* UIView+JM.m */; };
 		0B0F6C202366C10900537128 /* JMBaseButton+CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C0E2366C10800537128 /* JMBaseButton+CountDown.m */; };
-		0B0F6C212366C10900537128 /* UIColor+JM.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C122366C10800537128 /* UIColor+JM.m */; };
 		0B0F6C222366C10900537128 /* JMBadgeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C132366C10800537128 /* JMBadgeValue.m */; };
 		0B0F6C292366F92700537128 /* MutualLearningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C282366F92700537128 /* MutualLearningViewController.m */; };
 		0B112173236BFEE500944C24 /* LZBAPIResponseBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B112172236BFEE500944C24 /* LZBAPIResponseBaseModel.m */; };
@@ -118,7 +117,7 @@
 		8B21DEFA2367ECEB000F0DAB /* HomeWorkNotStartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B21DEF82367ECEB000F0DAB /* HomeWorkNotStartCell.xib */; };
 		8B21DEFE23681118000F0DAB /* HomeWorkAlreadyStartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DEFC23681118000F0DAB /* HomeWorkAlreadyStartCell.m */; };
 		8B21DEFF23681118000F0DAB /* HomeWorkAlreadyStartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B21DEFD23681118000F0DAB /* HomeWorkAlreadyStartCell.xib */; };
-		8B21DF0A2369316B000F0DAB /* UIView+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DF092369316B000F0DAB /* UIView+CornerRadius.m */; };
+		8B21DF0A2369316B000F0DAB /* UIView+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B21DF092369316B000F0DAB /* UIView+CornerRadius.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		8B225CBD236FD38600BD5756 /* LZBTypeConvertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B225CBC236FD38600BD5756 /* LZBTypeConvertHelper.m */; };
 		8B4D1C5623618CD2008B2CCA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1C5023618CD2008B2CCA /* LoginViewController.m */; };
 		8B4D1C5823618CD2008B2CCA /* UserNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1C5423618CD2008B2CCA /* UserNoticeView.m */; };
@@ -162,33 +161,33 @@
 		BA6CD7A4237036570008113F /* NSString+LZBMap.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7A3237036570008113F /* NSString+LZBMap.m */; };
 		BA6CD7AB237112930008113F /* UIAlertController+LZBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7AA237112920008113F /* UIAlertController+LZBExtension.m */; };
 		BA6CD7B2237114040008113F /* NSObject+LZBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7B1237114040008113F /* NSObject+LZBExtension.m */; };
-		BA6CD7FE237124AA0008113F /* YBIBDefaultWebImageMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7B7237124A90008113F /* YBIBDefaultWebImageMediator.m */; };
-		BA6CD7FF237124AA0008113F /* YBImageBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7B9237124A90008113F /* YBImageBrowser.m */; };
-		BA6CD800237124AA0008113F /* YBIBImageLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7C4237124A90008113F /* YBIBImageLayout.m */; };
-		BA6CD801237124AA0008113F /* YBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7C6237124A90008113F /* YBImage.m */; };
-		BA6CD802237124AA0008113F /* YBIBInteractionProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7C8237124A90008113F /* YBIBInteractionProfile.m */; };
-		BA6CD803237124AA0008113F /* YBIBImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7C9237124A90008113F /* YBIBImageScrollView.m */; };
-		BA6CD804237124AA0008113F /* YBIBImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7CB237124A90008113F /* YBIBImageCache.m */; };
-		BA6CD805237124AA0008113F /* YBIBImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7CC237124A90008113F /* YBIBImageCell.m */; };
-		BA6CD806237124AA0008113F /* YBIBImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7CE237124A90008113F /* YBIBImageData.m */; };
-		BA6CD807237124AA0008113F /* YBIBToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7D4237124A90008113F /* YBIBToastView.m */; };
-		BA6CD808237124AA0008113F /* YBIBLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7D5237124AA0008113F /* YBIBLoadingView.m */; };
-		BA6CD809237124AA0008113F /* YBIBAuxiliaryViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7D6237124AA0008113F /* YBIBAuxiliaryViewHandler.m */; };
-		BA6CD80A237124AA0008113F /* YBIBIconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7DF237124AA0008113F /* YBIBIconManager.m */; };
-		BA6CD80B237124AA0008113F /* YBIBSentinel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7E0237124AA0008113F /* YBIBSentinel.m */; };
-		BA6CD80C237124AA0008113F /* YBIBCopywriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7E1237124AA0008113F /* YBIBCopywriter.m */; };
-		BA6CD80D237124AA0008113F /* YBIBUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7E2237124AA0008113F /* YBIBUtilities.m */; };
-		BA6CD80E237124AA0008113F /* YBIBPhotoAlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7E3237124AA0008113F /* YBIBPhotoAlbumManager.m */; };
-		BA6CD80F237124AA0008113F /* YBIBTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7E9237124AA0008113F /* YBIBTopView.m */; };
-		BA6CD810237124AA0008113F /* YBIBToolViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7EA237124AA0008113F /* YBIBToolViewHandler.m */; };
-		BA6CD811237124AA0008113F /* YBIBSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7EB237124AA0008113F /* YBIBSheetView.m */; };
-		BA6CD812237124AA0008113F /* YBIBScreenRotationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7ED237124AA0008113F /* YBIBScreenRotationHandler.m */; };
-		BA6CD813237124AA0008113F /* YBIBContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7EE237124AA0008113F /* YBIBContainerView.m */; };
-		BA6CD814237124AA0008113F /* YBIBDataMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7F0237124AA0008113F /* YBIBDataMediator.m */; };
-		BA6CD815237124AA0008113F /* YBIBCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7F1237124AA0008113F /* YBIBCollectionView.m */; };
-		BA6CD816237124AA0008113F /* YBIBCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7F2237124AA0008113F /* YBIBCollectionViewLayout.m */; };
-		BA6CD817237124AA0008113F /* YBIBAnimatedTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7F4237124AA0008113F /* YBIBAnimatedTransition.m */; };
-		BA6CD818237124AA0008113F /* NSObject+YBImageBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7F8237124AA0008113F /* NSObject+YBImageBrowser.m */; };
+		BA6CD7FE237124AA0008113F /* YBIBDefaultWebImageMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7B7237124A90008113F /* YBIBDefaultWebImageMediator.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD7FF237124AA0008113F /* YBImageBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7B9237124A90008113F /* YBImageBrowser.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD800237124AA0008113F /* YBIBImageLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7C4237124A90008113F /* YBIBImageLayout.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD801237124AA0008113F /* YBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7C6237124A90008113F /* YBImage.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD802237124AA0008113F /* YBIBInteractionProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7C8237124A90008113F /* YBIBInteractionProfile.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD803237124AA0008113F /* YBIBImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7C9237124A90008113F /* YBIBImageScrollView.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD804237124AA0008113F /* YBIBImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7CB237124A90008113F /* YBIBImageCache.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD805237124AA0008113F /* YBIBImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7CC237124A90008113F /* YBIBImageCell.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD806237124AA0008113F /* YBIBImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7CE237124A90008113F /* YBIBImageData.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD807237124AA0008113F /* YBIBToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7D4237124A90008113F /* YBIBToastView.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD808237124AA0008113F /* YBIBLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7D5237124AA0008113F /* YBIBLoadingView.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD809237124AA0008113F /* YBIBAuxiliaryViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7D6237124AA0008113F /* YBIBAuxiliaryViewHandler.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD80A237124AA0008113F /* YBIBIconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7DF237124AA0008113F /* YBIBIconManager.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD80B237124AA0008113F /* YBIBSentinel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7E0237124AA0008113F /* YBIBSentinel.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD80C237124AA0008113F /* YBIBCopywriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7E1237124AA0008113F /* YBIBCopywriter.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD80D237124AA0008113F /* YBIBUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7E2237124AA0008113F /* YBIBUtilities.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD80E237124AA0008113F /* YBIBPhotoAlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7E3237124AA0008113F /* YBIBPhotoAlbumManager.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD80F237124AA0008113F /* YBIBTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7E9237124AA0008113F /* YBIBTopView.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD810237124AA0008113F /* YBIBToolViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7EA237124AA0008113F /* YBIBToolViewHandler.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD811237124AA0008113F /* YBIBSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7EB237124AA0008113F /* YBIBSheetView.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD812237124AA0008113F /* YBIBScreenRotationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7ED237124AA0008113F /* YBIBScreenRotationHandler.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD813237124AA0008113F /* YBIBContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7EE237124AA0008113F /* YBIBContainerView.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD814237124AA0008113F /* YBIBDataMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7F0237124AA0008113F /* YBIBDataMediator.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD815237124AA0008113F /* YBIBCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7F1237124AA0008113F /* YBIBCollectionView.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD816237124AA0008113F /* YBIBCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7F2237124AA0008113F /* YBIBCollectionViewLayout.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD817237124AA0008113F /* YBIBAnimatedTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7F4237124AA0008113F /* YBIBAnimatedTransition.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		BA6CD818237124AA0008113F /* NSObject+YBImageBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD7F8237124AA0008113F /* NSObject+YBImageBrowser.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		BA6CD819237124AA0008113F /* YBImageBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BA6CD7FD237124AA0008113F /* YBImageBrowser.bundle */; };
 		BA6CD8392371410C0008113F /* NSObject+SXRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD8322371410A0008113F /* NSObject+SXRuntime.m */; };
 		BA6CD83A2371410C0008113F /* UINavigationItem+SXFixSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6CD8352371410B0008113F /* UINavigationItem+SXFixSpace.m */; };
@@ -293,12 +292,10 @@
 		0B0F6C0A2366C10800537128 /* JMBaseButton+CountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JMBaseButton+CountDown.h"; sourceTree = "<group>"; };
 		0B0F6C0B2366C10800537128 /* JMRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMRuntime.m; sourceTree = "<group>"; };
 		0B0F6C0C2366C10800537128 /* UIView+JM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JM.m"; sourceTree = "<group>"; };
-		0B0F6C0D2366C10800537128 /* UIColor+JM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JM.h"; sourceTree = "<group>"; };
 		0B0F6C0E2366C10800537128 /* JMBaseButton+CountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JMBaseButton+CountDown.m"; sourceTree = "<group>"; };
 		0B0F6C0F2366C10800537128 /* UIView+JM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JM.h"; sourceTree = "<group>"; };
 		0B0F6C102366C10800537128 /* JMDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMDefine.h; sourceTree = "<group>"; };
 		0B0F6C112366C10800537128 /* JMRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMRuntime.h; sourceTree = "<group>"; };
-		0B0F6C122366C10800537128 /* UIColor+JM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JM.m"; sourceTree = "<group>"; };
 		0B0F6C132366C10800537128 /* JMBadgeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMBadgeValue.m; sourceTree = "<group>"; };
 		0B0F6C272366F92700537128 /* MutualLearningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MutualLearningViewController.h; sourceTree = "<group>"; };
 		0B0F6C282366F92700537128 /* MutualLearningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MutualLearningViewController.m; sourceTree = "<group>"; };
@@ -814,14 +811,12 @@
 			isa = PBXGroup;
 			children = (
 				0B0F6C0A2366C10800537128 /* JMBaseButton+CountDown.h */,
-				0B0F6C0B2366C10800537128 /* JMRuntime.m */,
-				0B0F6C0C2366C10800537128 /* UIView+JM.m */,
-				0B0F6C0D2366C10800537128 /* UIColor+JM.h */,
 				0B0F6C0E2366C10800537128 /* JMBaseButton+CountDown.m */,
-				0B0F6C0F2366C10800537128 /* UIView+JM.h */,
 				0B0F6C102366C10800537128 /* JMDefine.h */,
 				0B0F6C112366C10800537128 /* JMRuntime.h */,
-				0B0F6C122366C10800537128 /* UIColor+JM.m */,
+				0B0F6C0B2366C10800537128 /* JMRuntime.m */,
+				0B0F6C0F2366C10800537128 /* UIView+JM.h */,
+				0B0F6C0C2366C10800537128 /* UIView+JM.m */,
 			);
 			path = JMCategroy;
 			sourceTree = "<group>";
@@ -2057,7 +2052,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA6CD80F237124AA0008113F /* YBIBTopView.m in Sources */,
-				0B0F6C212366C10900537128 /* UIColor+JM.m in Sources */,
 				0B5E6D4823545DC7008D9A76 /* LZBCalendar.m in Sources */,
 				0BBE4770235990A100D30C4B /* LZBCalendarDayModel.m in Sources */,
 				BA5BFE90236C057500D231F0 /* NotifyAllSelectToolView.m in Sources */,

@@ -12,6 +12,7 @@
 #import "LZBNetworkURL.h"
 #import "LoginDataService.h"
 #import "UIImage+CompressImage.h"
+#import "LoginNobindPhoneAlertView.h"
 
 #import "AppDelegate.h"
 
@@ -59,7 +60,7 @@ static CGFloat phoheH = 48.f, verH = 48.f, pvSpace = 16.f, vsSpace = 15.f;
 /// 验证码
 @property (nonatomic, strong) LYZTextField      *verifyCodeTF;
 /// 发送验证码按钮
-@property (nonatomic, strong) JMButton          *sendVerifyCodeBtn;
+@property (nonatomic, strong) JMBaseButton      *sendVerifyCodeBtn;
 
 
 /// 登录
@@ -122,6 +123,7 @@ static CGFloat phoheH = 48.f, verH = 48.f, pvSpace = 16.f, vsSpace = 15.f;
     }
 }
 
+// 从plish文件取出用户名和密码 并 填充到用户名和密码输入框
 - (void) fillTextField {
     NSString *userName = GETUSER_STRING(USER_NAME);
     if (userName && userName.length > 0) {
@@ -133,6 +135,7 @@ static CGFloat phoheH = 48.f, verH = 48.f, pvSpace = 16.f, vsSpace = 15.f;
     }
 }
 
+// 更新 登录按钮 是否可用的状态
 - (void)updateLoginButtonState {
     /// 验证码登录
     if (self.swichBtn.selected) {
@@ -156,9 +159,19 @@ static CGFloat phoheH = 48.f, verH = 48.f, pvSpace = 16.f, vsSpace = 15.f;
     }
 }
 
+// 显示 用户服务协议 弹窗
 - (void)showUserNoticeView {
     UserNoticeView *unv = [[UserNoticeView alloc] init];
     [unv show];
+}
+
+// 显示 未绑定手机号 弹窗
+- (void)showUnbindingPhoneAlertView {
+    LoginNobindPhoneAlertView *alert = [[LoginNobindPhoneAlertView alloc] init];
+    [alert setTouchAlreadyBindBlock:^(UIButton * _Nonnull btn) {
+        [self showSuccess:@"已绑定手机号跳转"];
+    }];
+    [alert show];
 }
 
 // 添加subviews
@@ -277,6 +290,7 @@ static CGFloat phoheH = 48.f, verH = 48.f, pvSpace = 16.f, vsSpace = 15.f;
     [self textfieldAddCustomView];
 }
 
+// 输入框添加 自定义 左右view
 - (void)textfieldAddCustomView {
     CGFloat leftMargin = 15.f;
     CGRect iconRect = CGRectMake(0, 0, 35, 17);
@@ -506,6 +520,7 @@ static CGFloat phoheH = 48.f, verH = 48.f, pvSpace = 16.f, vsSpace = 15.f;
     }
 }
 
+
 #pragma mark - Event Response
 
 /// 点击显示密码
@@ -524,12 +539,21 @@ static CGFloat phoheH = 48.f, verH = 48.f, pvSpace = 16.f, vsSpace = 15.f;
 
 /// 点击 忘记密码？
 - (void)forgetPasswordAction:(UIButton *)btn {
-    [self showMessage:@"重设密码" afterDelay:0.5];
+//    [self showMessage:@"重设密码" afterDelay:0.5];
+    
+    // 有效手机号 - 沟通后台查看是否已注册
+    if ([self.userTF.text mh_isValidMobile]) {
+        
+    }
+    // 直接进入 未绑定手机号弹窗
+    else {
+        [self showUnbindingPhoneAlertView];
+    }
 }
 
 /// 点击 获取验证码按钮
-- (void)sendVerifyCodeAction:(UIButton *)btn {
-    [self showMessage:@"获取验证码" afterDelay:0.5];
+- (void)sendVerifyCodeAction:(JMBaseButton *)btn {
+    [btn startCountDown:60 Detail:@"s"];
 }
 
 /// 点击 登录按钮
@@ -797,14 +821,14 @@ replacementString:(NSString *)string {
     return _verifyCodeTF;
 }
 
-- (JMButton *)sendVerifyCodeBtn {
+- (JMBaseButton *)sendVerifyCodeBtn {
     if (!_sendVerifyCodeBtn) {
         JMBaseButtonConfig *config = [JMBaseButtonConfig buttonConfig];
         config.title = @"获取验证码";
         config.titleColor = kMAIN0098;
         config.titleFont = LZBFont(16.f, NO);
-        _sendVerifyCodeBtn = [[JMButton alloc] initWithFrame:CGRectMake(0, 0, 90, 30) ButtonConfig:config];
-        _sendVerifyCodeBtn.backgroundColor = UIColor.redColor;
+        _sendVerifyCodeBtn = [JMBaseButton buttonFrame:CGRectMake(0, 0, 90, 30) ButtonConfig:config];
+        _sendVerifyCodeBtn.backgroundColor = UIColor.clearColor;
         [_sendVerifyCodeBtn addTarget:self action:@selector(sendVerifyCodeAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _sendVerifyCodeBtn;

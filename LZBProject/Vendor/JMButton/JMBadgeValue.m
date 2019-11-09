@@ -22,7 +22,6 @@
  */
 
 #import "JMBadgeValue.h"
-#import "UIColor+JM.h"
 #import "UIView+JM.h"
 
 #define angle2Rad(angle) ((angle) / 180.0 * M_PI)

@@ -24,7 +24,6 @@
 #import "JMButton.h"
 #import "JMRuntime.h"
 #import "UIView+JM.h"
-#import "UIColor+JM.h"
 
 @interface JMButton()
 

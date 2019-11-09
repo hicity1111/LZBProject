@@ -43,7 +43,7 @@
         [_tableView registerNib:[UINib nibWithNibName:@"HomeWorkNotStartCell" bundle:nil] forCellReuseIdentifier:@"HomeWorkNotStartCell"];
         [self addSubview:self.tableView];
         
-        MJWeakSelf
+//        MJWeakSelf
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             
         }];

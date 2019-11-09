@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
 
 #define LZBNetManagerShare [LZBNetManager sharedLZBNetManager]
 
@@ -201,4 +200,4 @@ typedef NSURLSessionTask LZBUrlSessionTask;
 
 @end
 
-NS_ASSUME_NONNULL_END
+

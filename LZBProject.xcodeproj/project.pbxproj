@@ -41,7 +41,6 @@
 		0B0F6C1E2366C10900537128 /* JMRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C0B2366C10800537128 /* JMRuntime.m */; };
 		0B0F6C1F2366C10900537128 /* UIView+JM.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C0C2366C10800537128 /* UIView+JM.m */; };
 		0B0F6C202366C10900537128 /* JMBaseButton+CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C0E2366C10800537128 /* JMBaseButton+CountDown.m */; };
-		0B0F6C212366C10900537128 /* UIColor+JM.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C122366C10800537128 /* UIColor+JM.m */; };
 		0B0F6C222366C10900537128 /* JMBadgeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C132366C10800537128 /* JMBadgeValue.m */; };
 		0B0F6C292366F92700537128 /* MutualLearningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F6C282366F92700537128 /* MutualLearningViewController.m */; };
 		0B112173236BFEE500944C24 /* LZBAPIResponseBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B112172236BFEE500944C24 /* LZBAPIResponseBaseModel.m */; };
@@ -292,12 +291,10 @@
 		0B0F6C0A2366C10800537128 /* JMBaseButton+CountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JMBaseButton+CountDown.h"; sourceTree = "<group>"; };
 		0B0F6C0B2366C10800537128 /* JMRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMRuntime.m; sourceTree = "<group>"; };
 		0B0F6C0C2366C10800537128 /* UIView+JM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JM.m"; sourceTree = "<group>"; };
-		0B0F6C0D2366C10800537128 /* UIColor+JM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JM.h"; sourceTree = "<group>"; };
 		0B0F6C0E2366C10800537128 /* JMBaseButton+CountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JMBaseButton+CountDown.m"; sourceTree = "<group>"; };
 		0B0F6C0F2366C10800537128 /* UIView+JM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JM.h"; sourceTree = "<group>"; };
 		0B0F6C102366C10800537128 /* JMDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMDefine.h; sourceTree = "<group>"; };
 		0B0F6C112366C10800537128 /* JMRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMRuntime.h; sourceTree = "<group>"; };
-		0B0F6C122366C10800537128 /* UIColor+JM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JM.m"; sourceTree = "<group>"; };
 		0B0F6C132366C10800537128 /* JMBadgeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMBadgeValue.m; sourceTree = "<group>"; };
 		0B0F6C272366F92700537128 /* MutualLearningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MutualLearningViewController.h; sourceTree = "<group>"; };
 		0B0F6C282366F92700537128 /* MutualLearningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MutualLearningViewController.m; sourceTree = "<group>"; };
@@ -811,14 +808,12 @@
 			isa = PBXGroup;
 			children = (
 				0B0F6C0A2366C10800537128 /* JMBaseButton+CountDown.h */,
-				0B0F6C0B2366C10800537128 /* JMRuntime.m */,
-				0B0F6C0C2366C10800537128 /* UIView+JM.m */,
-				0B0F6C0D2366C10800537128 /* UIColor+JM.h */,
 				0B0F6C0E2366C10800537128 /* JMBaseButton+CountDown.m */,
-				0B0F6C0F2366C10800537128 /* UIView+JM.h */,
 				0B0F6C102366C10800537128 /* JMDefine.h */,
 				0B0F6C112366C10800537128 /* JMRuntime.h */,
-				0B0F6C122366C10800537128 /* UIColor+JM.m */,
+				0B0F6C0B2366C10800537128 /* JMRuntime.m */,
+				0B0F6C0F2366C10800537128 /* UIView+JM.h */,
+				0B0F6C0C2366C10800537128 /* UIView+JM.m */,
 			);
 			path = JMCategroy;
 			sourceTree = "<group>";
@@ -2052,7 +2047,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA6CD80F237124AA0008113F /* YBIBTopView.m in Sources */,
-				0B0F6C212366C10900537128 /* UIColor+JM.m in Sources */,
 				0B5E6D4823545DC7008D9A76 /* LZBCalendar.m in Sources */,
 				0BBE4770235990A100D30C4B /* LZBCalendarDayModel.m in Sources */,
 				BA5BFE90236C057500D231F0 /* NotifyAllSelectToolView.m in Sources */,

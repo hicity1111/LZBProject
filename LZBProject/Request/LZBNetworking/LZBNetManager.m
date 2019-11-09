@@ -290,7 +290,7 @@ static NSMutableArray *tasks;
             }
             if ([self.delegate lzbManager:self response:responseObject entity:entity]) {
                 
-                NSString *resultStr = [LZBTypeConvertHelper dictionaryToJson:responseObject];
+//                NSString *resultStr = [LZBTypeConvertHelper dictionaryToJson:responseObject];
                 
                 id resultModel = [self.delegate lzbManagerModel:self response:responseObject entity:entity];
                 if (successBlock)

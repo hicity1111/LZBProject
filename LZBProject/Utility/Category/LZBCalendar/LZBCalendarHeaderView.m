@@ -15,7 +15,7 @@
     if (self = [super initWithFrame:frame]) {
         
         CGFloat height = frame.size.height;
-        CGFloat width  = frame.size.width;
+//        CGFloat width  = frame.size.width;
         
         _leftButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 0, height, height)];
         [_leftButton setImage:IMAGE_NAMED(@"tanchuang_xuangzeriqi_xianghou_normal") forState:UIControlStateNormal];
